@@ -104,6 +104,9 @@
     const scopeCard = document.querySelector('.scope-card');
     if (scopeCard) return { element: scopeCard, type: 'scope-card' };
 
+    const splitScreen = document.querySelector('.split-screen');
+    if (splitScreen) return { element: splitScreen, type: 'split-screen' };
+
     return { element: document.querySelector('main') || document.body, type: 'default' };
   }
 
@@ -165,6 +168,18 @@
             clonedReport.style.boxShadow = 'none';
           }
 
+          const clonedSplit = clonedDoc.querySelector('.split-screen');
+          if (clonedSplit) {
+            clonedSplit.style.width = '1920px';
+            clonedSplit.style.height = '1080px';
+            clonedSplit.style.overflow = 'visible';
+            const panels = clonedSplit.querySelectorAll('.panel');
+            panels.forEach(p => {
+              p.style.width = '960px';
+              p.style.height = '1080px';
+            });
+          }
+
           // Remove toolbar in clone
           const tb = clonedDoc.getElementById('floating-export-toolbar');
           if (tb) tb.remove();
@@ -184,6 +199,11 @@
       } else if (type === 'report-card') {
         options.width = 1300;
         options.windowWidth = 1360;
+      } else if (type === 'split-screen') {
+        options.width = 1920;
+        options.height = 1080;
+        options.windowWidth = 1920;
+        options.windowHeight = 1080;
       }
 
       window.html2canvas(element, options).then(canvas => {

@@ -15,14 +15,14 @@ const DEFAULT_PROJECTS = [
     weeks: [
       {
         weekNumber: 3,
-        weekLabel: 'Week 3 (Current)',
+        weekLabel: 'Week 3 (ONETIX Scope)',
         weekEnding: '4 Sep 2026',
         status: 'ON TRACK',
         statusClass: 'green',
         manDays: '44 Allocated',
         consumed: '46 Consumed',
         weeklyUrl: 'Incubator Weekly update/Camara Module.html',
-        scopeUrl: 'scope document/Camera_Module_Scope_Week_3.html'
+        scopeUrl: 'scope document/Camera_Module_Scope_Onetix.html'
       },
       {
         weekNumber: 2,
@@ -183,10 +183,10 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Load from LocalStorage if custom weeks were added
-let PROJECTS = JSON.parse(localStorage.getItem('portal_projects_v2') || 'null') || DEFAULT_PROJECTS;
+let PROJECTS = JSON.parse(localStorage.getItem('portal_projects_v3') || 'null') || DEFAULT_PROJECTS;
 
 function saveProjects() {
-  localStorage.setItem('portal_projects_v2', JSON.stringify(PROJECTS));
+  localStorage.setItem('portal_projects_v3', JSON.stringify(PROJECTS));
 }
 
 let activeProject = null;
