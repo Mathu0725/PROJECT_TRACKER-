@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Camera Module — Editable Weekly Project Visibility Card</title>
+  <title>Camera Module — September Week 1 Weekly Project Visibility Card</title>
   <style>
     :root{--navy:#06144d;--blue:#0b3f98;--line:#aeb9ca;--green:#27972f;--orange:#f49100;--red:#e52c36;--purple:#6e1b9b;--ink:#101631;--soft:#f6f8fc}
     *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dce5ef;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
@@ -66,7 +66,7 @@
   <main id="viewport">
     <article id="card">
       <header class="top">
-        <div><div class="headline" contenteditable="true" data-key="title">WEEKLY PROJECT VISIBILITY CARD</div><div class="period" contenteditable="true" data-key="headerPeriod">WEEK ENDING FRIDAY, 4 SEPTEMBER 2026</div></div>
+        <div><div class="headline" contenteditable="true" data-key="title">WEEKLY PROJECT VISIBILITY CARD</div><div class="period" contenteditable="true" data-key="headerPeriod">SEPTEMBER WEEK 1 — WEEK ENDING FRIDAY, 4 SEPTEMBER 2026</div></div>
         <div class="status-area"><div class="overall"><span>✓</span><span contenteditable="true" data-key="overallStatus">ON TRACK</span></div><div class="guide"><strong>STATUS GUIDE</strong><div class="guide-row"><span><i class="dot green"></i>On Track</span><span><i class="dot orange"></i>At Risk</span><span><i class="dot red"></i>Off Track</span></div></div></div>
       </header>
       <section class="metadata">
@@ -75,7 +75,7 @@
         <div class="meta"><div class="meta-label"><span class="symbol">👥</span>Client</div><div class="meta-value" contenteditable="true" data-key="client">—</div></div>
         <div class="meta"><div class="meta-label"><span class="symbol">📁</span>Project Name</div><div class="meta-value" contenteditable="true" data-key="projectName">CAMERA MODULE</div></div>
         <div class="meta"><div class="meta-label"><span class="symbol">🚀</span>Current Release</div><div class="meta-value" contenteditable="true" data-key="release">PHASE 1A MVP</div></div>
-        <div class="meta"><div class="meta-label"><span class="symbol">📅</span>Reporting Period</div><div class="meta-value" contenteditable="true" data-key="period">3 JULY 2026</div></div>
+        <div class="meta"><div class="meta-label"><span class="symbol">📅</span>Reporting Period</div><div class="meta-value" contenteditable="true" data-key="period">SEPTEMBER WEEK 1</div></div>
         <div class="meta"><div class="meta-label"><span class="symbol">📅</span>Week Ending</div><div class="meta-value" contenteditable="true" data-key="weekEnding">4 SEPTEMBER 2026</div></div>
       </section>
       <section class="resources">
@@ -133,8 +133,8 @@
     </article>
   </main>
   <script>
-    const STORAGE_KEY='camera-module-week3-editable-v6';
-    const LEGACY_STORAGE_KEY='camera-module-week3-editable-v5';
+    const STORAGE_KEY='camera-module-sep-week1-v1';
+    const LEGACY_STORAGE_KEY='camera-module-week3-editable-v6';
     const fields=[...document.querySelectorAll('[data-key]')];
     const defaults=Object.fromEntries(fields.map(el=>[el.dataset.key,el.innerHTML]));
     function fit(){const c=document.getElementById('card');const s=Math.min(innerWidth/1536,innerHeight/1024);c.style.transform=`translate(-50%,-50%) scale(${s})`}

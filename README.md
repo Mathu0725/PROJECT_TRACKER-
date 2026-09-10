@@ -8,7 +8,7 @@ An executive-level multi-project visibility dashboard and weekly reporting suite
 
 | # | Project Name | Release Stage | Baseline Week | Weekly Report | Scope Document |
 |---|--------------|---------------|---------------|---------------|----------------|
-| 1 | **Camera Module** | Phase 1A MVP | Week 3 | [View Report](Incubator%20Weekly%20update/Camara%20Module.html) | [View Scope](scope%20document/Camera_Module_Scope_Week_3.html) |
+| 1 | **Camera Module** | Phase 1A MVP | September Week 1 | [View Report](Incubator%20Weekly%20update/Camara%20Module.html) | [View Scope](scope%20document/Camera_Module_Scope_Onetix.html) |
 | 2 | **Greyhound Customer Mobile App** | Release 1.0 Mobile | Week 2 | [View Report](Incubator%20Weekly%20update/greyhound_weekly_project_visibility_card.html) | [View Scope](scope%20document/Greyhound_Customer_Mobile_App_Scope_Week_2.html) |
 | 3 | **ONEXSO HRMS** | Enterprise Release 1 | Week 7 | [View Report](Incubator%20Weekly%20update/weekly-project-visibility-card-onexso.pr.html) | [View Scope](scope%20document/ONEXSO_HRMS_Scope_Week_7.html) |
 | 4 | **OneVerz EPOS** | Release 2 EPOS | Week 2 | [View Report](Incubator%20Weekly%20update/One%20Verz%20Weekly%20Project%20Visibility%20Card%202%20-%20Static.html) | [View Scope](scope%20document/OneVerz_EPOS_Scope_Week_2.html) |

@@ -15,8 +15,8 @@ const DEFAULT_PROJECTS = [
     selectedWeekIndex: 0,
     weeks: [
       {
-        weekNumber: 3,
-        weekLabel: 'Week 3 (ONETIX Scope)',
+        weekNumber: 1,
+        weekLabel: 'September Week 1 (ONETIX Scope)',
         weekEnding: '4 Sep 2026',
         status: 'ON TRACK',
         statusClass: 'green',
@@ -143,11 +143,45 @@ const ALL_PROJECTS_ARCHIVE = [
   }
 ];
 
-// Load from LocalStorage (reset to camera-module focus)
-let PROJECTS = JSON.parse(localStorage.getItem('portal_projects_camera_v1') || 'null') || DEFAULT_PROJECTS;
+// Load from LocalStorage (with auto-migration to September Week 1)
+const STORAGE_KEY = 'portal_projects_camera_v2';
+let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+
+if (!PROJECTS) {
+  const legacy = JSON.parse(localStorage.getItem('portal_projects_camera_v1') || 'null');
+  if (legacy && Array.isArray(legacy)) {
+    PROJECTS = legacy.map(p => {
+      if (p.id === 'camera-module' && p.weeks) {
+        p.weeks.forEach(w => {
+          if (w.weekNumber === 3 || (w.weekLabel && w.weekLabel.includes('Week 3'))) {
+            w.weekNumber = 1;
+            w.weekLabel = 'September Week 1 (ONETIX Scope)';
+          }
+        });
+      }
+      return p;
+    });
+  } else {
+    PROJECTS = DEFAULT_PROJECTS;
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
+} else {
+  // Ensure camera-module week label is always updated to September Week 1
+  PROJECTS.forEach(p => {
+    if (p.id === 'camera-module' && p.weeks) {
+      p.weeks.forEach(w => {
+        if (w.weekNumber === 3 || (w.weekLabel && w.weekLabel.includes('Week 3'))) {
+          w.weekNumber = 1;
+          w.weekLabel = 'September Week 1 (ONETIX Scope)';
+        }
+      });
+    }
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
+}
 
 function saveProjects() {
-  localStorage.setItem('portal_projects_camera_v1', JSON.stringify(PROJECTS));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
 }
 
 let activeProject = null;
@@ -262,7 +296,7 @@ function renderProjects(filterText = '', filterStatus = 'all') {
           <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 📂 Open Project View
         </button>
         <button class="btn btn-secondary" style="padding:10px 15px; font-size:13px;" onclick="openViewer('${p.id}', 'weekly')">
-          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Weekly Report (Week 3)
+          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Weekly Report (${(curWeek.weekLabel || 'September Week 1').split(' (')[0]})
         </button>
         <button class="btn btn-secondary" style="padding:10px 15px; font-size:13px;" onclick="openViewer('${p.id}', 'scope')">
           <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> ONETIX Scope Document
