@@ -1,15 +1,19 @@
 {
   "name": "project-tracker",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Multi-Project Tracker with Weekly Visibility Cards and Scope Documents",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "project-tracker",
+    "weekly-report",
+    "scope-document"
+  ],
+  "author": "UNICOM TIC INCUBATOR",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "html2canvas": "^1.4.1"
   }
