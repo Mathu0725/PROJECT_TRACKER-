@@ -2,6 +2,7 @@
   "name": "project-tracker",
   "version": "1.0.0",
   "description": "Multi-Project Tracker with Weekly Visibility Cards and Scope Documents",
+  "main": "server.js",
   "scripts": {
     "build": "echo Static build complete",
     "start": "node dev-server.js",
