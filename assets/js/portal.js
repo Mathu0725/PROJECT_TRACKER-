@@ -258,10 +258,13 @@ function renderProjects(filterText = '', filterStatus = 'all') {
         </div>
       </div>
       <div class="project-card-actions" style="padding:18px 20px;">
-        <button class="btn btn-primary" style="padding:10px 18px; font-size:13px;" onclick="openViewer('${p.id}', 'weekly')">
+        <button class="btn btn-primary" style="padding:10px 18px; font-size:13px; background:linear-gradient(135deg, #2563eb, #1d4ed8);" onclick="openProjectDetail('${p.id}')" title="Open dedicated project view with Back button">
+          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 📂 Open Project View
+        </button>
+        <button class="btn btn-secondary" style="padding:10px 15px; font-size:13px;" onclick="openViewer('${p.id}', 'weekly')">
           <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Weekly Report (Week 3)
         </button>
-        <button class="btn btn-secondary" style="padding:10px 18px; font-size:13px;" onclick="openViewer('${p.id}', 'scope')">
+        <button class="btn btn-secondary" style="padding:10px 15px; font-size:13px;" onclick="openViewer('${p.id}', 'scope')">
           <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> ONETIX Scope Document
         </button>
         <div class="quick-export-row" style="margin-top:8px;">
@@ -290,6 +293,8 @@ function openViewer(projectId, tab = 'weekly') {
   currentTab = tab;
 
   document.getElementById('modalProjectTitle').innerText = project.name;
+  const breadcrumbEl = document.getElementById('modalProjectBreadcrumb');
+  if (breadcrumbEl) breadcrumbEl.innerText = project.name;
   
   // Populate modal week switcher
   const weekSelect = document.getElementById('modalWeekSelect');
@@ -380,6 +385,118 @@ function triggerViewerPrint() {
 }
 
 function openInNewTab() {
+  if (!activeProject) return;
+  const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
+  const targetUrl = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
+  window.open(targetUrl, '_blank');
+}
+
+// Dedicated In-Page Project Detail View (Direct Drill-Down with Back navigation)
+function openProjectDetail(projectId, tab = 'weekly') {
+  const project = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
+  if (!project) return;
+
+  activeProject = project;
+  currentTab = tab;
+
+  // Update Breadcrumbs & Title
+  const breadcrumbEl = document.getElementById('detailBreadcrumbProject');
+  if (breadcrumbEl) breadcrumbEl.innerText = project.name;
+  const titleEl = document.getElementById('detailTitle');
+  if (titleEl) titleEl.innerText = `${project.name} (${project.release})`;
+
+  // Populate Week Dropdown
+  const weekSelect = document.getElementById('detailWeekSelect');
+  if (weekSelect) {
+    weekSelect.innerHTML = project.weeks.map((w, idx) => `
+      <option value="${idx}" ${idx === (project.selectedWeekIndex || 0) ? 'selected' : ''}>
+        ${w.weekLabel} (${w.weekEnding})
+      </option>
+    `).join('') + `<option value="upload">+ Upload Next Week...</option>`;
+  }
+
+  updateDetailTabs();
+  loadDetailFrame();
+
+  // Hide main cards, search, and stats; show dedicated detail section
+  const projectsGrid = document.getElementById('projectsContainer');
+  const controlBar = document.querySelector('.control-bar');
+  const statsGrid = document.querySelector('.stats-grid');
+  const detailSection = document.getElementById('projectDetailSection');
+
+  if (projectsGrid) projectsGrid.style.display = 'none';
+  if (controlBar) controlBar.style.display = 'none';
+  if (statsGrid) statsGrid.style.display = 'none';
+  if (detailSection) detailSection.style.display = 'flex';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function closeProjectDetail() {
+  const projectsGrid = document.getElementById('projectsContainer');
+  const controlBar = document.querySelector('.control-bar');
+  const statsGrid = document.querySelector('.stats-grid');
+  const detailSection = document.getElementById('projectDetailSection');
+  const detailFrame = document.getElementById('detailFrame');
+
+  if (detailFrame) detailFrame.src = 'about:blank';
+  if (detailSection) detailSection.style.display = 'none';
+  if (projectsGrid) projectsGrid.style.display = 'grid';
+  if (controlBar) controlBar.style.display = 'flex';
+  if (statsGrid) statsGrid.style.display = 'grid';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function changeDetailWeek(weekIndex) {
+  if (!activeProject) return;
+  if (weekIndex === 'upload') {
+    openUploadModal(activeProject.id);
+    return;
+  }
+  activeProject.selectedWeekIndex = parseInt(weekIndex, 10);
+  saveProjects();
+  loadDetailFrame();
+}
+
+function switchDetailTab(tab) {
+  currentTab = tab;
+  updateDetailTabs();
+  loadDetailFrame();
+}
+
+function updateDetailTabs() {
+  const weeklyTab = document.getElementById('detailTabWeekly');
+  const scopeTab = document.getElementById('detailTabScope');
+  if (currentTab === 'weekly') {
+    if (weeklyTab) weeklyTab.classList.add('active');
+    if (scopeTab) scopeTab.classList.remove('active');
+  } else {
+    if (scopeTab) scopeTab.classList.add('active');
+    if (weeklyTab) weeklyTab.classList.remove('active');
+  }
+}
+
+function loadDetailFrame() {
+  const frame = document.getElementById('detailFrame');
+  if (!frame || !activeProject) return;
+  const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
+  const targetUrl = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
+  frame.src = targetUrl;
+}
+
+function triggerDetailExport() {
+  const frame = document.getElementById('detailFrame');
+  if (!frame || !frame.contentWindow || !activeProject) return;
+  const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
+  const filename = `${activeProject.name.replace(/\s+/g, '_')}_Week_${curWeek.weekNumber}_${currentTab === 'weekly' ? 'Report' : 'Scope'}.jpg`;
+  frame.contentWindow.postMessage({
+    type: 'TRIGGER_JPG_EXPORT',
+    filename: filename
+  }, '*');
+}
+
+function openDetailInNewTab() {
   if (!activeProject) return;
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
   const targetUrl = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
@@ -650,8 +767,16 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeViewer();
+      closeProjectDetail();
       closeAddWeekModal();
       closeUploadModal();
+    }
+  });
+
+  window.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'CLOSE_VIEWER') {
+      closeViewer();
+      closeProjectDetail();
     }
   });
 });

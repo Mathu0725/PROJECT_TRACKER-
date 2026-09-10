@@ -262,6 +262,51 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     `;
 
+    // 0. Prominent Back to Dashboard Button (active both inside iframe and standalone)
+    const btnBack = document.createElement('button');
+    btnBack.innerHTML = `<svg style="width:14px;height:14px;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back`;
+    btnBack.title = isInsideIframe ? 'Return back to Projects Dashboard' : 'Go back to Projects Hub';
+    btnBack.style.cssText = `
+      display: inline-flex;
+      align-items: center;
+      background: rgba(30, 41, 59, 0.9);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s ease;
+    `;
+    btnBack.onmouseenter = () => { 
+      btnBack.style.background = '#0284c7'; 
+      btnBack.style.color = '#ffffff'; 
+      btnBack.style.borderColor = '#38bdf8'; 
+      btnBack.style.transform = 'translateX(-2px)';
+    };
+    btnBack.onmouseleave = () => { 
+      btnBack.style.background = 'rgba(30, 41, 59, 0.9)'; 
+      btnBack.style.color = '#38bdf8'; 
+      btnBack.style.borderColor = 'rgba(56, 189, 248, 0.4)'; 
+      btnBack.style.transform = 'none';
+    };
+    btnBack.onclick = function() {
+      if (isInsideIframe) {
+        window.parent.postMessage({ type: 'CLOSE_VIEWER' }, '*');
+      } else {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = window.location.pathname.includes('/Incubator') || window.location.pathname.includes('/scope')
+            ? '../index.html'
+            : 'index.html';
+        }
+      }
+    };
+    toolbar.appendChild(btnBack);
+
     // 1. Export JPG button
     const btnJpg = document.createElement('button');
     btnJpg.innerHTML = `<svg style="width:15px;height:15px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Export as JPG`;
@@ -304,32 +349,6 @@
     btnPrint.onmouseleave = () => { btnPrint.style.background = 'rgba(255, 255, 255, 0.12)'; };
     btnPrint.onclick = () => window.print();
     toolbar.appendChild(btnPrint);
-
-    // 3. Portal Button (if not already inside an iframe)
-    if (!isInsideIframe) {
-      const btnHome = document.createElement('a');
-      btnHome.href = window.location.pathname.includes('/Incubator') || window.location.pathname.includes('/scope')
-        ? '../index.html'
-        : 'index.html';
-      btnHome.innerHTML = `<svg style="width:14px;height:14px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Hub`;
-      btnHome.style.cssText = `
-        display: inline-flex;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.08);
-        color: #94a3b8;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.2s ease;
-      `;
-      btnHome.onmouseenter = () => { btnHome.style.color = '#ffffff'; btnHome.style.background = 'rgba(255, 255, 255, 0.16)'; };
-      btnHome.onmouseleave = () => { btnHome.style.color = '#94a3b8'; btnHome.style.background = 'rgba(255, 255, 255, 0.08)'; };
-      toolbar.appendChild(btnHome);
-    }
 
     const printStyle = document.createElement('style');
     printStyle.textContent = '@media print { #floating-export-toolbar, #exporter-toast { display: none !important; } }';

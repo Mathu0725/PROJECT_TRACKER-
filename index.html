@@ -102,6 +102,68 @@
       <!-- Populated dynamically via portal.js -->
     </section>
 
+    <!-- Dedicated In-Page Project View (Direct Full-Screen Mode) -->
+    <section id="projectDetailSection" class="project-detail-section" style="display:none;">
+      <!-- Breadcrumb & Top Back Bar -->
+      <div class="detail-nav-bar">
+        <button class="btn btn-back-large" onclick="closeProjectDetail()" title="Return to Projects Dashboard (Esc)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>← Back to All Projects</span>
+        </button>
+        <div class="title-with-breadcrumb" style="flex:1; margin: 0 16px;">
+          <div class="detail-breadcrumbs">
+            <a href="javascript:void(0)" onclick="closeProjectDetail()">Projects Portfolio</a>
+            <span class="sep">/</span>
+            <span id="detailBreadcrumbProject" class="current">Camera Module</span>
+          </div>
+          <h2 id="detailTitle" style="font-size:19px; font-weight:800; color:#fff; margin:2px 0 0 0;">Camera Module</h2>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="triggerDetailExport()" title="Export currently viewed document to 2x JPG">
+            <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Export JPG
+          </button>
+          <button class="btn btn-secondary" onclick="openDetailInNewTab()" title="Open in new browser tab">
+            <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> New Tab
+          </button>
+        </div>
+      </div>
+
+      <!-- Detail Viewer Card with Sub-Navigation -->
+      <div class="detail-view-container">
+        <div class="detail-view-header">
+          <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <span style="font-size:11.5px; font-weight:700; color:#94a3b8; text-transform:uppercase;">📅 Week:</span>
+              <select id="detailWeekSelect" class="modal-week-select" onchange="changeDetailWeek(this.value)" title="Switch week"></select>
+            </div>
+            <div class="view-tabs">
+              <button class="view-tab active" id="detailTabWeekly" onclick="switchDetailTab('weekly')">
+                <i class="fa-solid fa-chart-line"></i> Weekly Visibility Card
+              </button>
+              <button class="view-tab" id="detailTabScope" onclick="switchDetailTab('scope')">
+                <i class="fa-solid fa-file-lines"></i> ONETIX Scope Document
+              </button>
+            </div>
+          </div>
+          <button class="btn btn-back-nav" onclick="closeProjectDetail()" title="Return to Dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>Back to Dashboard</span>
+          </button>
+        </div>
+        <div class="detail-view-body">
+          <iframe id="detailFrame" src="about:blank"></iframe>
+        </div>
+      </div>
+
+      <!-- Bottom Quick Return Bar -->
+      <div style="display:flex; justify-content:center; margin-top:12px;">
+        <button class="btn btn-back-large" onclick="closeProjectDetail()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>← Back to All Projects</span>
+        </button>
+      </div>
+    </section>
+
   </main>
 
   <!-- In-App Fullscreen Document Viewer Modal -->
@@ -109,7 +171,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <div class="modal-title-group">
-          <h2 id="modalProjectTitle">Project Title</h2>
+          <!-- Prominent Back Button -->
+          <button class="btn btn-back-nav" onclick="closeViewer()" title="Back to Projects Dashboard (Esc)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>← Back</span>
+          </button>
+          <div class="title-with-breadcrumb">
+            <div class="modal-breadcrumbs">
+              <a href="javascript:void(0)" onclick="closeViewer()">Projects Dashboard</a>
+              <span class="sep">/</span>
+              <span id="modalProjectBreadcrumb" class="current">Camera Module</span>
+            </div>
+            <h2 id="modalProjectTitle" style="font-size:16px; margin:0;">Project Title</h2>
+          </div>
           <!-- IN-VIEWER WEEK SELECTOR -->
           <div style="display:flex; align-items:center; gap:6px;">
             <span style="font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase;">📅 Week:</span>
@@ -134,7 +208,7 @@
           <button class="btn btn-secondary" onclick="openInNewTab()" title="Open full screen in a standalone browser tab">
             <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> New Tab
           </button>
-          <button class="close-btn" onclick="closeViewer()" title="Close viewer">✕</button>
+          <button class="close-btn" onclick="closeViewer()" title="Close viewer (Esc)">✕</button>
         </div>
       </div>
       <div class="modal-body">
