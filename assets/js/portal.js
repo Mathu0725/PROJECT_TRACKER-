@@ -245,10 +245,10 @@ function renderProjects(filterText = '', filterStatus = 'all') {
     const activeIndex = p.selectedWeekIndex || 0;
     const curWeek = p.weeks[activeIndex] || p.weeks[0];
 
-    // Build week options + "+ Upload Next Week..."
+    // Build week options
     const weekOptions = p.weeks.map((w, idx) => `
       <option value="${idx}" ${idx === activeIndex ? 'selected' : ''}>Week ${w.weekNumber || 1} (${w.weekEnding})</option>
-    `).join('') + `<option value="upload">+ Upload Next Week Document...</option>`;
+    `).join('');
 
     const card = document.createElement('article');
     card.className = 'project-card';
@@ -303,14 +303,11 @@ function renderProjects(filterText = '', filterStatus = 'all') {
           <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Scope &amp; USP Document
         </button>
         <div class="quick-export-row" style="margin-top:8px;">
-          <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'weekly')">
-            📸 Export Week 1 Report JPG
+          <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'weekly')" title="Export Week ${curWeek.weekNumber || 1} Report as high-resolution JPG">
+            📸 Export Week ${curWeek.weekNumber || 1} Report JPG
           </button>
-          <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'scope')">
+          <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'scope')" title="Export Scope & USP Document as high-resolution JPG">
             📸 Export Scope &amp; USP JPG
-          </button>
-          <button class="btn btn-export-quick" style="background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.35);" onclick="openUploadModal('${p.id}')" title="Upload new Scope Document or Weekly HTML">
-            📤 Upload Document
           </button>
         </div>
       </div>
@@ -385,22 +382,8 @@ function updateModalTabs() {
 
 function ensureExporterInFrame(frame) {
   try {
-    const doc = frame.contentDocument || frame.contentWindow.document;
-    if (doc && !frame.contentWindow.exportCurrentPageToJpg) {
-      if (!frame.contentWindow.html2canvas) {
-        const s1 = doc.createElement('script');
-        s1.src = '/assets/js/html2canvas.min.js';
-        doc.head.appendChild(s1);
-        s1.onload = () => {
-          const s2 = doc.createElement('script');
-          s2.src = '/assets/js/exporter.js';
-          doc.head.appendChild(s2);
-        };
-      } else {
-        const s2 = doc.createElement('script');
-        s2.src = '/assets/js/exporter.js';
-        doc.head.appendChild(s2);
-      }
+    if (frame && frame.contentWindow) {
+      frame.contentWindow.html2canvas = window.html2canvas;
     }
   } catch (e) {}
 }
@@ -422,21 +405,198 @@ function closeViewer() {
   activeProject = null;
 }
 
+// High-Resolution 1-Click JPG Export Engine
+async function captureDocumentToJpg(doc, win, filename) {
+  if (!doc) throw new Error('No document to capture');
+
+  // Wait a short moment for fonts & layout calculations
+  await new Promise(res => setTimeout(res, 350));
+
+  // Ensure all images are completely loaded
+  const imgs = Array.from(doc.images || []);
+  await Promise.all(imgs.map(img => {
+    if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+    return new Promise(res => {
+      img.onload = img.onerror = res;
+      setTimeout(res, 1500);
+    });
+  }));
+
+  // Detect appropriate target element
+  const card = doc.getElementById('card');
+  const page = doc.querySelector('.page');
+  const splitScreen = doc.querySelector('.split-screen');
+  const reportWrapper = doc.querySelector('.report-wrapper');
+  const reportCard = doc.querySelector('.report-card') || doc.querySelector('#reportCard');
+  const wrapper = doc.querySelector('.wrapper');
+  const scopeCard = doc.querySelector('.scope-card');
+
+  let target = card || page || splitScreen || reportWrapper || reportCard || wrapper || scopeCard || doc.querySelector('main') || doc.body;
+
+  let targetType = 'default';
+  if (card || page) {
+    targetType = 'fixed-card';
+  } else if (splitScreen) {
+    targetType = 'split-screen';
+  } else if (wrapper) {
+    targetType = 'watercraft-wrapper';
+  } else if (reportCard || reportWrapper) {
+    targetType = 'report-card';
+  }
+
+  const options = {
+    scale: 2, // 2x Retina resolution
+    useCORS: true,
+    allowTaint: true,
+    backgroundColor: '#ffffff',
+    logging: false,
+    onclone: function(clonedDoc) {
+      // 1. Unscale and standardize card & viewport
+      const clonedViewport = clonedDoc.getElementById('viewport');
+      if (clonedViewport) {
+        clonedViewport.style.width = '1536px';
+        clonedViewport.style.height = '1024px';
+        clonedViewport.style.overflow = 'visible';
+        clonedViewport.style.position = 'static';
+      }
+
+      const clonedCard = clonedDoc.getElementById('card');
+      if (clonedCard) {
+        clonedCard.style.position = 'static';
+        clonedCard.style.transform = 'none';
+        clonedCard.style.margin = '0 auto';
+        clonedCard.style.width = '1536px';
+        clonedCard.style.height = '1024px';
+        clonedCard.style.boxShadow = 'none';
+      }
+
+      const clonedPage = clonedDoc.querySelector('.page');
+      if (clonedPage) {
+        clonedPage.style.position = 'static';
+        clonedPage.style.transform = 'none';
+        clonedPage.style.margin = '0 auto';
+        clonedPage.style.width = '1536px';
+        clonedPage.style.height = '1024px';
+        clonedPage.style.boxShadow = 'none';
+      }
+
+      const clonedWatercraft = clonedDoc.querySelector('.wrapper');
+      if (clonedWatercraft) {
+        clonedWatercraft.style.zoom = '1';
+        clonedWatercraft.style.margin = '0 auto';
+        clonedWatercraft.style.boxShadow = 'none';
+      }
+
+      const clonedReport = clonedDoc.querySelector('.report-card') || clonedDoc.querySelector('#reportCard') || clonedDoc.querySelector('.report-wrapper');
+      if (clonedReport) {
+        clonedReport.style.margin = '0 auto';
+        clonedReport.style.boxShadow = 'none';
+      }
+
+      const clonedSplit = clonedDoc.querySelector('.split-screen');
+      if (clonedSplit) {
+        clonedSplit.style.display = 'flex';
+        clonedSplit.style.flexDirection = 'row';
+        clonedSplit.style.width = '3072px';
+        clonedSplit.style.height = '1088px';
+        clonedSplit.style.overflow = 'visible';
+        clonedSplit.style.background = '#ffffff';
+        const panels = clonedSplit.querySelectorAll('.panel');
+        panels.forEach(p => {
+          p.style.width = '1536px';
+          p.style.height = '1088px';
+          p.style.flex = '0 0 1536px';
+          p.style.overflow = 'visible';
+        });
+        const imgWraps = clonedSplit.querySelectorAll('.image-wrap');
+        imgWraps.forEach(w => {
+          w.style.width = '1536px';
+          w.style.height = '1024px';
+          w.style.flex = '0 0 1024px';
+          w.style.padding = '0';
+          w.style.margin = '0';
+          w.style.overflow = 'visible';
+        });
+        const imgs = clonedSplit.querySelectorAll('.image-wrap img');
+        imgs.forEach(im => {
+          im.style.width = '1536px';
+          im.style.height = '1024px';
+          im.style.objectFit = 'fill';
+          im.style.display = 'block';
+        });
+      }
+
+      // Remove any toolbars, hints, or toasts from cloned snapshot
+      const tb = clonedDoc.getElementById('floating-export-toolbar');
+      if (tb) tb.remove();
+      const tst = clonedDoc.getElementById('exporter-toast');
+      if (tst) tst.remove();
+      const hnt = clonedDoc.querySelector('.hint');
+      if (hnt) hnt.remove();
+    }
+  };
+
+  if (targetType === 'fixed-card') {
+    options.width = 1536;
+    options.height = 1024;
+    options.windowWidth = 1536;
+    options.windowHeight = 1024;
+  } else if (targetType === 'watercraft-wrapper') {
+    options.width = 1536;
+    options.windowWidth = 1536;
+  } else if (targetType === 'report-card') {
+    options.width = 1360;
+    options.windowWidth = 1360;
+  } else if (targetType === 'split-screen') {
+    options.width = 3072;
+    options.height = 1088;
+    options.windowWidth = 3072;
+    options.windowHeight = 1088;
+    options.scale = 1;
+  }
+
+  // Use global html2canvas
+  const h2c = (win && win.html2canvas) || window.html2canvas;
+  if (!h2c) throw new Error('html2canvas library is not loaded');
+
+  const canvas = await h2c(target, options);
+  const dataUrl = canvas.toDataURL('image/jpeg', 0.95);
+
+  const cleanFilename = filename.endsWith('.jpg') ? filename : `${filename}.jpg`;
+  const link = document.createElement('a');
+  link.download = cleanFilename;
+  link.href = dataUrl;
+  document.body.appendChild(link);
+  link.click();
+  setTimeout(() => {
+    if (link.parentNode) link.parentNode.removeChild(link);
+  }, 500);
+
+  return cleanFilename;
+}
+
 // Export JPG from inside the viewer modal
-function triggerViewerExport() {
+async function triggerViewerExport() {
   const frame = document.getElementById('viewerFrame');
-  if (!frame || !frame.contentWindow) return;
+  if (!frame || !frame.contentWindow || !activeProject) return;
 
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
-  const filename = `${activeProject.name.replace(/\s+/g, '_')}_Week_${curWeek.weekNumber}_${currentTab === 'weekly' ? 'Report' : 'Scope'}.jpg`;
-  ensureExporterInFrame(frame);
-  setTimeout(() => {
-    if (frame.contentWindow && frame.contentWindow.exportCurrentPageToJpg) {
-      frame.contentWindow.exportCurrentPageToJpg(filename);
-    } else {
-      frame.contentWindow.postMessage({ type: 'TRIGGER_JPG_EXPORT', filename: filename }, '*');
-    }
-  }, 200);
+  const cleanName = activeProject.name.replace(/[^a-zA-Z0-9]/g, '_');
+  const filename = `${cleanName}_Week_${curWeek.weekNumber || 1}_${currentTab === 'weekly' ? 'Report' : 'Scope'}.jpg`;
+
+  showPortalToast(`Generating high-res JPG for ${activeProject.name}...`, 'loading');
+
+  try {
+    const doc = frame.contentDocument || frame.contentWindow.document;
+    const win = frame.contentWindow;
+    win.html2canvas = window.html2canvas;
+
+    await captureDocumentToJpg(doc, win, filename);
+    showPortalToast(`✓ Downloaded ${filename}`, 'success');
+  } catch (err) {
+    console.error('Viewer export error:', err);
+    showPortalToast('Failed to export JPG. Please try again.', 'error');
+  }
 }
 
 function triggerViewerPrint() {
@@ -474,7 +634,7 @@ function openProjectDetail(projectId, tab = 'weekly') {
       <option value="${idx}" ${idx === (project.selectedWeekIndex || 0) ? 'selected' : ''}>
         ${w.weekLabel} (${w.weekEnding})
       </option>
-    `).join('') + `<option value="upload">+ Upload Next Week...</option>`;
+    `).join('');
   }
 
   updateDetailTabs();
@@ -548,20 +708,27 @@ function loadDetailFrame() {
   frame.onload = () => ensureExporterInFrame(frame);
 }
 
-function triggerDetailExport() {
+async function triggerDetailExport() {
   const frame = document.getElementById('detailFrame');
   if (!frame || !frame.contentWindow || !activeProject) return;
-  const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
-  const filename = `${activeProject.name.replace(/\s+/g, '_')}_Week_${curWeek.weekNumber}_${currentTab === 'weekly' ? 'Report' : 'Scope'}.jpg`;
 
-  ensureExporterInFrame(frame);
-  setTimeout(() => {
-    if (frame.contentWindow && frame.contentWindow.exportCurrentPageToJpg) {
-      frame.contentWindow.exportCurrentPageToJpg(filename);
-    } else {
-      frame.contentWindow.postMessage({ type: 'TRIGGER_JPG_EXPORT', filename: filename }, '*');
-    }
-  }, 200);
+  const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
+  const cleanName = activeProject.name.replace(/[^a-zA-Z0-9]/g, '_');
+  const filename = `${cleanName}_Week_${curWeek.weekNumber || 1}_${currentTab === 'weekly' ? 'Report' : 'Scope'}.jpg`;
+
+  showPortalToast(`Generating high-res JPG for ${activeProject.name}...`, 'loading');
+
+  try {
+    const doc = frame.contentDocument || frame.contentWindow.document;
+    const win = frame.contentWindow;
+    win.html2canvas = window.html2canvas;
+
+    await captureDocumentToJpg(doc, win, filename);
+    showPortalToast(`✓ Downloaded ${filename}`, 'success');
+  } catch (err) {
+    console.error('Detail export error:', err);
+    showPortalToast('Failed to export JPG. Please try again.', 'error');
+  }
 }
 
 function openDetailInNewTab() {
@@ -572,40 +739,41 @@ function openDetailInNewTab() {
 }
 
 // Quick Export from Dashboard Card
-function quickExportJpg(projectId, type) {
+async function quickExportJpg(projectId, type) {
   const project = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
   if (!project) return;
 
   const curWeek = project.weeks[project.selectedWeekIndex || 0] || project.weeks[0];
   const url = (type === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
-  const filename = `${project.name.replace(/\s+/g, '_')}_Week_${curWeek.weekNumber}_${type === 'weekly' ? 'Report' : 'Scope'}.jpg`;
+  const cleanName = project.name.replace(/[^a-zA-Z0-9]/g, '_');
+  const filename = `${cleanName}_Week_${curWeek.weekNumber || 1}_${type === 'weekly' ? 'Report' : 'Scope'}.jpg`;
+
+  showPortalToast(`Generating high-res JPG for ${project.name}...`, 'loading');
 
   const hiddenFrame = document.createElement('iframe');
-  hiddenFrame.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:1536px;height:1024px;border:none;visibility:hidden;';
+  hiddenFrame.style.cssText = 'position:fixed;top:0;left:0;width:1536px;height:1024px;border:none;opacity:0.01;pointer-events:none;z-index:-99999;';
   hiddenFrame.src = url;
   document.body.appendChild(hiddenFrame);
 
-  showPortalToast(`Generating high-res JPG for ${project.name} (Week ${curWeek.weekNumber})...`, 'loading');
+  try {
+    await new Promise((resolve, reject) => {
+      hiddenFrame.onload = resolve;
+      hiddenFrame.onerror = reject;
+      setTimeout(() => reject(new Error('Timed out loading document')), 12000);
+    });
 
-  hiddenFrame.onload = function() {
-    setTimeout(() => {
-      try {
-        hiddenFrame.contentWindow.postMessage({
-          type: 'TRIGGER_JPG_EXPORT',
-          filename: filename
-        }, '*');
+    const doc = hiddenFrame.contentDocument || hiddenFrame.contentWindow.document;
+    const win = hiddenFrame.contentWindow;
+    win.html2canvas = window.html2canvas;
 
-        setTimeout(() => {
-          if (hiddenFrame.parentNode) hiddenFrame.parentNode.removeChild(hiddenFrame);
-          showPortalToast(`✓ Downloaded ${filename}`, 'success');
-        }, 3000);
-      } catch (err) {
-        console.error('Quick export error:', err);
-        showPortalToast('Failed to export. Please open the document directly.', 'error');
-        if (hiddenFrame.parentNode) hiddenFrame.parentNode.removeChild(hiddenFrame);
-      }
-    }, 600);
-  };
+    await captureDocumentToJpg(doc, win, filename);
+    showPortalToast(`✓ Downloaded ${filename}`, 'success');
+  } catch (err) {
+    console.error('Quick export error:', err);
+    showPortalToast('Failed to export JPG. Please open the document directly.', 'error');
+  } finally {
+    if (hiddenFrame.parentNode) hiddenFrame.parentNode.removeChild(hiddenFrame);
+  }
 }
 
 // Open "Add New Week" Modal
