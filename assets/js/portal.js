@@ -1,16 +1,17 @@
 /**
- * Project Tracker Portal Engine with Multi-Week Switching
+ * Project Tracker Portal Engine - Camera Module Focus
  * UNICOM TIC INCUBATOR
  */
 
+// Active projects shown on the dashboard (Camera Module only as requested)
 const DEFAULT_PROJECTS = [
   {
     id: 'camera-module',
     name: 'Camera Module',
     release: 'Phase 1A MVP',
     leads: 'Nilaxshan / Kirusthiya',
-    description: 'Edge vision and camera stream gateway with installer lifecycle and RTSP/ONVIF reliability.',
-    highlights: 'Connector startup readiness, RTSP/ONVIF reliability, installer launcher lifecycle, camera & zone setup.',
+    description: 'Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX user journey, and RTSP/ONVIF reliability.',
+    highlights: 'Connector startup readiness, RTSP/ONVIF reliability, installer launcher lifecycle, camera & zone setup, ONETIX architecture & user journey.',
     selectedWeekIndex: 0,
     weeks: [
       {
@@ -25,7 +26,11 @@ const DEFAULT_PROJECTS = [
         scopeUrl: 'scope document/Camera_Module_Scope_Onetix.html'
       }
     ]
-  },
+  }
+];
+
+// Preserved archive of other projects (can be re-enabled anytime)
+const ALL_PROJECTS_ARCHIVE = [
   {
     id: 'greyhound',
     name: 'Greyhound Customer Mobile App',
@@ -138,11 +143,11 @@ const DEFAULT_PROJECTS = [
   }
 ];
 
-// Load from LocalStorage if user uploaded new weeks
-let PROJECTS = JSON.parse(localStorage.getItem('portal_projects_v4') || 'null') || DEFAULT_PROJECTS;
+// Load from LocalStorage (reset to camera-module focus)
+let PROJECTS = JSON.parse(localStorage.getItem('portal_projects_camera_v1') || 'null') || DEFAULT_PROJECTS;
 
 function saveProjects() {
-  localStorage.setItem('portal_projects_v4', JSON.stringify(PROJECTS));
+  localStorage.setItem('portal_projects_camera_v1', JSON.stringify(PROJECTS));
 }
 
 let activeProject = null;
@@ -152,7 +157,6 @@ let currentTab = 'weekly'; // 'weekly' or 'scope'
 function changeProjectWeek(projectId, weekIndex) {
   if (weekIndex === 'upload') {
     openUploadModal(projectId);
-    // Reset dropdown visually
     const searchVal = document.getElementById('projectSearch')?.value || '';
     const activeFilter = document.querySelector('.filter-btn.active')?.dataset.status || 'all';
     renderProjects(searchVal, activeFilter);
@@ -210,62 +214,65 @@ function renderProjects(filterText = '', filterStatus = 'all') {
 
     const card = document.createElement('article');
     card.className = 'project-card';
+    card.style.maxWidth = '780px';
+    card.style.margin = '0 auto';
+    card.style.width = '100%';
     card.innerHTML = `
       <div class="project-card-header">
         <div class="project-title-wrap">
-          <h3>${p.name}</h3>
-          <div class="project-meta-sub">${p.release} • ${curWeek.weekEnding}</div>
+          <h3 style="font-size:20px;">📸 ${p.name}</h3>
+          <div class="project-meta-sub">${p.release} • ${curWeek.weekEnding} • ONETIX Baseline</div>
         </div>
-        <span class="status-tag ${curWeek.statusClass}">${curWeek.status}</span>
+        <span class="status-tag ${curWeek.statusClass}" style="font-size:12px; padding:6px 14px;">${curWeek.status}</span>
       </div>
       <div class="project-card-body">
         
         <!-- WEEK SWITCHER DROPDOWN -->
-        <div class="week-picker-bar">
+        <div class="week-picker-bar" style="margin-bottom:18px;">
           <span class="week-picker-label">
             <svg style="width:14px;height:14px;color:#38bdf8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Switch Week:
+            Active Reporting Week:
           </span>
-          <select class="week-select" onchange="changeProjectWeek('${p.id}', this.value)" title="Choose reporting week for this project">
+          <select class="week-select" onchange="changeProjectWeek('${p.id}', this.value)" title="Choose reporting week">
             ${weekOptions}
           </select>
         </div>
 
-        <div class="metrics-row">
+        <div class="metrics-row" style="margin-bottom:18px; padding:12px;">
           <div class="m-item">
-            <div class="m-lbl">Allocation</div>
-            <div class="m-val">${curWeek.manDays}</div>
+            <div class="m-lbl">Total Allocation</div>
+            <div class="m-val" style="font-size:16px;">${curWeek.manDays}</div>
           </div>
           <div class="m-item">
-            <div class="m-lbl">Status/Progress</div>
-            <div class="m-val">${curWeek.consumed}</div>
+            <div class="m-lbl">Consumed To Date</div>
+            <div class="m-val" style="font-size:16px; color:#38bdf8;">${curWeek.consumed}</div>
           </div>
           <div class="m-item">
-            <div class="m-lbl">Lead</div>
-            <div class="m-val" style="font-size:11.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${p.leads}">${p.leads.split('/')[0]}</div>
+            <div class="m-lbl">Project Leads</div>
+            <div class="m-val" style="font-size:13px;" title="${p.leads}">${p.leads}</div>
           </div>
         </div>
-        <p class="project-desc">${p.description}</p>
-        <div class="key-highlights">
-          <strong>Key Focus:</strong> ${p.highlights}
+        <p class="project-desc" style="font-size:14px; margin-bottom:16px;">${p.description}</p>
+        <div class="key-highlights" style="font-size:13px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); padding:12px; border-radius:8px; margin-bottom:18px;">
+          <strong>🎯 Core Deliverables &amp; Scope:</strong> ${p.highlights}
         </div>
       </div>
-      <div class="project-card-actions">
-        <button class="btn btn-primary" onclick="openViewer('${p.id}', 'weekly')">
-          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Weekly Report (${curWeek.weekLabel.split(' ')[1] || 'Report'})
+      <div class="project-card-actions" style="padding:18px 20px;">
+        <button class="btn btn-primary" style="padding:10px 18px; font-size:13px;" onclick="openViewer('${p.id}', 'weekly')">
+          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Weekly Report (Week 3)
         </button>
-        <button class="btn btn-secondary" onclick="openViewer('${p.id}', 'scope')">
-          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Scope Document
+        <button class="btn btn-secondary" style="padding:10px 18px; font-size:13px;" onclick="openViewer('${p.id}', 'scope')">
+          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> ONETIX Scope Document
         </button>
-        <div class="quick-export-row">
+        <div class="quick-export-row" style="margin-top:8px;">
           <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'weekly')">
             📸 Export Report JPG
           </button>
           <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'scope')">
-            📸 Export Scope JPG
+            📸 Export ONETIX Scope JPG
           </button>
           <button class="btn btn-export-quick" style="background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.35);" onclick="openUploadModal('${p.id}')" title="Upload new Scope Document or Weekly HTML">
-            📤 Upload
+            📤 Upload Week Document
           </button>
         </div>
       </div>
@@ -276,7 +283,7 @@ function renderProjects(filterText = '', filterStatus = 'all') {
 
 // Open Viewer Modal
 function openViewer(projectId, tab = 'weekly') {
-  const project = PROJECTS.find(p => p.id === projectId);
+  const project = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
   if (!project) return;
 
   activeProject = project;
@@ -381,7 +388,7 @@ function openInNewTab() {
 
 // Quick Export from Dashboard Card
 function quickExportJpg(projectId, type) {
-  const project = PROJECTS.find(p => p.id === projectId);
+  const project = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
   if (!project) return;
 
   const curWeek = project.weeks[project.selectedWeekIndex || 0] || project.weeks[0];
@@ -438,7 +445,7 @@ function submitNewWeek(e) {
   const weekDate = document.getElementById('newWeekDate').value;
   const weekStatus = document.getElementById('newWeekStatus').value;
 
-  const project = PROJECTS.find(p => p.id === projectId);
+  const project = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
   if (!project) return;
 
   const baselineWeek = project.weeks[0];
@@ -468,7 +475,7 @@ function submitNewWeek(e) {
 }
 
 // Open Document Upload Modal
-function openUploadModal(projectId, defaultType = 'scope') {
+function openUploadModal(projectId = 'camera-module', defaultType = 'scope') {
   const pSelect = document.getElementById('uploadProject');
   if (pSelect) {
     pSelect.innerHTML = PROJECTS.map(p => `
@@ -478,7 +485,6 @@ function openUploadModal(projectId, defaultType = 'scope') {
   const typeSelect = document.getElementById('uploadDocType');
   if (typeSelect) typeSelect.value = defaultType;
 
-  // Auto increment week number based on project
   const curProj = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
   const nextWeekNum = (curProj && curProj.weeks && curProj.weeks[0]) ? (curProj.weeks[0].weekNumber + 1) : 4;
   const weekNumInput = document.getElementById('uploadWeekNumber');
@@ -509,7 +515,7 @@ async function handleDocumentUpload(e) {
   }
 
   const file = fileInput.files[0];
-  const project = PROJECTS.find(p => p.id === projectId);
+  const project = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
   if (!project) return;
 
   showPortalToast(`Uploading & linking ${file.name}...`, 'loading');
@@ -542,7 +548,6 @@ async function handleDocumentUpload(e) {
       savedUrl = URL.createObjectURL(blob);
     }
 
-    // Attach to existing week or prepend newly uploaded week
     let targetWeek = project.weeks.find(w => w.weekNumber === weekNum);
     if (!targetWeek) {
       targetWeek = {
@@ -638,21 +643,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('projectSearch');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
-      const activeFilterBtn = document.querySelector('.filter-btn.active');
-      const status = activeFilterBtn ? activeFilterBtn.dataset.status : 'all';
-      renderProjects(e.target.value, status);
+      renderProjects(e.target.value, 'all');
     });
   }
-
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const searchVal = searchInput ? searchInput.value : '';
-      renderProjects(searchVal, btn.dataset.status);
-    });
-  });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
