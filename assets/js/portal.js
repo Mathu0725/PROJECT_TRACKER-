@@ -23,28 +23,6 @@ const DEFAULT_PROJECTS = [
         consumed: '46 Consumed',
         weeklyUrl: 'Incubator Weekly update/Camara Module.html',
         scopeUrl: 'scope document/Camera_Module_Scope_Onetix.html'
-      },
-      {
-        weekNumber: 2,
-        weekLabel: 'Week 2 Baseline',
-        weekEnding: '28 Aug 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '44 Allocated',
-        consumed: '38 Consumed',
-        weeklyUrl: 'Incubator Weekly update/Camera_Module_Week_2.html',
-        scopeUrl: 'scope document/Camera_Module_Scope_Week_2.html'
-      },
-      {
-        weekNumber: 1,
-        weekLabel: 'Week 1 Kickoff',
-        weekEnding: '21 Aug 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '44 Allocated',
-        consumed: '22 Consumed',
-        weeklyUrl: 'Incubator Weekly update/Camera_Module_Week_1.html',
-        scopeUrl: 'scope document/Camera_Module_Scope_Week_2.html'
       }
     ]
   },
@@ -89,17 +67,6 @@ const DEFAULT_PROJECTS = [
         consumed: '59% Complete',
         weeklyUrl: 'Incubator Weekly update/weekly-project-visibility-card-onexso.pr.html',
         scopeUrl: 'scope document/ONEXSO_HRMS_Scope_Week_7.html'
-      },
-      {
-        weekNumber: 6,
-        weekLabel: 'Week 6 Baseline',
-        weekEnding: '28 Aug 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '150 Days',
-        consumed: '52% Complete',
-        weeklyUrl: 'Incubator Weekly update/onexso_week_6.html',
-        scopeUrl: 'scope document/ONEXSO_HRMS_Scope_Week_6.html'
       }
     ]
   },
@@ -122,17 +89,6 @@ const DEFAULT_PROJECTS = [
         consumed: '75% Complete',
         weeklyUrl: 'Incubator Weekly update/One Verz Weekly Project Visibility Card 2 - Static.html',
         scopeUrl: 'scope document/OneVerz_EPOS_Scope_Week_2.html'
-      },
-      {
-        weekNumber: 1,
-        weekLabel: 'Week 1 Baseline',
-        weekEnding: '28 Aug 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '150 Days',
-        consumed: '68% Complete',
-        weeklyUrl: 'Incubator Weekly update/OneVerz_EPOS_Week_1.html',
-        scopeUrl: 'scope document/OneVerz_EPOS_Scope_Week_1.html'
       }
     ]
   },
@@ -182,11 +138,11 @@ const DEFAULT_PROJECTS = [
   }
 ];
 
-// Load from LocalStorage if custom weeks were added
-let PROJECTS = JSON.parse(localStorage.getItem('portal_projects_v3') || 'null') || DEFAULT_PROJECTS;
+// Load from LocalStorage if user uploaded new weeks
+let PROJECTS = JSON.parse(localStorage.getItem('portal_projects_v4') || 'null') || DEFAULT_PROJECTS;
 
 function saveProjects() {
-  localStorage.setItem('portal_projects_v3', JSON.stringify(PROJECTS));
+  localStorage.setItem('portal_projects_v4', JSON.stringify(PROJECTS));
 }
 
 let activeProject = null;
@@ -194,12 +150,20 @@ let currentTab = 'weekly'; // 'weekly' or 'scope'
 
 // Switch week for a specific project from the card dropdown
 function changeProjectWeek(projectId, weekIndex) {
+  if (weekIndex === 'upload') {
+    openUploadModal(projectId);
+    // Reset dropdown visually
+    const searchVal = document.getElementById('projectSearch')?.value || '';
+    const activeFilter = document.querySelector('.filter-btn.active')?.dataset.status || 'all';
+    renderProjects(searchVal, activeFilter);
+    return;
+  }
+
   const p = PROJECTS.find(item => item.id === projectId);
   if (!p) return;
   p.selectedWeekIndex = parseInt(weekIndex, 10);
   saveProjects();
 
-  // Re-render
   const searchVal = document.getElementById('projectSearch')?.value || '';
   const activeFilter = document.querySelector('.filter-btn.active')?.dataset.status || 'all';
   renderProjects(searchVal, activeFilter);
@@ -239,10 +203,10 @@ function renderProjects(filterText = '', filterStatus = 'all') {
     const activeIndex = p.selectedWeekIndex || 0;
     const curWeek = p.weeks[activeIndex] || p.weeks[0];
 
-    // Build week options
+    // Build week options + "+ Upload Next Week..."
     const weekOptions = p.weeks.map((w, idx) => `
       <option value="${idx}" ${idx === activeIndex ? 'selected' : ''}>${w.weekLabel} (${w.weekEnding})</option>
-    `).join('');
+    `).join('') + `<option value="upload">+ Upload Next Week Document...</option>`;
 
     const card = document.createElement('article');
     card.className = 'project-card';
@@ -327,7 +291,7 @@ function openViewer(projectId, tab = 'weekly') {
       <option value="${idx}" ${idx === (project.selectedWeekIndex || 0) ? 'selected' : ''}>
         ${w.weekLabel} (${w.weekEnding})
       </option>
-    `).join('');
+    `).join('') + `<option value="upload">+ Upload Next Week...</option>`;
   }
 
   updateModalTabs();
@@ -340,11 +304,14 @@ function openViewer(projectId, tab = 'weekly') {
 
 function changeModalWeek(weekIndex) {
   if (!activeProject) return;
+  if (weekIndex === 'upload') {
+    openUploadModal(activeProject.id);
+    return;
+  }
   activeProject.selectedWeekIndex = parseInt(weekIndex, 10);
   saveProjects();
   loadIframe();
 
-  // Also update background cards
   const searchVal = document.getElementById('projectSearch')?.value || '';
   const activeFilter = document.querySelector('.filter-btn.active')?.dataset.status || 'all';
   renderProjects(searchVal, activeFilter);
@@ -474,7 +441,6 @@ function submitNewWeek(e) {
   const project = PROJECTS.find(p => p.id === projectId);
   if (!project) return;
 
-  // Use baseline template or current week as source
   const baselineWeek = project.weeks[0];
   const statusClass = (weekStatus === 'ON TRACK') ? 'green' : (weekStatus === 'AT RISK' ? 'amber' : 'red');
 
@@ -490,7 +456,6 @@ function submitNewWeek(e) {
     scopeUrl: baselineWeek.scopeUrl
   };
 
-  // Add at top (most recent)
   project.weeks.unshift(newWeekObj);
   project.selectedWeekIndex = 0;
   saveProjects();
@@ -499,8 +464,115 @@ function submitNewWeek(e) {
   renderProjects();
   showPortalToast(`✓ Created Week ${weekNum} for ${project.name}!`, 'success');
 
-  // Automatically open viewer to start editing
   openViewer(projectId, 'weekly');
+}
+
+// Open Document Upload Modal
+function openUploadModal(projectId, defaultType = 'scope') {
+  const pSelect = document.getElementById('uploadProject');
+  if (pSelect) {
+    pSelect.innerHTML = PROJECTS.map(p => `
+      <option value="${p.id}" ${p.id === projectId ? 'selected' : ''}>${p.name}</option>
+    `).join('');
+  }
+  const typeSelect = document.getElementById('uploadDocType');
+  if (typeSelect) typeSelect.value = defaultType;
+
+  // Auto increment week number based on project
+  const curProj = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
+  const nextWeekNum = (curProj && curProj.weeks && curProj.weeks[0]) ? (curProj.weeks[0].weekNumber + 1) : 4;
+  const weekNumInput = document.getElementById('uploadWeekNumber');
+  if (weekNumInput) weekNumInput.value = nextWeekNum;
+
+  const modal = document.getElementById('uploadModal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeUploadModal() {
+  const modal = document.getElementById('uploadModal');
+  if (modal) modal.classList.remove('active');
+  const form = document.getElementById('uploadForm');
+  if (form) form.reset();
+}
+
+async function handleDocumentUpload(e) {
+  e.preventDefault();
+  const projectId = document.getElementById('uploadProject').value;
+  const docType = document.getElementById('uploadDocType').value;
+  const weekNum = parseInt(document.getElementById('uploadWeekNumber').value, 10);
+  const weekDate = document.getElementById('uploadWeekDate').value;
+  const fileInput = document.getElementById('uploadFileInput');
+
+  if (!fileInput.files || fileInput.files.length === 0) {
+    showPortalToast('Please choose an HTML file to upload.', 'error');
+    return;
+  }
+
+  const file = fileInput.files[0];
+  const project = PROJECTS.find(p => p.id === projectId);
+  if (!project) return;
+
+  showPortalToast(`Uploading & linking ${file.name}...`, 'loading');
+
+  const reader = new FileReader();
+  reader.onload = async function(evt) {
+    const content = evt.target.result;
+    let savedUrl = '';
+
+    try {
+      const resp = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: docType,
+          fileName: file.name,
+          content: content
+        })
+      });
+      if (resp.ok) {
+        const result = await resp.json();
+        savedUrl = result.url;
+      }
+    } catch (apiErr) {
+      console.warn('Backend upload API unavailable, using local blob/store:', apiErr);
+    }
+
+    if (!savedUrl) {
+      const blob = new Blob([content], { type: 'text/html' });
+      savedUrl = URL.createObjectURL(blob);
+    }
+
+    // Attach to existing week or prepend newly uploaded week
+    let targetWeek = project.weeks.find(w => w.weekNumber === weekNum);
+    if (!targetWeek) {
+      targetWeek = {
+        weekNumber: weekNum,
+        weekLabel: `Week ${weekNum} (Uploaded)`,
+        weekEnding: weekDate,
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: project.weeks[0]?.manDays || 'N/A',
+        consumed: 'Active',
+        weeklyUrl: (docType === 'weekly') ? savedUrl : project.weeks[0]?.weeklyUrl,
+        scopeUrl: (docType === 'scope') ? savedUrl : project.weeks[0]?.scopeUrl
+      };
+      project.weeks.unshift(targetWeek);
+      project.selectedWeekIndex = 0;
+    } else {
+      if (docType === 'scope') targetWeek.scopeUrl = savedUrl;
+      else targetWeek.weeklyUrl = savedUrl;
+      targetWeek.weekEnding = weekDate;
+    }
+
+    saveProjects();
+    closeUploadModal();
+    renderProjects();
+
+    showPortalToast(`✓ Attached ${docType === 'scope' ? 'Scope Document' : 'Weekly Report'} for ${project.name} (Week ${weekNum})!`, 'success');
+    openViewer(projectId, docType);
+  };
+
+  reader.readAsText(file);
 }
 
 // Portal Toast notification
@@ -559,109 +631,6 @@ function showPortalToast(message, type = 'info') {
   }
 }
 
-// Open Document Upload Modal
-function openUploadModal(projectId, defaultType = 'scope') {
-  const pSelect = document.getElementById('uploadProject');
-  if (pSelect) {
-    pSelect.innerHTML = PROJECTS.map(p => `
-      <option value="${p.id}" ${p.id === projectId ? 'selected' : ''}>${p.name}</option>
-    `).join('');
-  }
-  const typeSelect = document.getElementById('uploadDocType');
-  if (typeSelect) typeSelect.value = defaultType;
-
-  const modal = document.getElementById('uploadModal');
-  if (modal) modal.classList.add('active');
-}
-
-function closeUploadModal() {
-  const modal = document.getElementById('uploadModal');
-  if (modal) modal.classList.remove('active');
-  const form = document.getElementById('uploadForm');
-  if (form) form.reset();
-}
-
-async function handleDocumentUpload(e) {
-  e.preventDefault();
-  const projectId = document.getElementById('uploadProject').value;
-  const docType = document.getElementById('uploadDocType').value;
-  const weekNum = parseInt(document.getElementById('uploadWeekNumber').value, 10);
-  const weekDate = document.getElementById('uploadWeekDate').value;
-  const fileInput = document.getElementById('uploadFileInput');
-
-  if (!fileInput.files || fileInput.files.length === 0) {
-    showPortalToast('Please choose an HTML file to upload.', 'error');
-    return;
-  }
-
-  const file = fileInput.files[0];
-  const project = PROJECTS.find(p => p.id === projectId);
-  if (!project) return;
-
-  showPortalToast(`Uploading & linking ${file.name}...`, 'loading');
-
-  const reader = new FileReader();
-  reader.onload = async function(evt) {
-    const content = evt.target.result;
-    let savedUrl = '';
-
-    // Attempt backend save via server.js API
-    try {
-      const resp = await fetch('/api/upload', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: docType,
-          fileName: file.name,
-          content: content
-        })
-      });
-      if (resp.ok) {
-        const result = await resp.json();
-        savedUrl = result.url;
-      }
-    } catch (apiErr) {
-      console.warn('Backend upload API unavailable, using local blob/store:', apiErr);
-    }
-
-    if (!savedUrl) {
-      const blob = new Blob([content], { type: 'text/html' });
-      savedUrl = URL.createObjectURL(blob);
-    }
-
-    // Attach to existing week or prepend new week
-    let targetWeek = project.weeks.find(w => w.weekNumber === weekNum);
-    if (!targetWeek) {
-      targetWeek = {
-        weekNumber: weekNum,
-        weekLabel: `Week ${weekNum} (Uploaded)`,
-        weekEnding: weekDate,
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: project.weeks[0]?.manDays || 'N/A',
-        consumed: 'Active',
-        weeklyUrl: (docType === 'weekly') ? savedUrl : project.weeks[0]?.weeklyUrl,
-        scopeUrl: (docType === 'scope') ? savedUrl : project.weeks[0]?.scopeUrl
-      };
-      project.weeks.unshift(targetWeek);
-      project.selectedWeekIndex = 0;
-    } else {
-      if (docType === 'scope') targetWeek.scopeUrl = savedUrl;
-      else targetWeek.weeklyUrl = savedUrl;
-      targetWeek.weekEnding = weekDate;
-    }
-
-    saveProjects();
-    closeUploadModal();
-    renderProjects();
-
-    showPortalToast(`✓ Attached ${docType === 'scope' ? 'Scope Document' : 'Weekly Report'} for ${project.name}!`, 'success');
-    openViewer(projectId, docType);
-  };
-
-  reader.readAsText(file);
-}
-
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
   renderProjects();
@@ -689,6 +658,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') {
       closeViewer();
       closeAddWeekModal();
+      closeUploadModal();
     }
   });
 });
