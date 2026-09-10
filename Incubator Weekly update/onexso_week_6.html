@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Project Visibility Card</title>
+<style>
+  :root{
+    --page-bg:#eef0f4;
+    --page-text:#1f2937;
+    --hint-bg:#ffffff;
+    --hint-text:#4b5563;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --page-bg:#15171c;
+      --page-text:#e5e7eb;
+      --hint-bg:#1f2229;
+      --hint-text:#9ca3af;
+    }
+  }
+  :root[data-theme="dark"]{
+    --page-bg:#15171c;
+    --page-text:#e5e7eb;
+    --hint-bg:#1f2229;
+    --hint-text:#9ca3af;
+  }
+
+  /* fixed card palette — the card itself is a printed-style status report and keeps its own colors regardless of viewer theme */
+  :root{
+    --navy:#101b41;
+    --navy-2:#16225a;
+    --amber:#f2a71b;
+    --amber-text:#f7b733;
+    --green:#16a34a;
+    --green-bg:#e7f8ee;
+    --green-bd:#bfe8cf;
+    --red:#dc2626;
+    --red-bg:#fdeaea;
+    --red-bd:#f6c6c6;
+    --orange:#f59e0b;
+    --orange-bg:#fef3e0;
+    --orange-bd:#f8dfa8;
+    --purple:#7c3aed;
+    --purple-bg:#f2ecfd;
+    --purple-bd:#dcc9fa;
+    --blue:#2563eb;
+    --blue-bg:#eaf1fd;
+    --grey-text:#6b7280;
+    --border:#dbe0ea;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--page-bg);
+    color:var(--page-text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    padding:22px 14px 40px;
+  }
+
+  .hint{
+    max-width:1300px;
+    margin:0 auto 14px;
+    background:var(--hint-bg);
+    color:var(--hint-text);
+    border:1px dashed #9ca3af;
+    border-radius:8px;
+    padding:8px 14px;
+    font-size:12.5px;
+    text-align:center;
+  }
+
+  .scroll-wrapper{
+    overflow-x:auto;
+    padding-bottom:6px;
+  }
+
+  .report-card{
+    width:1300px;
+    max-width:none;
+    margin:0 auto;
+    background:#ffffff;
+    color:#1f2937;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(16,27,65,0.18);
+    border:1px solid var(--border);
+  }
+
+  []{
+    outline:none;
+    border-radius:4px;
+    padding:0 2px;
+    cursor:text;
+  }
+  []:hover{ background:rgba(37,99,235,0.08); }
+  []:focus{ background:rgba(37,99,235,0.14); box-shadow:0 0 0 1px #2563eb; }
+
+  /* ---------- HEADER ---------- */
+  .top-header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;
+    padding:20px 26px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+  }
+  .th-left h1{
+    margin:0 0 6px;
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:.3px;
+    text-transform:uppercase;
+  }
+  .th-sub{
+    color:var(--amber-text);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+  .th-right{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .status-select{
+    appearance:none;-webkit-appearance:none;-moz-appearance:none;
+    border:none;
+    border-radius:24px;
+    padding:11px 34px 11px 18px;
+    font-weight:800;
+    font-size:15px;
+    letter-spacing:.5px;
+    color:#fff;
+    cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,#fff 50%),linear-gradient(135deg,#fff 50%,transparent 50%);
+    background-position:calc(100% - 16px) center, calc(100% - 11px) center;
+    background-size:5px 5px,5px 5px;
+    background-repeat:no-repeat;
+  }
+  .status-select option{ color:#111; }
+  .status-guide{
+    border:1px solid rgba(255,255,255,0.35);
+    border-radius:8px;
+    padding:8px 14px;
+    font-size:11.5px;
+  }
+  .sg-title{ font-weight:800; letter-spacing:.4px; margin-bottom:5px; }
+  .sg-row{ display:flex; align-items:center; gap:6px; margin-top:3px; white-space:nowrap;}
+  .dot{ width:9px;height:9px;border-radius:50%; display:inline-block;}
+  .dot.green{ background:#22c55e; }
+  .dot.amber{ background:var(--amber); }
+  .dot.red{ background:#f87171; }
+
+  /* ---------- INFO BAR ---------- */
+  .info-bar{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    border-bottom:1px solid var(--border);
+  }
+  .info-item{
+    padding:12px 14px;
+    border-right:1px solid var(--border);
+  }
+  .info-item:last-child{ border-right:none; }
+  .info-label{
+    font-size:10px;
+    color:var(--grey-text);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    margin-bottom:5px;
+    white-space:nowrap;
+  }
+  .info-value{
+    font-size:13px;
+    font-weight:800;
+    color:var(--navy);
+    line-height:1.3;
+  }
+
+  /* ---------- SECTION LABEL BAR ---------- */
+  .section-label{
+    background:var(--navy);
+    color:#fff;
+    text-align:center;
+    font-weight:800;
+    font-size:12.5px;
+    letter-spacing:.4px;
+    padding:9px 10px;
+    text-transform:uppercase;
+  }
+
+  /* ---------- RESOURCE SECTION ---------- */
+  .resource-flex{
+    display:flex;
+    gap:14px;
+    padding:14px;
+    align-items:stretch;
+  }
+  table.resource-table{
+    flex:1;
+    border-collapse:collapse;
+    width:100%;
+  }
+  .resource-table th{
+    background:#eef0f6;
+    text-align:left;
+    padding:9px 12px;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.3px;
+    color:#374151;
+    border-bottom:2px solid var(--navy);
+  }
+  .resource-table td{
+    padding:9px 12px;
+    font-size:12.5px;
+    border-bottom:1px solid #eee;
+    vertical-align:top;
+  }
+  .role-pm{ color:var(--blue); font-weight:700;}
+  .role-dev{ color:var(--purple); font-weight:700;}
+  .role-qa{ color:var(--green); font-weight:700;}
+  .role-lead{ color:#e07a1f; font-weight:700;}
+
+  .total-box{
+    width:230px;
+    flex-shrink:0;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:16px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+  }
+  .total-box .tb-label{ font-size:11px; color:var(--grey-text); font-weight:700; letter-spacing:.3px; text-transform:uppercase;}
+  .total-box .tb-number{ font-size:38px; font-weight:800; color:var(--navy); line-height:1;}
+  .total-box .tb-unit{ font-size:11px; color:var(--grey-text); font-weight:700; letter-spacing:.5px; text-transform:uppercase; margin-bottom:4px;}
+  .tb-sub{
+    margin-top:6px;
+    background:#f3f4f6;
+    border-radius:6px;
+    padding:6px 10px;
+    font-size:11.5px;
+    color:#374151;
+  }
+
+  /* ---------- PANEL GRID ---------- */
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    padding:0 14px 14px;
+  }
+  .panel{
+    border:1px solid var(--border);
+    border-radius:8px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    background:#fff;
+  }
+  .panel-header{
+    background:var(--navy);
+    color:#fff;
+    font-weight:800;
+    font-size:12px;
+    padding:9px 12px;
+    letter-spacing:.3px;
+  }
+  .panel-body{
+    padding:13px;
+    flex:1;
+    font-size:12px;
+  }
+  .panel-body ul{ margin:4px 0 10px; padding-left:16px; }
+  .panel-body li{ margin-bottom:3px; line-height:1.4; }
+
+  /* ---- Journey (panel 1) ---- */
+  .journey{
+    display:grid;
+    grid-template-columns:1fr auto 1fr auto 1fr;
+    column-gap:6px;
+  }
+  .j-head{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-weight:800;
+    font-size:11px;
+    letter-spacing:.2px;
+    padding-bottom:6px;
+  }
+  .j-head .ic{ font-size:14px; }
+  .j-head.done{ color:var(--green); }
+  .j-head.current{ color:var(--blue); }
+  .j-head.future{ color:var(--purple); }
+  .j-arrow{ align-self:center; color:#9ca3af; font-size:16px; padding:0 2px;}
+  .j-col{ grid-row:2; font-size:11.5px; }
+  .j-col h4{
+    font-size:10px;
+    color:var(--grey-text);
+    text-transform:uppercase;
+    letter-spacing:.3px;
+    margin:8px 0 3px;
+  }
+  .j-col h4:first-child{ margin-top:0; }
+  .callout{
+    margin-top:8px;
+    border-radius:6px;
+    padding:7px 9px;
+    font-size:11px;
+    font-weight:700;
+  }
+  .callout.green{ background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd);}
+  .callout.purple{ background:var(--purple-bg); color:var(--purple); border:1px solid var(--purple-bd);}
+
+  /* ---- Release plan (panel 2) ---- */
+  .tl-label{ font-size:10.5px; font-weight:800; color:#374151; text-transform:uppercase; margin-bottom:3px;}
+  .tl-label.red{ color:var(--red); }
+  .timeline-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .t-date{ font-size:11px; font-weight:700; white-space:nowrap; }
+  .t-line{
+    flex:1;
+    height:2px;
+    background:#9ca3af;
+    position:relative;
+    margin:0 4px;
+  }
+  .t-line.red{ background:var(--red); }
+  .t-dot{
+    position:absolute;
+    top:50%;
+    width:8px;height:8px;
+    border-radius:50%;
+    background:#374151;
+    transform:translate(-50%,-50%);
+  }
+  .t-line.red .t-dot{ background:var(--red); }
+  .t-dot.left{ left:0; }
+  .t-dot.right{ left:100%; }
+
+  .delay-banner{
+    background:var(--red-bg);
+    border:1px solid var(--red-bd);
+    border-radius:6px;
+    padding:8px 10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:10px 0;
+  }
+  .delay-banner .dtext{ color:var(--red); font-weight:800; font-size:13px; }
+  .badge-pill{
+    background:var(--red);
+    color:#fff;
+    font-size:10.5px;
+    font-weight:800;
+    padding:4px 10px;
+    border-radius:20px;
+    letter-spacing:.3px;
+    white-space:nowrap;
+  }
+
+  table.milestone-table{ width:100%; border-collapse:collapse; margin-top:8px; }
+  .milestone-table th{
+    text-align:left;
+    font-size:9.5px;
+    color:var(--grey-text);
+    text-transform:uppercase;
+    padding:5px 4px;
+    border-bottom:1px solid var(--border);
+  }
+  .milestone-table td{
+    font-size:11px;
+    padding:6px 4px;
+    border-bottom:1px solid #f0f1f4;
+  }
+  .milestone-table tr:last-child td{ font-weight:800; }
+  .var-dot{ width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px;}
+
+  /* ---- Resource effort summary (panel 3) ---- */
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    text-align:center;
+    margin-bottom:10px;
+  }
+  .stat-box .ic{ font-size:16px; }
+  .stat-box .s-label{ font-size:9px; color:var(--grey-text); font-weight:700; text-transform:uppercase; letter-spacing:.2px; margin:4px 0 2px; line-height:1.2;}
+  .stat-box .s-num{ font-size:22px; font-weight:800; line-height:1; }
+  .stat-box .s-unit{ font-size:8.5px; color:var(--grey-text); font-weight:700; text-transform:uppercase; }
+  .stat-box.c1 .s-num{ color:var(--navy); }
+  .stat-box.c2 .s-num{ color:var(--blue); }
+  .stat-box.c3 .s-num{ color:var(--orange); }
+  .stat-box.c4 .s-num{ color:var(--purple); }
+
+  .overrun-banner{
+    background:var(--red-bg);
+    border:1px solid var(--red-bd);
+    border-radius:6px;
+    padding:8px 10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+  }
+  .overrun-banner .otext{ color:var(--red); font-weight:800; font-size:12px; }
+
+  .bar-title{ font-size:10.5px; font-weight:700; color:#374151; text-transform:uppercase; margin-bottom:6px; }
+  .bar-outer{ background:#e5e7eb; border-radius:6px; height:24px; overflow:hidden; }
+  .bar-fill{
+    background:linear-gradient(90deg,#1e3a8a,#2563eb);
+    height:100%;
+    width:min(calc(var(--percent) * 1%), 100%);
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding-right:8px;
+    border-radius:6px 0 0 6px;
+    transition:width .25s ease;
+    white-space:nowrap;
+  }
+  .bar-fill .bar-label{ color:#fff; font-weight:800; font-size:12px; }
+  .bar-scale{ display:flex; justify-content:space-between; font-size:9.5px; color:var(--grey-text); margin-top:4px;}
+  .bar-caption{ text-align:center; font-size:11px; color:#374151; margin-top:6px; }
+
+  /* ---- What changed this week (panel 4) ---- */
+  .change-item{ display:flex; gap:9px; margin-bottom:11px; }
+  .change-ic{
+    width:26px;height:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;flex-shrink:0;color:#fff;
+  }
+  .change-ic.red{ background:var(--red); }
+  .change-ic.orange{ background:var(--orange); }
+  .change-ic.purple{ background:var(--purple); }
+  .change-title{ font-weight:800; font-size:11px; letter-spacing:.2px; margin-bottom:2px; }
+  .change-title.red{ color:var(--red); }
+  .change-title.orange{ color:var(--orange); }
+  .change-title.purple{ color:var(--purple); }
+  .change-text{ font-size:11.5px; color:#374151; }
+  .change-tag{ font-weight:800; }
+  .info-box{
+    background:#eef2f7;
+    border-radius:6px;
+    padding:8px 10px;
+    font-size:11.5px;
+    color:#374151;
+    margin-top:6px;
+  }
+
+  /* ---- Risks (panel 5) ---- */
+  .risks-title{ font-size:11px; font-weight:800; color:#374151; text-transform:uppercase; margin-bottom:7px; }
+  .risk-row{
+    display:flex;
+    align-items:flex-start;
+    gap:7px;
+    margin-bottom:8px;
+  }
+  .risk-dot{ width:8px;height:8px;border-radius:50%; margin-top:4px; flex-shrink:0;}
+  .risk-dot.high{ background:var(--red); }
+  .risk-dot.medium{ background:var(--orange); }
+  .risk-text{ flex:1; font-size:11.5px; }
+  .sev-badge{
+    font-size:9.5px;
+    font-weight:800;
+    padding:3px 8px;
+    border-radius:12px;
+    white-space:nowrap;
+    align-self:center;
+  }
+  .sev-badge.high{ background:var(--red-bg); color:var(--red); border:1px solid var(--red-bd);}
+  .sev-badge.medium{ background:var(--orange-bg); color:var(--orange); border:1px solid var(--orange-bd);}
+
+  .box-decision{
+    background:var(--orange-bg);
+    border:1px solid var(--orange-bd);
+    border-radius:6px;
+    padding:8px 10px;
+    margin-top:10px;
+    font-size:11.5px;
+  }
+  .box-decision .bd-title{ font-weight:800; color:#92600a; font-size:10.5px; letter-spacing:.2px; margin-bottom:4px;}
+  .box-escalation{
+    background:var(--green-bg);
+    border:1px solid var(--green-bd);
+    border-radius:6px;
+    padding:8px 10px;
+    margin-top:8px;
+    font-size:11.5px;
+  }
+  .box-escalation .be-title{ font-weight:800; color:#166534; font-size:10.5px; letter-spacing:.2px; margin-bottom:4px;}
+
+  /* ---- At a glance (panel 6) ---- */
+  .donut-row{ display:flex; justify-content:space-around; text-align:center; }
+  .donut-block{ display:flex; flex-direction:column; align-items:center; width:33%; }
+  .donut-cap{ font-size:9.5px; font-weight:700; color:var(--grey-text); text-transform:uppercase; letter-spacing:.2px; margin-bottom:6px; line-height:1.3; min-height:24px;}
+  .donut{ position:relative; width:88px; height:88px; }
+  .donut svg{ transform:rotate(-90deg); }
+  .donut-track{ fill:none; stroke:#e5e7eb; stroke-width:10; }
+  .donut-fill{
+    fill:none;
+    stroke-width:10;
+    stroke-linecap:round;
+    stroke-dasharray:314.159;
+    stroke-dashoffset:calc(314.159 - (314.159 * var(--percent) / 100));
+    transition:stroke-dashoffset .25s ease;
+  }
+  .donut-fill.blue{ stroke:var(--blue); }
+  .donut-fill.red{ stroke:var(--red); }
+  .donut-fill.orange{ stroke:var(--orange); }
+  .donut-center{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:16px; color:#111827;
+  }
+  .donut-sub{ font-size:10px; color:var(--grey-text); margin-top:6px; font-weight:600;}
+  .nb-circle{
+    width:88px;height:88px;border-radius:50%;
+    border:2px dashed #d1d5db;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:11px;color:#9ca3af;
+    text-align:center;
+  }
+  .glance-note{
+    background:#f3f4f6;
+    border-radius:6px;
+    padding:8px 10px;
+    font-size:11px;
+    color:var(--red);
+    margin-top:10px;
+    display:flex;
+    gap:6px;
+  }
+  .glance-note b{ font-weight:800; }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    background:var(--navy);
+    color:#cbd3ea;
+    font-size:10.5px;
+    padding:10px 18px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:6px 4px;
+  }
+  .footer b{ color:#fff; }
+  .footer .sep{ color:#5b6591; margin:0 4px; }
+</style>
+</head>
+<body>
+
+  <div class="scroll-wrapper">
+  <div class="report-card" id="reportCard">
+
+    <!-- HEADER -->
+    <div class="top-header">
+      <div class="th-left">
+        <h1>Weekly Project Visibility Card</h1>
+        <div class="th-sub">
+          Week Ending Friday, <span>28 August 2026</span>
+        </div>
+      </div>
+      <div class="th-right">
+        <div class="status-select" style="background:#f2a71b;display:inline-flex;align-items:center;justify-content:center;background-image:none;cursor:default;padding:11px 22px;">AMBER</div>
+        <div class="status-guide">
+          <div class="sg-title">STATUS GUIDE</div>
+          <div class="sg-row"><span class="dot green"></span>On Track</div>
+          <div class="sg-row"><span class="dot amber"></span>At Risk</div>
+          <div class="sg-row"><span class="dot red"></span>Off Track</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO BAR -->
+    <div class="info-bar">
+      <div class="info-item">
+        <div class="info-label">🏢 Company</div>
+        <div class="info-value">UNICOM TIC INCUBATOR</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">🏷️ Project ID</div>
+        <div class="info-value">-</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">👥 Client</div>
+        <div class="info-value">-</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">📁 Project Name</div>
+        <div class="info-value">OneXso</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">🚀 Current Release</div>
+        <div class="info-value">Release 1</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">📅 Project Start Date</div>
+        <div class="info-value">17 july 2026</div>
+      </div>
+    </div>
+
+    <!-- RESOURCE SECTION -->
+    <div class="section-label">
+      Resource Allocation for This Release (Total Allocated: <span>150</span> Man-Days)
+    </div>
+    <div class="resource-flex">
+      <table class="resource-table">
+        <thead>
+          <tr><th>Resource Name</th><th>Role</th><th>Allocation (Man-Days)</th><th>Main Responsibility</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Thivaharan</td>
+            <td class="role-pm">Project Manager</td>
+            <td>75</td>
+            <td>Planning, coordination, risks, reporting, client liaison</td>
+          </tr>
+          <tr>
+            <td>Dapiyshanth</td>
+            <td class="role-dev">Team Lead</td>
+            <td>75</td>
+            <td>Solution configuration &amp; development</td>
+          </tr>
+          <tr>
+            <td>Kajaatharan</td>
+            <td class="role-qa">Developer</td>
+            <td>75</td>
+            <td>Testing, quality assurance, defect management</td>
+          </tr>
+          <tr>
+            <td>Pirakeerthan</td>
+            <td class="role-lead">Developer</td>
+            <td>75</td>
+            <td>Technical design, development, integration, mentoring</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="total-box">
+        <div class="tb-label">Total Allocation</div>
+        <div class="tb-label" style="margin-top:-6px;">(This Release)</div>
+        <div class="tb-number">260</div>
+        <div class="tb-unit">Man-Days</div>
+      </div>
+    </div>
+
+    <!-- ROW 1 -->
+    <div class="grid-3">
+
+      <!-- PANEL 1: SCOPE & RELEASE JOURNEY -->
+      <div class="panel">
+        <div class="panel-header">1. Scope &amp; Release Journey</div>
+        <div class="panel-body">
+          <div class="journey">
+            <div class="j-head done"><span class="ic">✅</span><span>Delivered Release 1</span></div>
+            <div class="j-arrow">➜</div>
+            <div class="j-head current"><span class="ic">▶️</span><span>Current Release 1</span></div>
+            <div class="j-arrow">➜</div>
+            <div class="j-head future"><span class="ic">🔷</span><span>Future Release 2</span></div>
+
+            <div class="j-col" style="grid-column:1;">
+              <p style="margin:0;line-height:1.5;">None yet - Release 1 is the first release and is currently in progress (not yet gone live)</p>
+            </div>
+
+            <div class="j-col" style="grid-column:3;">
+              <h4>Core Modules</h4>
+              <ul>
+                <li>Authentication &amp; Security</li>
+                <li>Leave Management</li>
+                <li>Tenant Management</li>
+                <li>Attendance</li>
+                <li>Platform Administration</li>
+                <li>Calendar &amp; Scheduling</li>
+                <li>Roles &amp; Permissions</li>
+                <li>Work Management</li>
+                <li>Organization Administration</li>
+                <li>Workforce Intelligence</li>
+                <li>Employee Management</li>
+                <li>Billing &amp; Subscription</li>
+                <li>Onboarding &amp; Offboarding</li>
+              </ul>
+              <h4>Integrations</h4>
+              <p style="margin:0;line-height:1.5;">Stripe • Google Calendar • Microsoft Outlook • Google SSO • GitHub • Microsoft/Zoom • Email • Cloudflare R2 • AWS Rekognition • Tray Agent</p>
+            </div>
+
+            <div class="j-col" style="grid-column:5;">
+              <p style="margin:0;line-height:1.5;">Candidate scope: Work Management gaps (time tracking, subtasks, Productivity Validation); reports &amp; dashboards; Support Center backend; Stripe checkout; Google/Outlook calendar sync; Device Administration; privacy workflows; centralized audit trail; global search; System Control.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 2: CURRENT RELEASE PLAN -->
+      <div class="panel">
+        <div class="panel-header">2. Current Release Plan (Release 1 Only)</div>
+        <div class="panel-body">
+          <div class="tl-label">Original Plan</div>
+          <div class="timeline-row">
+            <span class="t-date">17 july 2026</span>
+            <span class="t-line"><span class="t-dot left"></span><span class="t-dot right"></span></span>
+            <span class="t-date">21 August 2026</span>
+          </div>
+          <div class="tl-label red">Current Forecast</div>
+          <div class="timeline-row">
+            <span class="t-date">17 july 2026</span>
+            <span class="t-line red"><span class="t-dot left"></span><span class="t-dot right"></span></span>
+            <span class="t-date">15 October 2026</span>
+          </div>
+
+          <div class="delay-banner">
+            <span class="dtext">⏱️ Delay: +<span>50</span> Days</span>
+            <span class="badge-pill">Off Track</span>
+          </div>
+
+          <table class="milestone-table">
+            <thead>
+              <tr><th>Milestone</th><th>Original Plan</th><th>Current Forecast</th><th>Variance</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Requirements Complete</td>
+                <td>17 Jul 2026</td>
+                <td>17 Jul 2026</td>
+                <td><span class="var-dot" style="background:var(--green);"></span><span>0 days</span></td>
+              </tr>
+              <tr>
+                <td>Development Complete</td>
+                <td>21 aug 2026</td>
+                <td>1 oct 2026</td>
+                <td><span class="var-dot" style="background:var(--red);"></span><span>+40 dayes</span></td>
+              </tr>
+              <tr>
+                <td>System Test Complete</td>
+                <td>1 sep 2026</td>
+                <td>15 oct 2026</td>
+                <td><span class="var-dot" style="background:var(--red);"></span><span>+40days</span></td>
+              </tr>
+              <tr>
+                <td>UAT Complete</td>
+                <td>15 sep 2026</td>
+                <td>12 Oct 2026</td>
+                <td><span class="var-dot" style="background:var(--red);"></span><span>+40 days</span></td>
+              </tr>
+              <tr>
+                <td>Go-Live</td>
+                <td>1 nov 2026</td>
+                <td>21 Oct 2026</td>
+                <td><span class="var-dot" style="background:var(--red);"></span><span>+40 days</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PANEL 3: RESOURCE EFFORT SUMMARY -->
+      <div class="panel">
+        <div class="panel-header">3. Resource Effort Summary (Release 1 Only)</div>
+        <div class="panel-body">
+          <div class="stat-grid">
+            <div class="stat-box c1">
+              <div class="ic">📋</div>
+              <div class="s-label">Original Allocation</div>
+              <div class="s-num">100</div>
+              <div class="s-unit">Man-Days</div>
+            </div>
+            <div class="stat-box c2">
+              <div class="ic">🥧</div>
+              <div class="s-label">Consumed to Date</div>
+              <div class="s-num">110</div>
+              <div class="s-unit">Man-Days</div>
+            </div>
+            <div class="stat-box c3">
+              <div class="ic">⏳</div>
+              <div class="s-label">Forecast Remaining</div>
+              <div class="s-num">150</div>
+              <div class="s-unit">Man-Days</div>
+            </div>
+            <div class="stat-box c4">
+              <div class="ic">📈</div>
+              <div class="s-label">Forecast Total</div>
+              <div class="s-num">260</div>
+              <div class="s-unit">Man-Days</div>
+            </div>
+          </div>
+
+          <div class="overrun-banner">
+            <span class="otext">Forecast Overrun +<span>160</span> Man-Days / +<span>160</span>%</span>
+            <span class="badge-pill">Over Budget</span>
+          </div>
+
+          <div class="bar-title">Effort Consumed vs Original Allocation</div>
+          <div class="bar-outer">
+            <div class="bar-fill" id="effortBar" style="--percent:110;">
+              <span class="bar-label">110%</span>
+            </div>
+          </div>
+          <div class="bar-scale"><span>0%</span><span>50%</span><span>100%</span></div>
+          <div class="bar-caption"><span>110</span> of <span>150</span> man-days consumed</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="grid-3">
+
+      <!-- PANEL 4: WHAT CHANGED THIS WEEK -->
+      <div class="panel">
+        <div class="panel-header">4. What Changed This Week?</div>
+        <div class="panel-body">
+          <p style="margin:0 0 10px;font-size:11.5px;color:#374151;">Four things shipped this week, one actively in progress.</p>
+          <div class="change-item">
+            <div class="change-ic" style="background:var(--green);">📅</div>
+            <div>
+              <div class="change-title" style="color:var(--green);">Calendar Is Live</div>
+              <div class="change-text">Recurring meetings & events now tied to milestones and tasks.</div>
+            </div>
+          </div>
+          <div class="change-item">
+            <div class="change-ic" style="background:var(--green);">📟</div>
+            <div>
+              <div class="change-title" style="color:var(--green);">Zero-Touch Attendance Works</div>
+              <div class="change-text">Tray app pairs with browser; clock-in/out enforced by real attendance policy.</div>
+            </div>
+          </div>
+          <div class="change-item">
+            <div class="change-ic" style="background:var(--green);">🖥️</div>
+            <div>
+              <div class="change-title" style="color:var(--green);">Smarter Employee Dashboard</div>
+              <div class="change-text">Shows schedule, activity timeline, and live attendance/task progress.</div>
+            </div>
+          </div>
+          <div class="change-item">
+            <div class="change-ic" style="background:var(--green);">👥</div>
+            <div>
+              <div class="change-title" style="color:var(--green);">Employee Management Foundation In</div>
+              <div class="change-text">Richer employee profiles shipped — Work Mode, detail views.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 5: RISKS / ISSUES & CEO ATTENTION -->
+      <div class="panel">
+        <div class="panel-header">5. Risks / Issues &amp; CEO Attention</div>
+        <div class="panel-body">
+          <div class="risks-title">Top Risks / Issues</div>
+          <div class="risk-row">
+            <span class="risk-dot high"></span>
+            <span class="risk-text">Production infrastructure not started — domain and SSL certificate setup still pending.</span>
+            <span class="sev-badge high">High</span>
+          </div>
+          <div class="risk-row">
+            <span class="risk-dot high"></span>
+            <span class="risk-text">No production UAT has been performed yet.</span>
+            <span class="sev-badge high">High</span>
+          </div>
+          <div class="risk-row">
+            <span class="risk-dot medium"></span>
+            <span class="risk-text">Stripe checkout/payment-collection flow missing — billing can invoice but cannot self-serve collect payment yet.</span>
+            <span class="sev-badge medium">Medium/High</span>
+          </div>
+
+          <div class="box-decision">
+            <div class="bd-title">⚖️ Decisions / Approvals Required</div>
+            <div>• Approve domain name for production deployment</div>
+            <div style="margin-top:2px;">• Approve production database engine (PostgreSQL or MySQL)</div>
+          </div>
+
+          <div class="box-escalation">
+            <div class="be-title">✅ Escalation</div>
+            <div>No escalations beyond normal reporting.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 6: AT A GLANCE -->
+      <div class="panel">
+        <div class="panel-header">6. At a Glance (Release 1 Only)</div>
+        <div class="panel-body">
+          <div class="donut-row">
+            <div class="donut-block">
+              <div class="donut-cap">Overall Progress</div>
+              <div class="donut" id="donutScope" style="--percent:59;">
+                <svg viewBox="0 0 120 120" width="88" height="88">
+                  <circle class="donut-track" cx="60" cy="60" r="50"></circle>
+                  <circle class="donut-fill blue" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <div class="donut-center"><span class="percent-input">59%</span></div>
+              </div>
+              <div class="donut-sub">9 shipped, 14 partial, 4 not started (of 27 features)</div>
+            </div>
+            <div class="donut-block">
+              <div class="donut-cap">Time Elapsed</div>
+              <div class="donut" id="donutTime" style="--percent:54;">
+                <svg viewBox="0 0 120 120" width="88" height="88">
+                  <circle class="donut-track" cx="60" cy="60" r="50"></circle>
+                  <circle class="donut-fill red" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <div class="donut-center"><span class="percent-input">54%</span></div>
+              </div>
+              <div class="donut-sub">52 of 96 days (17 Jul–21 Oct 2026)</div>
+            </div>
+            <div class="donut-block">
+              <div class="donut-cap">Effort Consumed</div>
+              <div class="donut" id="donutEffort" style="--percent:37;">
+                <svg viewBox="0 0 120 120" width="88" height="88">
+                  <circle class="donut-track" cx="60" cy="60" r="50"></circle>
+                  <circle class="donut-fill orange" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <div class="donut-center"><span class="percent-input">37%</span></div>
+              </div>
+              <div class="donut-sub">100 of 272 man-days (4 people × 68 working days)</div>
+            </div>
+          </div>
+          <div class="glance-note">
+            <span>⭐</span>
+            <span>Time Elapsed uses calendar days (17 Jul–21 Oct 2026). Effort Consumed uses working-day capacity (4 people × 68 days = 272 man-days) — a separate basis from the man-days in Resource Effort Summary.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <span>📄</span>
+      <b>Reporting Rules:</b>
+      <span>This card is a snapshot of the project status as at the end of Friday.</span>
+      <span class="sep">•</span>
+      <span>One card per active release.</span>
+      <span class="sep">•</span>
+      <span>Previous releases are shown under "Delivered".</span>
+      <span class="sep">•</span>
+      <span>Data to be prepared by PM and validated by Company Head.</span>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Project Tracker Exporter & High-Resolution JPG Engine -->
+  <script src="../assets/js/html2canvas.min.js"></script>
+  <script src="../assets/js/exporter.js"></script>
+</body>
+</html>

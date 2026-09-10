@@ -606,3 +606,110 @@ body {
   .projects-grid { grid-template-columns: 1fr; }
   .modal-content { width: 100vw; height: 100vh; border-radius: 0; }
 }
+
+/* Week Selector Bar on Cards */
+.week-picker-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+
+.week-picker-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.week-select {
+  background: #0f172a;
+  color: #38bdf8;
+  border: 1px solid #0284c7;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.week-select:hover {
+  background: #1e293b;
+  border-color: #38bdf8;
+}
+
+.week-select option {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+/* Modal Week Select */
+.modal-week-select {
+  background: rgba(15, 23, 42, 0.9);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.modal-week-select:focus {
+  border-color: #38bdf8;
+}
+
+/* Add New Week Dialog */
+.add-week-modal-card {
+  max-width: 520px;
+  width: 90%;
+  margin: auto;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.input-dark, .select-dark {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-dark:focus, .select-dark:focus {
+  border-color: #3b82f6;
+}
+
