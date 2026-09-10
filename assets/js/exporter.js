@@ -170,13 +170,34 @@
 
           const clonedSplit = clonedDoc.querySelector('.split-screen');
           if (clonedSplit) {
-            clonedSplit.style.width = '1920px';
-            clonedSplit.style.height = '1080px';
+            clonedSplit.style.display = 'flex';
+            clonedSplit.style.flexDirection = 'row';
+            clonedSplit.style.width = '3072px';
+            clonedSplit.style.height = '1088px';
             clonedSplit.style.overflow = 'visible';
+            clonedSplit.style.background = '#ffffff';
             const panels = clonedSplit.querySelectorAll('.panel');
             panels.forEach(p => {
-              p.style.width = '960px';
-              p.style.height = '1080px';
+              p.style.width = '1536px';
+              p.style.height = '1088px';
+              p.style.flex = '0 0 1536px';
+              p.style.overflow = 'visible';
+            });
+            const imgWraps = clonedSplit.querySelectorAll('.image-wrap');
+            imgWraps.forEach(w => {
+              w.style.width = '1536px';
+              w.style.height = '1024px';
+              w.style.flex = '0 0 1024px';
+              w.style.padding = '0';
+              w.style.margin = '0';
+              w.style.overflow = 'visible';
+            });
+            const imgs = clonedSplit.querySelectorAll('.image-wrap img');
+            imgs.forEach(im => {
+              im.style.width = '1536px';
+              im.style.height = '1024px';
+              im.style.objectFit = 'fill';
+              im.style.display = 'block';
             });
           }
 
@@ -200,10 +221,11 @@
         options.width = 1300;
         options.windowWidth = 1360;
       } else if (type === 'split-screen') {
-        options.width = 1920;
-        options.height = 1080;
-        options.windowWidth = 1920;
-        options.windowHeight = 1080;
+        options.width = 3072;
+        options.height = 1088;
+        options.windowWidth = 3072;
+        options.windowHeight = 1088;
+        options.scale = 1; // 3072x1088 is already full native retina resolution
       }
 
       window.html2canvas(element, options).then(canvas => {
