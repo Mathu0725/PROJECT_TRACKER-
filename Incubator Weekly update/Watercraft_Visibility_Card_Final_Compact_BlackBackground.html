@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watercraft Weekly Project Visibility Card</title>
+<style>
+:root{
+  --navy:#06175d;
+  --navy2:#0b3f93;
+  --blue:#1357b8;
+  --light:#f6f8fc;
+  --line:#c8d3e4;
+  --green:#12883b;
+  --green2:#23a64c;
+  --orange:#f39b0a;
+  --purple:#6c2eb9;
+  --red:#db2934;
+  --text:#132247;
+  --muted:#596a8a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Segoe UI, Arial, Helvetica, sans-serif;
+  background:#000000;
+  color:var(--text);
+}
+.wrapper{
+  width:1536px;
+  margin:0 auto;
+  background:white;
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
+  zoom:0.82;
+}
+.top{
+  background:linear-gradient(120deg,#07165d 0%, #071f75 75%, #07165d 100%);
+  color:white;
+  display:grid;
+  grid-template-columns:1fr 225px 280px;
+  align-items:center;
+  gap:14px;
+  padding:12px 18px;
+}
+.title{
+  font-size:36px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:.2px;
+}
+.sub{
+  margin-top:10px;
+  color:#ffd21d;
+  font-size:20px;
+  font-weight:900;
+}
+.status{
+  background:linear-gradient(180deg,#18b548,#0e9638);
+  border-radius:10px;
+  padding:8px 14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid rgba(255,255,255,.65);
+}
+.status .tick{
+  width:48px;height:48px;border-radius:50%;
+  background:white;color:#15943b;
+  display:grid;place-items:center;
+  font-size:30px;font-weight:900;
+}
+.status .main{font-size:31px;font-weight:900;line-height:1}
+.status .small{font-size:13px;font-weight:800;text-align:center;margin-top:3px}
+.guide{
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:8px;
+  padding:8px 12px;
+}
+.guide h4{margin:0 0 8px;font-size:14px}
+.guide-row{display:flex;gap:14px;font-size:12px}
+.dot{display:inline-block;width:16px;height:16px;border-radius:50%;margin-right:5px;vertical-align:-3px}
+.g{background:#31b84f}.a{background:#f1aa00}.r{background:#f03b45}
+
+.meta{
+  display:grid;
+  grid-template-columns:1.1fr 1.15fr 1.5fr 1.1fr 1.25fr;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.meta-card{
+  min-height:83px;
+  border-right:1px solid var(--line);
+  padding:13px 16px;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+}
+.meta-card:last-child{border-right:0}
+.micon{font-size:30px;color:#0f3f94}
+.mlabel{font-size:12px;font-weight:900;color:#0b3590;text-transform:uppercase}
+.mvalue{margin-top:9px;font-size:17px;font-weight:900;line-height:1.15}
+
+.section{
+  margin:10px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.section-title{
+  background:linear-gradient(180deg,#0b4092,#072b6f);
+  color:white;
+  font-size:18px;
+  font-weight:900;
+  padding:8px 12px;
+}
+.section-title .ico{margin-right:8px}
+
+.team-wrap{
+  display:grid;
+  grid-template-columns:1fr 360px;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  font-size:13px;
+}
+th{
+  background:#f1f4fa;
+  color:#0f3185;
+  font-size:12px;
+  padding:7px 6px;
+  border:1px solid #d6ddea;
+  text-align:center;
+}
+td{
+  border:1px solid #dce3ef;
+  padding:7px 10px;
+  vertical-align:middle;
+}
+.name{font-weight:800}
+.role1{color:#1557cb;font-weight:900}
+.role2{color:#7528bc;font-weight:900}
+.role3{color:#0c8032;font-weight:900}
+.days{text-align:center;font-size:16px;font-weight:900;color:#125cc8}
+.sidecards{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:8px;
+  padding:0 0 0 10px;
+}
+.sidecard{
+  border:1px solid #bcd2ee;
+  background:#f8fbff;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  min-height:92px;
+}
+.sidecard .num{font-size:62px;font-weight:900;line-height:1;color:#0a2e8c}
+.sidecard .cap{font-size:12px;font-weight:900;color:#0b3590;text-transform:uppercase}
+.sidecard .unit{font-size:18px;font-weight:900;color:#123a93}
+
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:0 10px;
+}
+.grid3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+  padding:0 10px 10px;
+}
+.panel{
+  border:1px solid var(--line);
+  background:#fff;
+}
+.panel-title{
+  background:linear-gradient(180deg,#0b4092,#072b6f);
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  padding:8px 12px;
+}
+.flow{
+  display:grid;
+  grid-template-columns:1fr 50px 1fr 50px 1fr 50px 1fr;
+  gap:6px;
+  align-items:center;
+  padding:18px 18px 8px;
+}
+.step{text-align:center;font-weight:900;color:#0c3186}
+.step .circle{
+  width:58px;height:58px;border-radius:50%;
+  margin:0 auto 8px;
+  display:grid;place-items:center;
+  color:white;font-size:28px;
+}
+.b{background:#1b66d8}.gr{background:#28a144}.o{background:#ff8b00}.p{background:#7a2dc2}
+.arrow{font-size:33px;color:#1264c5;text-align:center}
+.subs{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:10px;
+  padding:6px 10px 10px;
+}
+.subpanel{
+  border:1px solid #bcd9c6;
+  background:#f7fff8;
+}
+.subpanel.blue{
+  border-color:#c4d8ee;
+  background:#f7fbff;
+}
+.subhead{
+  padding:7px 10px;
+  font-size:16px;
+  font-weight:900;
+  color:#0b7330;
+}
+.subpanel.blue .subhead{color:#0f53b8}
+ul.clean{margin:4px 12px 10px;padding-left:20px}
+ul.clean li{margin:6px 0;font-size:13px;line-height:1.25}
+
+.effort{padding:12px}
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.metric{
+  text-align:center;
+  border-right:1px solid #dce3ee;
+  min-height:145px;
+  padding:5px 8px;
+}
+.metric:last-child{border-right:0}
+.metric .ico{font-size:28px}
+.metric .lab{font-size:12px;font-weight:900;text-transform:uppercase;min-height:34px}
+.metric .val{font-size:42px;font-weight:900;line-height:1;margin-top:8px}
+.metric .unit{font-size:13px;font-weight:900;margin-top:6px}
+.green-t{color:#13833a}.blue-t{color:#1762d5}.orange-t{color:#f06b00}.purple-t{color:#6524b7}
+.smallmetrics{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+  margin-top:8px;
+}
+.sm{
+  border:1px solid #d7dfeb;
+  border-radius:6px;
+  text-align:center;
+  min-height:110px;
+  padding:9px 8px;
+}
+.sm .lab{font-size:10px;font-weight:900;color:#0c3186;text-transform:uppercase}
+.sm .big{font-size:27px;font-weight:900;margin-top:10px}
+.ring{
+  width:58px;height:58px;border-radius:50%;
+  border:9px solid #10a23f;
+  display:grid;place-items:center;
+  margin:7px auto 0;
+  font-size:14px;font-weight:900;
+}
+
+.completed{padding:10px}
+.complete-head{
+  background:#eef9f0;
+  border:1px solid #c3dfcb;
+  border-radius:6px;
+  padding:9px 12px;
+  display:flex;gap:10px;align-items:center;
+  font-size:18px;font-weight:900;color:#0f722e;
+}
+.complete-head .c{
+  width:36px;height:36px;border-radius:50%;background:#18a348;color:white;
+  display:grid;place-items:center;font-size:22px;
+}
+
+.risks{padding:10px}
+.success{
+  background:#eef9f0;
+  border:1px solid #c3dfcb;
+  border-radius:6px;
+  text-align:center;
+  padding:9px 12px;
+  color:#0b742d;
+}
+.success .big{font-size:19px;font-weight:900}
+.success .small{font-size:14px;font-weight:800;margin-top:2px}
+.checklist{list-style:none;padding:0;margin:10px 0 0}
+.checklist li{
+  margin:6px 0;
+  padding-left:28px;
+  position:relative;
+  font-size:13px;
+}
+.checklist li:before{
+  content:"✓";
+  position:absolute;left:0;top:-1px;
+  width:20px;height:20px;border-radius:50%;
+  background:#168f3e;color:#fff;
+  display:grid;place-items:center;font-size:12px;font-weight:900;
+}
+
+.glance{padding:10px}
+.gl-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.gl{
+  border:1px solid #d5dfec;
+  border-radius:6px;
+  min-height:74px;
+  padding:8px 10px;
+  display:grid;
+  grid-template-columns:50px 1fr;
+  gap:8px;
+  align-items:center;
+  background:#fbfdff;
+}
+.gl .ico{font-size:30px;text-align:center}
+.gl .cap{font-size:10px;font-weight:900;color:#0c3186;text-transform:uppercase}
+.gl .val{font-size:18px;font-weight:900;margin-top:4px}
+.gl .date{font-size:13px;font-weight:900;color:#173986;margin-top:2px}
+
+.footer{
+  background:#062166;
+  color:white;
+  padding:11px 16px;
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.footer .right{display:flex;gap:22px}
+
+@media(max-width:1000px){
+  .wrapper{width:100%;min-width:1000px}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header class="top">
+    <div>
+      <div class="title">WEEKLY PROJECT VISIBILITY CARD</div>
+      <div class="sub">WEEK ENDING FRIDAY, 4 SEPTEMBER 2026</div>
+    </div>
+    <div class="status">
+      <div class="tick">✓</div>
+      <div>
+        <div class="main">GREEN</div>
+        <div class="small">PROJECT RELEASED</div>
+      </div>
+    </div>
+    <div class="guide">
+      <h4>STATUS GUIDE</h4>
+      <div class="guide-row">
+        <span><i class="dot g"></i>On Track</span>
+        <span><i class="dot a"></i>At Risk</span>
+        <span><i class="dot r"></i>Off Track</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="meta">
+    <div class="meta-card"><div class="micon">🏢</div><div><div class="mlabel">Company</div><div class="mvalue">UNICOMTIC INCUBATOR</div></div></div>
+    <div class="meta-card"><div class="micon">👥</div><div><div class="mlabel">Client</div><div class="mvalue">NORTHERN BEACHES COUNCIL</div></div></div>
+    <div class="meta-card"><div class="micon">📁</div><div><div class="mlabel">Project Name</div><div class="mvalue">WATERCRAFT STORAGE PORTAL</div></div></div>
+    <div class="meta-card"><div class="micon">🚀</div><div><div class="mlabel">Current Release</div><div class="mvalue">RELEASED</div></div></div>
+    <div class="meta-card"><div class="micon">📅</div><div><div class="mlabel">Week Ending (Friday)</div><div class="mvalue">4 SEPTEMBER 2026</div></div></div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">▣ &nbsp; 1. RESOURCE ALLOCATION / PROJECT TEAM</div>
+    <div class="team-wrap">
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:17%">TEAM MEMBER</th>
+              <th style="width:18%">ROLE</th>
+              <th style="width:18%">ALLOCATION (MAN-DAYS)</th>
+              <th>MAIN RESPONSIBILITY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="name">👤 Saif</td><td class="role1">Team Lead</td><td class="days">35</td><td>Leadership, architecture, development, integration, testing</td></tr>
+            <tr><td class="name">👤 Abitha</td><td class="role2">Coordinator</td><td class="days">22</td><td>Coordination, documentation, tracking, development, testing support</td></tr>
+            <tr><td class="name">👤 Kunasika</td><td class="role3">Developer</td><td class="days">22</td><td>Frontend, backend, testing</td></tr>
+            <tr><td class="name">👤 Lavanya</td><td class="role3">Developer</td><td class="days">22</td><td>Frontend, backend, testing</td></tr>
+            <tr><td class="name">👤 Natheesan</td><td class="role3">Developer</td><td class="days">19</td><td>Frontend, backend, testing</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sidecards">
+        <div class="sidecard"><div><div class="cap">Total Allocation (This Release)</div><div class="num">120</div><div class="unit">MAN-DAYS</div></div></div>
+        <div class="sidecard"><div><div class="cap">Team Size</div><div class="num">5</div><div class="unit">MEMBERS</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid2">
+    <section class="panel">
+      <div class="panel-title">▣ &nbsp; 2. SCOPE &amp; RELEASE JOURNEY</div>
+      <div class="flow">
+        <div class="step"><div class="circle b">▶</div>Project Started</div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="circle gr">⚙</div>Development</div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="circle p">✓</div>Integration &amp;<br>Validation</div>
+        <div class="arrow">→</div>
+        <div class="step"><div class="circle gr">⚑</div>Release Complete</div>
+      </div>
+      <div class="subs">
+        <div class="subpanel">
+          <div class="subhead">✔ &nbsp; DELIVERED / COMPLETED</div>
+          <ul class="clean">
+            <li>Completed the changes discussed with Watercraft (patch work)</li>
+            <li>Replaced Address Lookup with Addressify integration</li>
+            <li>Implemented SSO login-based redirect for MyBookings</li>
+            <li>Completed multiple rollover implementation</li>
+            <li>Finalized validation, testing, and release completion</li>
+          </ul>
+        </div>
+        <div class="subpanel blue">
+          <div class="subhead">» &nbsp; POST-RELEASE / NEXT</div>
+          <ul class="clean">
+            <li>Support and monitoring as needed</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">▣ &nbsp; 3. RESOURCE EFFORT SUMMARY</div>
+      <div class="effort">
+        <div class="metrics">
+          <div class="metric"><div class="ico">📋</div><div class="lab green-t">Original Allocation</div><div class="val green-t">120</div><div class="unit green-t">MAN-DAYS</div></div>
+          <div class="metric"><div class="ico">◔</div><div class="lab blue-t">Consumed To Date</div><div class="val blue-t">120</div><div class="unit blue-t">MAN-DAYS</div></div>
+          <div class="metric"><div class="ico">⌛</div><div class="lab orange-t">Forecast Remaining</div><div class="val orange-t">0</div><div class="unit orange-t">MAN-DAYS</div></div>
+          <div class="metric"><div class="ico">▥</div><div class="lab purple-t">Forecast Total</div><div class="val purple-t">120</div><div class="unit purple-t">MAN-DAYS</div></div>
+        </div>
+        <div class="smallmetrics">
+          <div class="sm"><div class="lab">Effort Status</div><div class="big green-t">ON TARGET</div></div>
+          <div class="sm"><div class="lab">Overall Progress</div><div class="ring">100%</div></div>
+          <div class="sm"><div class="lab">Scope Completion</div><div class="big green-t">100%</div></div>
+          <div class="sm"><div class="lab" style="color:#c51a28">Open Critical Issues</div><div class="big" style="color:#c51a28">0</div></div>
+          <div class="sm"><div class="lab" style="color:#e47b00">Open Major Risks</div><div class="big" style="color:#e47b00">0</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="grid3">
+    <section class="panel">
+      <div class="panel-title">▣ &nbsp; 4. THIS WEEK – COMPLETED</div>
+      <div class="completed">
+        <div class="complete-head"><div class="c">✓</div>Watercraft release completed</div>
+        <ul class="clean">
+          <li>Completed the changes discussed with Watercraft (patch work)</li>
+          <li>Replaced Address Lookup with Addressify integration</li>
+          <li>Implemented SSO login-based redirect for MyBookings</li>
+          <li>Completed multiple rollover implementation</li>
+          <li>Finalized validation, testing, and release completion</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">⚠ &nbsp; 5. RISKS / ISSUES / MANAGEMENT ATTENTION</div>
+      <div class="risks">
+        <div class="success">
+          <div class="big">🏆 &nbsp; PROJECT COMPLETED SUCCESSFULLY</div>
+          <div class="small">Great work team!</div>
+        </div>
+        <ul class="checklist">
+          <li>No major open risks</li>
+          <li>No critical open issues</li>
+          <li>No escalation required</li>
+          <li>Project released successfully</li>
+          <li>Post-release support only if needed</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">▥ &nbsp; 6. AT A GLANCE</div>
+      <div class="glance">
+        <div class="gl-grid">
+          <div class="gl"><div class="ico">🚀</div><div><div class="cap">Project Status</div><div class="val green-t">RELEASED</div><div class="date">28 AUG 2026</div></div></div>
+          <div class="gl"><div class="ico">👥</div><div><div class="cap">Team</div><div class="val blue-t">5 MEMBERS</div></div></div>
+          <div class="gl"><div class="ico">🏆</div><div><div class="cap">Completion</div><div class="val green-t">100%</div></div></div>
+          <div class="gl"><div class="ico">🎧</div><div><div class="cap">Support Status</div><div class="val purple-t">ON STANDBY</div></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div>▣ &nbsp; Prepared as weekly project visibility update for completed Watercraft release.</div>
+    <div class="right">
+      <span>WATERCRAFT STORAGE PORTAL</span>
+      <span>|</span>
+      <span>NORTHERN BEACHES COUNCIL</span>
+      <span>|</span>
+      <span>UNICOMTIC INCUBATOR</span>
+    </div>
+  </footer>
+
+</div>
+
+  <!-- Project Tracker Exporter & High-Resolution JPG Engine -->
+  <script src="../assets/js/html2canvas.min.js"></script>
+  <script src="../assets/js/exporter.js"></script>
+</body>
+</html>
