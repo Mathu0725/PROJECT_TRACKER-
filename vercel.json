@@ -1,7 +1,6 @@
 {
-  "version": 2,
-  "name": "incubator-project-tracker",
-  "cleanUrls": true,
+  "cleanUrls": false,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
