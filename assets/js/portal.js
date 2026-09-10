@@ -300,6 +300,9 @@ function renderProjects(filterText = '', filterStatus = 'all') {
           <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'scope')">
             📸 Export Scope JPG
           </button>
+          <button class="btn btn-export-quick" style="background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.35);" onclick="openUploadModal('${p.id}')" title="Upload new Scope Document or Weekly HTML">
+            📤 Upload
+          </button>
         </div>
       </div>
     `;
@@ -554,6 +557,109 @@ function showPortalToast(message, type = 'info') {
       toast.style.opacity = '0';
     }, 3500);
   }
+}
+
+// Open Document Upload Modal
+function openUploadModal(projectId, defaultType = 'scope') {
+  const pSelect = document.getElementById('uploadProject');
+  if (pSelect) {
+    pSelect.innerHTML = PROJECTS.map(p => `
+      <option value="${p.id}" ${p.id === projectId ? 'selected' : ''}>${p.name}</option>
+    `).join('');
+  }
+  const typeSelect = document.getElementById('uploadDocType');
+  if (typeSelect) typeSelect.value = defaultType;
+
+  const modal = document.getElementById('uploadModal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeUploadModal() {
+  const modal = document.getElementById('uploadModal');
+  if (modal) modal.classList.remove('active');
+  const form = document.getElementById('uploadForm');
+  if (form) form.reset();
+}
+
+async function handleDocumentUpload(e) {
+  e.preventDefault();
+  const projectId = document.getElementById('uploadProject').value;
+  const docType = document.getElementById('uploadDocType').value;
+  const weekNum = parseInt(document.getElementById('uploadWeekNumber').value, 10);
+  const weekDate = document.getElementById('uploadWeekDate').value;
+  const fileInput = document.getElementById('uploadFileInput');
+
+  if (!fileInput.files || fileInput.files.length === 0) {
+    showPortalToast('Please choose an HTML file to upload.', 'error');
+    return;
+  }
+
+  const file = fileInput.files[0];
+  const project = PROJECTS.find(p => p.id === projectId);
+  if (!project) return;
+
+  showPortalToast(`Uploading & linking ${file.name}...`, 'loading');
+
+  const reader = new FileReader();
+  reader.onload = async function(evt) {
+    const content = evt.target.result;
+    let savedUrl = '';
+
+    // Attempt backend save via server.js API
+    try {
+      const resp = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: docType,
+          fileName: file.name,
+          content: content
+        })
+      });
+      if (resp.ok) {
+        const result = await resp.json();
+        savedUrl = result.url;
+      }
+    } catch (apiErr) {
+      console.warn('Backend upload API unavailable, using local blob/store:', apiErr);
+    }
+
+    if (!savedUrl) {
+      const blob = new Blob([content], { type: 'text/html' });
+      savedUrl = URL.createObjectURL(blob);
+    }
+
+    // Attach to existing week or prepend new week
+    let targetWeek = project.weeks.find(w => w.weekNumber === weekNum);
+    if (!targetWeek) {
+      targetWeek = {
+        weekNumber: weekNum,
+        weekLabel: `Week ${weekNum} (Uploaded)`,
+        weekEnding: weekDate,
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: project.weeks[0]?.manDays || 'N/A',
+        consumed: 'Active',
+        weeklyUrl: (docType === 'weekly') ? savedUrl : project.weeks[0]?.weeklyUrl,
+        scopeUrl: (docType === 'scope') ? savedUrl : project.weeks[0]?.scopeUrl
+      };
+      project.weeks.unshift(targetWeek);
+      project.selectedWeekIndex = 0;
+    } else {
+      if (docType === 'scope') targetWeek.scopeUrl = savedUrl;
+      else targetWeek.weeklyUrl = savedUrl;
+      targetWeek.weekEnding = weekDate;
+    }
+
+    saveProjects();
+    closeUploadModal();
+    renderProjects();
+
+    showPortalToast(`✓ Attached ${docType === 'scope' ? 'Scope Document' : 'Weekly Report'} for ${project.name}!`, 'success');
+    openViewer(projectId, docType);
+  };
+
+  reader.readAsText(file);
 }
 
 // Event Listeners

@@ -27,6 +27,9 @@
       </div>
       <div class="header-actions">
         <span class="badge-live">Live Weekly Baselines</span>
+        <button class="btn btn-outline" onclick="openUploadModal()" title="Upload given Scope Document or Weekly HTML">
+          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> 📤 Upload Document
+        </button>
         <button class="btn btn-primary" onclick="openAddWeekModal()" title="Add a new week report for any project">
           <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> + Add New Week
         </button>
@@ -176,6 +179,48 @@
         <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:8px;">
           <button type="button" class="btn btn-secondary" onclick="closeAddWeekModal()">Cancel</button>
           <button type="submit" class="btn btn-primary">Create Week Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Upload Document Modal Dialog (Scope Document / Weekly Report) -->
+  <div class="modal-backdrop" id="uploadModal">
+    <div class="add-week-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px;">
+        <h3 style="font-size:16px; font-weight:800; color:#fff;">📤 Upload Scope Document / Weekly Report</h3>
+        <button class="close-btn" onclick="closeUploadModal()">✕</button>
+      </div>
+      <form id="uploadForm" onsubmit="handleDocumentUpload(event)" style="display:flex; flex-direction:column; gap:14px;">
+        <div class="form-group">
+          <label>Select Project</label>
+          <select id="uploadProject" class="select-dark" required></select>
+        </div>
+        <div class="form-group">
+          <label>Document Category</label>
+          <select id="uploadDocType" class="select-dark">
+            <option value="scope">📋 Scope Specification Document</option>
+            <option value="weekly">📊 Weekly Project Visibility Card</option>
+          </select>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label>Reporting Week</label>
+            <input type="number" id="uploadWeekNumber" class="input-dark" value="3" min="1" max="52" required>
+          </div>
+          <div class="form-group">
+            <label>Week Ending Date</label>
+            <input type="text" id="uploadWeekDate" class="input-dark" value="4 Sep 2026" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Choose HTML File</label>
+          <input type="file" id="uploadFileInput" accept=".html,.htm" class="input-dark" style="padding:6px;" required>
+          <span style="font-size:11.5px; color:#64748b;">The uploaded file will be saved and automatically equipped with 📸 1-click JPG export.</span>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:8px;">
+          <button type="button" class="btn btn-secondary" onclick="closeUploadModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Upload &amp; Link Document</button>
         </div>
       </form>
     </div>
