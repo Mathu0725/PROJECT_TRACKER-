@@ -1,38 +1,36 @@
 /**
- * Project Tracker Portal Engine - Camera Module Focus
- * UNICOM TIC INCUBATOR
+ * Project Tracker Portal Engine
+ * UNICOM TIC INCUBATOR - Complete Portfolio Visibility Hub
  */
 
-// Active projects shown on the dashboard (Camera Module only as requested)
+// Active projects shown on the dashboard (all 6 projects initialized to Week 1)
 const DEFAULT_PROJECTS = [
   {
     id: 'camera-module',
-    name: 'Camera Module',
+    icon: '📸',
+    name: 'Camera Module (ONETIX)',
     release: 'Phase 1A MVP',
     leads: 'Nilaxshan / Kirusthiya',
-    description: 'Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX user journey, and RTSP/ONVIF reliability.',
+    description: 'Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX retail loss prevention, and RTSP/ONVIF reliability.',
     highlights: 'Connector startup readiness, RTSP/ONVIF reliability, installer launcher lifecycle, camera & zone setup, ONETIX architecture & user journey.',
     selectedWeekIndex: 0,
     weeks: [
       {
         weekNumber: 1,
-        weekLabel: 'September Week 1 (ONETIX Scope)',
+        weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
         status: 'ON TRACK',
         statusClass: 'green',
         manDays: '44 Allocated',
         consumed: '46 Consumed',
-        weeklyUrl: 'Incubator Weekly update/Camara Module.html',
-        scopeUrl: 'scope document/Camera_Module_Scope_Onetix.html'
+        weeklyUrl: 'Incubator Weekly update/WEEKLY PROJECT VISIBILITY CARD.html',
+        scopeUrl: 'scope document/ONETIX_Scope_USP.html'
       }
     ]
-  }
-];
-
-// Preserved archive of other projects (can be re-enabled anytime)
-const ALL_PROJECTS_ARCHIVE = [
+  },
   {
     id: 'greyhound',
+    icon: '📱',
     name: 'Greyhound Customer Mobile App',
     release: 'Release 1.0 Mobile',
     leads: 'Mobile Dev Team',
@@ -41,20 +39,21 @@ const ALL_PROJECTS_ARCHIVE = [
     selectedWeekIndex: 0,
     weeks: [
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2 (Current)',
+        weekNumber: 1,
+        weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
         status: 'ON TRACK',
         statusClass: 'green',
         manDays: 'Mobile MVP',
         consumed: 'Active Sprint',
         weeklyUrl: 'Incubator Weekly update/greyhound_weekly_project_visibility_card.html',
-        scopeUrl: 'scope document/Greyhound_Customer_Mobile_App_Scope_Week_2.html'
+        scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
       }
     ]
   },
   {
     id: 'onexso-hrms',
+    icon: '👥',
     name: 'ONEXSO HRMS',
     release: 'Enterprise Release 1',
     leads: 'HRMS Platform Team',
@@ -63,20 +62,21 @@ const ALL_PROJECTS_ARCHIVE = [
     selectedWeekIndex: 0,
     weeks: [
       {
-        weekNumber: 7,
-        weekLabel: 'Week 7 (Current)',
+        weekNumber: 1,
+        weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
         status: 'AT RISK',
         statusClass: 'amber',
         manDays: '150 Days',
         consumed: '59% Complete',
         weeklyUrl: 'Incubator Weekly update/weekly-project-visibility-card-onexso.pr.html',
-        scopeUrl: 'scope document/ONEXSO_HRMS_Scope_Week_7.html'
+        scopeUrl: 'scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html'
       }
     ]
   },
   {
     id: 'oneverz-epos',
+    icon: '🛍️',
     name: 'OneVerz EPOS',
     release: 'Release 2 EPOS',
     leads: 'EPOS Core Team',
@@ -85,20 +85,21 @@ const ALL_PROJECTS_ARCHIVE = [
     selectedWeekIndex: 0,
     weeks: [
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2 (Current)',
+        weekNumber: 1,
+        weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
         status: 'ON TRACK',
         statusClass: 'green',
         manDays: '150 Days',
         consumed: '75% Complete',
         weeklyUrl: 'Incubator Weekly update/One Verz Weekly Project Visibility Card 2 - Static.html',
-        scopeUrl: 'scope document/OneVerz_EPOS_Scope_Week_2.html'
+        scopeUrl: 'scope document/Oneverz.html'
       }
     ]
   },
   {
     id: 'ticketing-venue',
+    icon: '🎫',
     name: 'Ticketing Venue Setup',
     release: 'Release 2 Venue Engine',
     leads: 'Venue & Ticketing Team',
@@ -107,20 +108,21 @@ const ALL_PROJECTS_ARCHIVE = [
     selectedWeekIndex: 0,
     weeks: [
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2 (Current)',
+        weekNumber: 1,
+        weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
         status: 'ON TRACK',
         statusClass: 'green',
         manDays: '20 Days',
         consumed: '78% Complete',
         weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_weekly_visibility_card.html',
-        scopeUrl: 'scope document/Ticketing_Venue_Setup_Scope_Week_2.html'
+        scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
       }
     ]
   },
   {
     id: 'watercraft',
+    icon: '⛵',
     name: 'Watercraft Storage Portal',
     release: 'Full Release',
     leads: 'Watercraft Platform Team',
@@ -129,52 +131,54 @@ const ALL_PROJECTS_ARCHIVE = [
     selectedWeekIndex: 0,
     weeks: [
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2 (Current)',
+        weekNumber: 1,
+        weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
         status: 'COMPLETED',
         statusClass: 'blue',
         manDays: '120 Days',
         consumed: '100% Complete',
         weeklyUrl: 'Incubator Weekly update/Watercraft_Visibility_Card_Final_Compact_BlackBackground.html',
-        scopeUrl: 'scope document/Watercraft_Storage_Portal_Scope_Week_2.html'
+        scopeUrl: 'scope document/watercraft.html'
       }
     ]
   }
 ];
 
-// Load from LocalStorage (with auto-migration to September Week 1)
-const STORAGE_KEY = 'portal_projects_camera_v2';
+// Purge any old cache keys to guarantee fresh Week 1 display
+try {
+  [
+    'portal_projects_camera_v1',
+    'portal_projects_camera_v2',
+    'portal_projects_scope_usp_v1',
+    'portal_projects_sep1_week1_v1',
+    'portal_projects_sep1_week1_v2'
+  ].forEach(k => localStorage.removeItem(k));
+} catch(e) {}
+
+const STORAGE_KEY = 'portal_projects_v5_week1_exact';
 let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
 
-if (!PROJECTS) {
-  const legacy = JSON.parse(localStorage.getItem('portal_projects_camera_v1') || 'null');
-  if (legacy && Array.isArray(legacy)) {
-    PROJECTS = legacy.map(p => {
-      if (p.id === 'camera-module' && p.weeks) {
-        p.weeks.forEach(w => {
-          if (w.weekNumber === 3 || (w.weekLabel && w.weekLabel.includes('Week 3'))) {
-            w.weekNumber = 1;
-            w.weekLabel = 'September Week 1 (ONETIX Scope)';
-          }
-        });
-      }
-      return p;
-    });
-  } else {
-    PROJECTS = DEFAULT_PROJECTS;
-  }
+if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 6) {
+  PROJECTS = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
   localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
 } else {
-  // Ensure camera-module week label is always updated to September Week 1
+  // Always enforce Week 1 for the baseline week across all projects
   PROJECTS.forEach(p => {
-    if (p.id === 'camera-module' && p.weeks) {
-      p.weeks.forEach(w => {
-        if (w.weekNumber === 3 || (w.weekLabel && w.weekLabel.includes('Week 3'))) {
-          w.weekNumber = 1;
-          w.weekLabel = 'September Week 1 (ONETIX Scope)';
-        }
-      });
+    if (p.weeks && p.weeks.length > 0) {
+      p.weeks[0].weekNumber = 1;
+      p.weeks[0].weekLabel = 'Week 1';
+      p.weeks[0].weekEnding = '4 Sep 2026';
+    }
+  });
+  DEFAULT_PROJECTS.forEach(def => {
+    const p = PROJECTS.find(item => item.id === def.id);
+    if (p && p.weeks && p.weeks[0]) {
+      p.weeks[0].weekNumber = 1;
+      p.weeks[0].weekLabel = 'Week 1';
+      p.weeks[0].scopeUrl = def.weeks[0].scopeUrl;
+      p.weeks[0].weeklyUrl = def.weeks[0].weeklyUrl;
+      if (!p.icon) p.icon = def.icon;
     }
   });
   localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
@@ -243,19 +247,16 @@ function renderProjects(filterText = '', filterStatus = 'all') {
 
     // Build week options + "+ Upload Next Week..."
     const weekOptions = p.weeks.map((w, idx) => `
-      <option value="${idx}" ${idx === activeIndex ? 'selected' : ''}>${w.weekLabel} (${w.weekEnding})</option>
+      <option value="${idx}" ${idx === activeIndex ? 'selected' : ''}>Week ${w.weekNumber || 1} (${w.weekEnding})</option>
     `).join('') + `<option value="upload">+ Upload Next Week Document...</option>`;
 
     const card = document.createElement('article');
     card.className = 'project-card';
-    card.style.maxWidth = '780px';
-    card.style.margin = '0 auto';
-    card.style.width = '100%';
     card.innerHTML = `
       <div class="project-card-header">
         <div class="project-title-wrap">
-          <h3 style="font-size:20px;">📸 ${p.name}</h3>
-          <div class="project-meta-sub">${p.release} • ${curWeek.weekEnding} • ONETIX Baseline</div>
+          <h3 style="font-size:18px;">${p.icon || '📁'} ${p.name}</h3>
+          <div class="project-meta-sub">${p.release} • ${curWeek.weekEnding} • Week ${curWeek.weekNumber || 1}</div>
         </div>
         <span class="status-tag ${curWeek.statusClass}" style="font-size:12px; padding:6px 14px;">${curWeek.status}</span>
       </div>
@@ -275,41 +276,41 @@ function renderProjects(filterText = '', filterStatus = 'all') {
         <div class="metrics-row" style="margin-bottom:18px; padding:12px;">
           <div class="m-item">
             <div class="m-lbl">Total Allocation</div>
-            <div class="m-val" style="font-size:16px;">${curWeek.manDays}</div>
+            <div class="m-val" style="font-size:15px;">${curWeek.manDays}</div>
           </div>
           <div class="m-item">
             <div class="m-lbl">Consumed To Date</div>
-            <div class="m-val" style="font-size:16px; color:#38bdf8;">${curWeek.consumed}</div>
+            <div class="m-val" style="font-size:15px; color:#38bdf8;">${curWeek.consumed}</div>
           </div>
           <div class="m-item">
             <div class="m-lbl">Project Leads</div>
-            <div class="m-val" style="font-size:13px;" title="${p.leads}">${p.leads}</div>
+            <div class="m-val" style="font-size:12.5px;" title="${p.leads}">${p.leads}</div>
           </div>
         </div>
-        <p class="project-desc" style="font-size:14px; margin-bottom:16px;">${p.description}</p>
-        <div class="key-highlights" style="font-size:13px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); padding:12px; border-radius:8px; margin-bottom:18px;">
+        <p class="project-desc" style="font-size:13.5px; margin-bottom:14px;">${p.description}</p>
+        <div class="key-highlights" style="font-size:12.5px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); padding:12px; border-radius:8px; margin-bottom:16px;">
           <strong>🎯 Core Deliverables &amp; Scope:</strong> ${p.highlights}
         </div>
       </div>
-      <div class="project-card-actions" style="padding:18px 20px;">
-        <button class="btn btn-primary" style="padding:10px 18px; font-size:13px; background:linear-gradient(135deg, #2563eb, #1d4ed8);" onclick="openProjectDetail('${p.id}')" title="Open dedicated project view with Back button">
-          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 📂 Open Project View
+      <div class="project-card-actions" style="padding:16px 18px;">
+        <button class="btn btn-primary" style="padding:9px 16px; font-size:12.5px; background:linear-gradient(135deg, #2563eb, #1d4ed8);" onclick="openProjectDetail('${p.id}')" title="Open dedicated project view with Back button">
+          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 📂 Open Project View
         </button>
-        <button class="btn btn-secondary" style="padding:10px 15px; font-size:13px;" onclick="openViewer('${p.id}', 'weekly')">
-          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Weekly Report (${(curWeek.weekLabel || 'September Week 1').split(' (')[0]})
+        <button class="btn btn-secondary" style="padding:9px 13px; font-size:12.5px;" onclick="openViewer('${p.id}', 'weekly')">
+          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Weekly Report (Week ${curWeek.weekNumber || 1})
         </button>
-        <button class="btn btn-secondary" style="padding:10px 15px; font-size:13px;" onclick="openViewer('${p.id}', 'scope')">
-          <svg style="width:15px;height:15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> ONETIX Scope Document
+        <button class="btn btn-secondary" style="padding:9px 13px; font-size:12.5px;" onclick="openViewer('${p.id}', 'scope')">
+          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Scope &amp; USP Document
         </button>
         <div class="quick-export-row" style="margin-top:8px;">
           <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'weekly')">
-            📸 Export Report JPG
+            📸 Export Week 1 Report JPG
           </button>
           <button class="btn btn-export-quick" onclick="quickExportJpg('${p.id}', 'scope')">
-            📸 Export ONETIX Scope JPG
+            📸 Export Scope &amp; USP JPG
           </button>
           <button class="btn btn-export-quick" style="background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.35);" onclick="openUploadModal('${p.id}')" title="Upload new Scope Document or Weekly HTML">
-            📤 Upload Week Document
+            📤 Upload Document
           </button>
         </div>
       </div>
@@ -382,11 +383,34 @@ function updateModalTabs() {
   }
 }
 
+function ensureExporterInFrame(frame) {
+  try {
+    const doc = frame.contentDocument || frame.contentWindow.document;
+    if (doc && !frame.contentWindow.exportCurrentPageToJpg) {
+      if (!frame.contentWindow.html2canvas) {
+        const s1 = doc.createElement('script');
+        s1.src = '/assets/js/html2canvas.min.js';
+        doc.head.appendChild(s1);
+        s1.onload = () => {
+          const s2 = doc.createElement('script');
+          s2.src = '/assets/js/exporter.js';
+          doc.head.appendChild(s2);
+        };
+      } else {
+        const s2 = doc.createElement('script');
+        s2.src = '/assets/js/exporter.js';
+        doc.head.appendChild(s2);
+      }
+    }
+  } catch (e) {}
+}
+
 function loadIframe() {
   const frame = document.getElementById('viewerFrame');
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
   const targetUrl = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
   frame.src = targetUrl;
+  frame.onload = () => ensureExporterInFrame(frame);
 }
 
 function closeViewer() {
@@ -405,10 +429,14 @@ function triggerViewerExport() {
 
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
   const filename = `${activeProject.name.replace(/\s+/g, '_')}_Week_${curWeek.weekNumber}_${currentTab === 'weekly' ? 'Report' : 'Scope'}.jpg`;
-  frame.contentWindow.postMessage({
-    type: 'TRIGGER_JPG_EXPORT',
-    filename: filename
-  }, '*');
+  ensureExporterInFrame(frame);
+  setTimeout(() => {
+    if (frame.contentWindow && frame.contentWindow.exportCurrentPageToJpg) {
+      frame.contentWindow.exportCurrentPageToJpg(filename);
+    } else {
+      frame.contentWindow.postMessage({ type: 'TRIGGER_JPG_EXPORT', filename: filename }, '*');
+    }
+  }, 200);
 }
 
 function triggerViewerPrint() {
@@ -517,6 +545,7 @@ function loadDetailFrame() {
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
   const targetUrl = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
   frame.src = targetUrl;
+  frame.onload = () => ensureExporterInFrame(frame);
 }
 
 function triggerDetailExport() {
@@ -524,10 +553,15 @@ function triggerDetailExport() {
   if (!frame || !frame.contentWindow || !activeProject) return;
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
   const filename = `${activeProject.name.replace(/\s+/g, '_')}_Week_${curWeek.weekNumber}_${currentTab === 'weekly' ? 'Report' : 'Scope'}.jpg`;
-  frame.contentWindow.postMessage({
-    type: 'TRIGGER_JPG_EXPORT',
-    filename: filename
-  }, '*');
+
+  ensureExporterInFrame(frame);
+  setTimeout(() => {
+    if (frame.contentWindow && frame.contentWindow.exportCurrentPageToJpg) {
+      frame.contentWindow.exportCurrentPageToJpg(filename);
+    } else {
+      frame.contentWindow.postMessage({ type: 'TRIGGER_JPG_EXPORT', filename: filename }, '*');
+    }
+  }, 200);
 }
 
 function openDetailInNewTab() {
@@ -626,17 +660,18 @@ function submitNewWeek(e) {
 }
 
 // Open Document Upload Modal
-function openUploadModal(projectId = 'camera-module', defaultType = 'scope') {
+function openUploadModal(projectId = '', defaultType = 'scope') {
+  const effectiveProjectId = projectId || (PROJECTS[0] ? PROJECTS[0].id : 'camera-module');
   const pSelect = document.getElementById('uploadProject');
   if (pSelect) {
     pSelect.innerHTML = PROJECTS.map(p => `
-      <option value="${p.id}" ${p.id === projectId ? 'selected' : ''}>${p.name}</option>
+      <option value="${p.id}" ${p.id === effectiveProjectId ? 'selected' : ''}>${p.name}</option>
     `).join('');
   }
   const typeSelect = document.getElementById('uploadDocType');
   if (typeSelect) typeSelect.value = defaultType;
 
-  const curProj = PROJECTS.find(p => p.id === projectId) || PROJECTS[0];
+  const curProj = PROJECTS.find(p => p.id === effectiveProjectId) || PROJECTS[0];
   const nextWeekNum = (curProj && curProj.weeks && curProj.weeks[0]) ? (curProj.weeks[0].weekNumber + 1) : 4;
   const weekNumInput = document.getElementById('uploadWeekNumber');
   if (weekNumInput) weekNumInput.value = nextWeekNum;

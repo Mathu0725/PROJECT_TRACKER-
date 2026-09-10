@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1536, initial-scale=1.0">
+<title>ONETIX — Scope & USP Executive Overview</title>
+<style>
+  @page { size: 1536px 1024px; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#e7ebf2; }
+  body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; color:#101a2d; font-weight:600; }
+
+  :root{
+    --navy:#071d5c;
+    --navy2:#0d2b78;
+    --blue:#0b63b6;
+    --cyan:#00cdd8;
+    --ink:#14203a;
+    --muted:#667085;
+    --line:#cfd5df;
+    --soft:#f4f6f9;
+    --green:#55a33b;
+    --amber:#f2a900;
+    --red:#df2f32;
+    --purple:#6935b9;
+  }
+
+  .page{
+    width:1536px;
+    height:1024px;
+    margin:0 auto;
+    overflow:hidden;
+    background:#fff;
+    position:relative;
+  }
+
+  .header{
+    height:86px;
+    background:linear-gradient(100deg,#061951 0%,#09296e 62%,#071d5c 100%);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+    border-bottom:3px solid var(--cyan);
+  }
+
+  .title-wrap{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    min-width:0;
+    width:100%;
+  }
+
+  .brand{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    white-space:nowrap;
+  }
+  .brand span{color:var(--cyan);}
+  .divider{width:1px;height:48px;background:rgba(255,255,255,.35);}
+  .main-title{
+    font-size:38px;
+    line-height:1;
+    font-weight:800;
+    letter-spacing:.3px;
+    white-space:nowrap;
+  }
+  .subtitle{
+    font-size:18px;
+    font-weight:800;
+    color:#65e6ef;
+    margin-top:6px;
+    letter-spacing:.65px;
+  }
+
+  .meta{
+    height:86px;
+    display:grid;
+    grid-template-columns:1.05fr .95fr 1.25fr 1.35fr 1fr 1fr;
+    border-bottom:1px solid #c6ccd7;
+  }
+  .meta-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border-right:1px solid #c6ccd7;
+    padding:8px 12px;
+  }
+  .meta-card:last-child{border-right:0;}
+  .meta-label{
+    font-size:16px;
+    font-weight:800;
+    color:var(--navy);
+    text-transform:uppercase;
+    letter-spacing:.2px;
+    margin-bottom:8px;
+  }
+  .meta-value{
+    font-size:18px;
+    font-weight:800;
+    color:#1b2333;
+    line-height:1.15;
+  }
+  .meta-value.blue{color:#184b96}
+  .meta-value.cyan{color:#008ca0}
+  .meta-value.green{color:#26762e}
+  .meta-value.purple{color:#5b2eaa}
+
+  .definition{
+    margin:10px 10px 0;
+    border:1px solid #bfc6d1;
+    border-radius:7px;
+    overflow:hidden;
+    background:#fff;
+  }
+  .definition-head{
+    height:34px;
+    background:linear-gradient(90deg,#071b55,#0d2b78);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:.15px;
+    text-transform:uppercase;
+  }
+  .definition-head .num{margin-right:9px;color:#65e6ef;}
+  .definition-body{
+    height:56px;
+    display:flex;
+    align-items:center;
+    padding:0 18px;
+    font-size:19px;
+    line-height:1.3;
+    color:#33405a;
+    font-weight:700;
+    background:#fbfcfe;
+  }
+  .definition-body b{color:var(--navy);margin-right:6px;}
+
+  .main-dashboard{
+    margin:10px 10px 0;
+    border:1px solid #bfc6d1;
+    border-radius:7px;
+    overflow:hidden;
+    background:#fff;
+  }
+  .dashboard-head{
+    height:38px;
+    background:linear-gradient(90deg,#071b55,#0d2b78);
+    color:#fff;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    font-size:16px;
+    font-weight:800;
+    letter-spacing:.15px;
+    text-transform:uppercase;
+  }
+  .dashboard-head>div{
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding:0 15px;
+    border-right:1px solid rgba(255,255,255,.28);
+  }
+  .dashboard-head>div:last-child{border-right:0;}
+  .dashboard-head .num{margin-right:9px;color:#65e6ef;}
+
+  .dashboard-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    height:698px;
+  }
+
+  .scope-column,.usp-column{
+    padding:8px 10px;
+    min-width:0;
+    overflow:hidden;
+    height:100%;
+  }
+  .scope-column{
+    border-right:1px solid #cfd5df;
+    display:flex;
+    flex-direction:column;
+  }
+  .usp-column{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .mini-title{
+    font-size:16.5px;
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:6px;
+    text-transform:uppercase;
+    letter-spacing:.15px;
+  }
+
+  .pattern-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:6px;
+  }
+  .pattern{
+    min-height:118px;
+    border:1px solid #d4d9e2;
+    border-top:4px solid var(--blue);
+    border-radius:5px;
+    padding:10px 9px;
+    background:#fcfdff;
+  }
+  .pattern:nth-child(2n){border-top-color:var(--amber)}
+  .pattern:nth-child(3n){border-top-color:var(--red)}
+  .pattern:nth-child(4n){border-top-color:var(--purple)}
+  .pattern .n{
+    font-size:12.5px;
+    font-weight:900;
+    color:#8a95a6;
+    margin-bottom:3px;
+  }
+  .pattern h3{
+    font-size:15px;
+    margin:0 0 5px;
+    color:#17203a;
+    line-height:1.18;
+    text-transform:uppercase;
+  }
+  .pattern p{
+    font-size:12.4px;
+    line-height:1.28;
+    margin:0;
+    color:#5a6474;
+  }
+
+  .scope-section-title{
+    margin-top:5px;
+  }
+
+  .scope-blocks{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    flex:1;
+  }
+  .scope-card{
+    border:1px solid #d2d7df;
+    border-left:5px solid var(--blue);
+    border-radius:5px;
+    padding:7px 9px;
+    background:#fff;
+    min-height:132px;
+  }
+  .scope-card.green{border-left-color:var(--green)}
+  .scope-card.amber{border-left-color:var(--amber)}
+  .scope-card.purple{border-left-color:var(--purple)}
+  .scope-card h3{
+    font-size:14px;
+    margin:0 0 6px;
+    color:var(--navy);
+    text-transform:uppercase;
+  }
+  .scope-card ul{
+    margin:0;
+    padding-left:16px;
+    font-size:11.6px;
+    line-height:1.3;
+    color:#566173;
+  }
+  .scope-card li{margin-bottom:2px;}
+
+  .usp-stack{
+    display:grid;
+    margin-top:0;
+    grid-template-columns:1fr;
+    gap:6px;
+    flex:1;
+  }
+  .usp-card{
+    display:grid;
+    grid-template-columns:52px 1fr;
+    gap:10px;
+    border:1px solid #d2d7df;
+    border-radius:6px;
+    padding:8px 10px;
+    background:#fff;
+    min-height:123px;
+    border-left:6px solid var(--cyan);
+    box-shadow:0 1px 2px rgba(15,42,99,.04);
+  }
+  .usp-card.blue-card{border-left-color:var(--blue)}
+  .usp-card.green-card{border-left-color:var(--green)}
+  .usp-card.purple-card{border-left-color:var(--purple)}
+  .usp-number{
+    font-size:27px;
+    font-weight:900;
+    color:#d3d8e1;
+    line-height:1;
+  }
+  .usp-content h3{
+    font-size:15.5px;
+    margin:0 0 6px;
+    color:#17203a;
+    line-height:1.18;
+  }
+  .usp-content h3 span{
+    color:#008ca0;
+    font-size:10px;
+  }
+  .usp-content p{
+    font-size:12.2px;
+    line-height:1.3;
+    margin:3px 0;
+    color:#566173;
+  }
+  .usp-content p b{color:#17213a;}
+
+  .leadership-panel{
+    margin-top:5px;
+    border-top:1px solid #d2d7df;
+    padding-top:7px;
+  }
+  .outcome-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+  }
+  .outcome-grid>div{
+    background:#f4f6f9;
+    border:1px solid #d3d8e1;
+    border-top:4px solid var(--navy);
+    padding:7px 8px;
+    border-radius:4px;
+    min-height:68px;
+  }
+  .outcome-grid>div:nth-child(2){border-top-color:var(--green)}
+  .outcome-grid>div:nth-child(3){border-top-color:var(--cyan)}
+  .outcome-grid b{
+    display:block;
+    font-size:11.5px;
+    color:var(--navy);
+    margin-bottom:2px;
+  }
+  .outcome-grid span{
+    display:block;
+    font-size:10.5px;
+    line-height:1.32;
+    color:#5b6575;
+  }
+
+  .footer{
+    height:45px;
+    margin-top:7px;
+    background:#071d5c;
+    color:#dbe2f3;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    font-size:11px;
+    letter-spacing:.1px;
+  }
+  .footer b{color:#fff}
+  .footer-left{display:flex;gap:16px;align-items:center}
+  .footer-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:#00d4df;display:inline-block;margin-right:6px;
+  }
+
+  @media print{
+    html,body{background:#fff}
+    .page{margin:0;box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="title-wrap">
+      <div class="brand">ONETIX<span>.</span></div>
+      <div class="divider"></div>
+      <div>
+        <div class="main-title">EXECUTIVE OVERVIEW</div>
+        <div class="subtitle">SCOPE &amp; UNIQUE SELLING POINTS · RETAIL LOSS PREVENTION</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="meta">
+    <div class="meta-card">
+      <div class="meta-label">Product</div>
+      <div class="meta-value">ONETIX</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">View</div>
+      <div class="meta-value blue">Scope + USP</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Primary Use</div>
+      <div class="meta-value">Retail Loss<br>Prevention</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Core Positioning</div>
+      <div class="meta-value cyan">Smart CCTV Monitoring<br>Fully Local</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Detection Patterns</div>
+      <div class="meta-value purple">10</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Differentiators</div>
+      <div class="meta-value green">4 USP</div>
+    </div>
+  </section>
+
+  <section class="definition">
+    <div class="definition-head"><span class="num">00.</span> CORE DEFINITION</div>
+    <div class="definition-body">
+      <b>ONETIX:</b> The singular, intelligent optical system that provides the ultimate truth and oversight in retail transaction environments.
+    </div>
+  </section>
+
+  <section class="main-dashboard">
+    <div class="dashboard-head">
+      <div><span class="num">01.</span> ONETIX SCOPE</div>
+      <div><span class="num">02.</span> UNIQUE SELLING POINTS</div>
+    </div>
+
+    <div class="dashboard-grid">
+
+      <div class="scope-column">
+        <div class="mini-title">Customer Theft Patterns We Detect</div>
+
+        <div class="pattern-grid">
+          <div class="pattern"><div class="n">01</div><h3>High Value Zone</h3><p>Focus on product areas most likely to be targeted.</p></div>
+          <div class="pattern"><div class="n">02</div><h3>Zone Entry / Dwell</h3><p>Detects entry into high-value areas and unusually long dwell time.</p></div>
+          <div class="pattern"><div class="n">03</div><h3>Repeated Handling</h3><p>Tracks repeated pick-up, handling and item return behavior.</p></div>
+          <div class="pattern"><div class="n">04</div><h3>Bag / Open-Bag</h3><p>Flags bags opened or kept near shelves during suspicious activity.</p></div>
+          <div class="pattern"><div class="n">05</div><h3>Concealment</h3><p>Identifies possible concealment in clothing, bags or other places.</p></div>
+          <div class="pattern"><div class="n">06</div><h3>Exit Without Checkout</h3><p>Detects a customer leaving without completing payment.</p></div>
+          <div class="pattern"><div class="n">07</div><h3>Shelf Pickup, No Checkout</h3><p>Item is picked but no checkout follows within the expected time.</p></div>
+          <div class="pattern"><div class="n">08</div><h3>Blind-Spot Movement</h3><p>Monitors movement where camera visibility is limited.</p></div>
+          <div class="pattern"><div class="n">09</div><h3>Group Distraction</h3><p>Highlights coordinated distraction while suspicious activity occurs.</p></div>
+          <div class="pattern"><div class="n">10</div><h3>High-Value Activity</h3><p>Flags unusual activity around high-value product areas.</p></div>
+        </div>
+
+        <div class="mini-title scope-section-title">What ONETIX Does</div>
+        <div class="scope-blocks">
+          <div class="scope-card blue">
+            <h3>Real-Time Monitoring</h3>
+            <ul>
+              <li>Monitor in-store CCTV video continuously</li>
+              <li>Track suspicious movement and behavior</li>
+              <li>Watch configured high-risk zones</li>
+              <li>Support smarter prevention actions</li>
+            </ul>
+          </div>
+
+          <div class="scope-card green">
+            <h3>Alerts &amp; Evidence</h3>
+            <ul>
+              <li>Generate real-time theft alerts</li>
+              <li>Attach video clips and event context</li>
+              <li>Support human review and action</li>
+              <li>Maintain traceable evidence workflows</li>
+            </ul>
+          </div>
+
+          <div class="scope-card amber">
+            <h3>Fully Local Processing</h3>
+            <ul>
+              <li>Local connector captures camera streams</li>
+              <li>AI processing and storage stay in-store</li>
+              <li>Monitoring can continue without internet</li>
+              <li>Data stays inside the store environment</li>
+            </ul>
+          </div>
+
+          <div class="scope-card purple">
+            <h3>Store Operations</h3>
+            <ul>
+              <li>Configure RTSP / ONVIF / video sources</li>
+              <li>Create and manage detection zones</li>
+              <li>Review logs, alerts and operational reports</li>
+              <li>Manage the connector from the local dashboard</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="usp-column">
+        <div class="usp-stack">
+          <div class="usp-card">
+            <div class="usp-number">01</div>
+            <div class="usp-content">
+              <h3>FULLY LOCAL OPERATION <span>(USP)</span></h3>
+              <p><b>On-site intelligence:</b> AI processing, video storage and dashboard run inside the store.</p>
+              <p><b>Resilient monitoring:</b> in-store monitoring continues without internet, while video data stays on-site.</p>
+            </div>
+          </div>
+
+          <div class="usp-card blue-card">
+            <div class="usp-number">02</div>
+            <div class="usp-content">
+              <h3>REDUCED RECURRING CLOUD COSTS <span>(USP)</span></h3>
+              <p><b>Lower recurring overhead:</b> local processing and storage reduce dependency on cloud hosting for core functions.</p>
+              <p><b>Predictable infrastructure:</b> use store-side hardware instead of continuously scaling video workloads in the cloud.</p>
+            </div>
+          </div>
+
+          <div class="usp-card green-card">
+            <div class="usp-number">03</div>
+            <div class="usp-content">
+              <h3>WORKS WITH EXISTING CCTV <span>(USP)</span></h3>
+              <p><b>Reuse compatible cameras:</b> add AI monitoring to supported RTSP / ONVIF CCTV without replacing the installed camera system.</p>
+              <p><b>Faster adoption:</b> connect existing store infrastructure to ONETIX and add zones, tracking and alerts.</p>
+            </div>
+          </div>
+
+          <div class="usp-card purple-card">
+            <div class="usp-number">04</div>
+            <div class="usp-content">
+              <h3>CUSTOMIZABLE, EVIDENCE-BASED ALERTS <span>(USP)</span></h3>
+              <p><b>Store-specific controls:</b> configure zones and alert thresholds around real retail risks.</p>
+              <p><b>Explainable review:</b> incidents include a video clip, alert reason, confidence / risk context and a human verification workflow.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="leadership-panel">
+          <div class="mini-title">Business Outcome</div>
+          <div class="outcome-grid">
+            <div>
+              <b>REDUCE LOSS</b>
+              <span>Detect suspicious behavior earlier and respond with evidence.</span>
+            </div>
+            <div>
+              <b>PROTECT REVENUE</b>
+              <span>Reduce shrinkage while improving day-to-day store oversight.</span>
+            </div>
+            <div>
+              <b>IMPROVE PROFIT</b>
+              <span>Combine local processing, existing CCTV and focused alerts for better operational efficiency.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <span><span class="footer-dot"></span>ONETIX — executive scope &amp; USP visibility card</span>
+      <span>Smart CCTV monitoring · Fully local</span>
+    </div>
+    <div><b>Detect</b> · Prevent · Protect</div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OneVerz EPOS – Release 1 Scope & USP</title>
+
+<style>
+:root{
+  --orange:#FF6A00;
+  --navy:#0B2B63;
+  --navy2:#174687;
+  --black:#000000;
+  --purple:#792D8F;
+  --red:#D8392F;
+  --green:#23853E;
+  --bg:#EEF3F8;
+  --line:#D8E1EC;
+  --text:#172033;
+  --muted:#5B6678;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  padding:24px;
+  background:var(--bg);
+  font-family:"Segoe UI",Arial,sans-serif;
+  color:var(--text);
+}
+
+.page{
+  max-width:1600px;
+  margin:auto;
+  background:#fff;
+  border:2px solid #BCC8D8;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 20px 55px rgba(15,40,80,.15);
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  display:grid;
+  grid-template-columns:250px 1fr 170px;
+  align-items:center;
+  gap:20px;
+
+  padding:20px 28px;
+
+  border-bottom:1px solid var(--line);
+
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(255,106,0,.12),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #F8FBFF 70%,
+      #FFF5ED
+    );
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:var(--orange);
+  color:white;
+
+  font-size:32px;
+
+  box-shadow:0 8px 18px rgba(255,106,0,.25);
+}
+
+.brand-name{
+  font-size:29px;
+  font-weight:900;
+  color:var(--navy);
+}
+
+.brand-sub{
+  margin-top:3px;
+
+  font-size:12px;
+  font-weight:700;
+
+  color:#657186;
+}
+
+.title{
+  text-align:center;
+}
+
+.title h1{
+  margin:0;
+
+  font-size:43px;
+  line-height:1;
+
+  color:var(--navy);
+
+  letter-spacing:-1.4px;
+}
+
+.title p{
+  margin:9px 0 0;
+
+  font-size:17px;
+  font-weight:700;
+
+  color:#293852;
+}
+
+.release{
+  text-align:center;
+
+  padding:15px;
+
+  border-radius:14px;
+
+  background:linear-gradient(
+    135deg,
+    #071A41,
+    #10366F
+  );
+
+  color:white;
+
+  font-size:16px;
+  font-weight:900;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1.55fr)
+    minmax(430px,.75fr);
+
+  gap:18px;
+
+  padding:20px;
+}
+
+.panel{
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+
+  background:white;
+}
+
+.panel-title{
+  min-height:54px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:14px 18px;
+
+  color:white;
+
+  font-size:21px;
+  font-weight:900;
+}
+
+.panel-title small{
+  font-size:11px;
+  font-weight:800;
+
+  letter-spacing:.8px;
+
+  opacity:.82;
+}
+
+.scope .panel-title{
+  background:linear-gradient(
+    90deg,
+    var(--navy),
+    var(--navy2)
+  );
+}
+
+.usp .panel-title{
+  background:linear-gradient(
+    90deg,
+    var(--orange),
+    #E68A18
+  );
+}
+
+/* ================= SCOPE ================= */
+
+.scope-body{
+  padding:13px;
+}
+
+.scope-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:9px;
+}
+
+.scope-card{
+  min-height:96px;
+
+  padding:11px;
+
+  border:1px solid #DCE5EF;
+  border-radius:13px;
+
+  background:linear-gradient(
+    180deg,
+    #FFFFFF,
+    #FBFCFE
+  );
+}
+
+.scope-row{
+  display:grid;
+
+  grid-template-columns:31px 1fr;
+
+  gap:9px;
+}
+
+.number{
+  width:31px;
+  height:31px;
+
+  border-radius:9px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#EEF4FF;
+
+  color:var(--navy);
+
+  font-size:12px;
+  font-weight:900;
+}
+
+.scope-card:nth-child(3n+2) .number{
+  background:#FFF1E6;
+  color:var(--orange);
+}
+
+.scope-card:nth-child(3n+3) .number{
+  background:#F5EBF9;
+  color:var(--purple);
+}
+
+.scope-card h3{
+  margin:1px 0 4px;
+
+  color:var(--navy);
+
+  font-size:14.3px;
+}
+
+.scope-card p{
+  margin:0;
+
+  color:#465269;
+
+  font-size:11.5px;
+  line-height:1.36;
+}
+
+.scope-card strong{
+  color:#1D2B42;
+}
+
+/* INVENTORY */
+
+.inventory{
+  grid-column:1 / -1;
+
+  border-color:#DFCCE5;
+
+  background:linear-gradient(
+    180deg,
+    #FCF8FD,
+    #FFFFFF
+  );
+}
+
+.inventory h3{
+  color:var(--purple);
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:6px;
+
+  margin-top:8px;
+}
+
+.tag{
+  padding:5px 8px;
+
+  border:1px solid #E5D3EB;
+  border-radius:999px;
+
+  background:#F5ECF8;
+
+  color:#6D287E;
+
+  font-size:10.2px;
+  font-weight:800;
+}
+
+/* SUMMARY */
+
+.summary{
+  display:grid;
+
+  grid-template-columns:1.1fr 1fr;
+
+  gap:10px;
+
+  margin-top:10px;
+}
+
+.summary-box{
+  padding:11px 12px;
+
+  border:1px dashed #C8D3E1;
+  border-radius:13px;
+
+  background:#F8FAFC;
+}
+
+.summary-box h4{
+  margin:0 0 5px;
+
+  color:var(--navy);
+
+  font-size:12.8px;
+}
+
+.summary-box p{
+  margin:0;
+
+  color:#4C5970;
+
+  font-size:10.8px;
+  line-height:1.42;
+}
+
+.exclusion{
+  border-left:4px solid var(--red);
+}
+
+.exclusion h4{
+  color:var(--red);
+}
+
+/* ================= USP ================= */
+
+.usp-body{
+  min-height:800px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:12px;
+
+  padding:14px;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255,106,0,.11),
+      transparent 30%
+    ),
+    linear-gradient(
+      #FFFFFF,
+      #FFFAF6
+    );
+}
+
+.usp-card{
+  min-height:112px;
+
+  display:grid;
+
+  grid-template-columns:62px 1fr;
+
+  align-items:center;
+
+  gap:13px;
+
+  padding:15px;
+
+  border:1px solid #E9DFD8;
+  border-radius:16px;
+
+  background:white;
+
+  box-shadow:0 5px 13px rgba(16,43,91,.06);
+}
+
+.usp-icon{
+  width:58px;
+  height:58px;
+
+  border-radius:17px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#FFF2E8;
+
+  font-size:30px;
+}
+
+.usp-card:nth-child(2) .usp-icon{
+  background:#EDF4FF;
+}
+
+.usp-card:nth-child(3) .usp-icon{
+  background:#F5EEFB;
+}
+
+.usp-card:nth-child(4) .usp-icon{
+  background:#FFF1E8;
+}
+
+.usp-card:nth-child(5) .usp-icon{
+  background:#FBEFFA;
+}
+
+.usp-card h3{
+  margin:0 0 4px;
+
+  font-size:17px;
+
+  color:#172238;
+}
+
+.usp-card p{
+  margin:0;
+
+  color:var(--muted);
+
+  font-size:12px;
+  line-height:1.42;
+}
+
+/* VALUE PROPOSITION */
+
+.value{
+  margin-top:auto;
+
+  padding:17px;
+
+  border-radius:17px;
+
+  color:white;
+
+  background:linear-gradient(
+    135deg,
+    #071A41,
+    var(--navy)
+  );
+}
+
+.value small{
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  opacity:.72;
+}
+
+.value h3{
+  margin:6px 0 8px;
+
+  font-size:22px;
+}
+
+.value p{
+  margin:0;
+
+  color:#DCE6F4;
+
+  font-size:11.8px;
+  line-height:1.45;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+  margin:0 20px 20px;
+
+  padding:14px 16px;
+
+  border-radius:16px;
+
+  display:grid;
+
+  grid-template-columns:1fr 520px;
+
+  align-items:center;
+
+  gap:18px;
+
+  background:var(--black);
+
+  color:white;
+}
+
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:7px;
+}
+
+.pill{
+  padding:6px 9px;
+
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+
+  background:rgba(255,255,255,.07);
+
+  font-size:10.5px;
+  font-weight:800;
+}
+
+.footer-text{
+  text-align:right;
+
+  color:#D7DFEB;
+
+  font-size:11px;
+  line-height:1.4;
+}
+
+.footer-text strong{
+  color:white;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1100px){
+
+  body{
+    padding:0;
+  }
+
+  .page{
+    border:0;
+    border-radius:0;
+  }
+
+  .header{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .brand{
+    justify-content:center;
+  }
+
+  .release{
+    justify-self:center;
+  }
+
+  .main{
+    grid-template-columns:1fr;
+  }
+
+  .usp-body{
+    min-height:auto;
+  }
+
+  .footer{
+    grid-template-columns:1fr;
+  }
+
+  .footer-text{
+    text-align:left;
+  }
+}
+
+@media(max-width:720px){
+
+  .scope-grid{
+    grid-template-columns:1fr;
+  }
+
+  .inventory{
+    grid-column:auto;
+  }
+
+  .summary{
+    grid-template-columns:1fr;
+  }
+
+  .title h1{
+    font-size:30px;
+  }
+}
+
+/* PRINT */
+
+@media print{
+
+  @page{
+    size:A3 landscape;
+    margin:8mm;
+  }
+
+  body{
+    padding:0;
+    background:white;
+  }
+
+  .page{
+    max-width:none;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+  <div class="brand">
+
+    <div class="logo">🛒</div>
+
+    <div>
+      <div class="brand-name">OneVerz</div>
+      <div class="brand-sub">
+        EPOS Platform
+      </div>
+    </div>
+
+  </div>
+
+  <div class="title">
+
+    <h1>
+      ONEVERZ EPOS – RELEASE 1
+    </h1>
+
+    <p>
+      Merchandise Retail • Multi-Tenant • POS •
+      Click & Collect • Core Inventory
+    </p>
+
+  </div>
+
+  <div class="release">
+    RELEASE 1
+    <br>
+    SCOPE + USP
+  </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+<!-- ========================================================= -->
+<!-- LEFT SIDE - RELEASE 1 SCOPE -->
+<!-- ========================================================= -->
+
+<section class="panel scope">
+
+  <div class="panel-title">
+
+    <span>
+      RELEASE 1 SCOPE
+    </span>
+
+    <small>
+      COMMITTED BUSINESS SCOPE
+    </small>
+
+  </div>
+
+
+  <div class="scope-body">
+
+    <div class="scope-grid">
+
+
+      <!-- 01 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            01
+          </div>
+
+          <div>
+
+            <h3>
+              Release 1 Target
+            </h3>
+
+            <p>
+              <strong>
+                Merchandise Retail Store
+              </strong>
+              template with preconfigured business
+              setup, enabled modules and retail
+              POS / outlet / cashier workflows.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 02 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            02
+          </div>
+
+          <div>
+
+            <h3>
+              Subscription – Trial & Demo
+            </h3>
+
+            <p>
+              Subscription Plan Assignment,
+              Tenant Activation / Deactivation
+              and Feature / Module Entitlement
+              for Trial Business and Demo Business.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 03 INVENTORY -->
+
+      <div class="scope-card inventory">
+
+        <div class="scope-row">
+
+          <div class="number">
+            03
+          </div>
+
+          <div>
+
+            <h3>
+              Inventory – R1 Scope (5/14)
+            </h3>
+
+            <p>
+              Inventory Core Foundation:
+              Stock Balance, Inventory Ledger,
+              Inventory Transaction and
+              Outlet-Product Stock Model.
+            </p>
+
+
+            <div class="tags">
+
+              <span class="tag">
+                Opening Stock
+              </span>
+
+              <span class="tag">
+                Stock Receiving
+              </span>
+
+              <span class="tag">
+                Stock Adjustment
+              </span>
+
+              <span class="tag">
+                Channel Allocation
+              </span>
+
+              <span class="tag">
+                Current Stock / Product Detail / Dashboard
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 04 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            04
+          </div>
+
+          <div>
+
+            <h3>
+              Platform Admin
+            </h3>
+
+            <p>
+              Platform Dashboard, Tenant Management,
+              Merchandise Store Template,
+              Trial / Demo Management,
+              Subscription Management,
+              Feature / Entitlement Management,
+              Users, Roles, Permissions,
+              Audit & Security.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 05 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            05
+          </div>
+
+          <div>
+
+            <h3>
+              Tenant Admin
+            </h3>
+
+            <p>
+              Dashboard, Outlet Management,
+              Till Management, Users,
+              Roles & Permissions,
+              Product Setup, Category & Brand,
+              Tax, Inventory, Online Store,
+              Online Orders, Click & Collect
+              and Reports.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 06 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            06
+          </div>
+
+          <div>
+
+            <h3>
+              Product Setup
+            </h3>
+
+            <p>
+              Simple / Variant Product,
+              Category & Subcategory,
+              Brand, Units & Pack,
+              Variant Attributes / Values /
+              Combinations, SKU / Barcode,
+              Pricing, Tax, Images,
+              Description and Status.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 07 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            07
+          </div>
+
+          <div>
+
+            <h3>
+              Cashier POS – R1
+            </h3>
+
+            <p>
+              Cashier Login, Product Search /
+              Browse, Barcode Scan,
+              Add to Cart, Quantity Update,
+              Price / Discount / Tax,
+              Checkout,
+              <strong>Cash Payment</strong>,
+              Change, Sale Completion
+              and Receipt.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 08 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            08
+          </div>
+
+          <div>
+
+            <h3>
+              Payment Method – R1
+            </h3>
+
+            <p>
+              <strong>
+                Cash Payment Only.
+              </strong>
+
+              Cash Tendered Amount,
+              Due Amount, Change Calculation,
+              Complete Payment,
+              Sales Transaction
+              and Receipt.
+
+              Card / LankaQR / Split Payment
+              are outside R1.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 09 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            09
+          </div>
+
+          <div>
+
+            <h3>
+              E-Commerce – Click & Collect
+            </h3>
+
+            <p>
+              Browse Products →
+              Add to Cart →
+              Click & Collect →
+              Select Outlet for Collection →
+              Place Order.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 10 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            10
+          </div>
+
+          <div>
+
+            <h3>
+              Online Order Management
+            </h3>
+
+            <p>
+              View Online Orders,
+              Order Details,
+              New Order Notification,
+              Accept / Process Order,
+              Prepare Order,
+              Ready for Collection,
+              Mark Collected / Completed.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 11 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            11
+          </div>
+
+          <div>
+
+            <h3>
+              Online Order Fulfilment
+            </h3>
+
+            <p>
+              Order Received →
+              Confirm Order →
+              Allocate / Validate Stock →
+              Prepare Items →
+              Ready for Collection →
+              Customer Collects →
+              Order Completed.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 12 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            12
+          </div>
+
+          <div>
+
+            <h3>
+              Reports – R1
+            </h3>
+
+            <p>
+              Sales Reports,
+              Product Reports,
+              Inventory Reports
+              and Order Reports
+              for operational visibility
+              and business insights.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 13 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            13
+          </div>
+
+          <div>
+
+            <h3>
+              Email Receipt
+            </h3>
+
+            <p>
+              Customer provides email
+              at checkout and receives
+              a Digital Sales Receipt
+              by email after sale completion.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 14 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            14
+          </div>
+
+          <div>
+
+            <h3>
+              Security & Access Control
+            </h3>
+
+            <p>
+              Authentication,
+              Tenant Isolation,
+              Role-Based Access Control,
+              Feature Permissions,
+              Outlet Access,
+              API Authorization,
+              Audit Logging
+              and Tenant Data Isolation.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 15 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            15
+          </div>
+
+          <div>
+
+            <h3>
+              Offline Store Operation – R1
+            </h3>
+
+            <p>
+              Offline POS Access,
+              Offline Cash Sales,
+              Local Data & Transactions,
+              Offline Outbox,
+              Auto Sync When Online,
+              Duplicate-Safe Sync
+              and Local Receipt Generation.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- 16 -->
+
+      <div class="scope-card">
+
+        <div class="scope-row">
+
+          <div class="number">
+            16
+          </div>
+
+          <div>
+
+            <h3>
+              Users & Roles – R1
+            </h3>
+
+            <p>
+              Users Management,
+              Roles Management,
+              Permissions Management,
+              Assign Outlet Access
+              and Permission-Based
+              UI & API.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="summary">
+
+      <div class="summary-box">
+
+        <h4>
+          Release 1 – End-to-End Business Journey
+        </h4>
+
+        <p>
+          Platform Admin creates tenant →
+          assigns Trial / Demo subscription →
+          activates tenant →
+          Tenant Admin configures Outlet,
+          Till, Roles, Users, Products
+          and Opening Stock →
+          customer purchases through
+          Physical POS or Online Store →
+          Click & Collect fulfilment →
+          Inventory updated →
+          Reports & Business Insights.
+        </p>
+
+      </div>
+
+
+      <div class="summary-box exclusion">
+
+        <h4>
+          Exclusions from Release 1
+        </h4>
+
+        <p>
+          Online Subscription Payment,
+          Automatic Subscription Renewal,
+          Card Payment,
+          LankaQR,
+          Split Payment,
+          Full Delivery / Shipping E-Commerce,
+          Full 14/14 Inventory Suite,
+          Stock Transfer,
+          Stock Count,
+          Advanced Purchase / Supplier Management,
+          Advanced Billing
+          and Advanced BI / Forecasting.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- RIGHT SIDE - UNIQUE SELLING POINTS -->
+<!-- ========================================================= -->
+
+<aside class="panel usp">
+
+  <div class="panel-title">
+
+    <span>
+      UNIQUE SELLING POINTS
+    </span>
+
+    <small>
+      WHY ONEVERZ STANDS OUT
+    </small>
+
+  </div>
+
+
+  <div class="usp-body">
+
+
+    <!-- USP 1 -->
+
+    <div class="usp-card">
+
+      <div class="usp-icon">
+        🏷️
+      </div>
+
+      <div>
+
+        <h3>
+          Low Hardware Cost
+        </h3>
+
+        <p>
+          Designed for practical retail
+          deployment without forcing merchants
+          into expensive proprietary hardware.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- USP 2 -->
+
+    <div class="usp-card">
+
+      <div class="usp-icon">
+        📶
+      </div>
+
+      <div>
+
+        <h3>
+          Offline Operation
+        </h3>
+
+        <p>
+          Core POS cashier operations can
+          continue during internet interruption
+          and synchronize when connectivity
+          returns.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- USP 3 -->
+
+    <div class="usp-card">
+
+      <div class="usp-icon">
+        🛒
+      </div>
+
+      <div>
+
+        <h3>
+          Online Ordering & Click & Collect
+        </h3>
+
+        <p>
+          Connects physical retail and
+          online ordering so customers can
+          order online and collect from
+          a selected store outlet.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- USP 4 -->
+
+    <div class="usp-card">
+
+      <div class="usp-icon">
+        🖥️
+      </div>
+
+      <div>
+
+        <h3>
+          Multi-Device Support
+        </h3>
+
+        <p>
+          Flexible operation across
+          POS devices, store devices,
+          admin workstations and
+          customer online channels.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- USP 5 -->
+
+    <div class="usp-card">
+
+      <div class="usp-icon">
+        🧩
+      </div>
+
+      <div>
+
+        <h3>
+          Future-Ready for Poddle
+        </h3>
+
+        <p>
+          Modular platform foundation ready
+          for future payments, advanced
+          inventory, fulfilment workflows
+          and broader commerce capabilities.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- CORE VALUE -->
+
+    <div class="value">
+
+      <small>
+        ONEVERZ CORE VALUE PROPOSITION
+      </small>
+
+      <h3>
+        One Platform for
+        Store + Online Commerce
+      </h3>
+
+      <p>
+        Configure the business, manage
+        outlets and tills, create products,
+        maintain stock, sell through the
+        physical POS, accept online
+        Click & Collect orders,
+        continue core operations offline,
+        issue digital receipts
+        and review reports —
+        all within the OneVerz ecosystem.
+      </p>
+
+    </div>
+
+  </div>
+
+</aside>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+  <div class="pills">
+
+    <span class="pill">
+      Platform Management
+    </span>
+
+    <span class="pill">
+      Merchandise Product Setup
+    </span>
+
+    <span class="pill">
+      Core Inventory
+    </span>
+
+    <span class="pill">
+      Physical POS
+    </span>
+
+    <span class="pill">
+      Offline Operation
+    </span>
+
+    <span class="pill">
+      Online Store
+    </span>
+
+    <span class="pill">
+      Click & Collect
+    </span>
+
+    <span class="pill">
+      Email Receipt
+    </span>
+
+    <span class="pill">
+      Reporting
+    </span>
+
+    <span class="pill">
+      RBAC + Tenant Security
+    </span>
+
+  </div>
+
+
+  <div class="footer-text">
+
+    <strong>
+      Release 1 Definition:
+    </strong>
+
+    Merchandise-retail-focused multi-tenant
+    EPOS + Click & Collect platform with
+    core inventory, Cash POS,
+    offline capability,
+    digital receipt
+    and operational reporting.
+
+  </div>
+
+</footer>
+
+</div>
+
+</body>
+</html>

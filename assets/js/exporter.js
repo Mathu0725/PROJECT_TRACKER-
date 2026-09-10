@@ -92,6 +92,9 @@
     const card = document.getElementById('card');
     if (card) return { element: card, type: 'fixed-card' };
 
+    const page = document.querySelector('.page');
+    if (page) return { element: page, type: 'fixed-card' };
+
     const reportCard = document.querySelector('.report-card');
     if (reportCard) return { element: reportCard, type: 'report-card' };
 
@@ -153,6 +156,14 @@
             clonedCard.style.width = '1536px';
             clonedCard.style.height = '1024px';
             clonedCard.style.boxShadow = 'none';
+          }
+
+          const clonedPage = clonedDoc.querySelector('.page');
+          if (clonedPage) {
+            clonedPage.style.position = 'static';
+            clonedPage.style.transform = 'none';
+            clonedPage.style.margin = '0 auto';
+            clonedPage.style.boxShadow = 'none';
           }
 
           const clonedWatercraft = clonedDoc.querySelector('.wrapper');

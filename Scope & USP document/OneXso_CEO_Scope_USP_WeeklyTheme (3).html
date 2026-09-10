@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1536, initial-scale=1.0">
+<title>OneXso — CEO Executive Overview</title>
+<style>
+  @page { size: 1536px 1024px; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#e7ebf2; }
+  body { font-family: Arial, Helvetica, sans-serif; color:#101a2d; }
+  .page {
+    width:1536px; height:1024px; margin:0 auto; overflow:hidden;
+    background:#fff; position:relative;
+  }
+
+  :root{
+    --navy:#071d5c;
+    --navy2:#0d2b78;
+    --blue:#0b63b6;
+    --ink:#14203a;
+    --muted:#667085;
+    --line:#cfd5df;
+    --soft:#f4f6f9;
+    --green:#55a33b;
+    --green-dark:#28712c;
+    --amber:#f2a900;
+    --amber-dark:#9a6200;
+    --red:#df2f32;
+    --purple:#6935b9;
+  }
+
+  .header{
+    height:92px; background:linear-gradient(100deg,#061951 0%,#09296e 62%,#071d5c 100%);
+    color:#fff; display:flex; align-items:center; justify-content:space-between;
+    padding:0 22px; border-bottom:3px solid #f0a900;
+  }
+  .title-wrap{display:flex; align-items:center; gap:20px; min-width:0;}
+  .brand{font-size:22px; font-weight:800; letter-spacing:.3px; white-space:nowrap;}
+  .divider{width:1px; height:48px; background:rgba(255,255,255,.35);}
+  .main-title{font-size:34px; line-height:1; font-weight:800; letter-spacing:.3px; white-space:nowrap;}
+  .subtitle{font-size:14px; font-weight:700; color:#f7c329; margin-top:6px; letter-spacing:.7px;}
+  .status{
+    min-width:215px; height:58px; border-radius:7px; background:var(--amber);
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    font-size:25px; font-weight:800; color:#fff; box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);
+  }
+  .status-dot{width:28px;height:28px;border-radius:50%;background:#fff;opacity:.85;}
+
+  .meta{height:92px; display:grid; grid-template-columns:1.05fr .9fr 1.25fr 1.45fr 1fr 1fr; border-bottom:1px solid #c6ccd7;}
+  .meta-card{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border-right:1px solid #c6ccd7; padding:8px 12px;}
+  .meta-card:last-child{border-right:0;}
+  .meta-label{font-size:11px; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:.2px; margin-bottom:8px;}
+  .meta-value{font-size:16px; font-weight:800; color:#1b2333; line-height:1.15;}
+  .meta-value.blue{color:#184b96}.meta-value.amber{color:#b27100}.meta-value.green{color:#26762e}.meta-value.purple{color:#5b2eaa}
+
+  .section{margin:10px 10px 0; border:1px solid #bfc6d1; border-radius:7px; overflow:hidden; background:#fff;}
+  .section-head{height:34px; background:linear-gradient(90deg,#071b55,#0d2b78); color:#fff; display:flex; align-items:center; padding:0 14px; font-size:14px; font-weight:800; letter-spacing:.15px; text-transform:uppercase;}
+  .section-head .num{margin-right:9px; color:#f6c52c;}
+
+  .top-grid{height:225px; display:grid; grid-template-columns:1.04fr 1fr 1fr; gap:0;}
+  .cell{padding:13px 15px; border-right:1px solid #d2d7df; min-width:0;}
+  .cell:last-child{border-right:0;}
+  .mini-title{font-size:12px; font-weight:800; color:var(--navy); margin-bottom:9px; text-transform:uppercase;}
+  .scope-flow{display:grid; grid-template-columns:1fr 28px 1fr 28px 1fr; gap:6px; align-items:center; height:168px;}
+  .stage{height:155px; border:1px solid #cfd5df; border-radius:6px; padding:10px; background:#fbfcfe;}
+  .stage.delivered{border-top:5px solid var(--green)}
+  .stage.current{border-top:5px solid var(--blue)}
+  .stage.future{border-top:5px solid var(--purple)}
+  .stage h3{font-size:13px; margin:0 0 8px; color:var(--navy); line-height:1.15;}
+  .stage ul{padding:0 0 0 15px; margin:0; font-size:11px; line-height:1.55; color:#404b5e;}
+  .arrow{font-size:22px; font-weight:800; text-align:center; color:var(--navy);}
+
+  .usp-list{display:grid; grid-template-columns:1fr 1fr; gap:7px;}
+  .usp{border:1px solid #d4d9e2; border-left:5px solid var(--amber); padding:8px 9px; min-height:70px; background:#fcfdff;}
+  .usp h3{font-size:12px; margin:0 0 4px; color:#17203a;}
+  .usp p{font-size:10.5px; line-height:1.35; margin:0; color:#5a6474;}
+
+  .thesis{height:168px; background:linear-gradient(135deg,#081e5e,#123783); color:#fff; border-radius:6px; padding:14px 16px; position:relative; overflow:hidden;}
+  .thesis:after{content:'360°'; position:absolute; right:-5px; bottom:-30px; font-size:130px; font-weight:900; color:rgba(255,255,255,.055);}
+  .thesis-kicker{font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#f5c43a; font-weight:800;}
+  .thesis h2{font-size:23px; line-height:1.12; margin:7px 0 8px; max-width:330px;}
+  .thesis p{font-size:11px; line-height:1.45; color:#dbe3f5; margin:0; max-width:345px;}
+  .stats{display:flex; gap:22px; margin-top:10px; position:relative; z-index:1;}
+  .stat b{font-size:21px; display:block}.stat span{font-size:9px; color:#aebbd7;}
+
+  .bottom-grid{height:452px; display:grid; grid-template-columns:1.08fr .96fr .96fr; gap:0;}
+  .bottom-cell{padding:12px 15px; border-right:1px solid #d2d7df; min-width:0;}
+  .bottom-cell:last-child{border-right:0;}
+
+  .area{border:1px solid #d4d9e2; border-radius:5px; margin-bottom:9px; overflow:hidden;}
+  .area-head{height:30px; display:flex; align-items:center; padding:0 10px; font-size:12px; font-weight:800; color:#fff; background:#17377f;}
+  .area-head.amber{background:#efaa17}.area-head.green{background:#3e8835}.area-head.red{background:#c83235}.area-head.purple{background:#6738a8}
+  .area-body{padding:8px 10px;}
+  .bullet{display:grid; grid-template-columns:18px 1fr; gap:7px; margin:6px 0; font-size:10.8px; line-height:1.38; color:#4d586b;}
+  .bullet i{font-style:normal; font-weight:900; color:var(--navy);}
+  .bullet strong{color:#17213a;}
+
+  .leadership-table{width:100%; border-collapse:collapse; font-size:10.5px;}
+  .leadership-table th{background:#eef2f7; color:#14265a; text-align:left; padding:6px; font-size:10px;}
+  .leadership-table td{border-top:1px solid #d9dee6; padding:7px 6px; vertical-align:top; color:#4b5668;}
+  .leadership-table td:first-child{font-weight:800;color:#1c2740;width:92px;}
+  .tag{display:inline-block; padding:3px 6px; border-radius:10px; font-size:9px; font-weight:800; background:#edf4ff; color:#1454a0; margin-top:3px;}
+  .tag.amber{background:#fff4d7;color:#9a6200}.tag.green{background:#eaf6e8;color:#2b752e}.tag.red{background:#fdeaea;color:#b52327}
+
+  .value-card{background:#f7f9fc; border:1px solid #d2d8e1; border-radius:5px; padding:9px 10px; margin-bottom:8px;}
+  .value-card h3{font-size:12px; margin:0 0 4px; color:var(--navy);}
+  .value-card p{font-size:10.5px; line-height:1.38; margin:0; color:#566173;}
+  .priority{display:flex; justify-content:space-between; align-items:center; padding:8px 10px; border:1px solid #d7dce4; border-left:5px solid var(--red); margin-bottom:7px; background:#fff;}
+  .priority span{font-size:10.5px; font-weight:700; color:#3e4758}.priority b{font-size:9px; color:#b52227; text-transform:uppercase;}
+
+  .footer{height:50px; margin-top:10px; background:#071d5c; color:#dbe2f3; display:flex; align-items:center; justify-content:space-between; padding:0 18px; font-size:10px; letter-spacing:.1px;}
+  .footer b{color:#fff}.footer-left{display:flex;gap:16px;align-items:center}.footer-dot{width:6px;height:6px;border-radius:50%;background:#f5bd25;display:inline-block;margin-right:6px;}
+
+  /* ---------- TWO-COLUMN VISIBILITY CARD ---------- */
+  .main-dashboard{margin:10px 10px 0;border:1px solid #bfc6d1;border-radius:7px;overflow:hidden;background:#fff;}
+  .dashboard-head{height:38px;background:linear-gradient(90deg,#071b55,#0d2b78);color:#fff;display:grid;grid-template-columns:1fr 1fr;align-items:center;font-size:14px;font-weight:800;letter-spacing:.15px;text-transform:uppercase;}
+  .dashboard-head>div{height:100%;display:flex;align-items:center;padding:0 15px;border-right:1px solid rgba(255,255,255,.28);}
+  .dashboard-head>div:last-child{border-right:0;}
+  .dashboard-head .num{margin-right:9px;color:#f6c52c;}
+  .dashboard-grid{display:grid;grid-template-columns:1fr 1fr;min-height:790px;}
+  .scope-column,.usp-column{padding:14px 16px;min-width:0;}
+  .scope-column{border-right:1px solid #cfd5df;}
+  .mini-title{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:9px;text-transform:uppercase;}
+  .scope-flow{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;gap:5px;align-items:center;height:166px;}
+  .stage{height:148px;border:1px solid #cfd5df;border-radius:6px;padding:10px;background:#fbfcfe;}
+  .stage.delivered{border-top:5px solid var(--green)}.stage.current{border-top:5px solid var(--blue)}.stage.future{border-top:5px solid var(--purple)}
+  .stage h3{font-size:12px;margin:0 0 8px;color:var(--navy);line-height:1.15;}
+  .stage ul{padding:0 0 0 14px;margin:0;font-size:10.5px;line-height:1.5;color:#404b5e;}
+  .arrow{font-size:21px;font-weight:800;text-align:center;color:var(--navy);}
+  .scope-title{margin-top:5px;}
+  .scope-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .scope-item{display:grid;grid-template-columns:34px 1fr;gap:8px;border:1px solid #d4d9e2;border-left:5px solid var(--blue);border-radius:5px;padding:9px 9px;background:#fcfdff;min-height:118px;}
+  .scope-item.green{border-left-color:var(--green)}.scope-item.amber{border-left-color:var(--amber)}.scope-item.purple{border-left-color:var(--purple)}
+  .scope-no{font-size:18px;font-weight:900;color:#d4d9e2;line-height:1;}
+  .scope-item h3{font-size:12px;margin:0 0 4px;color:#17203a;text-transform:uppercase;}
+  .scope-item p{font-size:10.3px;line-height:1.35;margin:0;color:#5a6474;}
+  .scope-thesis{margin-top:10px;background:linear-gradient(135deg,#081e5e,#123783);color:#fff;border-radius:6px;padding:13px 15px;position:relative;overflow:hidden;}
+  .scope-thesis:after{content:'ONEXSO';position:absolute;right:-15px;bottom:-20px;font-size:72px;font-weight:900;color:rgba(255,255,255,.055);}
+  .thesis-kicker{font-size:9.5px;text-transform:uppercase;letter-spacing:1px;color:#f5c43a;font-weight:800;}
+  .scope-thesis h2{font-size:21px;line-height:1.1;margin:6px 0 7px;max-width:420px;}
+  .scope-thesis p{font-size:10.5px;line-height:1.4;color:#dbe3f5;margin:0;max-width:500px;}
+  .stats{display:flex;gap:28px;margin-top:9px;position:relative;z-index:1;}
+  .stat b{font-size:19px;display:block}.stat span{font-size:9px;color:#aebbd7;}
+  .bracket-label{color:var(--amber-dark);font-weight:900;}
+  .usp-stack{display:grid;grid-template-columns:1fr;gap:8px;}
+  .usp-card{display:grid;grid-template-columns:48px 1fr;gap:9px;border:1px solid #d2d7df;border-radius:6px;padding:9px 10px;background:#fff;min-height:111px;border-left:6px solid var(--amber);box-shadow:0 1px 2px rgba(15,42,99,.04);}
+  .usp-card.blue-card{border-left-color:var(--blue)}.usp-card.green-card{border-left-color:var(--green)}.usp-card.purple-card{border-left-color:var(--purple)}.usp-card.red-card{border-left-color:var(--red)}
+  .usp-number{font-size:26px;font-weight:900;color:#d3d8e1;line-height:1;}
+  .usp-content h3{font-size:12.5px;margin:0 0 6px;color:#17203a;line-height:1.18;}
+  .usp-content h3 span{color:var(--amber-dark);font-size:10px;}
+  .usp-content p{font-size:10.3px;line-height:1.32;margin:3px 0;color:#566173;}
+  .usp-content p b{color:#17213a;}
+
+  .scope-bullets{margin:7px 0 0;padding:0;list-style:none;display:grid;gap:4px 14px;}
+  .scope-bullets.two-col{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .scope-bullets li{position:relative;padding-left:11px;font-size:9.7px;line-height:1.28;color:#566173;}
+  .scope-bullets li::before{content:"•";position:absolute;left:0;top:0;color:var(--navy);font-weight:700;}
+  .leadership-panel{margin-top:10px;border-top:1px solid #d2d7df;padding-top:10px;}
+  .outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+  .outcome-grid>div{background:#f4f6f9;border:1px solid #d3d8e1;border-top:4px solid var(--navy);padding:8px;border-radius:4px;}
+  .outcome-grid>div:nth-child(2){border-top-color:var(--green)}.outcome-grid>div:nth-child(3){border-top-color:var(--amber)}
+  .outcome-grid b{display:block;font-size:10px;color:var(--navy);margin-bottom:4px;}
+  .outcome-grid span{display:block;font-size:9.5px;line-height:1.3;color:#5b6575;}
+
+  @media print{
+    html,body{background:#fff}
+    .page{margin:0; box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <div class="title-wrap">
+      <div class="brand">OneXso</div>
+      <div class="divider"></div>
+      <div>
+        <div class="main-title">CEO EXECUTIVE OVERVIEW</div>
+        <div class="subtitle">RELEASE 1 SCOPE &amp; FIVE DIFFERENTIATORS · WEEKLY VISIBILITY CARD</div>
+      </div>
+    </div>
+    <div class="status"><span class="status-dot"></span> EXECUTIVE</div>
+  </header>
+
+  <section class="meta">
+    <div class="meta-card"><div class="meta-label">Product</div><div class="meta-value">OneXso</div></div>
+    <div class="meta-card"><div class="meta-label">View</div><div class="meta-value blue">CEO / Leadership</div></div>
+    <div class="meta-card"><div class="meta-label">Current Release</div><div class="meta-value amber">Release 1</div></div>
+    <div class="meta-card"><div class="meta-label">Core Positioning</div><div class="meta-value">Workforce Visibility<br>&amp; Performance</div></div>
+    <div class="meta-card"><div class="meta-label">Scope Areas</div><div class="meta-value purple">4</div></div>
+    <div class="meta-card"><div class="meta-label">Differentiators</div><div class="meta-value green">5 USP</div></div>
+  </section>
+
+  <section class="main-dashboard">
+    <div class="dashboard-head">
+      <div><span class="num">01.</span> RELEASE 1 — SCOPE</div>
+      <div><span class="num">02.</span> USP — WHY ONEXSO WINS</div>
+    </div>
+    <div class="dashboard-grid">
+      <!-- LEFT: SCOPE -->
+      <div class="scope-column">
+        <div class="mini-title">Release Journey</div>
+        <div class="scope-flow">
+          <div class="stage delivered"><h3>DELIVERED / FOUNDATION</h3><ul><li>Organization administration</li><li>Work management</li><li>Workforce monitoring</li><li>Platform administration</li></ul></div>
+          <div class="arrow">→</div>
+          <div class="stage current"><h3>CURRENT / RELEASE 1</h3><ul><li>Core operating system</li><li>Roles &amp; permissions</li><li>Projects &amp; tasks</li><li>Attendance &amp; monitoring</li></ul></div>
+          <div class="arrow">→</div>
+          <div class="stage future"><h3>NEXT / SCALE</h3><ul><li>Broader workforce intelligence</li><li>Deeper analytics</li><li>Stronger automation</li><li>Enterprise scale</li></ul></div>
+        </div>
+
+        <div class="mini-title scope-title">Release 1 — Four Core Scope Areas</div>
+        <div class="scope-list">
+          <div class="scope-item blue"><div class="scope-no">01</div><div><h3>Organization Administration</h3><ul class="scope-bullets two-col"><li>Employee Management</li><li>Organization Management</li><li>Roles &amp; Permissions</li><li>Device Administration</li><li>Business Configuration</li><li>Reports &amp; Dashboards</li></ul></div></div>
+          <div class="scope-item green"><div class="scope-no">02</div><div><h3>Work Management</h3><ul class="scope-bullets two-col"><li>Project Management</li><li>Task Management</li><li>Calendar Management</li><li>Productivity Validation</li><li>Work Dashboard &amp; Reports</li></ul></div></div>
+          <div class="scope-item amber"><div class="scope-no">03</div><div><h3>Workforce Monitoring</h3><ul class="scope-bullets two-col"><li>Attendance &amp; Leave Management</li><li>Employee Monitoring</li><li>Identity &amp; Device Monitoring</li><li>Exception Management</li><li>Reports &amp; Analytics</li><li>Notifications &amp; Wellness</li><li>Workforce Dashboard</li></ul></div></div>
+          <div class="scope-item purple"><div class="scope-no">04</div><div><h3>Platform Administration</h3><ul class="scope-bullets two-col"><li>Tenant Management</li><li>Subscription &amp; Billing</li><li>Platform Configuration</li><li>Security &amp; Compliance</li><li>Integrations</li><li>Support Center</li><li>System Control</li><li>Platform Dashboard</li></ul></div></div>
+        </div>
+
+        <div class="scope-thesis">
+          <div class="thesis-kicker">EXECUTIVE THESIS</div>
+          <h2>OneXso turns visibility into performance.</h2>
+          <p>Foundation → execution → visibility → control. Operational data becomes clearer decisions, stronger accountability and better outcomes.</p>
+          <div class="stats"><div class="stat"><b>360°</b><span>workforce visibility</span></div><div class="stat"><b>4</b><span>scope areas</span></div><div class="stat"><b>R1</b><span>current release</span></div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: USP -->
+      <div class="usp-column">
+        <div class="mini-title">OneXso Differentiators <span class="bracket-label">(USP)</span></div>
+        <div class="usp-stack">
+          <div class="usp-card amber-card">
+            <div class="usp-number">01</div><div class="usp-content"><h3>ZERO-TOUCH INTELLIGENT WORKDAY <span>(USP)</span></h3><p><b>Automatic capture:</b> the workday is captured with less manual logging.</p><p><b>Complete timeline:</b> attendance, apps, meetings and documents are connected.</p></div>
+          </div>
+          <div class="usp-card blue-card">
+            <div class="usp-number">02</div><div class="usp-content"><h3>FLEXIBLE WORK &amp; TASK MANAGEMENT <span>(USP)</span></h3><p><b>Any work structure:</b> unlimited hierarchy and dynamic inheritance / roll-up.</p><p><b>Outcome focus:</b> estimates, progress and tasks can sit anywhere in the tree.</p></div>
+          </div>
+          <div class="usp-card green-card">
+            <div class="usp-number">03</div><div class="usp-content"><h3>ACTUAL VS. REPORTED WORK INTELLIGENCE <span>(USP)</span></h3><p><b>Verified activity:</b> system-captured work is compared with employee updates and time logs.</p><p><b>Fairer accountability:</b> gaps and bottlenecks become visible instead of assumed.</p></div>
+          </div>
+          <div class="usp-card purple-card">
+            <div class="usp-number">04</div><div class="usp-content"><h3>EXCEPTION-BASED LEADERSHIP <span>(USP)</span></h3><p><b>Attention only where needed:</b> overdue tasks, attendance issues, unusual inactivity, policy violations and leave conflicts.</p><p><b>Faster decisions:</b> leaders focus on exceptions instead of reviewing everything.</p></div>
+          </div>
+          <div class="usp-card red-card">
+            <div class="usp-number">05</div><div class="usp-content"><h3>360° WORKFORCE COMMAND CENTRE <span>(USP)</span></h3><p><b>One platform:</b> role-based dashboards and organization-wide visibility.</p><p><b>Governance:</b> consistent control, security and scalability across the organization.</p></div>
+          </div>
+        </div>
+
+        <div class="leadership-panel">
+          <div class="mini-title">Leadership Outcome</div>
+          <div class="outcome-grid">
+            <div><b>VISIBILITY</b><span>A real-time picture of how work actually happens.</span></div>
+            <div><b>PRODUCTIVITY</b><span>Sharper execution with far less manual reporting.</span></div>
+            <div><b>CONTROL</b><span>Oversight that surfaces exactly what needs a decision.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-left"><span><span class="footer-dot"></span>OneXso workspace — confidential CEO visibility card</span><span>Snapshot: Release 1 scope &amp; USP positioning</span></div>
+    <div><b>One platform</b> · every role · total visibility</div>
+  </footer>
+</div>
+</body>
+</html>

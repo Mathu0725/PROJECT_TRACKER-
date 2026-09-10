@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1536, initial-scale=1.0">
+<title>Venue Layout Setup Application — Scope & USP Executive Overview</title>
+<style>
+  @page { size: 1536px 1024px; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#e7ebf2; }
+  body { font-family: Arial, Helvetica, sans-serif; color:#101a2d; }
+
+  :root{
+    --navy:#071d5c;
+    --navy2:#0d2b78;
+    --blue:#0b63b6;
+    --ink:#14203a;
+    --muted:#667085;
+    --line:#cfd5df;
+    --soft:#f4f6f9;
+    --green:#55a33b;
+    --green-dark:#28712c;
+    --amber:#f2a900;
+    --amber-dark:#9a6200;
+    --red:#df2f32;
+    --purple:#6935b9;
+    --teal:#078c97;
+  }
+
+  .page{
+    width:1536px; height:1024px; margin:0 auto; overflow:hidden;
+    background:#fff; position:relative;
+  }
+
+  .header{
+    height:92px; background:linear-gradient(100deg,#061951 0%,#09296e 62%,#071d5c 100%);
+    color:#fff; display:flex; align-items:center; justify-content:space-between;
+    padding:0 22px; border-bottom:3px solid #f0a900;
+  }
+  .title-wrap{display:flex;align-items:center;gap:20px;min-width:0;}
+  .brand{font-size:21px;font-weight:800;letter-spacing:.2px;white-space:nowrap;}
+  .divider{width:1px;height:48px;background:rgba(255,255,255,.35);}
+  .main-title{font-size:33px;line-height:1;font-weight:800;letter-spacing:.25px;white-space:nowrap;}
+  .subtitle{font-size:13px;font-weight:700;color:#f7c329;margin-top:6px;letter-spacing:.7px;}
+  .status{
+    min-width:200px;height:58px;border-radius:7px;background:var(--amber);
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    font-size:22px;font-weight:800;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);
+  }
+  .status-dot{width:27px;height:27px;border-radius:50%;background:#fff;opacity:.85;}
+
+  .meta{
+    height:84px; display:grid;
+    grid-template-columns:1.35fr .9fr .9fr 1.5fr .75fr .75fr;
+    border-bottom:1px solid #c6ccd7;
+  }
+  .meta-card{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;border-right:1px solid #c6ccd7;padding:8px 12px;
+  }
+  .meta-card:last-child{border-right:0;}
+  .meta-label{
+    font-size:10px;font-weight:800;color:var(--navy);
+    text-transform:uppercase;letter-spacing:.2px;margin-bottom:7px;
+  }
+  .meta-value{font-size:15px;font-weight:800;color:#1b2333;line-height:1.15;}
+  .meta-value.blue{color:#184b96}.meta-value.amber{color:#b27100}
+  .meta-value.green{color:#26762e}.meta-value.purple{color:#5b2eaa}
+
+  .main-dashboard{
+    margin:10px 10px 0;border:1px solid #bfc6d1;border-radius:7px;overflow:hidden;background:#fff;
+  }
+  .dashboard-head{
+    height:38px;background:linear-gradient(90deg,#071b55,#0d2b78);color:#fff;
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;
+    font-size:14px;font-weight:800;letter-spacing:.15px;text-transform:uppercase;
+  }
+  .dashboard-head>div{
+    height:100%;display:flex;align-items:center;padding:0 15px;border-right:1px solid rgba(255,255,255,.28);
+  }
+  .dashboard-head>div:last-child{border-right:0;}
+  .dashboard-head .num{margin-right:9px;color:#f6c52c;}
+
+  .dashboard-grid{display:grid;grid-template-columns:1fr 1fr;height:746px;}
+  .scope-column,.usp-column{padding:12px 14px;min-width:0;}
+  .scope-column{border-right:1px solid #cfd5df;}
+
+  .mini-title{font-size:11px;font-weight:800;color:var(--navy);margin-bottom:7px;text-transform:uppercase;}
+
+  .overview{
+    background:linear-gradient(135deg,#081e5e,#123783);color:#fff;border-radius:6px;
+    padding:10px 12px;margin-bottom:9px;position:relative;overflow:hidden;min-height:78px;
+  }
+  .overview:after{
+    content:'2D';position:absolute;right:5px;bottom:-25px;font-size:95px;
+    font-weight:900;color:rgba(255,255,255,.055);
+  }
+  .overview-kicker{font-size:9px;text-transform:uppercase;letter-spacing:.9px;color:#f5c43a;font-weight:800;}
+  .overview h2{font-size:18px;line-height:1.1;margin:4px 0 4px;position:relative;z-index:1;}
+  .overview p{font-size:9.5px;line-height:1.35;color:#dbe3f5;margin:0;max-width:625px;position:relative;z-index:1;}
+
+  .scope-list{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+  .scope-item{
+    display:grid;grid-template-columns:27px 1fr;gap:6px;border:1px solid #d4d9e2;
+    border-left:5px solid var(--blue);border-radius:5px;padding:7px;background:#fcfdff;min-height:132px;
+  }
+  .scope-item.green{border-left-color:var(--green)}
+  .scope-item.amber{border-left-color:var(--amber)}
+  .scope-item.purple{border-left-color:var(--purple)}
+  .scope-item.red{border-left-color:var(--red)}
+  .scope-item.teal{border-left-color:var(--teal)}
+  .scope-no{font-size:16px;font-weight:900;color:#d4d9e2;line-height:1;}
+  .scope-item h3{font-size:10.4px;margin:0 0 4px;color:#17203a;text-transform:uppercase;line-height:1.15;}
+  .scope-bullets{margin:0;padding:0;list-style:none;display:grid;gap:2px;}
+  .scope-bullets li{
+    position:relative;padding-left:9px;font-size:8px;line-height:1.21;color:#566173;
+  }
+  .scope-bullets li::before{content:"•";position:absolute;left:0;top:0;color:var(--navy);font-weight:700;}
+
+  .deliverables{margin-top:8px;border-top:1px solid #d2d7df;padding-top:8px;}
+  .deliverable-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;}
+  .deliverable{
+    background:#f4f6f9;border:1px solid #d3d8e1;border-top:4px solid var(--navy);
+    padding:6px 5px;border-radius:4px;min-height:49px;text-align:center;
+  }
+  .deliverable:nth-child(2){border-top-color:var(--green)}
+  .deliverable:nth-child(3){border-top-color:var(--amber)}
+  .deliverable:nth-child(4){border-top-color:var(--blue)}
+  .deliverable:nth-child(5){border-top-color:var(--purple)}
+  .deliverable:nth-child(6){border-top-color:var(--teal)}
+  .deliverable b{display:block;font-size:9px;color:var(--navy);margin-bottom:2px;}
+  .deliverable span{display:block;font-size:7.4px;line-height:1.15;color:#5b6575;}
+
+  .core-usp{
+    background:linear-gradient(135deg,#081e5e,#123783);color:#fff;border-radius:6px;
+    padding:11px 13px;margin-bottom:8px;position:relative;overflow:hidden;min-height:86px;
+  }
+  .core-usp:after{
+    content:'USP';position:absolute;right:-2px;bottom:-31px;font-size:94px;
+    font-weight:900;color:rgba(255,255,255,.055);
+  }
+  .core-usp .kicker{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:#f5c43a;font-weight:800;}
+  .core-usp h2{font-size:18px;line-height:1.1;margin:4px 0 5px;}
+  .core-usp p{font-size:9.4px;line-height:1.31;color:#dbe3f5;margin:0;max-width:625px;}
+
+  .usp-stack{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+  .usp-card{
+    display:grid;grid-template-columns:35px 1fr;gap:7px;border:1px solid #d2d7df;
+    border-radius:6px;padding:7px 8px;background:#fff;min-height:101px;
+    border-left:6px solid var(--amber);box-shadow:0 1px 2px rgba(15,42,99,.04);
+  }
+  .usp-card.blue-card{border-left-color:var(--blue)}
+  .usp-card.green-card{border-left-color:var(--green)}
+  .usp-card.purple-card{border-left-color:var(--purple)}
+  .usp-card.red-card{border-left-color:var(--red)}
+  .usp-card.teal-card{border-left-color:var(--teal)}
+  .usp-number{font-size:21px;font-weight:900;color:#d3d8e1;line-height:1;}
+  .usp-content h3{font-size:10.7px;margin:0 0 4px;color:#17203a;line-height:1.16;text-transform:uppercase;}
+  .usp-content p{font-size:8.6px;line-height:1.27;margin:0;color:#566173;}
+
+  .positioning{
+    grid-column:1/-1;min-height:75px;background:#f7f9fc;border:1px solid #d2d8e1;
+    border-left:6px solid var(--navy);border-radius:6px;padding:8px 10px;
+  }
+  .positioning h3{font-size:10px;margin:0 0 4px;color:var(--navy);text-transform:uppercase;}
+  .positioning p{font-size:8.4px;line-height:1.3;margin:0;color:#566173;font-style:italic;}
+
+  .acceptance-panel{margin-top:8px;border-top:1px solid #d2d7df;padding-top:8px;}
+  .acceptance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;}
+  .acceptance{
+    background:#f4f6f9;border:1px solid #d3d8e1;border-top:4px solid var(--navy);
+    padding:6px;border-radius:4px;min-height:47px;
+  }
+  .acceptance:nth-child(2){border-top-color:var(--green)}
+  .acceptance:nth-child(3){border-top-color:var(--amber)}
+  .acceptance:nth-child(4){border-top-color:var(--blue)}
+  .acceptance:nth-child(5){border-top-color:var(--purple)}
+  .acceptance:nth-child(6){border-top-color:var(--teal)}
+  .acceptance b{display:block;font-size:8.5px;color:var(--navy);margin-bottom:2px;}
+  .acceptance span{display:block;font-size:7.3px;line-height:1.18;color:#5b6575;}
+
+  .footer{
+    height:44px;margin-top:10px;background:#071d5c;color:#dbe2f3;display:flex;
+    align-items:center;justify-content:space-between;padding:0 18px;font-size:9.5px;letter-spacing:.1px;
+  }
+  .footer b{color:#fff}
+  .footer-left{display:flex;gap:16px;align-items:center}
+  .footer-dot{width:6px;height:6px;border-radius:50%;background:#f5bd25;display:inline-block;margin-right:6px;}
+
+  @media print{
+    html,body{background:#fff}
+    .page{margin:0;box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="title-wrap">
+      <div class="brand">Venue Layout</div>
+      <div class="divider"></div>
+      <div>
+        <div class="main-title">SCOPE &amp; USP EXECUTIVE OVERVIEW</div>
+        <div class="subtitle">PHASE 1 · VENUE LAYOUT SETUP APPLICATION</div>
+      </div>
+    </div>
+    <div class="status"><span class="status-dot"></span> PHASE 1</div>
+  </header>
+
+  <section class="meta">
+    <div class="meta-card"><div class="meta-label">Product</div><div class="meta-value">Venue Layout Setup Application</div></div>
+    <div class="meta-card"><div class="meta-label">View</div><div class="meta-value blue">Scope / USP</div></div>
+    <div class="meta-card"><div class="meta-label">Current Release</div><div class="meta-value amber">Phase 1</div></div>
+    <div class="meta-card"><div class="meta-label">Core Positioning</div><div class="meta-value">Verified 2D Venue<br>Inventory Setup</div></div>
+    <div class="meta-card"><div class="meta-label">Scope Areas</div><div class="meta-value purple">9</div></div>
+    <div class="meta-card"><div class="meta-label">Differentiators</div><div class="meta-value green">7 USP</div></div>
+  </section>
+
+  <section class="main-dashboard">
+    <div class="dashboard-head">
+      <div><span class="num">01.</span> PHASE 1 — SCOPE</div>
+      <div><span class="num">02.</span> USP — PRODUCT DIFFERENTIATORS</div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="scope-column">
+        <div class="overview">
+          <div class="overview-kicker">PROJECT OVERVIEW</div>
+          <h2>Complete 2D venue setup foundation</h2>
+          <p>
+            A centralized 2D configuration platform used to create, verify, customize and manage venue/stadium inventory.
+            Phase 1 covers block creation, measurement handling, AI verification, correction, General Admission,
+            seating, table plans and multiple parking layouts.
+          </p>
+        </div>
+
+        <div class="mini-title">Phase 1 — Functional Scope</div>
+
+        <div class="scope-list">
+          <div class="scope-item blue">
+            <div class="scope-no">01</div>
+            <div>
+              <h3>2D Block Creation</h3>
+              <ul class="scope-bullets">
+                <li>Create venue blocks manually on a 2D canvas.</li>
+                <li>Upload a venue blueprint and auto-create blocks.</li>
+                <li>Use measurements from the blueprint when available.</li>
+                <li>If required, use one known real measurement as the scale reference, then update the real measurement and recalculate all related blocks automatically.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="scope-item green">
+            <div class="scope-no">02</div>
+            <div>
+              <h3>AI Verification &amp; Accuracy</h3>
+              <ul class="scope-bullets">
+                <li>Compare created blocks against the uploaded blueprint.</li>
+                <li>Check whether all expected blocks exist.</li>
+                <li>Validate block shape and block naming accuracy.</li>
+                <li>Display an overall accuracy score.</li>
+                <li>List blocks that require correction.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="scope-item amber">
+            <div class="scope-no">03</div>
+            <div>
+              <h3>Block Correction</h3>
+              <ul class="scope-bullets">
+                <li>Trace Mode: select a target blueprint block to recreate it.</li>
+                <li>Dot Mode: create a block by placing points on the blueprint.</li>
+                <li>Re-run AI refinement to improve the verified result.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="scope-item purple">
+            <div class="scope-no">04</div>
+            <div>
+              <h3>Block Customization</h3>
+              <ul class="scope-bullets">
+                <li>Classify a created block according to its intended inventory use.</li>
+                <li>Support General Admission, Seating Plan and Table Plan configurations.</li>
+                <li>Reuse the same created 2D block geometry as the configuration foundation.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="scope-item teal">
+            <div class="scope-no">05</div>
+            <div>
+              <h3>General Admission</h3>
+              <ul class="scope-bullets">
+                <li>Select an existing 2D block.</li>
+                <li>Keep the previously defined block dimensions.</li>
+                <li>Set the block type to General Admission.</li>
+                <li>Configure permitted capacity / allocation count.</li>
+                <li>Save the block as a ready-to-use GA area.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="scope-item blue">
+            <div class="scope-no">06</div>
+            <div>
+              <h3>Seating Configuration</h3>
+              <ul class="scope-bullets">
+                <li>Manual seating creation and seat-by-seat placement.</li>
+                <li>Arrange seats by rows and support auto seat creation.</li>
+                <li>Support curved seating and aisle creation.</li>
+                <li>Autofill using seat width, seat length, gaps, row gaps, aisle sizes and other measurements.</li>
+                <li>Apply autofill configuration to multiple blocks with deselection control.</li>
+                <li>Upload Excel seating-plan data.</li>
+                <li>Reuse saved seating configurations for similar blocks.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="scope-item green">
+            <div class="scope-no">07</div>
+            <div>
+              <h3>Table Plan Configuration</h3>
+              <ul class="scope-bullets">
+                <li>Select a dining/hospitality block.</li>
+                <li>Create and arrange tables or add tables one by one.</li>
+                <li>Place and lock fixed areas first: stage, food preparation, entrance and other fixed elements.</li>
+                <li>Define table sizes, waiter-way width, wall gaps and spacing rules.</li>
+                <li>Generate table-count and layout-pattern suggestions.</li>
+                <li>Dynamically update possible table count when measurements change.</li>
+                <li>Select a preferred suggestion and save the plan.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="scope-item amber">
+            <div class="scope-no">08</div>
+            <div>
+              <h3>Parking Layouts</h3>
+              <ul class="scope-bullets">
+                <li>Attach multiple parking layouts to a single stadium.</li>
+                <li>Create parking areas and slots manually.</li>
+                <li>Upload a parking image and auto-create the layout.</li>
+                <li>Support bike, car and EV parking slot types.</li>
+                <li>Save parking area and slots as stadium parking inventory.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="scope-item red">
+            <div class="scope-no">09</div>
+            <div>
+              <h3>Optimo SCS Tix Backend, Database &amp; Authentication</h3>
+              <ul class="scope-bullets">
+                <li>Use the existing Optimo SCS Tix database structure wherever applicable.</li>
+                <li>Reuse existing Optimo SCS Tix backend endpoints / APIs as the primary integration layer.</li>
+                <li>Add new tables, fields, relationships or endpoints only where required.</li>
+                <li>Keep additions compatible with the existing Optimo SCS Tix architecture and data model.</li>
+                <li>Use the existing Optimo SCS Tix authentication and access-control mechanism.</li>
+                <li>Operate as an extension of the existing Optimo SCS Tix ecosystem.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="deliverables">
+          <div class="mini-title">Key Deliverables / Outputs</div>
+          <div class="deliverable-grid">
+            <div class="deliverable"><b>2D</b><span>Verified venue block structure</span></div>
+            <div class="deliverable"><b>AI</b><span>Accuracy score &amp; correction list</span></div>
+            <div class="deliverable"><b>GA</b><span>Capacity-based admission areas</span></div>
+            <div class="deliverable"><b>SEATS</b><span>Reusable seating layouts</span></div>
+            <div class="deliverable"><b>TABLES</b><span>Rule-based table plans</span></div>
+            <div class="deliverable"><b>PARKING</b><span>Multiple saved parking inventories</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="usp-column">
+        <div class="core-usp">
+          <div class="kicker">CORE USP</div>
+          <h2>Blueprint to verified operational venue inventory.</h2>
+          <p>
+            A single venue setup platform that transforms venue blueprints and real-world measurements
+            into verified, reusable, operational 2D inventory — with AI-assisted accuracy checking and
+            dedicated configuration workflows for seating, General Admission, hospitality tables and parking.
+          </p>
+        </div>
+
+        <div class="mini-title">Product Differentiators <span style="color:#9a6200;font-weight:900;">(USP)</span></div>
+
+        <div class="usp-stack">
+          <div class="usp-card">
+            <div class="usp-number">01</div>
+            <div class="usp-content">
+              <h3>Blueprint-to-Inventory in One Application</h3>
+              <p>Instead of using separate drawing, validation, seating, table-plan and parking tools, the application keeps the entire setup lifecycle in one platform.</p>
+            </div>
+          </div>
+
+          <div class="usp-card blue-card">
+            <div class="usp-number">02</div>
+            <div class="usp-content">
+              <h3>AI-Assisted Accuracy Verification</h3>
+              <p>The solution compares created geometry with the uploaded blueprint, identifies missing or incorrect blocks, validates shape/name accuracy and reports an overall accuracy score.</p>
+            </div>
+          </div>
+
+          <div class="usp-card green-card">
+            <div class="usp-number">03</div>
+            <div class="usp-content">
+              <h3>Measurement-Aware Layout Creation</h3>
+              <p>Real measurements are part of the model. A known dimension can establish scale, and a corrected real-world measurement can update related blocks consistently.</p>
+            </div>
+          </div>
+
+          <div class="usp-card purple-card">
+            <div class="usp-number">04</div>
+            <div class="usp-content">
+              <h3>Human + AI Correction Workflow</h3>
+              <p>Trace Mode, Dot Mode and repeated AI refinement provide controlled ways to fix missing or inaccurate blocks without relying only on automation.</p>
+            </div>
+          </div>
+
+          <div class="usp-card teal-card">
+            <div class="usp-number">05</div>
+            <div class="usp-content">
+              <h3>Smart Table Plan Optimization</h3>
+              <p>The table-plan workflow considers fixed areas, table dimensions, waiter ways, wall gaps and spacing rules, then suggests feasible table counts and layout patterns that update dynamically.</p>
+            </div>
+          </div>
+
+          <div class="usp-card red-card">
+            <div class="usp-number">06</div>
+            <div class="usp-content">
+              <h3>Multi-Layout Parking Support</h3>
+              <p>A single stadium can maintain multiple parking layouts. Parking can be designed manually or auto-created from an uploaded image, with inventory support for bike, car and EV spaces.</p>
+            </div>
+          </div>
+
+          <div class="usp-card blue-card">
+            <div class="usp-number">07</div>
+            <div class="usp-content">
+              <h3>Reusable Configuration Model</h3>
+              <p>Configured seating and other layout settings can be reused for similar blocks, reducing repeated setup work and improving consistency across large venues.</p>
+            </div>
+          </div>
+
+          <div class="positioning">
+            <h3>USP Positioning Statement</h3>
+            <p>
+              “For venue and stadium operators who need to create reliable bookable inventory, the Venue Layout Setup Application provides a unified 2D setup workflow that combines blueprint-based block generation, real measurements, AI accuracy verification, manual correction, and specialized seating, GA, table-plan, and parking configuration — producing a verified and reusable venue layout foundation in one system.”
+            </p>
+          </div>
+        </div>
+
+        <div class="acceptance-panel">
+          <div class="mini-title">Phase 1 Success / Acceptance Indicators</div>
+          <div class="acceptance-grid">
+            <div class="acceptance"><b>CREATION</b><span>Manual and blueprint-based block creation works.</span></div>
+            <div class="acceptance"><b>MEASUREMENTS</b><span>Real scale and global measurement updates are supported.</span></div>
+            <div class="acceptance"><b>VERIFICATION</b><span>Missing / inaccurate blocks and overall accuracy are identified.</span></div>
+            <div class="acceptance"><b>CONFIGURATION</b><span>GA, seating and table-plan inventory can be saved and reused.</span></div>
+            <div class="acceptance"><b>PARKING</b><span>Multiple parking layouts can be created and attached to one stadium.</span></div>
+            <div class="acceptance"><b>INTEGRATION</b><span>Existing Optimo SCS Tix DB, APIs and authentication are reused.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-left">
+      <span><span class="footer-dot"></span>Venue Layout Setup Application — Phase 1 Scope &amp; USP</span>
+      <span>Executive visibility format</span>
+    </div>
+    <div><b>One setup foundation</b> · verified blocks · reusable venue inventory</div>
+  </footer>
+</div>
+</body>
+</html>
