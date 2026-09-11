@@ -9,10 +9,10 @@ An executive-level multi-project visibility dashboard and weekly reporting suite
 | # | Project Name | Release Stage | Baseline Week | Weekly Report | Scope Document |
 |---|--------------|---------------|---------------|---------------|----------------|
 | 1 | **Camera Module** | Phase 1A MVP | September Week 1 | [View Report](Incubator%20Weekly%20update/Camara%20Module.html) | [View Scope](scope%20document/Camera_Module_Scope_Onetix.html) |
-| 2 | **Greyhound Customer Mobile App** | Release 1.0 Mobile | Week 2 | [View Report](Incubator%20Weekly%20update/greyhound_weekly_project_visibility_card.html) | [View Scope](scope%20document/Greyhound_Customer_Mobile_App_Scope_Week_2.html) |
-| 3 | **ONEXSO HRMS** | Enterprise Release 1 | Week 7 | [View Report](Incubator%20Weekly%20update/weekly-project-visibility-card-onexso.pr.html) | [View Scope](scope%20document/ONEXSO_HRMS_Scope_Week_7.html) |
-| 4 | **OneVerz EPOS** | Release 2 EPOS | Week 2 | [View Report](Incubator%20Weekly%20update/One%20Verz%20Weekly%20Project%20Visibility%20Card%202%20-%20Static.html) | [View Scope](scope%20document/OneVerz_EPOS_Scope_Week_2.html) |
-| 5 | **Ticketing Venue Setup** | Release 2 Venue Engine | Week 2 | [View Report](Incubator%20Weekly%20update/ticketing_venue_setup_weekly_visibility_card.html) | [View Scope](scope%20document/Ticketing_Venue_Setup_Scope_Week_2.html) |
+| 2 | **Greyhound Customer Mobile App** | Phase 1 | Week 1 | [View Report](Incubator%20Weekly%20update/greyhound_weekly_project_visibility_card.html) | [View Scope](scope%20document/Greyhound_CEO_Scope_USP_WeeklyTheme.html) |
+| 3 | **ONEXSO HRMS** | Enterprise Release 1 | Week 1 | [View Report](Incubator%20Weekly%20update/weekly-project-visibility-card-onexso.pr.html) | [View Scope](scope%20document/OneXso_CEO_Scope_USP_WeeklyTheme%20(3).html) |
+| 4 | **OneVerz EPOS** | Release 1 | Week 1 | [View Report](Incubator%20Weekly%20update/One%20Verz%20Weekly%20Project%20Visibility%20Card%202%20-%20Static.html) | [View Scope](scope%20document/Oneverz.html) |
+| 5 | **Ticketing Venue Setup** | Phase 1 | Week 1 | [View Report](Incubator%20Weekly%20update/ticketing_venue_setup_weekly_visibility_card.html) | [View Scope](scope%20document/Venue_Layout_Scope_USP.html) |
 | 6 | **Watercraft Storage Portal** | Full Release | Week 2 | [View Report](Incubator%20Weekly%20update/Watercraft_Visibility_Card_Final_Compact_BlackBackground.html) | [View Scope](scope%20document/Watercraft_Storage_Portal_Scope_Week_2.html) |
 
 ---

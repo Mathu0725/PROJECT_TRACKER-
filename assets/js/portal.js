@@ -32,8 +32,8 @@ const DEFAULT_PROJECTS = [
     id: 'greyhound',
     icon: '📱',
     name: 'Greyhound Customer Mobile App',
-    release: 'Release 1.0 Mobile',
-    leads: 'Mobile Dev Team',
+    release: 'Phase 1',
+    leads: 'Gobithas Kalaimakan',
     description: 'Customer mobile application for racetrack ticketing, turnstile barcode scanning, and live race day updates.',
     highlights: 'QR Scanner, Ticket Management, Live Polling, Mobile UX and account verification.',
     selectedWeekIndex: 0,
@@ -42,10 +42,10 @@ const DEFAULT_PROJECTS = [
         weekNumber: 1,
         weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: 'Mobile MVP',
-        consumed: 'Active Sprint',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '35 Allocated',
+        consumed: '25 Consumed (71%)',
         weeklyUrl: 'Incubator Weekly update/greyhound_weekly_project_visibility_card.html',
         scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
       }
@@ -101,7 +101,7 @@ const DEFAULT_PROJECTS = [
     id: 'ticketing-venue',
     icon: '🎫',
     name: 'Ticketing Venue Setup',
-    release: 'Release 2 Venue Engine',
+    release: 'Phase 1',
     leads: 'Venue & Ticketing Team',
     description: 'Venue mapping, interactive seat block selection, gate access allocation, and tiered pricing engine.',
     highlights: 'Venue Visual Mapper, Tier Configuration, Gate & Entrance Setup, Seat Block Locking.',
@@ -111,10 +111,10 @@ const DEFAULT_PROJECTS = [
         weekNumber: 1,
         weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '20 Days',
-        consumed: '78% Complete',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '200 Forecast',
+        consumed: '75 Consumed (71%)',
         weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_weekly_visibility_card.html',
         scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
       }
@@ -152,11 +152,12 @@ try {
     'portal_projects_camera_v2',
     'portal_projects_scope_usp_v1',
     'portal_projects_sep1_week1_v1',
-    'portal_projects_sep1_week1_v2'
+    'portal_projects_sep1_week1_v2',
+    'portal_projects_v5_week1_exact'
   ].forEach(k => localStorage.removeItem(k));
 } catch(e) {}
 
-const STORAGE_KEY = 'portal_projects_v5_week1_exact';
+const STORAGE_KEY = 'portal_projects_v7_updated_cards';
 let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
 
 if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 6) {
@@ -174,8 +175,12 @@ if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 6) {
   DEFAULT_PROJECTS.forEach(def => {
     const p = PROJECTS.find(item => item.id === def.id);
     if (p && p.weeks && p.weeks[0]) {
+      p.release = def.release;
+      p.leads = def.leads;
       p.weeks[0].weekNumber = 1;
       p.weeks[0].weekLabel = 'Week 1';
+      p.weeks[0].status = def.weeks[0].status;
+      p.weeks[0].statusClass = def.weeks[0].statusClass;
       p.weeks[0].scopeUrl = def.weeks[0].scopeUrl;
       p.weeks[0].weeklyUrl = def.weeks[0].weeklyUrl;
       p.weeks[0].manDays = def.weeks[0].manDays;
