@@ -21,8 +21,8 @@ const DEFAULT_PROJECTS = [
         weekEnding: '4 Sep 2026',
         status: 'ON TRACK',
         statusClass: 'green',
-        manDays: '44 Allocated',
-        consumed: '46 Consumed',
+        manDays: '150 Forecast',
+        consumed: '92 Consumed',
         weeklyUrl: 'Incubator Weekly update/WEEKLY PROJECT VISIBILITY CARD.html',
         scopeUrl: 'scope document/ONETIX_Scope_USP.html'
       }
@@ -78,20 +78,20 @@ const DEFAULT_PROJECTS = [
     id: 'oneverz-epos',
     icon: '🛍️',
     name: 'OneVerz EPOS',
-    release: 'Release 2 EPOS',
-    leads: 'EPOS Core Team',
-    description: 'Retail & hospitality point of sale platform with inventory synchronization and online order fulfillment.',
-    highlights: 'Online order fulfillment, Product catalog, Payment gateway integration, Responsive tablet layout.',
+    release: 'Release 1',
+    leads: 'Mathusan / Yapes',
+    description: 'Retail & hospitality point of sale platform with inventory synchronization, online order fulfillment, and multi-channel checkout.',
+    highlights: 'Check out flow, Online order fulfillment, Card payment integration, Flutter app, Product setup & tax management.',
     selectedWeekIndex: 0,
     weeks: [
       {
         weekNumber: 1,
         weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '150 Days',
-        consumed: '75% Complete',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '129 Allocated',
+        consumed: '111 Consumed',
         weeklyUrl: 'Incubator Weekly update/One Verz Weekly Project Visibility Card 2 - Static.html',
         scopeUrl: 'scope document/Oneverz.html'
       }
@@ -178,6 +178,8 @@ if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 6) {
       p.weeks[0].weekLabel = 'Week 1';
       p.weeks[0].scopeUrl = def.weeks[0].scopeUrl;
       p.weeks[0].weeklyUrl = def.weeks[0].weeklyUrl;
+      p.weeks[0].manDays = def.weeks[0].manDays;
+      p.weeks[0].consumed = def.weeks[0].consumed;
       if (!p.icon) p.icon = def.icon;
     }
   });
