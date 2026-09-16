@@ -205,7 +205,7 @@ const DEFAULT_PROJECTS = [
     release: 'UI Migration — Complete',
     leads: 'Saif / Abitha',
     description: 'Government sports portal and customer activity migration covering School Camps booking wizard, Active Programs, and Kids Voucher management.',
-    highlights: 'School Camp Booking Wizard, Programs & Activities, Voucher Management, 17+ Delivered Pages, Multi-journey UI Design.',
+    highlights: 'School Camp Booking Wizard, Programs & Activities, Voucher Management. Scope & USP: Update Soon.',
     selectedWeekIndex: 0,
     weeks: [
       {
@@ -217,7 +217,7 @@ const DEFAULT_PROJECTS = [
         manDays: '40 Hours',
         consumed: '100% Complete',
         weeklyUrl: 'Incubator Weekly update/nsw-1st-week-update.html',
-        scopeUrl: 'Incubator Weekly update/nsw-1st-week-update.html'
+        scopeUrl: 'scope document/nsw_sports_scope_usp.html'
       }
     ]
   }
@@ -234,11 +234,12 @@ try {
     'portal_projects_v5_week1_exact',
     'portal_projects_v7_updated_cards',
     'portal_projects_v8_week2',
-    'portal_projects_v9_week2'
+    'portal_projects_v9_week2',
+    'portal_projects_v10_nsw_week2'
   ].forEach(k => localStorage.removeItem(k));
 } catch(e) {}
 
-const STORAGE_KEY = 'portal_projects_v10_nsw_week2';
+const STORAGE_KEY = 'portal_projects_v11_nsw_scope_update';
 let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
 
 if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 7) {
@@ -250,10 +251,14 @@ if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 7) {
     if (p) {
       p.release = def.release;
       p.leads = def.leads;
+      p.highlights = def.highlights;
       if (!p.icon) p.icon = def.icon;
       if (def.weeks.length > (p.weeks ? p.weeks.length : 0)) {
         p.weeks = JSON.parse(JSON.stringify(def.weeks));
         p.selectedWeekIndex = def.selectedWeekIndex || 0;
+      }
+      if (p.weeks && p.weeks[0] && def.weeks && def.weeks[0]) {
+        p.weeks[0].scopeUrl = def.weeks[0].scopeUrl;
       }
     } else {
       PROJECTS.push(JSON.parse(JSON.stringify(def)));

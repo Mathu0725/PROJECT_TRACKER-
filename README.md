@@ -14,7 +14,7 @@ An executive-level multi-project visibility dashboard and weekly reporting suite
 | 4 | **OneVerz EPOS** | Release 1 | September Weeks 1 & 2 | [View Report](Incubator%20Weekly%20update/Weekly%20Project%20Visibility%20Card11.09.2026.html) | [View Scope](scope%20document/Oneverz.html) |
 | 5 | **Ticketing Venue Setup** | Phase 1 | September Weeks 1 & 2 | [View Report](Incubator%20Weekly%20update/ticketing_venue_setup_weekly_visibility_card_updated_v13.html) | [View Scope](scope%20document/Venue_Layout_Scope_USP.html) |
 | 6 | **Watercraft Storage Portal** | Full Release | Completed | [View Report](Incubator%20Weekly%20update/Watercraft_Visibility_Card_Final_Compact_BlackBackground.html) | [View Scope](scope%20document/watercraft.html) |
-| 7 | **NSW Sports** | UI Migration — Complete | September Week 1 | [View Report](Incubator%20Weekly%20update/nsw-1st-week-update.html) | [View Scope](Incubator%20Weekly%20update/nsw-1st-week-update.html) |
+| 7 | **NSW Sports** | UI Migration — Complete | September Week 1 | [View Report](Incubator%20Weekly%20update/nsw-1st-week-update.html) | [Update Soon](scope%20document/nsw_sports_scope_usp.html) |
 
 ---
 
