@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- Static version: editing and persistence removed; visible report content preserved. -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weekly Project Visibility Card</title>
 <style>
@@ -59,6 +59,18 @@
     padding:22px 14px 40px;
   }
 
+  .hint{
+    max-width:1300px;
+    margin:0 auto 14px;
+    background:var(--hint-bg);
+    color:var(--hint-text);
+    border:1px dashed #9ca3af;
+    border-radius:8px;
+    padding:8px 14px;
+    font-size:12.5px;
+    text-align:center;
+  }
+
   .scroll-wrapper{
     overflow-x:auto;
     padding-bottom:6px;
@@ -75,6 +87,15 @@
     box-shadow:0 10px 30px rgba(16,27,65,0.18);
     border:1px solid var(--border);
   }
+
+  []{
+    outline:none;
+    border-radius:4px;
+    padding:0 2px;
+    cursor:text;
+  }
+  []:hover{ background:rgba(37,99,235,0.08); }
+  []:focus{ background:rgba(37,99,235,0.14); box-shadow:0 0 0 1px #2563eb; }
 
   /* ---------- HEADER ---------- */
   .top-header{
@@ -106,18 +127,21 @@
     gap:16px;
   }
   .status-select{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+    appearance:none;-webkit-appearance:none;-moz-appearance:none;
     border:none;
     border-radius:24px;
-    padding:11px 22px;
+    padding:11px 34px 11px 18px;
     font-weight:800;
     font-size:15px;
     letter-spacing:.5px;
     color:#fff;
-    cursor:default;
+    cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,#fff 50%),linear-gradient(135deg,#fff 50%,transparent 50%);
+    background-position:calc(100% - 16px) center, calc(100% - 11px) center;
+    background-size:5px 5px,5px 5px;
+    background-repeat:no-repeat;
   }
+  .status-select option{ color:#111; }
   .status-guide{
     border:1px solid rgba(255,255,255,0.35);
     border-radius:8px;
@@ -134,7 +158,7 @@
   /* ---------- INFO BAR ---------- */
   .info-bar{
     display:grid;
-    grid-template-columns:repeat(7,1fr);
+    grid-template-columns:repeat(6,1fr);
     border-bottom:1px solid var(--border);
   }
   .info-item{
@@ -401,7 +425,7 @@
   .bar-fill{
     background:linear-gradient(90deg,#1e3a8a,#2563eb);
     height:100%;
-    width:calc(var(--percent) * 1%);
+    width:min(calc(var(--percent) * 1%), 100%);
     display:flex;
     align-items:center;
     justify-content:flex-end;
@@ -505,6 +529,13 @@
     font-weight:800; font-size:16px; color:#111827;
   }
   .donut-sub{ font-size:10px; color:var(--grey-text); margin-top:6px; font-weight:600;}
+  .nb-circle{
+    width:88px;height:88px;border-radius:50%;
+    border:2px dashed #d1d5db;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:11px;color:#9ca3af;
+    text-align:center;
+  }
   .glance-note{
     background:#f3f4f6;
     border-radius:6px;
@@ -540,13 +571,13 @@
     <!-- HEADER -->
     <div class="top-header">
       <div class="th-left">
-        <h1>Weekly ONE VERZ POS Project Visibility Card</h1>
+        <h1>Weekly Project Visibility Card</h1>
         <div class="th-sub">
-          Week Ending Friday, <span>11 September 2026</span> &nbsp;|&nbsp; Week <span>26</span>
+          Week Ending Friday, <span>11 September 2026</span>
         </div>
       </div>
       <div class="th-right">
-        <div class="status-select static-status" style="background: rgb(242, 167, 27);">AMBER</div>
+        <div class="status-select" style="background:#f2a71b;display:inline-flex;align-items:center;justify-content:center;background-image:none;cursor:default;padding:11px 22px;">AMBER</div>
         <div class="status-guide">
           <div class="sg-title">STATUS GUIDE</div>
           <div class="sg-row"><span class="dot green"></span>On Track</div>
@@ -564,33 +595,29 @@
       </div>
       <div class="info-item">
         <div class="info-label">🏷️ Project ID</div>
-        <div class="info-value">N/A</div>
+        <div class="info-value">-</div>
       </div>
       <div class="info-item">
         <div class="info-label">👥 Client</div>
-        <div class="info-value">N/A</div>
+        <div class="info-value">-</div>
       </div>
       <div class="info-item">
         <div class="info-label">📁 Project Name</div>
-        <div class="info-value">ONEVERZ POS</div>
+        <div class="info-value">OneXso</div>
       </div>
       <div class="info-item">
         <div class="info-label">🚀 Current Release</div>
         <div class="info-value">Release 1</div>
       </div>
       <div class="info-item">
-        <div class="info-label">📅 Start Date </div>
-        <div class="info-value">16 Mar 2026</div>
-      </div>
-      <div class="info-item">
-        <div class="info-label">🗓️ Week Ending (Friday)</div>
-        <div class="info-value">11 September 2026</div>
+        <div class="info-label">📅 Project Start Date</div>
+        <div class="info-value">17 july 2026</div>
       </div>
     </div>
 
     <!-- RESOURCE SECTION -->
     <div class="section-label">
-      Resource Allocation for This Release (Total Allocated: <span>129</span> Man-Days)
+      Resource Allocation for This Release (Total Allocated: <span>260</span> Man-Days)
     </div>
     <div class="resource-flex">
       <table class="resource-table">
@@ -599,37 +626,36 @@
         </thead>
         <tbody>
           <tr>
-            <td>Mathusan</td>
-            <td class="role-pm">Coordinator/&nbsp;Developer</td>
-            <td>123</td>
-            <td>&nbsp;Development, Task management, coordination, risks, reporting, E -commence</td>
+            <td>Thivaharan</td>
+            <td class="role-pm">Project Manager</td>
+            <td>75</td>
+            <td>Planning, coordination, risks, reporting, client liaison</td>
           </tr>
           <tr>
-            <td>Yapes</td>
-            <td class="role-dev">Project leader/ Developer</td>
-            <td>108</td>
-            <td>&nbsp;Development, Super Admin, Second Brain,&nbsp;</td>
+            <td>Dapiyshanth</td>
+            <td class="role-dev">Team Lead</td>
+            <td>75</td>
+            <td>Solution configuration &amp; development</td>
           </tr>
           <tr>
-            <td>Tharmithan</td>
+            <td>Kajaatharan</td>
             <td class="role-qa">Developer</td>
-            <td>121</td>
-            <td>&nbsp;Development, Flutter App&nbsp;</td>
+            <td>75</td>
+            <td>Testing, quality assurance, defect management</td>
           </tr>
           <tr>
-            <td>Nivethika</td>
-            <td class="role-lead">&nbsp;Developer</td>
-            <td>39</td>
-            <td>&nbsp;Development, Product Setup, Tax Management, Category</td>
+            <td>Pirakeerthan</td>
+            <td class="role-lead">Developer</td>
+            <td>75</td>
+            <td>Technical design, development, integration, mentoring</td>
           </tr>
         </tbody>
       </table>
       <div class="total-box">
         <div class="tb-label">Total Allocation</div>
         <div class="tb-label" style="margin-top:-6px;">(This Release)</div>
-        <div class="tb-number">146</div>
+        <div class="tb-number">260</div>
         <div class="tb-unit">Man-Days</div>
-        <div class="tb-sub">Released on: <span>05 Oct 2026</span></div>
       </div>
     </div>
 
@@ -641,48 +667,39 @@
         <div class="panel-header">1. Scope &amp; Release Journey</div>
         <div class="panel-body">
           <div class="journey">
-            <div class="j-head done"><span class="ic">✅</span><span>Client Demo 01</span></div>
+            <div class="j-head done"><span class="ic">✅</span><span>Delivered Release 1</span></div>
             <div class="j-arrow">➜</div>
-            <div class="j-head current"><span class="ic">▶️</span><span>Current Work</span></div>
+            <div class="j-head current"><span class="ic">▶️</span><span>Current Release 1</span></div>
             <div class="j-arrow">➜</div>
             <div class="j-head future"><span class="ic">🔷</span><span>Future Release 2</span></div>
 
             <div class="j-col" style="grid-column:1;">
-              <ul>
-                <li>Check out flow</li>
-                <li>Discount Flow</li>
-                <li>Payments cash</li>
-                <li>park sale&nbsp;<div><br></div></li>
-              </ul>
-              <div class="callout green">Release Completed&nbsp; Go-</div>
+              <p style="margin:0;line-height:1.5;">None yet - Release 1 is the first release and is currently in progress (not yet gone live)</p>
             </div>
 
             <div class="j-col" style="grid-column:3;">
               <h4>Core Modules</h4>
               <ul>
-                <li>Online order full filament flow review</li>
-                <li>Hardware Integration R&amp;D<div><br></div><div>Role &amp; permission</div><div><br></div><div>MS SQL migration R&amp;D</div></li>
+                <li>Authentication &amp; Security</li>
+                <li>Leave Management</li>
+                <li>Tenant Management</li>
+                <li>Attendance</li>
+                <li>Platform Administration</li>
+                <li>Calendar &amp; Scheduling</li>
+                <li>Roles &amp; Permissions</li>
+                <li>Work Management</li>
+                <li>Organization Administration</li>
+                <li>Workforce Intelligence</li>
+                <li>Employee Management</li>
+                <li>Billing &amp; Subscription</li>
+                <li>Onboarding &amp; Offboarding</li>
               </ul>
               <h4>Integrations</h4>
-              <ul>
-                <li>Card Payment Integration</li>
-                <li></li>
-              </ul>
-              <h4>Specific Objectives</h4>
-              <ul>
-                <li>Data Migration&nbsp;</li>
-                <li>Tab view</li>
-              </ul>
+              <p style="margin:0;line-height:1.5;">Stripe • Google Calendar • Microsoft Outlook • Google SSO • GitHub • Microsoft/Zoom • Email • Cloudflare R2 • AWS Rekognition • Tray Agent</p>
             </div>
 
             <div class="j-col" style="grid-column:5;">
-              <ul>
-                <li>Mobile Responsive</li>
-                <li></li>
-                <li><br></li>
-                <li></li>
-              </ul>
-              <div class="callout purple">Planned Start: Nov 2026 (Tentative)</div>
+              <p style="margin:0;line-height:1.5;">Candidate scope: Stripe checkout/payment collection; Zoom/Teams meeting-link generation (currently just a name in the provider catalog, no OAuth client yet); GitHub connect &amp; Google-SSO real sign-in UI (backends exist, frontend is stubbed); tenant self-service billing UI; disaster-recovery automation; Work Management gaps (time tracking, subtasks, productivity validation); reports &amp; dashboards; Support Center backend; Device Administration; privacy workflows; centralized audit trail; global search; System Control.</p>
             </div>
           </div>
         </div>
@@ -690,23 +707,23 @@
 
       <!-- PANEL 2: CURRENT RELEASE PLAN -->
       <div class="panel">
-        <div class="panel-header">2. Current Release Plan (Release 2 Only)</div>
+        <div class="panel-header">2. Current Release Plan (Release 1 Only)</div>
         <div class="panel-body">
           <div class="tl-label">Original Plan</div>
           <div class="timeline-row">
-            <span class="t-date">16 Mar 2026</span>
+            <span class="t-date">17 july 2026</span>
             <span class="t-line"><span class="t-dot left"></span><span class="t-dot right"></span></span>
-            <span class="t-date">15 Aug 2026</span>
+            <span class="t-date">21 August 2026</span>
           </div>
           <div class="tl-label red">Current Forecast</div>
           <div class="timeline-row">
-            <span class="t-date">15 Aug 2026</span>
+            <span class="t-date">17 july 2026</span>
             <span class="t-line red"><span class="t-dot left"></span><span class="t-dot right"></span></span>
-            <span class="t-date">05 Oct 2026</span>
+            <span class="t-date">1 November 2026</span>
           </div>
 
           <div class="delay-banner">
-            <span class="dtext">⏱️ Delay: +<span>21</span> Days</span>
+            <span class="dtext">⏱️ Delay: +<span>50</span> Days</span>
             <span class="badge-pill">Off Track</span>
           </div>
 
@@ -717,33 +734,33 @@
             <tbody>
               <tr>
                 <td>Requirements Complete</td>
-                <td>16 Mar 2026</td>
-                <td>15 Aug 2026</td>
+                <td>17 Jul 2026</td>
+                <td>17 Jul 2026</td>
                 <td><span class="var-dot" style="background:var(--green);"></span><span>0 days</span></td>
               </tr>
               <tr>
                 <td>Development Complete</td>
-                <td>05 Oct 2026</td>
-                <td>05 Oct 2026</td>
-                <td><span class="var-dot" style="background:var(--red);"></span><span>+30 days</span></td>
+                <td>21 aug 2026</td>
+                <td>1 oct 2026</td>
+                <td><span class="var-dot" style="background:var(--red);"></span><span>+40 days</span></td>
               </tr>
               <tr>
                 <td>System Test Complete</td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td><span class="var-dot" style="background:var(--red);"></span><span></span></td>
+                <td>1 sep 2026</td>
+                <td>15 oct 2026</td>
+                <td><span class="var-dot" style="background:var(--red);"></span><span>+40 days</span></td>
               </tr>
               <tr>
                 <td>UAT Complete</td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td><span class="var-dot" style="background:var(--red);"></span><span></span></td>
+                <td>15 sep 2026</td>
+                <td>12 Oct 2026</td>
+                <td><span class="var-dot" style="background:var(--red);"></span><span>+40 days</span></td>
               </tr>
               <tr>
                 <td>Go-Live</td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td><span class="var-dot" style="background:var(--red);"></span><span></span></td>
+                <td>21 Oct 2026</td>
+                <td>1 nov 2026</td>
+                <td><span class="var-dot" style="background:var(--red);"></span><span>+40 days</span></td>
               </tr>
             </tbody>
           </table>
@@ -752,13 +769,13 @@
 
       <!-- PANEL 3: RESOURCE EFFORT SUMMARY -->
       <div class="panel">
-        <div class="panel-header">3. Resource Effort Summary (Release 2 Only)</div>
+        <div class="panel-header">3. Resource Effort Summary (Release 1 Only)</div>
         <div class="panel-body">
           <div class="stat-grid">
             <div class="stat-box c1">
               <div class="ic">📋</div>
               <div class="s-label">Original Allocation</div>
-              <div class="s-num">146</div>
+              <div class="s-num">100</div>
               <div class="s-unit">Man-Days</div>
             </div>
             <div class="stat-box c2">
@@ -770,30 +787,30 @@
             <div class="stat-box c3">
               <div class="ic">⏳</div>
               <div class="s-label">Forecast Remaining</div>
-              <div class="s-num">16</div>
+              <div class="s-num">130</div>
               <div class="s-unit">Man-Days</div>
             </div>
             <div class="stat-box c4">
               <div class="ic">📈</div>
               <div class="s-label">Forecast Total</div>
-              <div class="s-num">146</div>
+              <div class="s-num">260</div>
               <div class="s-unit">Man-Days</div>
             </div>
           </div>
 
           <div class="overrun-banner">
-            <span class="otext">Forecast Overrun +<span>0</span> Man-Days / +<span>0</span>%</span>
-            <span class="badge-pill">On Budget</span>
+            <span class="otext">Forecast Overrun +<span>160</span> Man-Days / +<span>160</span>%</span>
+            <span class="badge-pill">Over Budget</span>
           </div>
 
           <div class="bar-title">Effort Consumed vs Original Allocation</div>
           <div class="bar-outer">
-            <div class="bar-fill" id="effortBar" style="--percent: 89;">
-              <span class="bar-label">89%</span>
+            <div class="bar-fill" id="effortBar" style="--percent:130;">
+              <span class="bar-label">130%</span>
             </div>
           </div>
           <div class="bar-scale"><span>0%</span><span>50%</span><span>100%</span></div>
-          <div class="bar-caption"><span>130</span> of <span>146</span> man-days consumed</div>
+          <div class="bar-caption"><span>130</span> of <span>150</span> man-days consumed</div>
         </div>
       </div>
     </div>
@@ -805,28 +822,49 @@
       <div class="panel">
         <div class="panel-header">4. What Changed This Week?</div>
         <div class="panel-body">
+          <p style="margin:0 0 10px;font-size:11.5px;color:#374151;">Six modules moved this week — calendar sync went live end-to-end, and org, leave, attendance, and location tracking all shipped real functionality alongside it.</p>
           <div class="change-item">
-            <div class="change-ic red">📅</div>
+            <div class="change-ic" style="background:var(--green);">📅</div>
             <div>
-              <div class="change-title red">Schedule Change</div>
-              <div class="change-text">Release → 05 Oct 2026 (+16 days)</div>
+              <div class="change-title" style="color:var(--green);">Calendar Sync Live, No IT Ticket Needed</div>
+              <div class="change-text">Google &amp; Outlook two-way sync shipped; employees connect their own calendar from Settings, and a gap where synced meetings didn't block availability was closed before it hit users.</div>
             </div>
           </div>
           <div class="change-item">
-            <div class="change-ic orange">⚙️</div>
+            <div class="change-ic orange">⚑</div>
             <div>
-              <div class="change-title orange">Scope Change</div>
-              <div class="change-text">not Change</div>
+              <div class="change-title orange">Sync Data Integrity Hardened</div>
+              <div class="change-text">4 real defects caught via live testing and fixed pre-release, including a privacy leak that could have exposed private events on a shared calendar.</div>
             </div>
           </div>
           <div class="change-item">
-            <div class="change-ic purple">👥</div>
+            <div class="change-ic" style="background:var(--green);">🌙</div>
             <div>
-              <div class="change-title purple">Effort Change</div>
-              <div class="change-text">Forecast effort increased from 240 → 210man-days <span class="change-tag">(+30 days / +20%)</span></div>
+              <div class="change-title" style="color:var(--green);">Org Structure — Overnight Shift Support</div>
+              <div class="change-text">Work schedules now support shifts that cross midnight (e.g. night-shift teams); break rules and leave-hour calculations were updated to match, live in both admin setup and employee screens.</div>
             </div>
           </div>
-          <div class="info-box">.</div>
+          <div class="change-item">
+            <div class="change-ic" style="background:var(--green);">🕐</div>
+            <div>
+              <div class="change-title" style="color:var(--green);">Leave Tracking Moved to Hours, Not Days</div>
+              <div class="change-text">Leave ledger migrated from day-based to hour-based accounting so partial-day and overnight-shift leave is tracked correctly; added delegate approvals, holiday-aware requests, and document upload.</div>
+            </div>
+          </div>
+          <div class="change-item">
+            <div class="change-ic" style="background:var(--green);">📊</div>
+            <div>
+              <div class="change-title" style="color:var(--green);">New Attendance Overview for Employees</div>
+              <div class="change-text">One consolidated dashboard (status, trend, monthly health, pending requests) replaces scattered screens; history now shows scheduled-vs-actual time and breaks.</div>
+            </div>
+          </div>
+          <div class="change-item">
+            <div class="change-ic" style="background:var(--green);">📍</div>
+            <div>
+              <div class="change-title" style="color:var(--green);">Remote Work-Location Monitoring Live</div>
+              <div class="change-text">Location change requests now go through a formal approval workflow, and policy violations surface directly in the employee list for managers.</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -837,24 +875,24 @@
           <div class="risks-title">Top Risks / Issues</div>
           <div class="risk-row">
             <span class="risk-dot high"></span>
-            <span class="risk-text">Domain</span>
+            <span class="risk-text">Production infrastructure not started — domain and SSL certificate setup still pending.</span>
+            <span class="sev-badge high">High</span>
+          </div>
+          <div class="risk-row">
+            <span class="risk-dot high"></span>
+            <span class="risk-text">No production UAT has been performed yet.</span>
             <span class="sev-badge high">High</span>
           </div>
           <div class="risk-row">
             <span class="risk-dot medium"></span>
-            <span class="risk-text">Azure&nbsp;&nbsp;</span>
-            <span class="sev-badge medium">High</span>
-          </div>
-          <div class="risk-row">
-            <span class="risk-dot medium"></span>
-            <span class="risk-text">AI tool (Cursor, ChatGPT)</span>
-            <span class="sev-badge medium">High</span>
+            <span class="risk-text">Stripe checkout/payment-collection flow missing — billing can invoice but cannot self-serve collect payment yet.</span>
+            <span class="sev-badge medium">Medium/High</span>
           </div>
 
           <div class="box-decision">
             <div class="bd-title">⚖️ Decisions / Approvals Required</div>
-            <div>N/A</div>
-            <div style="margin-top:2px;font-weight:700;"><br></div>
+            <div>• Approve domain name for production deployment</div>
+            <div style="margin-top:2px;">• Approve production database engine (PostgreSQL or MySQL)</div>
           </div>
 
           <div class="box-escalation">
@@ -866,46 +904,46 @@
 
       <!-- PANEL 6: AT A GLANCE -->
       <div class="panel">
-        <div class="panel-header">6. At a Glance (Release 2 Only)</div>
+        <div class="panel-header">6. At a Glance (Release 1 Only)</div>
         <div class="panel-body">
           <div class="donut-row">
             <div class="donut-block">
-              <div class="donut-cap">Overall Progress (Release 1)</div>
-              <div class="donut" id="donutScope" style="--percent: 55;">
+              <div class="donut-cap">Feature Code Completion</div>
+              <div class="donut" id="donutScope" style="--percent:78;">
                 <svg viewBox="0 0 120 120" width="88" height="88">
                   <circle class="donut-track" cx="60" cy="60" r="50"></circle>
                   <circle class="donut-fill blue" cx="60" cy="60" r="50"></circle>
                 </svg>
-                <div class="donut-center"><span>55%</span></div>
+                <div class="donut-center"><span class="percent-input">78%</span></div>
               </div>
-              <div class="donut-sub">% Scope Complete</div>
+              <div class="donut-sub">14 shipped, 8 partial, 1 not started (of 23 audited)</div>
             </div>
             <div class="donut-block">
               <div class="donut-cap">Time Elapsed</div>
-              <div class="donut" id="donutTime" style="--percent: 65;">
+              <div class="donut" id="donutTime" style="--percent:61;">
                 <svg viewBox="0 0 120 120" width="88" height="88">
                   <circle class="donut-track" cx="60" cy="60" r="50"></circle>
                   <circle class="donut-fill red" cx="60" cy="60" r="50"></circle>
                 </svg>
-                <div class="donut-center"><span>65%</span></div>
+                <div class="donut-center"><span class="percent-input">61%</span></div>
               </div>
-              <div class="donut-sub">vs Plan</div>
+              <div class="donut-sub">59 of 96 days (17 Jul–21 Oct 2026)</div>
             </div>
             <div class="donut-block">
               <div class="donut-cap">Effort Consumed</div>
-              <div class="donut" id="donutEffort" style="--percent: 80;">
+              <div class="donut" id="donutEffort" style="--percent:44;">
                 <svg viewBox="0 0 120 120" width="88" height="88">
                   <circle class="donut-track" cx="60" cy="60" r="50"></circle>
                   <circle class="donut-fill orange" cx="60" cy="60" r="50"></circle>
                 </svg>
-                <div class="donut-center"><span>80%</span></div>
+                <div class="donut-center"><span class="percent-input">44%</span></div>
               </div>
-              <div class="donut-sub">vs Original Allocation</div>
+              <div class="donut-sub">120 of 272 man-days (4 people × 68 working days)</div>
             </div>
           </div>
           <div class="glance-note">
             <span>⭐</span>
-            <span></span>
+            <span>Time Elapsed uses calendar days (17 Jul–21 Oct 2026). Effort Consumed uses working-day capacity (4 people × 68 days = 272 man-days) — a separate basis from the man-days in Resource Effort Summary.</span>
           </div>
         </div>
       </div>
@@ -926,10 +964,5 @@
 
   </div>
   </div>
-
-
-
-  <!-- Project Tracker Exporter & High-Resolution JPG Engine -->
-  <script src="../assets/js/html2canvas.min.js"></script>
-  <script src="../assets/js/exporter.js"></script>
-</body></html>
+</body>
+</html>

@@ -7,108 +7,181 @@
 <style>
   @page { size: 1536px 1024px; margin: 0; }
   * { box-sizing: border-box; }
-  html, body { margin:0; padding:0; background:#e7ebf2; }
-  body { font-family: Arial, Helvetica, sans-serif; color:#101a2d; }
+
+  :root{
+    /* ===== OneVerz EPOS design system tokens ===== */
+    --orange:#FF6A00;
+    --orange-dark:#E65F00;
+
+    --navy:#0B2B63;
+    --navy-light:#164B91;
+
+    --purple:#792D8F;
+    --green:#15864B;
+    --red:#D93B32;
+
+    --ink:#172033;
+    --muted:#667387;
+
+    --bg:#F3F6FA;
+    --line:#DCE4EE;
+    --soft:#F8FAFD;
+
+    --shadow:0 16px 45px rgba(11,43,99,.10);
+  }
+
+  html, body { margin:0; padding:0; background:var(--bg); }
+  body {
+    font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+    color:var(--ink);
+    background:
+        radial-gradient(circle at 5% 0%, rgba(11,43,99,.06), transparent 30%),
+        radial-gradient(circle at 95% 0%, rgba(255,106,0,.08), transparent 30%),
+        var(--bg);
+  }
+
+  /* ===== OUTER CONTAINER — large radius ===== */
   .page {
     width:1536px; height:1024px; margin:0 auto; overflow:hidden;
     background:#fff; position:relative;
+    border:1px solid #C8D3E0;
+    border-radius:24px;
+    box-shadow:var(--shadow);
   }
 
-  :root{
-    --navy:#071d5c;
-    --navy2:#0d2b78;
-    --blue:#0b63b6;
-    --ink:#14203a;
-    --muted:#667085;
-    --line:#cfd5df;
-    --soft:#f4f6f9;
-    --green:#55a33b;
-    --green-dark:#28712c;
-    --amber:#f2a900;
-    --amber-dark:#9a6200;
-    --red:#df2f32;
-    --purple:#6935b9;
-  }
-
+  /* ===== HEADER ===== */
   .header{
-    height:92px; background:linear-gradient(100deg,#061951 0%,#09296e 62%,#071d5c 100%);
-    color:#fff; display:flex; align-items:center; justify-content:space-between;
-    padding:0 22px; border-bottom:3px solid #f0a900;
+    height:112px;
+    color:var(--navy);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 26px; border-bottom:1px solid var(--line);
+    background:
+        radial-gradient(circle at 90% 0%, rgba(255,106,0,.12), transparent 28%),
+        linear-gradient(135deg,#FFFFFF,#F7FAFF 70%,#FFF7F0);
   }
-  .title-wrap{display:flex; align-items:center; gap:20px; min-width:0;}
-  .brand{font-size:22px; font-weight:800; letter-spacing:.3px; white-space:nowrap;}
-  .divider{width:1px; height:48px; background:rgba(255,255,255,.35);}
-  .main-title{font-size:34px; line-height:1; font-weight:800; letter-spacing:.3px; white-space:nowrap;}
-  .subtitle{font-size:14px; font-weight:700; color:#f7c329; margin-top:6px; letter-spacing:.7px;}
+  .title-wrap{display:flex; align-items:center; gap:22px; min-width:0;}
+  .brand-block{display:flex;align-items:center;gap:13px;}
+  .logo-box{width:54px;height:54px;flex:none;border-radius:15px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--orange),#FF913D);color:#fff;box-shadow:0 10px 22px rgba(255,106,0,.22);}
+  .logo-box svg{width:29px;height:29px;}
+  .brand{font-size:23px; font-weight:900; letter-spacing:.3px; white-space:nowrap; color:var(--navy);}
+  .brand-sub{margin-top:2px;color:var(--muted);font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;}
+  .divider{width:1px; height:52px; background:rgba(11,43,99,.16);}
+  .main-title{font-size:36px; line-height:1; font-weight:900; letter-spacing:-.8px; white-space:nowrap; color:var(--navy);}
+  .main-title span{color:var(--orange);}
+  .subtitle{font-size:13.5px; font-weight:800; color:var(--orange-dark); margin-top:7px; letter-spacing:.6px;}
   .status{
-    min-width:215px; height:58px; border-radius:7px; background:var(--amber);
-    display:flex; align-items:center; justify-content:center; gap:12px;
-    font-size:25px; font-weight:800; color:#fff; box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);
+    min-width:180px; padding:13px 16px; border-radius:15px;
+    background:linear-gradient(135deg,#071A41,var(--navy));
+    text-align:center;
+    color:#fff;
+    box-shadow:0 10px 22px rgba(11,43,99,.22);
   }
-  .status-dot{width:28px;height:28px;border-radius:50%;background:#fff;opacity:.85;}
+  .status strong{display:block;font-size:19px;font-weight:900;}
+  .status span{display:block;margin-top:4px;font-size:10.5px;font-weight:800;letter-spacing:1px;opacity:.82;}
 
-  .meta{height:92px; display:grid; grid-template-columns:1.15fr .9fr 1.1fr 1.2fr 1fr 1fr; border-bottom:1px solid #c6ccd7;}
-  .meta-card{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; border-right:1px solid #c6ccd7; padding:8px 12px;}
-  .meta-card:last-child{border-right:0;}
-  .meta-label{font-size:11px; font-weight:800; color:var(--navy); text-transform:uppercase; letter-spacing:.2px; margin-bottom:8px;}
-  .meta-value{font-size:16px; font-weight:800; color:#1b2333; line-height:1.15;}
-  .meta-value.blue{color:#184b96}.meta-value.amber{color:#b27100}.meta-value.green{color:#26762e}.meta-value.purple{color:#5b2eaa}
+  /* ===== META STRIP — small rounded info cards ===== */
+  .meta{padding:12px 14px; display:grid; grid-template-columns:1.15fr .9fr 1.1fr 1fr 1fr 1fr; gap:9px; border-bottom:1px solid var(--line); background:var(--soft);}
+  .meta-card{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    padding:10px 10px; background:#fff; border:1px solid var(--line); border-radius:12px;}
+  .meta-label{font-size:10px; font-weight:800; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px;}
+  .meta-value{font-size:15px; font-weight:800; color:var(--ink); line-height:1.15;}
+  .meta-value.blue{color:var(--navy-light)}.meta-value.amber{color:var(--orange-dark)}.meta-value.green{color:var(--green)}.meta-value.purple{color:var(--purple)}
 
-  .main-dashboard{margin:10px 10px 0;border:1px solid #bfc6d1;border-radius:7px;overflow:hidden;background:#fff;}
-  .dashboard-head{height:38px;background:linear-gradient(90deg,#071b55,#0d2b78);color:#fff;display:grid;grid-template-columns:1.06fr .94fr;align-items:center;font-size:14px;font-weight:800;letter-spacing:.15px;text-transform:uppercase;}
-  .dashboard-head>div{height:100%;display:flex;align-items:center;padding:0 15px;border-right:1px solid rgba(255,255,255,.28);}
-  .dashboard-head>div:last-child{border-right:0;}
-  .dashboard-head .num{margin-right:9px;color:#f6c52c;}
+  /* ===== MAIN DASHBOARD CONTAINER — medium/large radius ===== */
+  .main-dashboard{margin:12px 12px 0;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 6px 18px rgba(11,43,99,.04);}
 
-  .dashboard-grid{display:grid;grid-template-columns:1.06fr .94fr;min-height:790px;}
-  .scope-column,.usp-column{padding:14px 16px;min-width:0;}
-  .scope-column{border-right:1px solid #cfd5df;}
-  .mini-title{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:9px;text-transform:uppercase;}
+  /* ===== SECTION HEADER BARS — separated as distinct rounded cards ===== */
+  .dashboard-head{display:grid;grid-template-columns:1.06fr .94fr;gap:12px;align-items:stretch;padding:12px 12px 0;}
+  .panel-header{
+    min-height:58px; display:flex; align-items:center; justify-content:space-between;
+    padding:12px 18px; color:#fff; border-radius:14px;
+    box-shadow:0 6px 16px rgba(11,43,99,.10);
+  }
+  .dashboard-head>div:first-child .panel-header{background:linear-gradient(90deg,var(--navy),var(--navy-light));}
+  .dashboard-head>div:last-child .panel-header{background:linear-gradient(90deg,var(--orange),var(--orange-dark));}
+  .panel-heading{display:flex;align-items:center;gap:11px;}
+  .heading-icon{width:33px;height:33px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:10px;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.22);}
+  .heading-icon svg{width:18px;height:18px;}
+  .panel-header h2{margin:0;font-size:19px;font-weight:900;letter-spacing:.2px;}
+  .panel-header small{font-size:10px;font-weight:900;letter-spacing:1px;opacity:.82;white-space:nowrap;}
 
-  .scope-intro{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;gap:5px;align-items:center;height:154px;margin-bottom:9px;}
-  .stage{height:138px;border:1px solid #cfd5df;border-radius:6px;padding:10px;background:#fbfcfe;}
-  .stage.customer{border-top:5px solid var(--blue)}
-  .stage.operations{border-top:5px solid var(--green)}
-  .stage.service{border-top:5px solid var(--purple)}
-  .stage h3{font-size:12px;margin:0 0 8px;color:var(--navy);line-height:1.15;}
-  .stage ul{padding:0 0 0 14px;margin:0;font-size:10.4px;line-height:1.47;color:#404b5e;}
-  .arrow{font-size:21px;font-weight:800;text-align:center;color:var(--navy);}
+  .dashboard-grid{display:grid;grid-template-columns:1.06fr .94fr;min-height:770px;}
+  .scope-column,.usp-column{padding:16px 18px;min-width:0;}
+  .scope-column{border-right:1px solid var(--line);}
+  .mini-title{font-size:12px;font-weight:900;color:var(--navy);margin-bottom:10px;text-transform:uppercase;letter-spacing:.3px;}
 
-  .scope-title{margin-top:1px;}
-  .scope-list{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
-  .scope-item{display:grid;grid-template-columns:32px 1fr;gap:8px;border:1px solid #d4d9e2;border-left:5px solid var(--blue);border-radius:5px;padding:8px 9px;background:#fcfdff;min-height:94px;}
-  .scope-item.green{border-left-color:var(--green)}.scope-item.amber{border-left-color:var(--amber)}.scope-item.purple{border-left-color:var(--purple)}.scope-item.red{border-left-color:var(--red)}
-  .scope-no{font-size:17px;font-weight:900;color:#d4d9e2;line-height:1;}
-  .scope-item h3{font-size:11.5px;margin:0 0 4px;color:#17203a;text-transform:uppercase;line-height:1.15;}
-  .scope-item p{font-size:9.7px;line-height:1.28;margin:0;color:#5a6474;}
+  /* ===== JOURNEY STAGES — numbered cards ===== */
+  .scope-intro{display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;gap:6px;align-items:center;height:150px;margin-bottom:12px;}
+  .stage{height:140px;border:1px solid var(--line);border-radius:14px;padding:11px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);}
+  .stage-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .stage-no{width:24px;height:21px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:6px;color:#fff;font-size:10px;font-weight:900;}
+  .stage.customer .stage-no{background:linear-gradient(135deg,var(--navy),var(--navy-light));}
+  .stage.operations .stage-no{background:linear-gradient(135deg,var(--green),#1FA25E);}
+  .stage.service .stage-no{background:linear-gradient(135deg,var(--purple),#A74BC3);}
+  .stage h3{font-size:11.5px;margin:0;color:var(--navy);line-height:1.15;font-weight:900;}
+  .stage ul{padding:0 0 0 14px;margin:0;font-size:10.2px;line-height:1.48;color:#47556A;}
+  .arrow{font-size:20px;font-weight:800;text-align:center;color:var(--orange);}
 
-  .scope-thesis{margin-top:9px;background:linear-gradient(135deg,#081e5e,#123783);color:#fff;border-radius:6px;padding:12px 15px;position:relative;overflow:hidden;}
+  /* ===== SCOPE CARD GRID — 3 column ===== */
+  .scope-title{margin-top:2px;}
+  .scope-list{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+  .scope-item{border:1px solid var(--line);border-radius:14px;padding:11px 12px;background:linear-gradient(180deg,#FFFFFF,#FCFDFE);min-height:122px;transition:transform .2s, box-shadow .2s;}
+  .scope-item:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(11,43,99,.08);}
+  .scope-top{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+  .scope-no{width:27px;height:24px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:8px;color:#fff;font-size:11px;font-weight:900;
+    background:linear-gradient(135deg,var(--navy),var(--navy-light));box-shadow:0 5px 12px rgba(11,43,99,.15);}
+  .scope-item.green .scope-no{background:linear-gradient(135deg,var(--green),#1FA25E);}
+  .scope-item.amber .scope-no{background:linear-gradient(135deg,var(--orange),#FF9848);}
+  .scope-item.purple .scope-no{background:linear-gradient(135deg,var(--purple),#A74BC3);}
+  .scope-item.red .scope-no{background:linear-gradient(135deg,var(--red),#E85A52);}
+  .scope-item h3{font-size:11.5px;margin:0;color:var(--navy);line-height:1.2;font-weight:900;}
+  .scope-item p{font-size:9.6px;line-height:1.34;margin:0;color:#5a6474;}
+
+  /* ===== VALUE PROPOSITION — highlighted special card ===== */
+  .scope-thesis{margin-top:11px;background:radial-gradient(circle at 100% 0%, rgba(255,106,0,.22), transparent 32%),linear-gradient(135deg,#071A41,var(--navy));
+    color:#fff;border-radius:16px;padding:14px 17px;position:relative;overflow:hidden;box-shadow:0 14px 28px rgba(11,43,99,.16);}
   .scope-thesis:after{content:'WATERCRAFT';position:absolute;right:-20px;bottom:-15px;font-size:58px;font-weight:900;color:rgba(255,255,255,.055);}
-  .thesis-kicker{font-size:9.5px;text-transform:uppercase;letter-spacing:1px;color:#f5c43a;font-weight:800;}
-  .scope-thesis h2{font-size:20px;line-height:1.08;margin:5px 0 6px;max-width:500px;}
-  .scope-thesis p{font-size:10.3px;line-height:1.36;color:#dbe3f5;margin:0;max-width:560px;}
-  .stats{display:flex;gap:28px;margin-top:8px;position:relative;z-index:1;}
-  .stat b{font-size:18px;display:block}.stat span{font-size:8.8px;color:#aebbd7;}
+  .thesis-kicker{font-size:9.5px;text-transform:uppercase;letter-spacing:1px;color:var(--orange);font-weight:900;}
+  .scope-thesis h2{font-size:20px;line-height:1.1;margin:6px 0 7px;max-width:500px;font-weight:900;}
+  .scope-thesis h2 span{color:var(--orange);}
+  .scope-thesis p{font-size:10.4px;line-height:1.4;color:#DCE5F1;margin:0;max-width:560px;}
+  .stats{display:flex;gap:28px;margin-top:10px;position:relative;z-index:1;}
+  .stat b{font-size:19px;display:block}.stat span{font-size:8.8px;color:#AEBBD7;}
 
-  .usp-stack{display:grid;grid-template-columns:1fr;gap:8px;}
-  .usp-card{display:grid;grid-template-columns:48px 1fr;gap:9px;border:1px solid #d2d7df;border-radius:6px;padding:9px 10px;background:#fff;min-height:102px;border-left:6px solid var(--amber);box-shadow:0 1px 2px rgba(15,42,99,.04);}
-  .usp-card.blue-card{border-left-color:var(--blue)}.usp-card.green-card{border-left-color:var(--green)}.usp-card.purple-card{border-left-color:var(--purple)}.usp-card.red-card{border-left-color:var(--red)}
-  .usp-number{font-size:26px;font-weight:900;color:#d3d8e1;line-height:1;}
-  .usp-content h3{font-size:12.5px;margin:0 0 6px;color:#17203a;line-height:1.18;}
-  .usp-content h3 span{color:var(--amber-dark);font-size:10px;}
-  .usp-content p{font-size:10.3px;line-height:1.32;margin:3px 0;color:#566173;}
-  .usp-content p b{color:#17213a;}
-  .bracket-label{color:var(--amber-dark);font-weight:900;}
+  /* ===== USP CARDS — icon based ===== */
+  .usp-stack{display:grid;grid-template-columns:1fr;gap:9px;}
+  .usp-card{display:grid;grid-template-columns:54px 1fr;gap:13px;align-items:center;border:1px solid #E7E0DA;border-radius:16px;padding:12px 13px;background:#fff;min-height:104px;box-shadow:0 5px 14px rgba(11,43,99,.04);}
+  .usp-icon{width:52px;height:52px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:14px;background:#FFF2E8;color:var(--orange);}
+  .usp-icon svg{width:27px;height:27px;}
+  .usp-card.blue-card .usp-icon{background:#EDF4FF;color:var(--navy-light);}
+  .usp-card.green-card .usp-icon{background:#EAFBF2;color:var(--green);}
+  .usp-card.purple-card .usp-icon{background:#F5EDFA;color:var(--purple);}
+  .usp-card.red-card .usp-icon{background:#FDECEA;color:var(--red);}
+  .usp-content h3{font-size:12.6px;margin:0 0 6px;color:var(--navy);line-height:1.2;font-weight:900;}
+  .usp-content h3 span{color:var(--orange-dark);font-size:10px;}
+  .usp-content p{font-size:10.3px;line-height:1.34;margin:3px 0;color:var(--muted);}
+  .usp-content p b{color:var(--ink);}
+  .bracket-label{color:var(--orange-dark);font-weight:900;}
 
-  .leadership-panel{margin-top:10px;border-top:1px solid #d2d7df;padding-top:10px;}
-  .outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
-  .outcome-grid>div{background:#f4f6f9;border:1px solid #d3d8e1;border-top:4px solid var(--navy);padding:8px;border-radius:4px;}
-  .outcome-grid>div:nth-child(2){border-top-color:var(--green)}.outcome-grid>div:nth-child(3){border-top-color:var(--amber)}
-  .outcome-grid b{display:block;font-size:10px;color:var(--navy);margin-bottom:4px;}
-  .outcome-grid span{display:block;font-size:9.5px;line-height:1.3;color:#5b6575;}
+  /* ===== OUTCOME PANEL ===== */
+  .leadership-panel{margin-top:12px;border-top:1px solid var(--line);padding-top:12px;}
+  .outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .outcome-grid>div{background:var(--soft);border:1px solid var(--line);border-top:4px solid var(--navy);padding:10px;border-radius:12px;}
+  .outcome-grid>div:nth-child(2){border-top-color:var(--green)}.outcome-grid>div:nth-child(3){border-top-color:var(--orange)}
+  .outcome-grid b{display:block;font-size:10px;color:var(--navy);margin-bottom:5px;letter-spacing:.3px;}
+  .outcome-grid span{display:block;font-size:9.5px;line-height:1.32;color:#5b6575;}
 
-  .footer{height:50px; margin-top:10px; background:#071d5c; color:#dbe2f3; display:flex; align-items:center; justify-content:space-between; padding:0 18px; font-size:10px; letter-spacing:.1px;}
-  .footer b{color:#fff}.footer-left{display:flex;gap:16px;align-items:center}.footer-dot{width:6px;height:6px;border-radius:50%;background:#f5bd25;display:inline-block;margin-right:6px;}
+  /* ===== FOOTER — pill badges ===== */
+  .footer{margin:14px 12px 12px; padding:13px 18px; display:flex; align-items:center; justify-content:space-between;
+    border-radius:15px; color:#fff; background:#071323; gap:16px;}
+  .footer-left{display:flex; flex-direction:column; gap:2px;}
+  .footer-left .line1{font-size:11.5px; font-weight:800; color:#fff;}
+  .footer-left .line2{font-size:9.5px; color:#9AA8BE;}
+  .footer-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);display:inline-block;margin-right:7px;}
+  .capabilities{display:flex; flex-wrap:wrap; gap:7px; justify-content:flex-end;}
+  .capability{padding:5px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#E6EDF6; font-size:9.5px; font-weight:800;}
 
   @media print{
     html,body{background:#fff}
@@ -118,18 +191,32 @@
 </head>
 <body>
 <div class="page">
+
+  <!-- HEADER -->
   <header class="header">
     <div class="title-wrap">
-      <div class="brand">Watercraft</div>
+      <div class="brand-block">
+        <div class="logo-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 18c1.8 1.3 3.6 1.3 5.4 0 1.8-1.3 3.6-1.3 5.4 0 1.8 1.3 3.6 1.3 5.4 0"></path>
+            <path d="M5 18l1.2-7.5a2 2 0 0 1 2-1.7h1.6V4h2v4.8h1.2a2 2 0 0 1 1.9 1.4L17 18"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="brand">Water<span style="color:var(--orange)">craft</span></div>
+          <div class="brand-sub">Storage Portal</div>
+        </div>
+      </div>
       <div class="divider"></div>
       <div>
-        <div class="main-title">EXECUTIVE OVERVIEW</div>
+        <div class="main-title">EXECUTIVE <span>OVERVIEW</span></div>
         <div class="subtitle">PROJECT SCOPE &amp; FIVE DIFFERENTIATORS · WEEKLY VISIBILITY CARD</div>
       </div>
     </div>
-    <div class="status"><span class="status-dot"></span> RELEASED</div>
+    <div class="status"><strong>RELEASED</strong><span>SCOPE + USP</span></div>
   </header>
 
+  <!-- META STRIP -->
   <section class="meta">
     <div class="meta-card"><div class="meta-label">Project</div><div class="meta-value">Watercraft Storage Portal</div></div>
     <div class="meta-card"><div class="meta-label">Client</div><div class="meta-value blue">Northern Beaches Council</div></div>
@@ -139,10 +226,39 @@
     <div class="meta-card"><div class="meta-label">Differentiators</div><div class="meta-value green">5 USP</div></div>
   </section>
 
+  <!-- MAIN DASHBOARD -->
   <section class="main-dashboard">
+
     <div class="dashboard-head">
-      <div><span class="num">01.</span> WATERCRAFT — PROJECT SCOPE</div>
-      <div><span class="num">02.</span> USP — WHY WATERCRAFT PORTAL STANDS OUT</div>
+      <div>
+        <div class="panel-header">
+          <div class="panel-heading">
+            <div class="heading-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="9"></circle>
+                <circle cx="12" cy="12" r="5"></circle>
+                <circle cx="12" cy="12" r="1.3" fill="currentColor"></circle>
+              </svg>
+            </div>
+            <h2>PROJECT SCOPE</h2>
+          </div>
+          <small>10 CORE AREAS</small>
+        </div>
+      </div>
+      <div>
+        <div class="panel-header">
+          <div class="panel-heading">
+            <div class="heading-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3l4 5-4 13-4-13 4-5Z"></path>
+                <path d="M4 8h16"></path>
+              </svg>
+            </div>
+            <h2>UNIQUE SELLING POINTS</h2>
+          </div>
+          <small>WHY WATERCRAFT STANDS OUT</small>
+        </div>
+      </div>
     </div>
 
     <div class="dashboard-grid">
@@ -150,30 +266,39 @@
       <div class="scope-column">
         <div class="mini-title">Customer Service Journey</div>
         <div class="scope-intro">
-          <div class="stage customer"><h3>ACCESS &amp; DISCOVERY</h3><ul><li>Signup / login</li><li>Password reset</li><li>Storage selection</li><li>Real-time availability</li></ul></div>
+          <div class="stage customer">
+            <div class="stage-top"><div class="stage-no">01</div><h3>ACCESS &amp; DISCOVERY</h3></div>
+            <ul><li>Signup / login</li><li>Password reset</li><li>Storage selection</li><li>Real-time availability</li></ul>
+          </div>
           <div class="arrow">→</div>
-          <div class="stage operations"><h3>BOOK &amp; MANAGE</h3><ul><li>Venue / berth choice</li><li>Waitlist</li><li>Document upload</li><li>Booking request</li></ul></div>
+          <div class="stage operations">
+            <div class="stage-top"><div class="stage-no">02</div><h3>BOOK &amp; MANAGE</h3></div>
+            <ul><li>Venue / berth choice</li><li>Waitlist</li><li>Document upload</li><li>Booking request</li></ul>
+          </div>
           <div class="arrow">→</div>
-          <div class="stage service"><h3>ROLLOVER &amp; PAYMENT</h3><ul><li>Permit renewal</li><li>Permit release</li><li>BPOINT payment</li><li>Email reminders</li></ul></div>
+          <div class="stage service">
+            <div class="stage-top"><div class="stage-no">03</div><h3>ROLLOVER &amp; PAYMENT</h3></div>
+            <ul><li>Permit renewal</li><li>Permit release</li><li>BPOINT payment</li><li>Email reminders</li></ul>
+          </div>
         </div>
 
         <div class="mini-title scope-title">Watercraft — Core Scope Areas</div>
         <div class="scope-list">
-          <div class="scope-item blue"><div class="scope-no">01</div><div><h3>Signup, Login &amp; Password Reset</h3><p>Customers access the portal using existing OPTIMO-linked accounts and can reset passwords when required.</p></div></div>
-          <div class="scope-item green"><div class="scope-no">02</div><div><h3>Watercraft Storage Booking</h3><p>Select Dinghy, Kayak or Wharf Tie-Up storage, choose venue and berth/rack, review and submit a booking request.</p></div></div>
-          <div class="scope-item amber"><div class="scope-no">03</div><div><h3>Real-Time Availability</h3><p>Shows available spaces, capacity, berth/rack details, dimensions, filters and relevant pricing from backend data.</p></div></div>
-          <div class="scope-item purple"><div class="scope-no">04</div><div><h3>Online Waitlist</h3><p>Customers can join the waitlist when no suitable space is available, with council review and availability notifications.</p></div></div>
-          <div class="scope-item red"><div class="scope-no">05</div><div><h3>Permit Renewal</h3><p>View active permits, select eligible permits, review renewal summary, pay online and receive confirmation.</p></div></div>
-          <div class="scope-item blue"><div class="scope-no">06</div><div><h3>Permit Release</h3><p>Customers can release selected permits or all permits online when they do not wish to renew.</p></div></div>
-          <div class="scope-item green"><div class="scope-no">07</div><div><h3>BPOINT Integration</h3><p>Secure online payment gateway integration for permit renewal payments and related confirmation processing.</p></div></div>
-          <div class="scope-item amber"><div class="scope-no">08</div><div><h3>Email &amp; Renewal Reminders</h3><p>Booking confirmations, waitlist updates, renewal reminders, payment confirmations and customer communications.</p></div></div>
-          <div class="scope-item purple"><div class="scope-no">09</div><div><h3>Booking Summary &amp; Uploads</h3><p>Review selected storage details and upload required supporting documents such as proof of address where applicable.</p></div></div>
-          <div class="scope-item red"><div class="scope-no">10</div><div><h3>NBC Theme</h3><p>Northern Beaches Council themed customer portal experience.</p></div></div>
+          <div class="scope-item blue"><div class="scope-top"><div class="scope-no">01</div><h3>Signup, Login &amp; Password Reset</h3></div><p>Customers access the portal using existing OPTIMO-linked accounts and can reset passwords when required.</p></div>
+          <div class="scope-item green"><div class="scope-top"><div class="scope-no">02</div><h3>Watercraft Storage Booking</h3></div><p>Select Dinghy, Kayak or Wharf Tie-Up storage, choose venue and berth/rack, review and submit a booking request.</p></div>
+          <div class="scope-item amber"><div class="scope-top"><div class="scope-no">03</div><h3>Real-Time Availability</h3></div><p>Shows available spaces, capacity, berth/rack details, dimensions, filters and relevant pricing from backend data.</p></div>
+          <div class="scope-item purple"><div class="scope-top"><div class="scope-no">04</div><h3>Online Waitlist</h3></div><p>Customers can join the waitlist when no suitable space is available, with council review and availability notifications.</p></div>
+          <div class="scope-item red"><div class="scope-top"><div class="scope-no">05</div><h3>Permit Renewal</h3></div><p>View active permits, select eligible permits, review renewal summary, pay online and receive confirmation.</p></div>
+          <div class="scope-item blue"><div class="scope-top"><div class="scope-no">06</div><h3>Permit Release</h3></div><p>Customers can release selected permits or all permits online when they do not wish to renew.</p></div>
+          <div class="scope-item green"><div class="scope-top"><div class="scope-no">07</div><h3>BPOINT Integration</h3></div><p>Secure online payment gateway integration for permit renewal payments and related confirmation processing.</p></div>
+          <div class="scope-item amber"><div class="scope-top"><div class="scope-no">08</div><h3>Email &amp; Renewal Reminders</h3></div><p>Booking confirmations, waitlist updates, renewal reminders, payment confirmations and customer communications.</p></div>
+          <div class="scope-item purple"><div class="scope-top"><div class="scope-no">09</div><h3>Booking Summary &amp; Uploads</h3></div><p>Review selected storage details and upload required supporting documents such as proof of address where applicable.</p></div>
+          <div class="scope-item red"><div class="scope-top"><div class="scope-no">10</div><h3>NBC Theme</h3></div><p>Northern Beaches Council themed customer portal experience.</p></div>
         </div>
 
         <div class="scope-thesis">
           <div class="thesis-kicker">CORE VALUE PROPOSITION</div>
-          <h2>One customer self-service journey for watercraft storage.</h2>
+          <h2>One customer self-service journey <span>for watercraft storage.</span></h2>
           <p>Real-time availability, booking, waitlist, permit renewal, permit release, payment and customer communication are brought together in one portal.</p>
           <div class="stats"><div class="stat"><b>10</b><span>scope capabilities</span></div><div class="stat"><b>5</b><span>key differentiators</span></div><div class="stat"><b>28 AUG</b><span>2026 release</span></div></div>
         </div>
@@ -184,27 +309,27 @@
         <div class="mini-title">Watercraft Differentiators <span class="bracket-label">(USP)</span></div>
         <div class="usp-stack">
           <div class="usp-card amber-card">
-            <div class="usp-number">01</div>
+            <div class="usp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.3" fill="currentColor"></circle></svg></div>
             <div class="usp-content"><h3>REAL-TIME STORAGE AVAILABILITY <span>(USP)</span></h3><p><b>Immediate visibility:</b> customers can see available watercraft storage locations and suitable berth/rack options before submitting a request.</p><p><b>Better decisions:</b> backend-driven capacity and storage details reduce unnecessary enquiries.</p></div>
           </div>
 
           <div class="usp-card blue-card">
-            <div class="usp-number">02</div>
+            <div class="usp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V5a2 2 0 0 0-2-2h-7L3 11l10 10 7-7Z"></path><circle cx="15.5" cy="7.5" r="1.3"></circle></svg></div>
             <div class="usp-content"><h3>END-TO-END ONLINE BOOKING EXPERIENCE <span>(USP)</span></h3><p><b>One journey:</b> storage selection, venue choice, berth/rack selection, booking review, document upload and request submission are handled online.</p><p><b>Less manual handling:</b> customers complete more of the process without staff intervention.</p></div>
           </div>
 
           <div class="usp-card green-card">
-            <div class="usp-number">03</div>
+            <div class="usp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a10 10 0 0 1 14 0"></path><path d="M8.5 16a5 5 0 0 1 7 0"></path><path d="M12 20h.01"></path></svg></div>
             <div class="usp-content"><h3>INTEGRATED ONLINE WAITLIST <span>(USP)</span></h3><p><b>Digital waitlist:</b> when no suitable space is available, customers can join the waitlist directly online.</p><p><b>Improved service:</b> reduces reliance on manual email-based requests and supports availability notifications.</p></div>
           </div>
 
           <div class="usp-card purple-card">
-            <div class="usp-number">04</div>
+            <div class="usp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="13" height="10" rx="1.5"></rect><path d="M7 19h5"></path><path d="M9.5 15v4"></path><rect x="18" y="8" width="3" height="7" rx=".8"></rect></svg></div>
             <div class="usp-content"><h3>SELF-SERVICE PERMIT RENEWAL &amp; RELEASE <span>(USP)</span></h3><p><b>Customer control:</b> permit holders can renew eligible permits or release storage spaces online.</p><p><b>Operational efficiency:</b> reduces repetitive staff processing for common permit actions.</p></div>
           </div>
 
           <div class="usp-card red-card">
-            <div class="usp-number">05</div>
+            <div class="usp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4h3a2 2 0 1 1 0 4H3v4a2 2 0 0 0 2 2h4v-3a2 2 0 1 1 4 0v3h4a2 2 0 0 0 2-2v-4h-3a2 2 0 1 1 0-4h3V5a2 2 0 0 0-2-2h-4v3a2 2 0 1 1-4 0V3Z"></path></svg></div>
             <div class="usp-content"><h3>SECURE PAYMENT &amp; MAPPING REMINDERS <span>(USP)</span></h3><p><b>BPOINT payment:</b> supports secure online renewal payments and confirmation processing.</p><p><b>Timely communication:</b> automated renewal reminders help customers act before renewal deadlines.</p></div>
           </div>
         </div>
@@ -221,10 +346,21 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-left"><span><span class="footer-dot"></span>Watercraft Storage Portal — executive visibility card</span><span>Northern Beaches Council · OptimoGov</span></div>
-    <div><b>One portal</b> · booking · waitlist · renewal · payment</div>
+    <div class="footer-left">
+      <div class="line1"><span class="footer-dot"></span>Watercraft Storage Portal — executive visibility card</div>
+      <div class="line2">Northern Beaches Council · OptimoGov</div>
+    </div>
+    <div class="capabilities">
+      <span class="capability">Booking</span>
+      <span class="capability">Waitlist</span>
+      <span class="capability">Renewal</span>
+      <span class="capability">Payment</span>
+      <span class="capability">Reminders</span>
+    </div>
   </footer>
+
 </div>
 </body>
 </html>

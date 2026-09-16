@@ -3,7 +3,7 @@
  * UNICOM TIC INCUBATOR - Complete Portfolio Visibility Hub
  */
 
-// Active projects shown on the dashboard (all 6 projects initialized to Week 1)
+// Active projects shown on the dashboard (7 active projects with Week 1 & Week 2 visibility)
 const DEFAULT_PROJECTS = [
   {
     id: 'camera-module',
@@ -13,7 +13,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Nilaxshan / Kirusthiya',
     description: 'Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX retail loss prevention, and RTSP/ONVIF reliability.',
     highlights: 'Connector startup readiness, RTSP/ONVIF reliability, installer launcher lifecycle, camera & zone setup, ONETIX architecture & user journey.',
-    selectedWeekIndex: 0,
+    selectedWeekIndex: 1,
     weeks: [
       {
         weekNumber: 1,
@@ -24,6 +24,17 @@ const DEFAULT_PROJECTS = [
         manDays: '150 Forecast',
         consumed: '92 Consumed',
         weeklyUrl: 'Incubator Weekly update/WEEKLY PROJECT VISIBILITY CARD.html',
+        scopeUrl: 'scope document/ONETIX_Scope_USP.html'
+      },
+      {
+        weekNumber: 2,
+        weekLabel: 'Week 2',
+        weekEnding: '11 Sep 2026',
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: '150 Forecast',
+        consumed: '102 Consumed',
+        weeklyUrl: 'Incubator Weekly update/Camera Module 11.09.2026.html',
         scopeUrl: 'scope document/ONETIX_Scope_USP.html'
       }
     ]
@@ -70,7 +81,7 @@ const DEFAULT_PROJECTS = [
     leads: 'HRMS Platform Team',
     description: 'Comprehensive human resource management suite with employee directory, multi-tenant security, and leave tracking.',
     highlights: 'Authentication & Security, Leave & Attendance, Multi-tenant management, Shift scheduling.',
-    selectedWeekIndex: 0,
+    selectedWeekIndex: 1,
     weeks: [
       {
         weekNumber: 1,
@@ -81,6 +92,17 @@ const DEFAULT_PROJECTS = [
         manDays: '150 Days',
         consumed: '59% Complete',
         weeklyUrl: 'Incubator Weekly update/weekly-project-visibility-card-onexso.pr.html',
+        scopeUrl: 'scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html'
+      },
+      {
+        weekNumber: 2,
+        weekLabel: 'Week 2',
+        weekEnding: '11 Sep 2026',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '260 Forecast',
+        consumed: '130 Consumed',
+        weeklyUrl: 'Incubator Weekly update/weekly-visibility-card-onexso-11.09.2026.html',
         scopeUrl: 'scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html'
       }
     ]
@@ -127,7 +149,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Venue & Ticketing Team',
     description: 'Venue mapping, interactive seat block selection, gate access allocation, and tiered pricing engine.',
     highlights: 'Venue Visual Mapper, Tier Configuration, Gate & Entrance Setup, Seat Block Locking.',
-    selectedWeekIndex: 0,
+    selectedWeekIndex: 1,
     weeks: [
       {
         weekNumber: 1,
@@ -138,6 +160,17 @@ const DEFAULT_PROJECTS = [
         manDays: '200 Forecast',
         consumed: '75 Consumed (71%)',
         weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_weekly_visibility_card.html',
+        scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
+      },
+      {
+        weekNumber: 2,
+        weekLabel: 'Week 2',
+        weekEnding: '11 Sep 2026',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '200 Forecast',
+        consumed: '101 Consumed',
+        weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_weekly_visibility_card_updated_v13.html',
         scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
       }
     ]
@@ -164,6 +197,29 @@ const DEFAULT_PROJECTS = [
         scopeUrl: 'scope document/watercraft.html'
       }
     ]
+  },
+  {
+    id: 'nsw-sports',
+    icon: '🏉',
+    name: 'NSW Sports',
+    release: 'UI Migration — Complete',
+    leads: 'Saif / Abitha',
+    description: 'Government sports portal and customer activity migration covering School Camps booking wizard, Active Programs, and Kids Voucher management.',
+    highlights: 'School Camp Booking Wizard, Programs & Activities, Voucher Management, 17+ Delivered Pages, Multi-journey UI Design.',
+    selectedWeekIndex: 0,
+    weeks: [
+      {
+        weekNumber: 1,
+        weekLabel: 'Week 1',
+        weekEnding: '11 Sep 2026',
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: '40 Hours',
+        consumed: '100% Complete',
+        weeklyUrl: 'Incubator Weekly update/nsw-1st-week-update.html',
+        scopeUrl: 'Incubator Weekly update/nsw-1st-week-update.html'
+      }
+    ]
   }
 ];
 
@@ -177,14 +233,15 @@ try {
     'portal_projects_sep1_week1_v2',
     'portal_projects_v5_week1_exact',
     'portal_projects_v7_updated_cards',
-    'portal_projects_v8_week2'
+    'portal_projects_v8_week2',
+    'portal_projects_v9_week2'
   ].forEach(k => localStorage.removeItem(k));
 } catch(e) {}
 
-const STORAGE_KEY = 'portal_projects_v9_week2';
+const STORAGE_KEY = 'portal_projects_v10_nsw_week2';
 let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
 
-if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 6) {
+if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 7) {
   PROJECTS = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
   localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
 } else {
@@ -198,6 +255,8 @@ if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 6) {
         p.weeks = JSON.parse(JSON.stringify(def.weeks));
         p.selectedWeekIndex = def.selectedWeekIndex || 0;
       }
+    } else {
+      PROJECTS.push(JSON.parse(JSON.stringify(def)));
     }
   });
   localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
@@ -236,6 +295,21 @@ function changeProjectWeek(projectId, weekIndex) {
 function renderProjects(filterText = '', filterStatus = 'all') {
   const container = document.getElementById('projectsContainer');
   container.innerHTML = '';
+
+  // Update filter buttons dynamically
+  const ontrackBtn = document.querySelector('.filter-btn[data-status="ontrack"]');
+  const atriskBtn = document.querySelector('.filter-btn[data-status="atrisk"]');
+  const completedBtn = document.querySelector('.filter-btn[data-status="completed"]');
+  const allBtn = document.querySelector('.filter-btn[data-status="all"]');
+
+  const ontrackCount = PROJECTS.filter(p => (p.weeks[p.selectedWeekIndex || 0] || p.weeks[0]).status === 'ON TRACK').length;
+  const atriskCount = PROJECTS.filter(p => (p.weeks[p.selectedWeekIndex || 0] || p.weeks[0]).status === 'AT RISK').length;
+  const completedCount = PROJECTS.filter(p => (p.weeks[p.selectedWeekIndex || 0] || p.weeks[0]).status === 'COMPLETED').length;
+
+  if (allBtn) allBtn.innerText = `All Projects (${PROJECTS.length})`;
+  if (ontrackBtn) ontrackBtn.innerText = `On Track (${ontrackCount})`;
+  if (atriskBtn) atriskBtn.innerText = `At Risk (${atriskCount})`;
+  if (completedBtn) completedBtn.innerText = `Completed (${completedCount})`;
 
   const filtered = PROJECTS.filter(p => {
     const curWeek = p.weeks[p.selectedWeekIndex || 0] || p.weeks[0];

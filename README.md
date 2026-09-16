@@ -1,6 +1,6 @@
 # UNICOM TIC INCUBATOR — Multi-Project Tracker & Visibility Portal
 
-An executive-level multi-project visibility dashboard and weekly reporting suite supporting 6 active incubator projects, scope specifications, high-resolution 1-click JPG report generation, and continuous deployment via Vercel.
+An executive-level multi-project visibility dashboard and weekly reporting suite supporting 7 active incubator projects, scope specifications, high-resolution 1-click JPG report generation, and continuous deployment via Vercel.
 
 ---
 
@@ -8,12 +8,13 @@ An executive-level multi-project visibility dashboard and weekly reporting suite
 
 | # | Project Name | Release Stage | Baseline Week | Weekly Report | Scope Document |
 |---|--------------|---------------|---------------|---------------|----------------|
-| 1 | **Camera Module** | Phase 1A MVP | September Week 1 | [View Report](Incubator%20Weekly%20update/Camara%20Module.html) | [View Scope](scope%20document/Camera_Module_Scope_Onetix.html) |
-| 2 | **Greyhound Customer Mobile App** | Phase 1 | Week 1 | [View Report](Incubator%20Weekly%20update/greyhound_weekly_project_visibility_card.html) | [View Scope](scope%20document/Greyhound_CEO_Scope_USP_WeeklyTheme.html) |
-| 3 | **ONEXSO HRMS** | Enterprise Release 1 | Week 1 | [View Report](Incubator%20Weekly%20update/weekly-project-visibility-card-onexso.pr.html) | [View Scope](scope%20document/OneXso_CEO_Scope_USP_WeeklyTheme%20(3).html) |
-| 4 | **OneVerz EPOS** | Release 1 | Week 1 | [View Report](Incubator%20Weekly%20update/One%20Verz%20Weekly%20Project%20Visibility%20Card%202%20-%20Static.html) | [View Scope](scope%20document/Oneverz.html) |
-| 5 | **Ticketing Venue Setup** | Phase 1 | Week 1 | [View Report](Incubator%20Weekly%20update/ticketing_venue_setup_weekly_visibility_card.html) | [View Scope](scope%20document/Venue_Layout_Scope_USP.html) |
-| 6 | **Watercraft Storage Portal** | Full Release | Week 2 | [View Report](Incubator%20Weekly%20update/Watercraft_Visibility_Card_Final_Compact_BlackBackground.html) | [View Scope](scope%20document/Watercraft_Storage_Portal_Scope_Week_2.html) |
+| 1 | **Camera Module** | Phase 1A MVP | September Weeks 1 & 2 | [View Report](Incubator%20Weekly%20update/Camera%20Module%2011.09.2026.html) | [View Scope](scope%20document/ONETIX_Scope_USP.html) |
+| 2 | **Greyhound Customer Mobile App** | Phase 1 | September Weeks 1 & 2 | [View Report](Incubator%20Weekly%20update/Greyhound_Weekly_Report_11_Sep_2026.html) | [View Scope](scope%20document/Greyhound_CEO_Scope_USP_WeeklyTheme.html) |
+| 3 | **ONEXSO HRMS** | Enterprise Release 1 | September Weeks 1 & 2 | [View Report](Incubator%20Weekly%20update/weekly-visibility-card-onexso-11.09.2026.html) | [View Scope](scope%20document/OneXso_CEO_Scope_USP_WeeklyTheme%20(3).html) |
+| 4 | **OneVerz EPOS** | Release 1 | September Weeks 1 & 2 | [View Report](Incubator%20Weekly%20update/Weekly%20Project%20Visibility%20Card11.09.2026.html) | [View Scope](scope%20document/Oneverz.html) |
+| 5 | **Ticketing Venue Setup** | Phase 1 | September Weeks 1 & 2 | [View Report](Incubator%20Weekly%20update/ticketing_venue_setup_weekly_visibility_card_updated_v13.html) | [View Scope](scope%20document/Venue_Layout_Scope_USP.html) |
+| 6 | **Watercraft Storage Portal** | Full Release | Completed | [View Report](Incubator%20Weekly%20update/Watercraft_Visibility_Card_Final_Compact_BlackBackground.html) | [View Scope](scope%20document/watercraft.html) |
+| 7 | **NSW Sports** | UI Migration — Complete | September Week 1 | [View Report](Incubator%20Weekly%20update/nsw-1st-week-update.html) | [View Scope](Incubator%20Weekly%20update/nsw-1st-week-update.html) |
 
 ---
 

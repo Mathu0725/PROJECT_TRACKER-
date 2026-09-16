@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSW Sports — Weekly Project Visibility Card</title>
+<style>
+  @page { size: 1920px 1080px; margin: 0; }
+  * { box-sizing: border-box; }
+
+  :root{
+    /* ===== OneVerz / Watercraft design system tokens ===== */
+    --orange:#FF6A00;
+    --orange-dark:#E65F00;
+
+    --navy:#0B2B63;
+    --navy-light:#164B91;
+
+    --purple:#792D8F;
+    --green:#15864B;
+    --red:#D93B32;
+
+    --ink:#172033;
+    --muted:#667387;
+
+    --bg:#F3F6FA;
+    --line:#DCE4EE;
+    --soft:#F8FAFD;
+
+    --shadow:0 16px 45px rgba(11,43,99,.10);
+  }
+
+  html, body { margin:0; padding:0; background:#fff; overflow-x:hidden; max-width:100%; }
+  body{
+    font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+    color:var(--ink);
+  }
+
+  .page{
+    width:100%; max-width:1920px; margin:0 auto; background:#fff;
+    border:1px solid #C8D3E0;
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+
+  /* ===== HEADER ===== */
+  .header{
+    background:var(--navy); color:#fff;
+    padding:20px 30px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+  }
+  .title-wrap{display:flex; align-items:center; gap:22px; min-width:0;}
+  .brand-block{display:flex;align-items:center;gap:14px;}
+  .logo-box{width:56px;height:56px;flex:none;border-radius:16px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--orange),#FF913D);color:#fff;box-shadow:0 10px 22px rgba(255,106,0,.3);}
+  .logo-box svg{width:30px;height:30px;}
+  .brand{font-size:23px; font-weight:900; letter-spacing:.3px; white-space:nowrap; color:#fff;}
+  .brand-sub{margin-top:2px;color:#B9C4DB;font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;}
+  .divider{width:1px; height:52px; background:rgba(255,255,255,.18);}
+  .main-title{font-size:32px; line-height:1; font-weight:900; letter-spacing:-.6px; color:#fff;}
+  .subtitle{font-size:13.5px; font-weight:800; color:var(--orange); margin-top:8px; letter-spacing:.5px;}
+  .status{
+    min-width:210px; padding:12px 18px; border-radius:14px;
+    background:linear-gradient(135deg,var(--green),#1FA25E);
+    display:flex; align-items:center; gap:12px; color:#fff;
+    box-shadow:0 10px 22px rgba(21,134,75,.28);
+  }
+  .status .status-ico{width:32px;height:32px;flex:none;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;}
+  .status .status-ico svg{width:18px;height:18px;}
+  .status strong{display:block;font-size:17px;font-weight:900;letter-spacing:.3px;}
+  .status span{display:block;margin-top:2px;font-size:10px;font-weight:800;letter-spacing:.8px;opacity:.92;}
+  .status-guide{
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); border-radius:12px;
+    padding:10px 16px; font-size:11px; font-weight:700; color:#fff;
+  }
+  .status-guide .label{font-weight:900;font-size:10.5px;letter-spacing:.6px;color:#fff;margin-bottom:7px;text-transform:uppercase;}
+  .status-guide .row{display:flex;gap:14px;}
+  .status-guide .item{display:flex;align-items:center;gap:6px;}
+  .status-guide .sw{width:9px;height:9px;border-radius:50%;display:inline-block;}
+
+  /* ===== META STRIP ===== */
+  .meta{display:grid;grid-template-columns:1.1fr 1.1fr 1.2fr 1.2fr 1.1fr;border-bottom:1px solid var(--line);background:var(--soft);}
+  .meta-card{padding:14px 20px;border-right:1px solid var(--line);display:flex;align-items:center;gap:12px;}
+  .meta-card:last-child{border-right:0;}
+  .meta-ico{width:30px;height:30px;flex:none;border-radius:9px;display:flex;align-items:center;justify-content:center;background:#EAF0FA;color:var(--navy-light);}
+  .meta-ico svg{width:16px;height:16px;}
+  .meta-card .lab{font-size:10.5px;font-weight:900;color:var(--navy-light);letter-spacing:.4px;margin-bottom:5px;text-transform:uppercase;}
+  .meta-card .val{font-size:17px;font-weight:900;color:var(--ink);}
+
+  .body-pad{padding:16px 18px;}
+
+  /* ===== SECTION / PANEL HEADER (Watercraft pattern) ===== */
+  .section{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(11,43,99,.04);}
+  .panel-header{min-height:56px; display:flex; align-items:center; justify-content:space-between; padding:11px 18px; color:#fff;
+    background:linear-gradient(90deg,var(--navy),var(--navy-light));}
+  .panel-header.orange{background:linear-gradient(90deg,var(--orange),var(--orange-dark));}
+  .panel-heading{display:flex;align-items:center;gap:11px;}
+  .heading-icon{width:32px;height:32px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:9px;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);}
+  .heading-icon svg{width:17px;height:17px;}
+  .panel-header h2{margin:0;font-size:16px;font-weight:900;letter-spacing:.2px;}
+  .panel-header small{font-size:9.5px;font-weight:900;letter-spacing:.8px;opacity:.9;white-space:nowrap;text-transform:uppercase;}
+  .sec-body{padding:16px 18px;background:#fff;}
+
+  /* ===== ROW LAYOUTS ===== */
+  .row-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;}
+  .row-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:start;}
+  .row-2col .section, .row-3col .section{height:100%;}
+
+  /* ===== TABLE + SIDE ===== */
+  .top-row{display:grid;grid-template-columns:1fr 300px;gap:14px;}
+  .table-panel{border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  table.rtable{width:100%;border-collapse:collapse;font-size:14px;}
+  table.rtable th{background:var(--soft);color:var(--navy-light);text-align:left;font-size:11px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;padding:12px 14px;border-bottom:2px solid var(--line);}
+  table.rtable td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:14px;line-height:1.45;}
+  table.rtable tr:last-child td{border-bottom:0;}
+  table.rtable td.name{font-weight:800;color:var(--ink);font-size:14px;}
+  .role{font-weight:700;font-size:14px;}
+  .role.lead{color:var(--navy-light);}
+  .role.coord{color:var(--purple);}
+  .role.dev{color:var(--green);}
+  .alloc{font-weight:800;font-size:14px;}
+  .alloc.lead{color:var(--navy-light);}
+  .alloc.coord{color:var(--purple);}
+  .alloc.dev{color:var(--green);}
+  .resp{color:#47556A;font-size:13px;font-weight:400;}
+
+  .side-stack{display:flex;flex-direction:column;gap:14px;}
+  .stat-box{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--soft);display:flex;align-items:center;gap:14px;}
+  .stat-ico{width:44px;height:44px;flex:none;border-radius:13px;display:flex;align-items:center;justify-content:center;background:#F5EDFA;color:var(--purple);}
+  .stat-ico svg{width:22px;height:22px;}
+  .stat-box .st-lab{font-size:10.5px;font-weight:900;color:var(--navy-light);letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px;}
+  .stat-box .st-val{font-size:32px;font-weight:900;color:var(--navy);line-height:1;}
+  .stat-box .st-unit{font-size:11px;font-weight:800;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.4px;}
+
+  /* ===== JOURNEY ===== */
+  .journey-row{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+  .jstep{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;text-align:center;}
+  .jstep .jicon{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;}
+  .jstep .jicon svg{width:22px;height:22px;}
+  .jstep.done .jicon{background:linear-gradient(135deg,var(--green),#1FA25E);}
+  .jstep.pending .jicon{background:#C7D0DE;color:#8695AC;}
+  .jstep .jlab{font-size:11.5px;font-weight:900;color:var(--navy);line-height:1.2;}
+  .jstep.pending .jlab{color:var(--muted);}
+  .jarrow{color:#B7C1D2;font-size:18px;font-weight:900;}
+
+  .info-box{border-radius:14px;padding:14px 16px;}
+  .info-box.green{background:#EEF9F2;border:1px solid #CFEBD9;}
+  .info-box.blue{background:#EEF3FC;border:1px solid #CFDCF3;}
+  .info-box .ib-title{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:900;margin-bottom:9px;}
+  .info-box .ib-title .ico-sm{width:24px;height:24px;flex:none;border-radius:7px;display:flex;align-items:center;justify-content:center;}
+  .info-box .ib-title .ico-sm svg{width:13px;height:13px;}
+  .info-box.green .ib-title{color:var(--green);}
+  .info-box.green .ib-title .ico-sm{background:#D9F1E3;color:var(--green);}
+  .info-box.blue .ib-title{color:var(--navy-light);}
+  .info-box.blue .ib-title .ico-sm{background:#DCE7FA;color:var(--navy-light);}
+  .info-box ul{margin:0;padding-left:18px;font-size:12px;line-height:1.55;color:#3A4658;}
+  .info-box li{margin-bottom:5px;}
+
+  /* ===== SECTION 3 STAT GRID ===== */
+  .stat-grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px;}
+  .sg-card{border:1px solid var(--line);border-radius:12px;padding:14px 10px;background:var(--soft);text-align:center;}
+  .sg-ico{width:34px;height:34px;margin:0 auto 8px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+  .sg-ico svg{width:17px;height:17px;}
+  .sg-card .sg-lab{font-size:10px;font-weight:900;color:var(--navy-light);letter-spacing:.2px;text-transform:uppercase;margin-bottom:6px;line-height:1.25;}
+  .sg-card .sg-val{font-size:24px;font-weight:900;color:var(--navy);line-height:1.1;}
+  .sg-card .sg-unit{font-size:10px;font-weight:800;color:var(--muted);margin-top:3px;text-transform:uppercase;}
+
+  .ring-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .ring-card{border:1px solid var(--line);border-radius:12px;padding:14px 10px;background:#fff;text-align:center;}
+  .ring{width:48px;height:48px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#fff;}
+  .ring svg{width:22px;height:22px;}
+  .ring.green{background:linear-gradient(135deg,var(--green),#1FA25E);}
+  .ring.navy{background:linear-gradient(135deg,var(--navy),var(--navy-light));}
+  .ring-card .rc-lab{font-size:10px;font-weight:900;color:var(--navy-light);letter-spacing:.3px;text-transform:uppercase;margin-bottom:4px;}
+  .ring-card .rc-val{font-size:14.5px;font-weight:900;color:var(--ink);}
+
+  /* ===== SECTION 4 COMPLETED ===== */
+  .completed-box{border:1px solid #CFEBD9;border-radius:14px;background:#EEF9F2;padding:16px 18px;}
+  .completed-title{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:900;color:var(--green);margin-bottom:10px;line-height:1.3;}
+  .completed-title .badge{width:28px;height:28px;flex:none;border-radius:50%;background:linear-gradient(135deg,var(--green),#1FA25E);color:#fff;display:flex;align-items:center;justify-content:center;}
+  .completed-title .badge svg{width:15px;height:15px;}
+  .completed-list{margin:0 0 10px;padding-left:20px;font-size:12.5px;line-height:1.6;color:#2E4A3A;}
+  .completed-list li{margin-bottom:5px;}
+  .completed-list b{color:var(--green);}
+  .completed-note{font-size:10.8px;color:var(--muted);font-style:italic;border-top:1px dashed #CFEBD9;padding-top:9px;}
+
+  /* ===== SECTION 5 RISK ===== */
+  .risk-box{border:1px solid #F3E1B8;border-radius:14px;background:#FFF9EC;padding:16px 18px;}
+  .risk-title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:900;color:var(--orange-dark);margin-bottom:3px;justify-content:center;text-align:center;}
+  .risk-title .ico-sm{width:26px;height:26px;flex:none;border-radius:50%;background:#FCEBD6;display:flex;align-items:center;justify-content:center;color:var(--orange-dark);}
+  .risk-title .ico-sm svg{width:14px;height:14px;}
+  .risk-sub{text-align:center;font-size:11.5px;font-weight:800;color:#A97A00;margin-bottom:12px;}
+  .risk-list{margin:0;padding-left:20px;font-size:12px;line-height:1.6;color:#4B4123;}
+  .risk-list li{margin-bottom:7px;}
+  .risk-list b{color:var(--orange-dark);}
+
+  /* ===== SECTION 6 GLANCE ===== */
+  .glance-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .glance-card{border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--soft);display:flex;align-items:center;gap:11px;}
+  .gicon{width:36px;height:36px;flex:none;border-radius:11px;display:flex;align-items:center;justify-content:center;}
+  .gicon svg{width:18px;height:18px;}
+  .glance-card .gc-lab{font-size:10px;font-weight:900;color:var(--navy-light);text-transform:uppercase;letter-spacing:.3px;margin-bottom:3px;}
+  .glance-card .gc-val{font-size:15px;font-weight:900;color:var(--navy);line-height:1.25;}
+  .glance-card .gc-sub{font-size:9.5px;color:var(--muted);font-weight:700;margin-top:2px;}
+
+  /* icon color variants */
+  .ic-orange{background:#FFF0E5;color:var(--orange);}
+  .ic-navy{background:#E7EDF7;color:var(--navy-light);}
+  .ic-purple{background:#F5EDFA;color:var(--purple);}
+  .ic-green{background:#E8F7EE;color:var(--green);}
+  .ic-red{background:#FCEAE8;color:var(--red);}
+
+  .footer{background:#071323;color:#C9D3E4;padding:13px 20px;font-size:10.5px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;}
+  .footer-left{display:flex;align-items:center;gap:9px;}
+  .footer b{color:#fff;}
+  .footer .sep{opacity:.5;}
+  .capabilities{display:flex;flex-wrap:wrap;gap:7px;}
+  .capability{padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#E6EDF6;font-size:9.5px;font-weight:800;}
+
+  @media print{
+    html,body{background:#fff}
+    .page{margin:0;box-shadow:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="title-wrap">
+      <div class="brand-block">
+        <div class="logo-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="5" y="4" width="14" height="17" rx="1.5"></rect>
+            <path d="M9 2.5h6a1 1 0 0 1 1 1V6H8V3.5a1 1 0 0 1 1-1Z"></path>
+            <path d="M9 11l2 2 4-4"></path>
+            <path d="M8.5 16h7"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="brand">NSW <span style="color:var(--orange)">Sports</span></div>
+          <div class="brand-sub">Visibility Card</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <div class="main-title">WEEKLY PROJECT VISIBILITY CARD</div>
+        <div class="subtitle">WEEK ENDING FRIDAY, 11 SEPTEMBER 2026</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div class="status">
+        <div class="status-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"></path></svg></div>
+        <div><strong>GREEN</strong><span>UI MIGRATION COMPLETE</span></div>
+      </div>
+      <div class="status-guide">
+        <div class="label">Status Guide</div>
+        <div class="row">
+          <span class="item"><span class="sw" style="background:#2ECC71"></span>On Track</span>
+          <span class="item"><span class="sw" style="background:#F4C430"></span>At Risk</span>
+          <span class="item"><span class="sw" style="background:#E74C3C"></span>Off Track</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- META STRIP -->
+  <section class="meta">
+    <div class="meta-card">
+      <div class="meta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v16"></path><path d="M12 21V9a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v12"></path><path d="M8 7h.01M8 11h.01M8 15h.01"></path></svg></div>
+      <div><div class="lab">Company</div><div class="val">Unicomtic Incubator</div></div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"></circle><path d="M2.5 20c0-3.3 3-6 6.5-6s6.5 2.7 6.5 6"></path><circle cx="17.5" cy="9" r="2.2"></circle><path d="M16 14.2c2.6.5 4.6 2.4 5 5.8"></path></svg></div>
+      <div><div class="lab">Client</div><div class="val">New South Wales</div></div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6a1 1 0 0 1 1-1h4l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6Z"></path></svg></div>
+      <div><div class="lab">Project Name</div><div class="val">NSW Sports</div></div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.5c3 2 5 6 5 10 0 2-1 4-2 5l-1 3-2-2-2 2-1-3c-1-1-2-3-2-5 0-4 2-8 5-10Z"></path><circle cx="12" cy="10.5" r="1.6" fill="currentColor"></circle></svg></div>
+      <div><div class="lab">Current Stage</div><div class="val">UI Migration — Complete</div></div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></div>
+      <div><div class="lab">Week Ending (Friday)</div><div class="val">11 September 2026</div></div>
+    </div>
+  </section>
+
+  <div class="body-pad">
+
+    <!-- 1. RESOURCE ALLOCATION -->
+    <div class="section" style="margin-bottom:14px;">
+      <div class="panel-header">
+        <div class="panel-heading">
+          <div class="heading-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="12" height="17" rx="1.5"></rect><rect x="9" y="2.5" width="6" height="3" rx="1"></rect><path d="M9 10h6M9 13h6M9 16h4"></path></svg></div>
+          <h2>1. Resource Allocation / Project Team</h2>
+        </div>
+        <small>5 Team Members</small>
+      </div>
+      <div class="sec-body">
+        <div class="top-row">
+          <div class="table-panel">
+            <table class="rtable">
+              <thead>
+                <tr><th>Team Member</th><th>Role</th><th>Allocation (Hours)</th><th>Main Responsibility</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="name">Saif</td><td class="role lead">Team Lead</td><td class="alloc lead">0<span style="font-size:11px;font-weight:700;color:var(--muted);">(fix the bugs and monitoring the live for Watercraft)</span></td><td class="resp">Leadership, architecture, development, integration, testing</td></tr>
+                <tr><td class="name">Abitha</td><td class="role coord">Coordinator</td><td class="alloc coord">12</td><td class="resp">Coordination, documentation, tracking, development, testing support</td></tr>
+                <tr><td class="name">Kunasika</td><td class="role dev">Developer</td><td class="alloc dev">11</td><td class="resp">Frontend, backend, testing</td></tr>
+                <tr><td class="name">Lavanya</td><td class="role dev">Developer</td><td class="alloc dev">11</td><td class="resp">Frontend, backend, testing</td></tr>
+                <tr><td class="name">Natheesan</td><td class="role dev">Developer</td><td class="alloc dev">6</td><td class="resp">Frontend, backend, testing</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="side-stack">
+            <div class="stat-box">
+              <div class="stat-ico ic-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"></circle><path d="M2.5 20c0-3.3 3-6 6.5-6s6.5 2.7 6.5 6"></path><circle cx="17.5" cy="9" r="2.2"></circle><path d="M16 14.2c2.6.5 4.6 2.4 5 5.8"></path></svg></div>
+              <div>
+                <div class="st-lab">Total Allocation (This Week)</div>
+                <div class="st-val">40</div>
+                <div class="st-unit">Hours</div>
+              </div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-ico ic-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"></circle><path d="M2.5 20c0-3.3 3-6 6.5-6s6.5 2.7 6.5 6"></path><circle cx="17.5" cy="9" r="2.2"></circle><path d="M16 14.2c2.6.5 4.6 2.4 5 5.8"></path></svg></div>
+              <div>
+                <div class="st-lab">Team Size</div>
+                <div class="st-val">5</div>
+                <div class="st-unit">Members</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 & 3 ROW -->
+    <div class="row-2col" style="margin-bottom:14px;">
+      <!-- 2. SCOPE & RELEASE JOURNEY -->
+      <div class="section">
+        <div class="panel-header">
+          <div class="panel-heading">
+            <div class="heading-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.3" fill="currentColor"></circle></svg></div>
+            <h2>2. Scope &amp; Release Journey</h2>
+          </div>
+          <small>4 Stages</small>
+        </div>
+        <div class="sec-body">
+          <div class="journey-row">
+            <div class="jstep done"><div class="jicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l14 8-14 8V4Z"></path></svg></div><div class="jlab">Project Started</div></div>
+            <div class="jarrow">→</div>
+            <div class="jstep done"><div class="jicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"></path></svg></div><div class="jlab">UI Migration<br>Complete</div></div>
+            <div class="jarrow">→</div>
+            <div class="jstep pending"><div class="jicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.9 2.9l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.9-2.9l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.9-2.9l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.6V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.9 2.9l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.6 1H21a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.5 1Z"></path></svg></div><div class="jlab">Integration &amp; Validation</div></div>
+            <div class="jarrow">→</div>
+            <div class="jstep pending"><div class="jicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 21V4"></path><path d="M6 4h12l-3 4 3 4H6"></path></svg></div><div class="jlab">Release</div></div>
+          </div>
+
+          <div class="two-panel">
+            <div class="info-box green">
+              <div class="ib-title"><span class="ico-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"></path></svg></span> Delivered / Completed</div>
+              <ul>
+                <li>Completed full UI page design/migration for the <b>School Camp</b> journey — booking wizard, confirmation, consent form, and organiser portal.</li>
+                <li>Completed full UI page design/migration for the <b>Programs for Families &amp; Individuals</b> journey — program picker and shared booking wizard.</li>
+                <li>Completed full UI page design/migration for the <b>Voucher</b> journey — purchase and confirmation screens.</li>
+              </ul>
+            </div>
+            <div class="info-box blue">
+              <div class="ib-title"><span class="ico-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"></path></svg></span> Post-Migration / Next</div>
+              <ul>
+                <li>Backend/API and payment integration for the three completed journeys (currently UI/prototype only).</li>
+                <li>Continue UI migration for remaining modules (events &amp; ticketing, space booking, permits, season passes, admin).</li>
+                <li>Integration &amp; validation pass once backend services are connected.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. RESOURCE EFFORT SUMMARY -->
+      <div class="section">
+        <div class="panel-header">
+          <div class="panel-heading">
+            <div class="heading-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="12" width="3" height="8"></rect><rect x="10.5" y="6" width="3" height="14"></rect><rect x="17" y="9" width="3" height="11"></rect></svg></div>
+            <h2>3. Resource Effort Summary</h2>
+          </div>
+          <small>UI Migration</small>
+        </div>
+        <div class="sec-body">
+          <div class="stat-grid4">
+            <div class="sg-card"><div class="sg-ico ic-navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="12" height="17" rx="1.5"></rect><path d="M9 10h6M9 13h6M9 16h4"></path></svg></div><div class="sg-lab">Journeys UI-Complete</div><div class="sg-val">3</div><div class="sg-unit">Camp · Programs · Voucher</div></div>
+            <div class="sg-card"><div class="sg-ico ic-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6Z"></path><path d="M15 2v5h5"></path></svg></div><div class="sg-lab">Customer Pages Delivered</div><div class="sg-val">10+</div><div class="sg-unit">Across 3 journeys</div></div>
+            <div class="sg-card"><div class="sg-ico ic-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2 2.8-2.8Z"></path></svg></div><div class="sg-lab">Staff/Admin Pages Delivered</div><div class="sg-val">7+</div><div class="sg-unit">Camp &amp; voucher admin</div></div>
+            <div class="sg-card"><div class="sg-ico ic-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3v4M15 3v4M7 7h10v4a5 5 0 0 1-10 0V7Z"></path><path d="M12 16v5"></path></svg></div><div class="sg-lab">Backend/API Integration</div><div class="sg-val">0%</div><div class="sg-unit">Not started</div></div>
+          </div>
+          <div class="ring-grid">
+            <div class="ring-card"><div class="ring green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"></path></svg></div><div class="rc-lab">UI Migration Status</div><div class="rc-val">Complete</div></div>
+            <div class="ring-card"><div class="ring navy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.3" fill="currentColor"></circle></svg></div><div class="rc-lab">Effort Status</div><div class="rc-val">On Target</div></div>
+            <div class="ring-card"><div class="ring green">100%</div><div class="rc-lab">UI Scope Completion</div><div class="rc-val">3 of 3 journeys</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4, 5 & 6 ROW -->
+    <div class="row-3col">
+      <!-- 4. THIS WEEK – COMPLETED -->
+      <div class="section">
+        <div class="panel-header">
+          <div class="panel-heading">
+            <div class="heading-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="12" height="17" rx="1.5"></rect><path d="M9 12l2 2 4-4"></path></svg></div>
+            <h2>4. This Week — Completed</h2>
+          </div>
+          <small>3 Journeys</small>
+        </div>
+        <div class="sec-body">
+          <div class="completed-box">
+            <div class="completed-title"><span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"></path></svg></span> UI Migration completed — School Camp, Programs for Families &amp; Individuals, Voucher</div>
+            <ul class="completed-list">
+              <li>Completed the full UI page design/migration for the <b>School Camp</b> user journey — all pages/screens across the journey are designed and completed.</li>
+              <li>Completed the full UI page design/migration for the <b>Programs for Families &amp; Individuals</b> user journey — all pages/screens across the journey are designed and completed.</li>
+              <li>Completed the full UI page design/migration for the <b>Voucher</b> user journey — all pages/screens across the journey are designed and completed.</li>
+            </ul>
+            <div class="completed-note">Note: this covers UI page design/migration only. Backend, API and integration work for these journeys is not reflected as completed here.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. RISKS / ISSUES -->
+      <div class="section">
+        <div class="panel-header orange">
+          <div class="panel-heading">
+            <div class="heading-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 21h20L12 3Z"></path><path d="M12 10v5"></path><path d="M12 17.5h.01"></path></svg></div>
+            <h2>5. Risks / Issues / Attention</h2>
+          </div>
+          <small>2 Items</small>
+        </div>
+        <div class="sec-body">
+          <div class="risk-box">
+            <div class="risk-title"><span class="ico-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h8v3a4 4 0 0 1-8 0V4Z"></path><path d="M6 5H4a3 3 0 0 0 3 4"></path><path d="M18 5h2a3 3 0 0 1-3 4"></path><path d="M12 11v3"></path><path d="M9 20h6"></path><path d="M10 17h4v3h-4Z"></path></svg></span> UI Migration Completed Successfully</div>
+            <div class="risk-sub">Great work team! — Items below for management attention on next-phase planning</div>
+            <ul class="risk-list">
+              <li><b>Backend/API integration not yet started:</b> School Camp, Programs, and Voucher journeys are UI/prototype only — no live persistence, payment processing, or email delivery yet. Recommend scoping this as the next phase.</li>
+              <li><b>Programs for Families &amp; Individuals — account model to confirm:</b> current implementation requires an organisation account for all program types, with no individual/family guest-checkout path. Recommend confirming intended scope with the business.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. AT A GLANCE -->
+      <div class="section">
+        <div class="panel-header">
+          <div class="panel-heading">
+            <div class="heading-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"></path><path d="M15 7h6v6"></path></svg></div>
+            <h2>6. At a Glance</h2>
+          </div>
+          <small>Snapshot</small>
+        </div>
+        <div class="sec-body">
+          <div class="glance-grid">
+            <div class="glance-card"><div class="gicon ic-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.5c3 2 5 6 5 10 0 2-1 4-2 5l-1 3-2-2-2 2-1-3c-1-1-2-3-2-5 0-4 2-8 5-10Z"></path><circle cx="12" cy="10.5" r="1.6" fill="currentColor"></circle></svg></div><div><div class="gc-lab">Project Stage</div><div class="gc-val">UI Migration Complete</div><div class="gc-sub">11 Sep 2026</div></div></div>
+            <div class="glance-card"><div class="gicon ic-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"></circle><path d="M2.5 20c0-3.3 3-6 6.5-6s6.5 2.7 6.5 6"></path><circle cx="17.5" cy="9" r="2.2"></circle><path d="M16 14.2c2.6.5 4.6 2.4 5 5.8"></path></svg></div><div><div class="gc-lab">Team</div><div class="gc-val">5 Members</div><div class="gc-sub">40 hrs allocated this week</div></div></div>
+            <div class="glance-card"><div class="gicon ic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4h8v3a4 4 0 0 1-8 0V4Z"></path><path d="M6 5H4a3 3 0 0 0 3 4"></path><path d="M18 5h2a3 3 0 0 1-3 4"></path><path d="M12 11v3"></path><path d="M9 20h6"></path><path d="M10 17h4v3h-4Z"></path></svg></div><div><div class="gc-lab">UI Completion</div><div class="gc-val">100%</div><div class="gc-sub">3 of 3 journeys</div></div></div>
+            <div class="glance-card"><div class="gicon ic-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3v4M15 3v4M7 7h10v4a5 5 0 0 1-10 0V7Z"></path><path d="M12 16v5"></path></svg></div><div><div class="gc-lab">Backend/API Status</div><div class="gc-val">Not Started</div><div class="gc-sub">Next phase</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">
+      <span>Prepared as weekly project visibility update for NSW Sports — UI Migration completed this week.</span>
+    </div>
+    <div class="capabilities">
+      <span class="capability">NSW SPORTS</span>
+      <span class="capability">NEW SOUTH WALES</span>
+      <span class="capability">UNICOMTIC INCUBATOR</span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
