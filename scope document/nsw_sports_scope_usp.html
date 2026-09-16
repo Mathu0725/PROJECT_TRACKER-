@@ -2,489 +2,193 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1536, initial-scale=1.0">
-<title>NSW Sports — Scope & USP Executive Overview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSW Sports — Scope & USP (Update Soon)</title>
 <style>
-  @page { size: 1536px 1024px; margin: 0; }
-  * { box-sizing: border-box; }
-  html, body { margin:0; padding:0; background:#e7ebf2; }
-  body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; color:#101a2d; font-weight:600; }
-
-  :root{
-    --navy:#071d5c;
-    --navy2:#0d2b78;
-    --blue:#0b63b6;
-    --cyan:#00cdd8;
-    --ink:#14203a;
-    --muted:#667085;
-    --line:#cfd5df;
-    --soft:#f4f6f9;
-    --green:#16a34a;
-    --amber:#f59e0b;
-    --red:#df2f32;
-    --purple:#6935b9;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    min-height: 100%;
+    background: #0b132b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  .page{
-    width:1536px;
-    height:1024px;
-    margin:0 auto;
-    overflow:hidden;
-    background:#fff;
-    position:relative;
+  .top-bar {
+    height: 70px;
+    background: #0f172a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+  }
+  .brand {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand span {
+    color: #38bdf8;
+  }
+  .badge-tag {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid #f59e0b;
+    color: #fbbf24;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
   }
 
-  .header{
-    height:86px;
-    background:linear-gradient(100deg,#061951 0%,#09296e 62%,#071d5c 100%);
-    color:#fff;
-    display:flex;
-    align-items:center;
-    padding:0 24px;
-    border-bottom:3px solid var(--cyan);
+  .content-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
   }
 
-  .title-wrap{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    min-width:0;
-    width:100%;
+  .status-box {
+    max-width: 680px;
+    width: 100%;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 50px 40px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   }
 
-  .brand{
-    font-size:36px;
-    font-weight:900;
-    letter-spacing:1.5px;
-    white-space:nowrap;
-  }
-  .brand span{color:var(--cyan);}
-  .divider{width:1px;height:48px;background:rgba(255,255,255,.35);}
-  .main-title{
-    font-size:34px;
-    line-height:1;
-    font-weight:800;
-    letter-spacing:.3px;
-    white-space:nowrap;
-  }
-  .subtitle{
-    font-size:16px;
-    font-weight:800;
-    color:#65e6ef;
-    margin-top:5px;
-    letter-spacing:.65px;
+  .icon-pulse {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, 0.12);
+    border: 2px solid #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
   }
 
-  .meta{
-    height:84px;
-    display:grid;
-    grid-template-columns:1.05fr .95fr 1.25fr 1.35fr 1.15fr 1fr;
-    border-bottom:1px solid #c6ccd7;
-  }
-  .meta-card{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    border-right:1px solid #c6ccd7;
-    padding:8px 12px;
-  }
-  .meta-card:last-child{border-right:0;}
-  .meta-label{
-    font-size:13.5px;
-    font-weight:800;
-    color:var(--navy);
-    text-transform:uppercase;
-    letter-spacing:.2px;
-    margin-bottom:6px;
-  }
-  .meta-value{
-    font-size:16.5px;
-    font-weight:800;
-    color:#1b2333;
-    line-height:1.15;
-  }
-  .meta-value.blue{color:#184b96}
-  .meta-value.cyan{color:#008ca0}
-  .meta-value.green{color:#26762e}
-  .meta-value.amber{color:#b45309; background:#fef3c7; padding:2px 10px; border-radius:12px; border:1px solid #fde68a;}
-
-  .notice-banner{
-    margin:10px 14px 0;
-    border:1px solid #fcd34d;
-    border-radius:8px;
-    overflow:hidden;
-    background:#fffbeb;
-    box-shadow:0 2px 8px rgba(245,158,11,0.08);
-  }
-  .notice-head{
-    height:34px;
-    background:linear-gradient(90deg,#b45309,#d97706);
-    color:#fff;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 16px;
-    font-size:14.5px;
-    font-weight:800;
-    letter-spacing:.3px;
-    text-transform:uppercase;
-  }
-  .notice-badge{
-    background:#fff;
-    color:#b45309;
-    padding:2px 10px;
-    border-radius:12px;
-    font-size:11.5px;
-    font-weight:900;
-  }
-  .notice-body{
-    padding:10px 18px;
-    font-size:15px;
-    line-height:1.35;
-    color:#78350f;
-    font-weight:700;
-    background:#fffbeb;
-  }
-  .notice-body b{color:#92400e; margin-right:4px;}
-
-  .main-dashboard{
-    margin:10px 14px 0;
-    border:1px solid #bfc6d1;
-    border-radius:8px;
-    overflow:hidden;
-    background:#fff;
-  }
-  .dashboard-head{
-    height:38px;
-    background:linear-gradient(90deg,#071b55,#0d2b78);
-    color:#fff;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
-    font-size:15px;
-    font-weight:800;
-    letter-spacing:.25px;
-    text-transform:uppercase;
-  }
-  .dashboard-head div{padding:0 16px;}
-  .dashboard-head div:last-child{
-    border-left:1px solid rgba(255,255,255,.2);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
   }
 
-  .dashboard-body{
-    height:660px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-  }
-  .left-pane{
-    border-right:1px solid #bfc6d1;
-    padding:12px 14px;
-    background:#fbfcfe;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .right-pane{
-    padding:12px 14px;
-    background:#fff;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
+  .subtitle {
+    font-size: 16px;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 30px;
   }
 
-  .scope-card{
-    border:1px solid #cfd5df;
-    border-radius:7px;
-    padding:10px 12px;
-    background:#fff;
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 28px;
+    text-align: left;
   }
-  .scope-card.cyan-card{border-top:3px solid var(--cyan);}
-  .scope-card.blue-card{border-top:3px solid var(--blue);}
-  .scope-card.green-card{border-top:3px solid var(--green);}
-  .scope-card.purple-card{border-top:3px solid var(--purple);}
 
-  .scope-card h4{
-    margin:0 0 4px;
-    font-size:15.5px;
-    font-weight:800;
-    color:var(--navy);
-    display:flex;
-    align-items:center;
-    gap:8px;
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
-  .scope-card p{
-    margin:0 0 3px;
-    font-size:13.5px;
-    color:#4b5563;
-    line-height:1.3;
+  .meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+    letter-spacing: 0.5px;
   }
-  .scope-card p b{color:#1f2937;}
+  .meta-val {
+    font-size: 14.5px;
+    color: #f1f5f9;
+    font-weight: 700;
+  }
 
-  .usp-card{
-    border:1px solid #cfd5df;
-    border-radius:7px;
-    padding:10px 14px;
-    background:#fff;
-    display:flex;
-    gap:12px;
-    align-items:flex-start;
+  .footer-note {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.4;
   }
-  .usp-card.blue-card{border-left:4px solid var(--blue);}
-  .usp-card.cyan-card{border-left:4px solid var(--cyan);}
-  .usp-card.green-card{border-left:4px solid var(--green);}
-  .usp-card.purple-card{border-left:4px solid var(--purple);}
 
-  .usp-number{
-    font-size:24px;
-    font-weight:900;
-    color:var(--navy);
-    line-height:1;
-    min-width:30px;
+  .bottom-bar {
+    height: 50px;
+    background: #0f172a;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    font-size: 12px;
+    color: #64748b;
   }
-  .usp-content h3{
-    margin:0 0 4px;
-    font-size:15px;
-    font-weight:800;
-    color:var(--navy);
-  }
-  .usp-content h3 span{color:var(--cyan); font-size:12px; margin-left:4px;}
-  .usp-content p{
-    margin:0 0 3px;
-    font-size:13px;
-    color:#4b5563;
-    line-height:1.25;
-  }
-  .usp-content p b{color:#1f2937;}
-
-  .outcome-panel{
-    margin-top:auto;
-    border:1px solid #d1d5db;
-    border-radius:6px;
-    padding:8px 12px;
-    background:#f8fafc;
-  }
-  .outcome-title{
-    font-size:12px;
-    font-weight:800;
-    text-transform:uppercase;
-    color:var(--navy);
-    letter-spacing:.4px;
-    margin-bottom:6px;
-  }
-  .outcome-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:10px;
-    font-size:12px;
-  }
-  .outcome-grid div b{display:block; color:#1e293b; font-size:12.5px; margin-bottom:2px;}
-  .outcome-grid div span{color:#64748b; font-size:11.5px; line-height:1.2;}
-
-  .footer{
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    height:42px;
-    background:var(--navy);
-    color:#cbd3ea;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 24px;
-    font-size:12px;
-    font-weight:600;
-  }
-  .footer-left{display:flex; align-items:center; gap:16px;}
-  .footer-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);display:inline-block;margin-right:6px;}
-  .footer b{color:#fff;}
 </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="title-wrap">
-      <div class="brand">NSW<span>SPORTS</span></div>
-      <div class="divider"></div>
-      <div>
-        <div class="main-title">SCOPE &amp; USP EXECUTIVE SPECIFICATION</div>
-        <div class="subtitle">NEW SOUTH WALES GOVERNMENT SPORTS &amp; RECREATION ACTIVITY PLATFORM</div>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="brand">🏉 NSW <span>SPORTS</span></div>
+    <div class="badge-tag">⏳ Update Soon</div>
+  </div>
+
+  <!-- CENTER CONTENT -->
+  <div class="content-wrapper">
+    <div class="status-box">
+      <div class="icon-pulse">📋</div>
+      <h1>Scope &amp; USP Document</h1>
+      <p class="subtitle">Scope &amp; USP document has not been defined yet.<br><strong style="color:#38bdf8;">Update Soon</strong></p>
+
+      <div class="meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Project</span>
+          <span class="meta-val">NSW Sports</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Client</span>
+          <span class="meta-val">New South Wales</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Specification Status</span>
+          <span class="meta-val" style="color:#fbbf24;">Under Definition (Update Soon)</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Reporting Period</span>
+          <span class="meta-val">September 2026</span>
+        </div>
       </div>
-    </div>
-  </header>
 
-  <!-- META BAR -->
-  <section class="meta">
-    <div class="meta-card">
-      <div class="meta-label">🏢 Company</div>
-      <div class="meta-value">UNICOM TIC INCUBATOR</div>
-    </div>
-    <div class="meta-card">
-      <div class="meta-label">🏛️ Client</div>
-      <div class="meta-value blue">NEW SOUTH WALES</div>
-    </div>
-    <div class="meta-card">
-      <div class="meta-label">📁 Project Name</div>
-      <div class="meta-value">NSW SPORTS</div>
-    </div>
-    <div class="meta-card">
-      <div class="meta-label">🚀 Current Release Stage</div>
-      <div class="meta-value cyan">UI MIGRATION — COMPLETE</div>
-    </div>
-    <div class="meta-card">
-      <div class="meta-label">📄 Scope &amp; USP Status</div>
-      <div class="meta-value amber">UPDATE SOON</div>
-    </div>
-    <div class="meta-card">
-      <div class="meta-label">📅 Target Release</div>
-      <div class="meta-value">SEPTEMBER 2026</div>
-    </div>
-  </section>
-
-  <!-- NOTICE BANNER -->
-  <div class="notice-banner">
-    <div class="notice-head">
-      <span>⏳ Scope &amp; Unique Selling Proposition (USP) Specification — Update Soon</span>
-      <span class="notice-badge">IN PROGRESS</span>
-    </div>
-    <div class="notice-body">
-      <b>Status Notice:</b> Detailed functional specifications, business rules, and finalized commercial USPs for the <b>NSW Sports</b> digital platform are currently being consolidated by the product engineering and architecture team. Full release documentation will be officially updated here soon. Preview below outlines the completed Phase 1 UI migration capabilities.
+      <p class="footer-note">
+        This document will be updated once the official scope &amp; USP specifications are defined and provided by the team.
+      </p>
     </div>
   </div>
 
-  <!-- MAIN DASHBOARD -->
-  <section class="main-dashboard">
-    <div class="dashboard-head">
-      <div>Project Scope Overview (Delivered Capabilities)</div>
-      <div>
-        <span>Core Unique Selling Propositions (USPs)</span>
-        <span style="font-size:12px;font-weight:700;color:#65e6ef;">[Specification Updating Soon]</span>
-      </div>
-    </div>
-    <div class="dashboard-body">
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <span>UNICOM TIC INCUBATOR · Project Tracker Portal</span>
+    <span>Scope &amp; USP: Update Soon</span>
+  </div>
 
-      <!-- LEFT COLUMN: SCOPE DELIVERABLES -->
-      <div class="left-pane">
-        <div class="scope-card cyan-card">
-          <h4>🏕️ School Camp Booking Journey <span>(Delivered)</span></h4>
-          <p><b>Multi-Step Booking Wizard:</b> Complete school camp reservation workflow supporting customized school group bookings, date ranges, and accommodation preferences.</p>
-          <p><b>Consent &amp; Medical Forms:</b> Parent digital consent capture, emergency contacts, medical notices, and dietary requirements management.</p>
-          <p><b>Organiser Portal:</b> Real-time coordinator view to monitor submitted forms, roster allocations, and camp readiness tracking.</p>
-        </div>
-
-        <div class="scope-card blue-card">
-          <h4>⚽ Active Programs &amp; Community Activities <span>(Delivered)</span></h4>
-          <p><b>Program Catalog:</b> Comprehensive public-facing directory of government community sports, seasonal camps, and skill-building activities.</p>
-          <p><b>Registration &amp; Scheduling:</b> Interactive session booking, timetable lookup, capacity constraints, and waitlist handling.</p>
-        </div>
-
-        <div class="scope-card green-card">
-          <h4>🎟️ Active Kids Voucher Integration <span>(Delivered)</span></h4>
-          <p><b>Voucher Validation Workflow:</b> Built-in validation interface for NSW Active Kids vouchers, automatically deducting entitlements at registration checkout.</p>
-          <p><b>Multi-Child Support:</b> Seamless voucher allocation across multiple dependents in a single booking session.</p>
-        </div>
-
-        <div class="scope-card purple-card">
-          <h4>🎨 Modernized UI/UX Design System <span>(Delivered)</span></h4>
-          <p><b>17+ Production Pages:</b> Over 10 customer-facing pages and 7+ staff/administrative pages delivered with responsive mobile-first layouts.</p>
-          <p><b>Accessibility &amp; Design Standards:</b> Built in compliance with modern government digital experience guidelines and brand aesthetics.</p>
-        </div>
-
-        <div class="outcome-panel">
-          <div class="outcome-title">Current Phase Deliverable</div>
-          <div class="outcome-grid">
-            <div>
-              <b>3 COMPLETE JOURNEYS</b>
-              <span>School Camps, Programs, and Voucher Management prototypes finalized.</span>
-            </div>
-            <div>
-              <b>17+ UI SCREENS</b>
-              <span>High-fidelity customer and administrative layouts delivered.</span>
-            </div>
-            <div>
-              <b>INTEGRATION READY</b>
-              <span>Backend API wiring and payment gateway staging up next.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT COLUMN: UNIQUE SELLING PROPOSITIONS -->
-      <div class="right-pane">
-        <div class="usp-card cyan-card">
-          <div class="usp-number">01</div>
-          <div class="usp-content">
-            <h3>UNIFIED CITIZEN SPORTS PORTAL <span>(USP)</span></h3>
-            <p><b>All-In-One Community Access:</b> Combines state-sponsored school camps, community sports clubs, and government recreation programs into a single authoritative digital hub.</p>
-            <p><b>Citizen Experience:</b> Eliminates disconnected third-party portals, allowing parents and coordinators to manage multiple children and programs through one unified account.</p>
-          </div>
-        </div>
-
-        <div class="usp-card green-card">
-          <div class="usp-number">02</div>
-          <div class="usp-content">
-            <h3>INSTANT ACTIVE KIDS VOUCHER REDEMPTION <span>(USP)</span></h3>
-            <p><b>Zero-Friction Subsidy:</b> Direct digital verification and automated checkout discount calculation for state-issued Active Kids vouchers.</p>
-            <p><b>Immediate Reconciliation:</b> Transparent accounting for sports clubs and organizers without administrative delay or manual voucher claims.</p>
-          </div>
-        </div>
-
-        <div class="usp-card blue-card">
-          <div class="usp-number">03</div>
-          <div class="usp-content">
-            <h3>PAPERLESS CAMP COMPLIANCE &amp; SAFETY <span>(USP)</span></h3>
-            <p><b>Digital Consent &amp; Medical Intake:</b> Secure digital collection of critical medical information, allergies, dietary constraints, and guardian authorizations.</p>
-            <p><b>Emergency Preparedness:</b> Camp staff and organizers receive live mobile rosters with instant offline medical emergency access.</p>
-          </div>
-        </div>
-
-        <div class="usp-card purple-card">
-          <div class="usp-number">04</div>
-          <div class="usp-content">
-            <h3>SCALABLE MULTI-TENANT ARCHITECTURE <span>(USP)</span></h3>
-            <p><b>Enterprise Infrastructure:</b> Built on a modern responsive architecture ready to scale across regional sports districts, schools, and private venues.</p>
-            <p><b>Extensible API Connectors:</b> Native design hooks prepared for seamless identity verification, OptimoGov backend, and transaction settlement.</p>
-          </div>
-        </div>
-
-        <div class="outcome-panel">
-          <div class="outcome-title">Next Milestone</div>
-          <div class="outcome-grid">
-            <div>
-              <b>FULL SPECIFICATION</b>
-              <span>Scope &amp; USP deep-dive document publishing in next update cycle.</span>
-            </div>
-            <div>
-              <b>API WIRING</b>
-              <span>Backend services connecting to prototype forms and wizards.</span>
-            </div>
-            <div>
-              <b>PILOT TESTING</b>
-              <span>Staged trial rollout for select community recreation centers.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-left">
-      <span><span class="footer-dot"></span>NSW Sports — Executive Scope &amp; USP Specification Overview</span>
-      <span>New South Wales Government · OptimoGov · Unicom TIC Incubator</span>
-    </div>
-    <div><b>Discover</b> · Register · Participate · Voucher Redeem</div>
-  </footer>
-
-</div>
 </body>
 </html>
