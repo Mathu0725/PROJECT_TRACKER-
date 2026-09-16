@@ -36,7 +36,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Gobithas Kalaimakan',
     description: 'Customer mobile application for racetrack ticketing, turnstile barcode scanning, and live race day updates.',
     highlights: 'QR Scanner, Ticket Management, Live Polling, Mobile UX and account verification.',
-    selectedWeekIndex: 0,
+    selectedWeekIndex: 1,
     weeks: [
       {
         weekNumber: 1,
@@ -47,6 +47,17 @@ const DEFAULT_PROJECTS = [
         manDays: '35 Allocated',
         consumed: '25 Consumed (71%)',
         weeklyUrl: 'Incubator Weekly update/greyhound_weekly_project_visibility_card.html',
+        scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
+      },
+      {
+        weekNumber: 2,
+        weekLabel: 'Week 2',
+        weekEnding: '11 Sep 2026',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '35 Allocated',
+        consumed: '30 Consumed (86%)',
+        weeklyUrl: 'Incubator Weekly update/Greyhound_Weekly_Report_11_Sep_2026.html',
         scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
       }
     ]
@@ -165,11 +176,12 @@ try {
     'portal_projects_sep1_week1_v1',
     'portal_projects_sep1_week1_v2',
     'portal_projects_v5_week1_exact',
-    'portal_projects_v7_updated_cards'
+    'portal_projects_v7_updated_cards',
+    'portal_projects_v8_week2'
   ].forEach(k => localStorage.removeItem(k));
 } catch(e) {}
 
-const STORAGE_KEY = 'portal_projects_v8_week2';
+const STORAGE_KEY = 'portal_projects_v9_week2';
 let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
 
 if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 6) {
