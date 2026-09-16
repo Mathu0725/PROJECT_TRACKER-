@@ -82,7 +82,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Mathusan / Yapes',
     description: 'Retail & hospitality point of sale platform with inventory synchronization, online order fulfillment, and multi-channel checkout.',
     highlights: 'Check out flow, Online order fulfillment, Card payment integration, Flutter app, Product setup & tax management.',
-    selectedWeekIndex: 0,
+    selectedWeekIndex: 1,
     weeks: [
       {
         weekNumber: 1,
@@ -93,6 +93,17 @@ const DEFAULT_PROJECTS = [
         manDays: '129 Allocated',
         consumed: '111 Consumed',
         weeklyUrl: 'Incubator Weekly update/One Verz Weekly Project Visibility Card 2 - Static.html',
+        scopeUrl: 'scope document/Oneverz.html'
+      },
+      {
+        weekNumber: 2,
+        weekLabel: 'Week 2',
+        weekEnding: '11 Sep 2026',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '146 Allocated',
+        consumed: '130 Consumed (89%)',
+        weeklyUrl: 'Incubator Weekly update/Weekly Project Visibility Card11.09.2026.html',
         scopeUrl: 'scope document/Oneverz.html'
       }
     ]
@@ -145,7 +156,7 @@ const DEFAULT_PROJECTS = [
   }
 ];
 
-// Purge any old cache keys to guarantee fresh Week 1 display
+// Purge any old cache keys to guarantee fresh display
 try {
   [
     'portal_projects_camera_v1',
@@ -153,39 +164,28 @@ try {
     'portal_projects_scope_usp_v1',
     'portal_projects_sep1_week1_v1',
     'portal_projects_sep1_week1_v2',
-    'portal_projects_v5_week1_exact'
+    'portal_projects_v5_week1_exact',
+    'portal_projects_v7_updated_cards'
   ].forEach(k => localStorage.removeItem(k));
 } catch(e) {}
 
-const STORAGE_KEY = 'portal_projects_v7_updated_cards';
+const STORAGE_KEY = 'portal_projects_v8_week2';
 let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
 
 if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 6) {
   PROJECTS = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
   localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
 } else {
-  // Always enforce Week 1 for the baseline week across all projects
-  PROJECTS.forEach(p => {
-    if (p.weeks && p.weeks.length > 0) {
-      p.weeks[0].weekNumber = 1;
-      p.weeks[0].weekLabel = 'Week 1';
-      p.weeks[0].weekEnding = '4 Sep 2026';
-    }
-  });
   DEFAULT_PROJECTS.forEach(def => {
     const p = PROJECTS.find(item => item.id === def.id);
-    if (p && p.weeks && p.weeks[0]) {
+    if (p) {
       p.release = def.release;
       p.leads = def.leads;
-      p.weeks[0].weekNumber = 1;
-      p.weeks[0].weekLabel = 'Week 1';
-      p.weeks[0].status = def.weeks[0].status;
-      p.weeks[0].statusClass = def.weeks[0].statusClass;
-      p.weeks[0].scopeUrl = def.weeks[0].scopeUrl;
-      p.weeks[0].weeklyUrl = def.weeks[0].weeklyUrl;
-      p.weeks[0].manDays = def.weeks[0].manDays;
-      p.weeks[0].consumed = def.weeks[0].consumed;
       if (!p.icon) p.icon = def.icon;
+      if (def.weeks.length > (p.weeks ? p.weeks.length : 0)) {
+        p.weeks = JSON.parse(JSON.stringify(def.weeks));
+        p.selectedWeekIndex = def.selectedWeekIndex || 0;
+      }
     }
   });
   localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
