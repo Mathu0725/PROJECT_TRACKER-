@@ -13,7 +13,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Nilaxshan / Kirusthiya',
     description: 'Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX retail loss prevention, and RTSP/ONVIF reliability.',
     highlights: 'Connector startup readiness, RTSP/ONVIF reliability, installer launcher lifecycle, camera & zone setup, ONETIX architecture & user journey.',
-    selectedWeekIndex: 1,
+    selectedWeekIndex: 2,
     weeks: [
       {
         weekNumber: 1,
@@ -36,6 +36,17 @@ const DEFAULT_PROJECTS = [
         consumed: '102 Consumed',
         weeklyUrl: 'Incubator Weekly update/Camera Module 11.09.2026.html',
         scopeUrl: 'scope document/ONETIX_Scope_USP.html'
+      },
+      {
+        weekNumber: 3,
+        weekLabel: 'Week 3',
+        weekEnding: '18 Sep 2026',
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: '150 Forecast',
+        consumed: '112 Consumed',
+        weeklyUrl: 'Incubator Weekly update/Camera module 18.09.2026.html',
+        scopeUrl: 'scope document/ONETIX_Scope_USP.html'
       }
     ]
   },
@@ -47,7 +58,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Gobithas Kalaimakan',
     description: 'Customer mobile application for racetrack ticketing, turnstile barcode scanning, and live race day updates.',
     highlights: 'QR Scanner, Ticket Management, Live Polling, Mobile UX and account verification.',
-    selectedWeekIndex: 1,
+    selectedWeekIndex: 2,
     weeks: [
       {
         weekNumber: 1,
@@ -70,6 +81,17 @@ const DEFAULT_PROJECTS = [
         consumed: '30 Consumed (86%)',
         weeklyUrl: 'Incubator Weekly update/Greyhound_Weekly_Report_11_Sep_2026.html',
         scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
+      },
+      {
+        weekNumber: 3,
+        weekLabel: 'Week 3',
+        weekEnding: '18 Sep 2026',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '42 Allocated',
+        consumed: '30 Consumed (71%)',
+        weeklyUrl: 'Incubator Weekly update/GrayHound 18.09.2026.html',
+        scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
       }
     ]
   },
@@ -81,7 +103,7 @@ const DEFAULT_PROJECTS = [
     leads: 'HRMS Platform Team',
     description: 'Comprehensive human resource management suite with employee directory, multi-tenant security, and leave tracking.',
     highlights: 'Authentication & Security, Leave & Attendance, Multi-tenant management, Shift scheduling.',
-    selectedWeekIndex: 1,
+    selectedWeekIndex: 2,
     weeks: [
       {
         weekNumber: 1,
@@ -104,6 +126,17 @@ const DEFAULT_PROJECTS = [
         consumed: '130 Consumed',
         weeklyUrl: 'Incubator Weekly update/weekly-visibility-card-onexso-11.09.2026.html',
         scopeUrl: 'scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html'
+      },
+      {
+        weekNumber: 3,
+        weekLabel: 'Week 3',
+        weekEnding: '18 Sep 2026',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '260 Forecast',
+        consumed: '150 Consumed',
+        weeklyUrl: 'Incubator Weekly update/hrm 18.09.2026.html',
+        scopeUrl: 'scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html'
       }
     ]
   },
@@ -115,7 +148,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Mathusan / Yapes',
     description: 'Retail & hospitality point of sale platform with inventory synchronization, online order fulfillment, and multi-channel checkout.',
     highlights: 'Check out flow, Online order fulfillment, Card payment integration, Flutter app, Product setup & tax management.',
-    selectedWeekIndex: 1,
+    selectedWeekIndex: 2,
     weeks: [
       {
         weekNumber: 1,
@@ -138,6 +171,17 @@ const DEFAULT_PROJECTS = [
         consumed: '130 Consumed (89%)',
         weeklyUrl: 'Incubator Weekly update/Weekly Project Visibility Card11.09.2026.html',
         scopeUrl: 'scope document/Oneverz.html'
+      },
+      {
+        weekNumber: 3,
+        weekLabel: 'Week 3',
+        weekEnding: '18 Sep 2026',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '146 Allocated',
+        consumed: '135 Consumed (92%)',
+        weeklyUrl: 'Incubator Weekly update/oneverz 18.09.2026.html',
+        scopeUrl: 'scope document/Oneverz.html'
       }
     ]
   },
@@ -149,7 +193,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Venue & Ticketing Team',
     description: 'Venue mapping, interactive seat block selection, gate access allocation, and tiered pricing engine.',
     highlights: 'Venue Visual Mapper, Tier Configuration, Gate & Entrance Setup, Seat Block Locking.',
-    selectedWeekIndex: 1,
+    selectedWeekIndex: 2,
     weeks: [
       {
         weekNumber: 1,
@@ -171,6 +215,17 @@ const DEFAULT_PROJECTS = [
         manDays: '200 Forecast',
         consumed: '101 Consumed',
         weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_weekly_visibility_card_updated_v13.html',
+        scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
+      },
+      {
+        weekNumber: 3,
+        weekLabel: 'Week 3',
+        weekEnding: '18 Sep 2026',
+        status: 'AT RISK',
+        statusClass: 'amber',
+        manDays: '200 Forecast',
+        consumed: '125 Consumed',
+        weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_18.0.2026.html',
         scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
       }
     ]
@@ -206,7 +261,7 @@ const DEFAULT_PROJECTS = [
     leads: 'Saif / Abitha',
     description: 'Government sports portal and customer activity migration covering School Camps booking wizard, Active Programs, and Kids Voucher management.',
     highlights: 'School Camp Booking Wizard, Programs & Activities, Voucher Management. Scope & USP: Update Soon.',
-    selectedWeekIndex: 0,
+    selectedWeekIndex: 1,
     weeks: [
       {
         weekNumber: 1,
@@ -218,6 +273,51 @@ const DEFAULT_PROJECTS = [
         consumed: '100% Complete',
         weeklyUrl: 'Incubator Weekly update/nsw-1st-week-update.html',
         scopeUrl: 'scope document/nsw_sports_scope_usp.html'
+      },
+      {
+        weekNumber: 2,
+        weekLabel: 'Week 2',
+        weekEnding: '18 Sep 2026',
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: '20 Man-Days',
+        consumed: '5 Consumed (25%)',
+        weeklyUrl: 'Incubator Weekly update/NSW_18.09.2026.html',
+        scopeUrl: 'scope document/nsw_sports_scope_usp.html'
+      }
+    ]
+  },
+  {
+    id: 'marketing-team',
+    icon: '♟️',
+    name: 'Marketing Team',
+    release: 'Creative & Digital Campaigns',
+    leads: 'Marketing Team',
+    description: 'Brand identity, creative video production, social media growth, and AI-assisted market research across incubator ventures.',
+    highlights: 'JAS KIDS launch campaigns, ALLO Cabs video ads, OneVerz POS market research, Social media performance analytics.',
+    selectedWeekIndex: 1,
+    weeks: [
+      {
+        weekNumber: 1,
+        weekLabel: 'Week 1',
+        weekEnding: '15 Sep 2026',
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: '22 Videos • 3 Posters',
+        consumed: '1 Brand Logo',
+        weeklyUrl: 'Incubator Weekly update/marketing_team last week 15.09.2026.html',
+        scopeUrl: 'scope document/marketing_team_scope_usp.html'
+      },
+      {
+        weekNumber: 2,
+        weekLabel: 'Week 2',
+        weekEnding: '20 Sep 2026',
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: 'JAS KIDS & POS',
+        consumed: 'AI Research Active',
+        weeklyUrl: 'Incubator Weekly update/20.09.2026 report.html',
+        scopeUrl: 'scope document/marketing_team_scope_usp.html'
       }
     ]
   }
@@ -235,14 +335,16 @@ try {
     'portal_projects_v7_updated_cards',
     'portal_projects_v8_week2',
     'portal_projects_v9_week2',
-    'portal_projects_v10_nsw_week2'
+    'portal_projects_v10_nsw_week2',
+    'portal_projects_v11_nsw_scope_update',
+    'portal_projects_v12_marketing_team'
   ].forEach(k => localStorage.removeItem(k));
 } catch(e) {}
 
-const STORAGE_KEY = 'portal_projects_v11_nsw_scope_update';
+const STORAGE_KEY = 'portal_projects_v13_sep18_updates';
 let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
 
-if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 7) {
+if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 8) {
   PROJECTS = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
   localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
 } else {
@@ -315,6 +417,13 @@ function renderProjects(filterText = '', filterStatus = 'all') {
   if (ontrackBtn) ontrackBtn.innerText = `On Track (${ontrackCount})`;
   if (atriskBtn) atriskBtn.innerText = `At Risk (${atriskCount})`;
   if (completedBtn) completedBtn.innerText = `Completed (${completedCount})`;
+
+  const totalProjectsStat = document.getElementById('totalProjectsStat');
+  const onTrackStat = document.getElementById('onTrackStat');
+  const totalDocsStat = document.getElementById('totalDocsStat');
+  if (totalProjectsStat) totalProjectsStat.innerText = PROJECTS.length;
+  if (onTrackStat) onTrackStat.innerText = ontrackCount;
+  if (totalDocsStat) totalDocsStat.innerText = `${PROJECTS.length} Documents`;
 
   const filtered = PROJECTS.filter(p => {
     const curWeek = p.weeks[p.selectedWeekIndex || 0] || p.weeks[0];

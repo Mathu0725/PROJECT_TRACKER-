@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1536, initial-scale=1.0">
+<title>Marketing Team — Scope & USP Executive Overview</title>
+<style>
+  @page { size: 1536px 1024px; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#071a33; }
+  body { font-family: Arial, Helvetica, sans-serif; color:#101a2d; }
+
+  :root{
+    --navy:#071d5c;
+    --navy2:#0a2c7a;
+    --blue:#087fd5;
+    --ink:#0b1d3a;
+    --muted:#5a6e85;
+    --line:#cfd9e8;
+    --soft:#f4f7fb;
+    --green:#10b981;
+    --green-dark:#047857;
+    --amber:#f59e0b;
+    --purple:#7c3aed;
+  }
+
+  .page{
+    width:1536px; height:1024px; margin:0 auto; overflow:hidden;
+    background:#fff; position:relative;
+  }
+
+  .header{
+    height:94px; background:linear-gradient(100deg,#061a33 0%,#0a2e5c 60%,#082b57 100%);
+    color:#fff; display:flex; align-items:center; justify-content:space-between;
+    padding:0 24px; border-bottom:3px solid #087fd5;
+  }
+  .title-wrap{display:flex;align-items:center;gap:20px;min-width:0;}
+  .brand{font-size:22px;font-weight:900;letter-spacing:.3px;white-space:nowrap;color:#fff;}
+  .brand span{color:#38bdf8;}
+  .divider{width:1px;height:48px;background:rgba(255,255,255,.25);}
+  .main-title{font-size:32px;line-height:1;font-weight:800;letter-spacing:.25px;white-space:nowrap;}
+  .subtitle{font-size:13px;font-weight:700;color:#38bdf8;margin-top:6px;letter-spacing:.8px;text-transform:uppercase;}
+  .status{
+    min-width:210px;height:58px;border-radius:8px;background:#059669;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    font-size:22px;font-weight:900;color:#fff;box-shadow:0 4px 15px rgba(5,150,105,0.4);
+  }
+  .status-dot{width:18px;height:18px;border-radius:50%;background:#fff;animation:pulse 2s infinite;}
+  @keyframes pulse { 0% { opacity:0.6; } 50% { opacity:1; } 100% { opacity:0.6; } }
+
+  .meta{
+    height:84px; display:grid;
+    grid-template-columns:1.3fr 1fr 1fr 1.3fr 0.9fr 0.9fr;
+    border-bottom:1px solid #c7d3e2; background:#f8fafc;
+  }
+  .meta-card{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;border-right:1px solid #c7d3e2;padding:8px 12px;
+  }
+  .meta-card:last-child{border-right:0;}
+  .meta-label{
+    font-size:10.5px;font-weight:800;color:#0a2e5c;
+    text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;
+  }
+  .meta-value{font-size:15px;font-weight:800;color:#0f172a;line-height:1.2;}
+  .meta-value.blue{color:#0284c7}.meta-value.green{color:#059669}.meta-value.purple{color:#7c3aed}
+
+  .main-dashboard{
+    margin:10px 12px 0;border:1px solid #bfcbd9;border-radius:8px;overflow:hidden;background:#fff;
+  }
+  .dashboard-head{
+    height:40px;background:linear-gradient(90deg,#071d45,#0a3568);color:#fff;
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;
+    font-size:14px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;
+  }
+  .dashboard-head>div{
+    height:100%;display:flex;align-items:center;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);
+  }
+  .dashboard-head>div:last-child{border-right:0;}
+  .dashboard-head .num{margin-right:9px;color:#38bdf8;}
+
+  .dashboard-grid{display:grid;grid-template-columns:1fr 1fr;height:742px;}
+  .scope-column,.usp-column{padding:12px 16px;min-width:0;}
+  .scope-column{border-right:1px solid #cfd9e8;}
+
+  .overview{
+    background:linear-gradient(135deg,#071d45,#0a3b75);color:#fff;border-radius:8px;
+    padding:12px 14px;margin-bottom:12px;position:relative;overflow:hidden;
+  }
+  .overview-kicker{font-size:9.5px;text-transform:uppercase;letter-spacing:1px;color:#38bdf8;font-weight:800;}
+  .overview h2{font-size:18px;line-height:1.2;margin:4px 0 4px;position:relative;z-index:1;}
+  .overview p{font-size:11px;line-height:1.45;color:#e2e8f0;margin:0;position:relative;z-index:1;}
+
+  .card-item{
+    border:1px solid #cdd8e6;border-radius:8px;padding:12px 14px;margin-bottom:11px;
+    background:#ffffff;box-shadow:0 2px 6px rgba(0,0,0,.03);
+  }
+  .card-item.blue{border-left:5px solid #0284c7;}
+  .card-item.purple{border-left:5px solid #7c3aed;}
+  .card-item.green{border-left:5px solid #059669;}
+  .card-item.amber{border-left:5px solid #d97706;}
+
+  .card-item-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+  .card-item h3{margin:0;font-size:14px;font-weight:800;color:#0a2e5c;display:flex;align-items:center;gap:6px;}
+  .card-badge{font-size:9.5px;font-weight:800;padding:2px 8px;border-radius:10px;text-transform:uppercase;}
+  .badge-active{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;}
+  .badge-core{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;}
+  .badge-ai{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;}
+
+  .card-item p{margin:0 0 5px;font-size:11.5px;color:#334155;line-height:1.4;}
+  .card-item ul{margin:4px 0 0 16px;padding:0;font-size:11px;color:#475569;line-height:1.45;}
+  .card-item li{margin-bottom:3px;}
+
+  .usp-box{
+    border:1px solid #cdd8e6;border-radius:8px;padding:14px 16px;margin-bottom:12px;
+    background:#fff;display:flex;gap:14px;align-items:flex-start;
+  }
+  .usp-num{
+    flex:0 0 38px;height:38px;border-radius:8px;background:#0a2e5c;color:#fff;
+    display:grid;place-items:center;font-size:18px;font-weight:900;
+  }
+  .usp-content h3{margin:0 0 4px;font-size:14.5px;font-weight:800;color:#0a2e5c;}
+  .usp-content p{margin:0;font-size:11.5px;color:#334155;line-height:1.45;}
+  .usp-content b{color:#0f172a;}
+
+  .footer{
+    height:50px;background:#061a33;color:#fff;display:flex;align-items:center;
+    justify-content:space-between;padding:0 24px;font-size:12px;letter-spacing:.3px;
+  }
+  .footer-left{display:flex;align-items:center;gap:10px;color:#94a3b8;}
+  .footer-dot{width:8px;height:8px;border-radius:50%;background:#38bdf8;}
+</style>
+</head>
+<body>
+
+<div class="page" id="card">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="title-wrap">
+      <div class="brand">♟️ MARKETING <span>TEAM</span></div>
+      <div class="divider"></div>
+      <div>
+        <div class="main-title">Scope &amp; USP Executive Specification</div>
+        <div class="subtitle">Incubator Creative Agency, Multi-Brand Content Engine &amp; AI Growth Research</div>
+      </div>
+    </div>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span>ACTIVE / ON TRACK</span>
+    </div>
+  </header>
+
+  <!-- METADATA KPI BAR -->
+  <section class="meta">
+    <div class="meta-card">
+      <div class="meta-label">Department / Unit</div>
+      <div class="meta-value blue">Marketing &amp; Growth Team</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Primary Ventures</div>
+      <div class="meta-value">JAS KIDS • ALLO Cabs • OneVerz POS</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Execution Cycle</div>
+      <div class="meta-value purple">Weekly Active Sprints</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Core Capabilities</div>
+      <div class="meta-value">Video Production • AI Research • Branding</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Reporting Period</div>
+      <div class="meta-value green">September 2026</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Deliverable Velocity</div>
+      <div class="meta-value blue">22+ Videos / Week</div>
+    </div>
+  </section>
+
+  <!-- MAIN DASHBOARD -->
+  <section class="main-dashboard">
+    <div class="dashboard-head">
+      <div><span class="num">01</span> Functional Scope &amp; Core Deliverables</div>
+      <div><span class="num">02</span> Unique Selling Propositions (USPs)</div>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- LEFT COLUMN: SCOPE -->
+      <div class="scope-column">
+        <div class="overview">
+          <div class="overview-kicker">Operational Scope Summary</div>
+          <h2>Dedicated Incubator Creative &amp; Marketing Powerhouse</h2>
+          <p>The Marketing Team delivers full-spectrum digital marketing, branding assets, high-velocity promotional videos, social media publishing workflows, and AI-accelerated market research across all Unicom TIC Incubator projects.</p>
+        </div>
+
+        <div class="card-item blue">
+          <div class="card-item-head">
+            <h3>🎬 1. End-to-End Video Production Engine</h3>
+            <span class="card-badge badge-active">Active</span>
+          </div>
+          <p>Rapid conceptualization, scripting, visual design, and rendering of high-engagement promotional and launch videos.</p>
+          <ul>
+            <li><b>JAS KIDS Launch Campaign:</b> Over 20 promotional videos and launch teasers produced for brand awareness.</li>
+            <li><b>ALLO Cabs Video Ads:</b> Commercial-style video development focusing on customer journey and convenience.</li>
+          </ul>
+        </div>
+
+        <div class="card-item green">
+          <div class="card-item-head">
+            <h3>🎨 2. Brand Identity, Graphic Design &amp; Collateral</h3>
+            <span class="card-badge badge-core">Delivered</span>
+          </div>
+          <p>Full visual identity systems including brand logos, promotional posters, and social media creative assets.</p>
+          <ul>
+            <li><b>Identity Deliverables:</b> Official logos, high-resolution promotional posters, and social graphic kits.</li>
+            <li><b>Brand Integrity:</b> Strict adherence to project design systems and brand guidelines across all customer touchpoints.</li>
+          </ul>
+        </div>
+
+        <div class="card-item amber">
+          <div class="card-item-head">
+            <h3>📱 3. Social Media Management &amp; Analytics</h3>
+            <span class="card-badge badge-active">Continuous</span>
+          </div>
+          <p>Comprehensive channel management with scheduled daily publishing and deep analytics tracking.</p>
+          <ul>
+            <li><b>Audience Growth:</b> Monitoring reach, impressions, watch time, and click-through rates to iterate content.</li>
+            <li><b>Tooling &amp; Automation:</b> Researching and adopting automated scheduling and smart response workflows.</li>
+          </ul>
+        </div>
+
+        <div class="card-item purple">
+          <div class="card-item-head">
+            <h3>🤖 4. AI-Powered Market Research &amp; Intelligence</h3>
+            <span class="card-badge badge-ai">Innovation</span>
+          </div>
+          <p>Leveraging frontier AI platforms to conduct deep market intelligence and competitive positioning.</p>
+          <ul>
+            <li><b>OneVerz POS Research:</b> Utilizing Cloud, Google Gemini, and ChatGPT to formulate retail POS positioning.</li>
+            <li><b>Content Strategy Automation:</b> Generating tailored marketing hooks and multi-channel campaign architectures.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: USPs -->
+      <div class="usp-column">
+        <div class="mini-title" style="font-size:11px; font-weight:800; color:#0a2e5c; margin-bottom:12px; text-transform:uppercase;">
+          🌟 Strategic Value Propositions &amp; Competitive Advantages
+        </div>
+
+        <div class="usp-box" style="border-left:5px solid #0284c7;">
+          <div class="usp-num">01</div>
+          <div class="usp-content">
+            <h3>Unified Cross-Portfolio Agency Model</h3>
+            <p>Functions as an agile in-house marketing agency serving every incubator venture (JAS KIDS, ALLO Cabs, OneVerz, HRMS, Camera Module). Eliminates fragmented external agency costs and aligns marketing directly with product development sprints.</p>
+          </div>
+        </div>
+
+        <div class="usp-box" style="border-left:5px solid #10b981;">
+          <div class="usp-num">02</div>
+          <div class="usp-content">
+            <h3>High-Velocity Creative Throughput</h3>
+            <p>Demonstrated capability to produce <b>22+ polished marketing videos, multiple posters, and brand identities within a single weekly sprint</b>. Accelerates launch timelines and enables rapid testing of messaging variants.</p>
+          </div>
+        </div>
+
+        <div class="usp-box" style="border-left:5px solid #7c3aed;">
+          <div class="usp-num">03</div>
+          <div class="usp-content">
+            <h3>Frontier AI-Integrated Workflows</h3>
+            <p>Pioneering the integration of <b>Google Gemini and conversational AI</b> directly into competitive intelligence, audience research, and content drafting. Results in superior strategic clarity at a fraction of traditional research timelines.</p>
+          </div>
+        </div>
+
+        <div class="usp-box" style="border-left:5px solid #d97706;">
+          <div class="usp-num">04</div>
+          <div class="usp-content">
+            <h3>Data-Backed Content Iteration Loop</h3>
+            <p>Tight feedback loop linking social media analytics (reach, engagement, drop-off rates) directly back into creative production, guaranteeing that subsequent video and poster iterations outperform previous benchmarks.</p>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc; border:1px dashed #cbd5e1; border-radius:8px; padding:12px 16px; margin-top:8px;">
+          <div style="font-size:12px; font-weight:800; color:#0a2e5c; margin-bottom:4px;">🎯 Slogan &amp; Guiding Philosophy</div>
+          <div style="font-size:13px; font-weight:700; color:#087fd5;">CREATE • PLAN • EXECUTE • LEARN • GROW TOGETHER</div>
+          <div style="font-size:11px; color:#64748b; margin-top:4px;">"Small Steps. Big Impact. Turning Ideas Into Impact."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="footer-dot"></span>
+      <span>UNICOM TIC INCUBATOR — Marketing Team Executive Scope &amp; USP Overview</span>
+    </div>
+    <div style="color:#94a3b8; font-weight:700; font-size:11px; letter-spacing:1px;">
+      JAS KIDS · ALLO CABS · ONEVERZ POS · SOCIAL MEDIA GROWTH
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

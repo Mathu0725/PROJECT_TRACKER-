@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greyhound Weekly Project Visibility Card - 18 September 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --navy: #002060;
+      --blue: #0070C0;
+      --blue-lt: #DEEAF6;
+      --blue-info: #D6EAF8;
+      --amber: #FFC000;
+      --amber-dk: #ED7D31;
+      --green: #70AD47;
+      --red: #C00000;
+      --red-br: #FF0000;
+      --purple: #7030A0;
+      --border: #BDD7EE;
+      --line: #D0D7E2;
+      --note: #FFF2CC;
+      --text: #1F2A37;
+      --muted: #5B6B7C;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: #EEF3F9;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 16px;
+    }
+
+    .report-wrapper {
+      width: min(100%, 1536px);
+      background: #fff;
+      box-shadow: 0 8px 30px rgba(0, 40, 96, 0.12);
+      border: 1px solid #C5D3E4;
+      overflow: hidden;
+    }
+
+    /* ========== HEADER ========== */
+    .hdr {
+      background: var(--navy);
+      color: #fff;
+      padding: 16px 20px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hdr h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .hdr-sub {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+
+    .hdr-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .status-guide {
+      background: #fff;
+      color: var(--text);
+      border-radius: 4px;
+      padding: 7px 12px;
+      min-width: 128px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.15);
+    }
+
+    .status-guide .sg-title {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+      letter-spacing: 0.4px;
+    }
+
+    .sg-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 3px 0;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot.g { background: var(--green); }
+    .dot.a { background: var(--amber); }
+    .dot.r { background: var(--red-br); }
+
+    .amber-badge {
+      background: var(--amber);
+      color: #fff;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      padding: 10px 34px 10px 16px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+
+    .amber-badge .ring {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: inset 0 0 0 4px var(--amber);
+    }
+
+    /* ========== META ROW ========== */
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border-bottom: 1px solid var(--border);
+      background: #FAFCFF;
+    }
+
+    .meta-cell {
+      padding: 12px 8px 10px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .meta-cell:last-child { border-right: 0; }
+
+    .meta-cell i {
+      color: var(--blue);
+      font-size: 16px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .meta-cell .lbl {
+      color: var(--blue);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .meta-cell .val {
+      margin-top: 3px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    /* ========== RESOURCE ========== */
+    .resource {
+      display: grid;
+      grid-template-columns: 1fr 170px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .res-left { border-right: 1px solid var(--border); }
+
+    .bar {
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+    }
+
+    table.res {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table.res th {
+      background: #F3F7FB;
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.res td {
+      padding: 10px 12px;
+      font-size: 12px;
+      border-bottom: 1px solid #EEF2F6;
+      vertical-align: middle;
+    }
+
+    table.res td:first-child {
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    table.res .fa-user { color: var(--blue); margin-right: 6px; }
+
+    .total {
+      padding: 12px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      background: #fff;
+    }
+
+    .total .t-lbl {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .total .t-num {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      margin: 4px 0 0;
+    }
+
+    .total .t-unit {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .end-chip {
+      width: 100%;
+      background: var(--blue-lt);
+      border: 1px solid var(--blue);
+      border-radius: 3px;
+      padding: 6px 6px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    /* ========== 6 CARD GRID ========== */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      background: #F2F5F9;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+      overflow: hidden;
+    }
+
+    .panel-h {
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+    }
+
+    .panel-b {
+      padding: 10px;
+      flex: 1;
+    }
+
+    .info {
+      background: var(--blue-info);
+      border-top: 1px solid #A9D0EC;
+      padding: 7px 10px;
+      font-size: 10.5px;
+      color: #1F4E79;
+      display: flex;
+      gap: 7px;
+      align-items: flex-start;
+      line-height: 1.35;
+    }
+
+    .info i {
+      color: var(--blue);
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* badges */
+    .bc {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .bc.lg { width: 26px; height: 26px; font-size: 13px; }
+    .bc.g { background: var(--green); }
+    .bc.a { background: var(--amber-dk); }
+    .bc.p { background: var(--purple); }
+    .bc.r { background: var(--red); }
+    .bc.b { background: var(--blue); }
+
+    /* Card 1 scope */
+    .scope {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .col-h {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: #2C3E50;
+    }
+
+    .col ul { list-style: none; }
+    .col li {
+      position: relative;
+      padding-left: 10px;
+      margin-bottom: 4px;
+      font-size: 10.5px;
+      line-height: 1.3;
+    }
+    .col li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+    }
+    .col.c li::before { color: var(--green); }
+    .col.w li::before { color: var(--amber-dk); }
+    .col.p li::before { color: var(--purple); }
+
+    /* Card 2 plan */
+    .tl { margin-bottom: 8px; }
+    .tl-row {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .tl-lbl {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+    .tl-track {
+      height: 18px;
+      background: #E9EEF4;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .tl-fill {
+      height: 100%;
+      border-radius: 3px;
+      color: #fff;
+      font-size: 8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6px;
+    }
+    .tl-fill.orig { background: var(--green); width: 58%; }
+    .tl-fill.cur { background: var(--red); width: 100%; }
+
+    .delay-row {
+      display: flex;
+      gap: 8px;
+      margin: 8px 0 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill-delay {
+      background: var(--red);
+      color: #fff;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-risk {
+      background: var(--amber);
+      color: #fff;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+
+    table.ms {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+    table.ms th {
+      background: var(--navy);
+      color: #fff;
+      padding: 5px 6px;
+      text-align: left;
+      font-size: 9px;
+      font-weight: 800;
+    }
+    table.ms td {
+      padding: 5px 6px;
+      border-bottom: 1px solid #E8EEF4;
+    }
+    table.ms tr:nth-child(even) td { background: #F7FAFD; }
+
+    .var {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 800;
+    }
+    .var.ok { color: var(--green); }
+    .var.bad { color: var(--red); }
+    .var.warn { color: #C65911; }
+
+    /* Card 3 effort */
+    .effort {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .eff .bc { margin: 0 auto 5px; }
+    .eff .e-lbl {
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      line-height: 1.2;
+      min-height: 22px;
+    }
+    .eff .e-val {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.05;
+    }
+    .eff .e-unit {
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .prog-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .prog-track {
+      height: 16px;
+      background: #E0E0E0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .prog-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 8px;
+      width: 71%;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+    }
+
+    /* Card 4 changes */
+    .chg {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+    .chg-t {
+      font-size: 10px;
+      font-weight: 900;
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .chg-x {
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    /* Card 5 risks */
+    .risks {
+      display: grid;
+      grid-template-columns: 1fr 132px;
+      gap: 8px;
+    }
+    .rb { margin-bottom: 9px; }
+    .rb-h {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .rb ul { list-style: none; }
+    .rb li {
+      position: relative;
+      padding-left: 10px;
+      margin-bottom: 3px;
+      font-size: 10.5px;
+      line-height: 1.3;
+    }
+    .rb li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+    }
+    .rb.top li::before { color: var(--red); }
+    .rb.act li::before { color: var(--blue); }
+    .rb.esc li::before { color: var(--green); }
+
+    .note {
+      background: var(--note);
+      border: 1px solid #E6D478;
+      padding: 8px;
+      font-size: 9.5px;
+      line-height: 1.35;
+      box-shadow: 2px 2px 0 rgba(0,0,0,.06);
+      align-self: start;
+    }
+    .note strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 10px;
+    }
+
+    /* Card 6 gauges */
+    .gauges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      text-align: center;
+      padding: 4px 0 8px;
+    }
+    .g-title {
+      font-size: 9px;
+      font-weight: 900;
+      color: var(--navy);
+      text-transform: uppercase;
+      min-height: 26px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin-bottom: 6px;
+      line-height: 1.15;
+    }
+    .donut {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .donut-in {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .g-sub {
+      margin-top: 6px;
+      font-size: 8.5px;
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+
+    /* ========== FOOTER ========== */
+    .ftr {
+      background: var(--navy);
+      color: #fff;
+      padding: 11px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .ftr-title {
+      color: var(--amber);
+      font-weight: 900;
+      font-size: 12px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-top: 1px;
+    }
+    .ftr-notes {
+      font-size: 10.5px;
+      line-height: 1.45;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px 0;
+    }
+    .ftr-notes .sep {
+      margin: 0 8px;
+      opacity: .55;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .report-wrapper { box-shadow: none; width: 100%; border: none; }
+    }
+
+    @media (max-width: 1100px) {
+      .meta { grid-template-columns: repeat(4, 1fr); }
+      .grid { grid-template-columns: 1fr; }
+      .resource { grid-template-columns: 1fr; }
+      .scope { grid-template-columns: 1fr; }
+      .risks { grid-template-columns: 1fr; }
+      .hdr { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="report-wrapper">
+
+    <!-- HEADER -->
+    <header class="hdr">
+      <div>
+        <h1>Weekly Project Visibility Card</h1>
+        <div class="hdr-sub">Week Ending Friday, 18 September 2026 | Week 17</div>
+      </div>
+      <div class="hdr-right">
+        <div class="status-guide">
+          <div class="sg-title">STATUS GUIDE</div>
+          <div class="sg-row"><span class="dot g"></span> On Track</div>
+          <div class="sg-row"><span class="dot a"></span> At Risk</div>
+          <div class="sg-row"><span class="dot r"></span> Off Track</div>
+        </div>
+        <div class="amber-badge">
+          <span class="ring"></span>
+          AMBER
+        </div>
+      </div>
+    </header>
+
+    <!-- META -->
+    <section class="meta">
+      <div class="meta-cell">
+        <i class="fa-solid fa-building"></i>
+        <div class="lbl">Company</div>
+        <div class="val">TIC INCUBATOR</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-id-card"></i>
+        <div class="lbl">Project ID</div>
+        <div class="val">N/A</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-users"></i>
+        <div class="lbl">Client</div>
+        <div class="val">GREYHOUND DOG RACE</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-folder-open"></i>
+        <div class="lbl">Project Name</div>
+        <div class="val">CUSTOMER MOBILE APP</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-rocket"></i>
+        <div class="lbl">Current Release</div>
+        <div class="val">PHASE 1</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-calendar-days"></i>
+        <div class="lbl">Project Start Date</div>
+        <div class="val">3.8.2026</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-calendar-check"></i>
+        <div class="lbl">Week Ending (Friday)</div>
+        <div class="val">18 SEPTEMBER 2026</div>
+      </div>
+    </section>
+
+    <!-- RESOURCE -->
+    <section class="resource">
+      <div class="res-left">
+        <div class="bar"><i class="fa-solid fa-users"></i> Resource Allocation for This Phase</div>
+        <table class="res">
+          <thead>
+            <tr>
+              <th><i class="fa-solid fa-user"></i> Resource Name</th>
+              <th>Role</th>
+              <th>Allocation (Man-Days)</th>
+              <th>Main Responsibility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fa-solid fa-user"></i> Gobithas Kalaimakan</td>
+              <td>Developer</td>
+              <td>42</td>
+              <td>Customer mobile app — Optimo WebAPI checklist, invite / ticket / attendees flows, Phase 1 delivery</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="total">
+        <div class="t-lbl">Total Allocation<br/>(This Phase)</div>
+        <div class="t-num">42</div>
+        <div class="t-unit">MAN-DAYS</div>
+        <div class="end-chip">Project End Date: 25.09.2026</div>
+      </div>
+    </section>
+
+    <!-- 6 PANELS -->
+    <section class="grid">
+
+      <!-- 1 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-route"></i> 1. Scope &amp; Phase Journey</div>
+        <div class="panel-b">
+          <div class="scope">
+            <div class="col c">
+              <div class="col-h"><span class="bc g">C</span> Completed This Period</div>
+              <ul>
+                <li>PrivateWeb ASB checklist logic migrated to mobile (resale excluded) — 7 sections</li>
+                <li>Optimo WebAPI (V4.1) checklist journey connected</li>
+                <li>Suite Status accept / decline + Confirm (stepId = 2)</li>
+                <li>Catering / Parking / Event Details — load, hydrate, save</li>
+                <li>Special Requests [ASB:psg], noteType 17, pending gate</li>
+                <li>Addons / upsells PATCH + Add Extra filters</li>
+                <li>Attendees hosts sync + package capacity</li>
+                <li>RSVP / e-ticket real send (mock Pending removed)</li>
+                <li>Parking ticket email + Sent / Pending flags</li>
+              </ul>
+            </div>
+            <div class="col w">
+              <div class="col-h"><span class="bc a">W</span> Current Work</div>
+              <ul>
+                <li>Connecting / hardening required APIs from WebAPI &amp; PrivateWeb into mobile</li>
+                <li>Stabilize invite → ticket → checklist → attendees E2E on live Greyhound</li>
+                <li>Close PrivateWeb parity gaps (PSG filter, conditionals, namedHostGuest, parking max)</li>
+                <li>QA / UAT support through 25.09.2026</li>
+              </ul>
+            </div>
+            <div class="col p">
+              <div class="col-h"><span class="bc p">P</span> Upcoming / Pending</div>
+              <ul>
+                <li>Google Wallet integration</li>
+                <li>Apple Wallet integration</li>
+                <li>Optimo user login API integration</li>
+                <li>Go-live readiness checks</li>
+                <li>Monitor live invite &amp; deep-link behaviour</li>
+                <li>Freeze further Phase 1 scope (unless already agreed)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Current focus: Connecting required Optimo WebAPI endpoints into the customer mobile app and hardening the checklist / attendees live flows. Upcoming: Google Wallet, Apple Wallet, and Optimo user login API.</span>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-calendar-alt"></i> 2. Current Phase Plan (Phase 1 Only)</div>
+        <div class="panel-b">
+          <div class="tl">
+            <div class="tl-row">
+              <div class="tl-lbl">Original Plan</div>
+              <div class="tl-track"><div class="tl-fill orig"><span>3 AUG</span><span>10 SEP</span></div></div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-lbl">Current Forecast</div>
+              <div class="tl-track"><div class="tl-fill cur"><span>3 AUG</span><span>25 SEP</span></div></div>
+            </div>
+          </div>
+
+          <div class="delay-row">
+            <span class="pill-delay"><i class="fa-solid fa-exclamation"></i> DELAY: +15 DAYS</span>
+            <span class="pill-risk">AT RISK</span>
+          </div>
+
+          <table class="ms">
+            <thead>
+              <tr>
+                <th>Milestone</th>
+                <th>Original Plan</th>
+                <th>Current Forecast</th>
+                <th>Variance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Requirements complete</td>
+                <td>05.08.2026</td>
+                <td>05.08.2026</td>
+                <td><span class="var ok"><span class="dot g"></span> 0 days</span></td>
+              </tr>
+              <tr>
+                <td>Development complete</td>
+                <td>25.08.2026</td>
+                <td>25.08.2026</td>
+                <td><span class="var ok"><span class="dot g"></span> 0 days</span></td>
+              </tr>
+              <tr>
+                <td>System test complete</td>
+                <td>05.09.2026</td>
+                <td>14.09.2026</td>
+                <td><span class="var bad"><span class="dot r"></span> +9 days</span></td>
+              </tr>
+              <tr>
+                <td>UAT complete</td>
+                <td>08.09.2026</td>
+                <td>16.09.2026</td>
+                <td><span class="var warn"><span class="dot a"></span> +8 days</span></td>
+              </tr>
+              <tr>
+                <td>Go-Live</td>
+                <td>10.09.2026</td>
+                <td><strong>25.09.2026</strong></td>
+                <td><span class="var bad"><span class="dot r"></span> +15 days</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-chart-pie"></i> 3. Resource Effort Summary (Phase 1 Only)</div>
+        <div class="panel-b">
+          <div class="effort">
+            <div class="eff">
+              <div class="bc lg g">A</div>
+              <div class="e-lbl">Original<br/>Allocation</div>
+              <div class="e-val">35</div>
+              <div class="e-unit">MAN-DAYS</div>
+            </div>
+            <div class="eff">
+              <div class="bc lg b">C</div>
+              <div class="e-lbl">Consumed<br/>To Date</div>
+              <div class="e-val">30</div>
+              <div class="e-unit">MAN-DAYS</div>
+            </div>
+            <div class="eff">
+              <div class="bc lg a">R</div>
+              <div class="e-lbl">Forecast<br/>Remaining</div>
+              <div class="e-val">12</div>
+              <div class="e-unit">MAN-DAYS</div>
+            </div>
+            <div class="eff">
+              <div class="bc lg p">T</div>
+              <div class="e-lbl">Forecast<br/>Total</div>
+              <div class="e-val">42</div>
+              <div class="e-unit">MAN-DAYS</div>
+            </div>
+          </div>
+          <div class="prog-lbl">Progress: 30 of 42 man-days consumed &nbsp;|&nbsp; 71%</div>
+          <div class="prog-track"><div class="prog-fill">71%</div></div>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Allocation raised 35 → 42 MD (+7) for extension to 25.09.2026. 12 MD remaining for testing, UAT, API hardening, Wallet / login, and release readiness. Week 16 baseline consumed: 30 MD.</span>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-arrows-rotate"></i> 4. What Changed This Period?</div>
+        <div class="panel-b">
+          <div class="chg">
+            <span class="bc lg r">S</span>
+            <div>
+              <div class="chg-t">Schedule Change</div>
+              <div class="chg-x">Phase 1 end date extended <strong>10.09.2026 → 25.09.2026</strong> (+15 days). Go-live forecast moved to absorb live WebAPI checklist integration and UAT.</div>
+            </div>
+          </div>
+          <div class="chg">
+            <span class="bc lg a">C</span>
+            <div>
+              <div class="chg-t">Scope Change</div>
+              <div class="chg-x">04.09–11.09 and after: invitations, deep links, checklist, attendees — then <strong>live WebAPI checklist / RSVP / e-ticket / notes / upsells</strong> wiring into the customer mobile app.</div>
+            </div>
+          </div>
+          <div class="chg">
+            <span class="bc lg p">E</span>
+            <div>
+              <div class="chg-t">Effort Change</div>
+              <div class="chg-x">Allocation increased <strong>35 → 42 MD</strong> (+7) to cover extension through 25.09.2026. Work attributed to scope delivery + live API integration; 12 MD remaining.</div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Prior Week 16 covered deep links, invitations, checklist shell, and attendees UI. This period adds Optimo WebAPI checklist integration.</span>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-triangle-exclamation"></i> 5. Risks / Issues &amp; Management Attention</div>
+        <div class="panel-b">
+          <div class="risks">
+            <div>
+              <div class="rb top">
+                <div class="rb-h"><span class="bc r">!</span> Top Risks / Issues</div>
+                <ul>
+                  <li>Compressed QA / UAT window</li>
+                  <li>Deep-link / invite edge cases across Android + iOS</li>
+                  <li>Checklist &amp; attendee live API hardening still needed</li>
+                  <li>Remaining PrivateWeb parity gaps (multi-session / conditional questions)</li>
+                </ul>
+              </div>
+              <div class="rb act">
+                <div class="rb-h"><span class="bc b">A</span> Decisions / Actions Required</div>
+                <ul>
+                  <li>Confirm acceptance of <strong>25.09.2026</strong> end date</li>
+                  <li>Prioritize UAT on invite → checklist → attendees path</li>
+                  <li>Freeze further Phase 1 scope (except agreed Wallet + Optimo login)</li>
+                </ul>
+              </div>
+              <div class="rb esc">
+                <div class="rb-h"><span class="bc g">E</span> Escalation</div>
+                <ul>
+                  <li>None</li>
+                </ul>
+              </div>
+            </div>
+            <aside class="note">
+              <strong>NOTE:</strong>
+              Overall status remains <strong>AMBER — At Risk</strong> due to schedule slip (+15 days on Go-Live) and compressed UAT. Live checklist API work is in progress; Wallet + Optimo login still pending for Phase 1 close-out.
+            </aside>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-eye"></i> 6. At a Glance (Phase 1 Only)</div>
+        <div class="panel-b">
+          <div class="gauges">
+            <div>
+              <div class="g-title">Overall Progress<br/>(Phase 1)</div>
+              <div class="donut" style="background: conic-gradient(#0070C0 0% 77%, #DDE3EA 77% 100%);">
+                <div class="donut-in">77%</div>
+              </div>
+              <div class="g-sub">% Scope Complete<br/>(checklist API in progress)</div>
+            </div>
+            <div>
+              <div class="g-title">Time Elapsed</div>
+              <div class="donut" style="background: conic-gradient(#C00000 0% 100%, #DDE3EA 100% 100%);">
+                <div class="donut-in">100%</div>
+              </div>
+              <div class="g-sub">vs Original Plan<br/>(end was 10.09.2026)</div>
+            </div>
+            <div>
+              <div class="g-title">Effort Consumed</div>
+              <div class="donut" style="background: conic-gradient(#70AD47 0% 71%, #DDE3EA 71% 100%);">
+                <div class="donut-in">71%</div>
+              </div>
+              <div class="g-sub">vs Forecast Total<br/>(30 of 42 MD)</div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Overall ~77%+ scope complete vs original plan; time elapsed 100%+ vs original end 10.09; effort ~71% of 42 MD. Status: <strong>AMBER — At Risk</strong>.</span>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- FOOTER — same structure as Greyhound Week 16 card -->
+    <footer class="ftr">
+      <div class="ftr-title"><i class="fa-solid fa-clipboard-list"></i> REPORTING NOTES:</div>
+      <div class="ftr-notes">
+        <span>This card is a snapshot for the selected release only</span>
+        <span class="sep">•</span>
+        <span>Data to be prepared by PM / Tech Lead before the weekly meeting</span>
+        <span class="sep">•</span>
+        <span>One card per active release; use Phase Scope for multi-phase programmes</span>
+        <span class="sep">•</span>
+        <span>Status reflects delivery confidence for this release, not the whole programme</span>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>
