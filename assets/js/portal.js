@@ -337,11 +337,13 @@ try {
     'portal_projects_v9_week2',
     'portal_projects_v10_nsw_week2',
     'portal_projects_v11_nsw_scope_update',
-    'portal_projects_v12_marketing_team'
+    'portal_projects_v12_marketing_team',
+    'portal_projects_v13_sep18_updates',
+    'portal_projects_exec_v8_all_8'
   ].forEach(k => localStorage.removeItem(k));
 } catch(e) {}
 
-const STORAGE_KEY = 'portal_projects_v13_sep18_updates';
+const STORAGE_KEY = 'portal_projects_v14_sep28_all_8';
 let PROJECTS = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
 
 if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 8) {
