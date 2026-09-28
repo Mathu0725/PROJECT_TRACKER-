@@ -938,7 +938,7 @@ function getProjectMetrics(p, curWeek) {
     burntText = `${burntNum} Man-Days`;
   }
 
-  // Remaining / Variance (Man-Days) & Delay vs On Schedule
+  // Forecast Total
   const forecastTotalNum = parseManDays(p.forecastTotal, allocatedNum);
   let isDelay = false;
   let varianceText = '';
@@ -948,20 +948,23 @@ function getProjectMetrics(p, curWeek) {
   if (p.overBudget === true || (allocatedNum > 0 && burntNum > allocatedNum) || forecastTotalNum > allocatedNum) {
     isDelay = true;
     const diff = Math.max(forecastTotalNum - allocatedNum, burntNum > allocatedNum ? burntNum - allocatedNum : 0);
-    varianceText = diff > 0 ? `+${diff} Man-Days Delay` : 'Delay';
+    varianceText = `+${diff} Man-Days (Delay)`;
     statusText = 'Delay';
     statusClass = 'delay';
   } else {
     const remaining = Math.max(0, (forecastTotalNum || allocatedNum) - burntNum);
-    varianceText = `${remaining} Man-Days Remaining`;
+    varianceText = `${remaining} Man-Days (On Schedule)`;
     statusText = 'On Schedule';
     statusClass = 'on-schedule';
   }
 
   return {
     releaseDate,
+    allocatedNum,
     allocatedText,
+    burntNum,
     burntText,
+    forecastTotalNum,
     varianceText,
     statusText,
     statusClass,
@@ -1047,107 +1050,135 @@ function renderProjects(filterText = '', filterStatus = 'all') {
     // Week selector options
     const weekOptions = p.weeks.map((w, idx) => `
       <option value="${idx}" ${idx === activeIndex ? 'selected' : ''}>
-        Week ${w.weekNumber || 1} (${w.weekEnding})${idx === 0 ? ' — Latest' : ''}
+        Week ${w.weekNumber || 1} (${w.weekEnding})${idx === 0 ? ' — Latest Week' : ''}
       </option>
     `).join('') + `<option value="upload">+ Upload Next Week...</option>`;
 
-    // Backlog tasks count & indicator
+    // Team members formatted (e.g. Nilaxshan (Project Manager · 75 Man-Days), Kirusthiya (Developer · 75 Man-Days))
+    const teamMembersFormatted = (p.resources && p.resources.length > 0)
+      ? p.resources.map(r => `<strong>${r.name}</strong> (${r.role} &bull; ${r.allocation})`).join(', ')
+      : `<strong>${p.leads || 'Team Lead'}</strong> (${metrics.allocatedText})`;
+
+    // Backlog tasks summary & indicator
     const backlogTasks = curWeek.uncompletedTasks || [];
     const hasBacklog = backlogTasks.length > 0;
+    const backlogJoined = backlogTasks.map(t => t.replace(/\s*\(Carried over.*\)/i, '').replace(/\s*\(Pending.*\)/i, '')).join(' &bull; ');
 
     const card = document.createElement('article');
     card.className = 'exec-card compact-card';
     card.dataset.projectId = p.id;
     card.innerHTML = `
-      <!-- Card Header -->
-      <div class="card-header-compact">
-        <div class="card-title-row">
-          <div style="display:flex; align-items:center; gap:10px; min-width:0;">
-            <div class="card-icon">${p.icon || '📁'}</div>
-            <div class="card-name-group">
-              <h3 class="card-title" title="${p.name}">${p.name}</h3>
-              <div class="card-subtitle">
-                <span class="pill-release">${p.release || 'Phase 1'}</span>
-                <span class="card-lead">👤 ${p.leads || 'Team Lead'}</span>
-              </div>
+      <!-- Top Header matching Image 1 -->
+      <div class="card-header-v2">
+        <div class="card-header-top">
+          <div class="card-icon-box">${p.icon || '📷'}</div>
+          <div class="card-header-info">
+            <div class="card-title-line">
+              <h3 class="card-project-name">${p.name}</h3>
+              <span class="company-pill">${p.company || 'UNICOM TIC INCUBATOR'}</span>
+            </div>
+            <div class="card-sub-line">
+              <span>${p.release}</span> &bull; 
+              <span><strong>${metrics.burntNum} Man-Days</strong> Consumed</span> &bull; 
+              <span>${p.originalPlanDates || '3 Jul 2026 – 2 Sep 2026'}</span>
             </div>
           </div>
-          <div class="card-status-badge ${curWeek.statusClass || 'green'}">
-            <span class="status-dot"></span>
-            <span>${curWeek.status || 'ON TRACK'}</span>
-          </div>
+        </div>
+
+        <!-- Centered Status Badge (Image 1) -->
+        <div class="card-status-center">
+          <span class="badge-status-pill ${curWeek.statusClass || 'green'}">
+            <span class="dot"></span> ${curWeek.status || 'ON TRACK'}
+          </span>
+        </div>
+
+        <!-- Release Date & Extension Box (Image 1) -->
+        <div class="card-release-box">
+          <span class="release-text">🎯 Release Date: <strong>${metrics.releaseDate}</strong></span>
+          ${p.forecastExtension ? `<span class="extension-pill">${p.forecastExtension}</span>` : ''}
         </div>
       </div>
 
-      <!-- Controls & Explicit Target Release Date Bar (Requirement 3) -->
-      <div class="card-controls-row">
-        <div class="week-picker-group">
-          <span class="week-picker-label">Week:</span>
-          <select class="week-dropdown" onchange="changeProjectWeek('${p.id}', this.value)" title="Choose reporting week">
+      <!-- Week Selector Row & Effort Line (Image 1) -->
+      <div class="card-week-section">
+        <div class="week-select-row">
+          <span class="week-label">
+            <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            WEEK:
+          </span>
+          <select class="week-dropdown-v2" onchange="changeProjectWeek('${p.id}', this.value)" title="Choose reporting week">
             ${weekOptions}
           </select>
         </div>
-        <div class="card-release-date" title="Target Release Date">
-          🎯 Release Date: <strong>${metrics.releaseDate}</strong>
+        <div class="effort-metrics-line">
+          <span class="effort-main"><strong>${metrics.burntNum}</strong>/${metrics.forecastTotalNum} MAN-DAYS</span>
+          <span class="effort-sep">|</span>
+          <span class="effort-variance ${metrics.isDelay ? 'text-danger' : 'text-success'}">
+            <strong>${metrics.varianceText}</strong>
+          </span>
+          <span class="effort-sep">|</span>
+          <span class="effort-release">RELEASE: <strong>${metrics.releaseDate}</strong></span>
         </div>
       </div>
 
-      <!-- Crucial High-Level Effort Metrics (3-Box Grid - Requirements 1, 2, 3) -->
-      <div class="card-metrics-grid">
-        <div class="metric-box">
-          <div class="metric-label">Allocated (Man-Days)</div>
-          <div class="metric-value">${metrics.allocatedText}</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-label">Burnt (Man-Days)</div>
-          <div class="metric-value">${metrics.burntText}</div>
-        </div>
-        <div class="metric-box ${metrics.statusClass}">
-          <div class="metric-label">Remaining / Variance (Man-Days)</div>
-          <div class="metric-value ${metrics.statusClass}">
-            ${metrics.varianceText}
-          </div>
-        </div>
+      <!-- Team Line (Image 1) -->
+      <div class="card-team-box">
+        <span class="team-icon">👥</span>
+        <span class="team-label">TEAM:</span>
+        <span class="team-members">${teamMembersFormatted}</span>
       </div>
 
-      <!-- Highlights / Key Insight & Backlog Alert (Requirement 2) -->
-      <div class="card-highlights">
-        ${curWeek.keyInsight ? `
-          <div class="card-insight-pill">
-            <span class="icon">💡</span>
-            <span class="text"><strong>Key Insight:</strong> ${curWeek.keyInsight}</span>
+      <!-- Key Insight Box (Image 1) -->
+      ${curWeek.keyInsight ? `
+        <div class="card-insight-box">
+          <span class="insight-icon">💡</span>
+          <div class="insight-content">
+            <strong>Key Insight:</strong> ${curWeek.keyInsight}
           </div>
-        ` : (p.description ? `
-          <div class="card-description-preview" title="${p.description}">
-            ${p.description}
-          </div>
-        ` : '')}
+        </div>
+      ` : ''}
 
-        ${hasBacklog ? `
-          <div class="card-backlog-alert" onclick="openWorkstreamsModal('${p.id}')" title="Click to view full backlog details in popup">
-            <div style="display:flex; align-items:center; gap:6px;">
-              <span style="font-size:13px;">⚠️</span>
-              <span class="alert-text"><strong>Backlog:</strong> ${backlogTasks.length} task(s) carried over</span>
-            </div>
-            <span class="exec-slipped-pill">${backlogTasks.length} (incomplete)</span>
+      <!-- Backlog Box (Image 1: Red border & 3 (INCOMPLETE) solid badge) -->
+      ${hasBacklog ? `
+        <div class="card-backlog-box" onclick="openWorkstreamsModal('${p.id}')" title="Click to view full workstreams popup">
+          <div class="backlog-left">
+            <span class="backlog-alert-icon">⚠️</span>
+            <span class="backlog-text"><strong>Backlog:</strong> ${backlogJoined}</span>
           </div>
-        ` : ''}
+          <span class="badge-incomplete-solid">${backlogTasks.length} (INCOMPLETE)</span>
+        </div>
+      ` : ''}
+
+      <!-- View Full Workstreams Trigger (Image 1: Dashed border) -->
+      <div class="workstreams-trigger-row">
+        <button class="btn-workstreams-trigger" onclick="openWorkstreamsModal('${p.id}')">
+          <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          <span>View Full Workstreams &amp; Milestones (Popup ↗)</span>
+        </button>
       </div>
 
-      <!-- Action Buttons Row (Requirement 4: Full-Screen Workstreams Trigger) -->
-      <div class="card-actions-row">
-        <button class="btn-card-action btn-workstreams" onclick="openWorkstreamsModal('${p.id}')" title="Open wide full-screen popup of workstreams, milestones & tasks">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-          <span>Workstreams (Popup ↗)</span>
-        </button>
-        <button class="btn-card-action btn-secondary" onclick="openViewer('${p.id}', 'weekly')" title="View Weekly Report document">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          <span>Weekly Report</span>
-        </button>
-        <button class="btn-card-action btn-secondary" onclick="openViewer('${p.id}', 'scope')" title="View Scope & USP specification">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span>Scope &amp; USP</span>
-        </button>
+      <!-- Action Buttons Bar (Image 1) -->
+      <div class="card-footer-buttons">
+        <div class="footer-left-buttons">
+          <button class="btn-action-primary" onclick="openProjectDetail('${p.id}')">
+            <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span>Open Project</span>
+          </button>
+          <button class="btn-action-secondary" onclick="openViewer('${p.id}', 'weekly')">
+            <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span>Weekly Report (W${curWeek.weekNumber || 1})</span>
+          </button>
+          <button class="btn-action-secondary" onclick="openViewer('${p.id}', 'scope')">
+            <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span>Scope &amp; USP</span>
+          </button>
+        </div>
+        <div class="footer-right-buttons">
+          <button class="btn-export-quick" onclick="quickExportJpg('${p.id}', 'weekly')" title="Export Week Report as high-resolution JPG">
+            <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Export JPG</span>
+          </button>
+        </div>
       </div>
     `;
 
@@ -1205,222 +1236,214 @@ function changeWorkstreamsWeek(weekIndex) {
 window.changeWorkstreamsWeek = changeWorkstreamsWeek;
 
 function renderWorkstreamsModalContent() {
-  const body = document.getElementById('wsModalBody');
-  if (!body || !activeWsProject) return;
+  const modalContent = document.querySelector('#workstreamsModal .modal-content');
+  if (!modalContent || !activeWsProject) return;
 
   const p = activeWsProject;
   const curWeek = p.weeks[p.selectedWeekIndex || 0] || p.weeks[0];
   const metrics = getProjectMetrics(p, curWeek);
 
-  // Completed Tasks
-  const completedTasks = curWeek.completedTasks || [];
-  const completedHtml = (completedTasks.length > 0)
-    ? completedTasks.map(t => `
-        <li class="ws-task-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>${t}</span>
-        </li>
-      `).join('')
-    : `<li class="ws-task-item" style="color:#94a3b8;">None recorded for this week</li>`;
-
-  // Backlog Tasks (Shown in RED with (incomplete) badge)
-  const backlogTasks = curWeek.uncompletedTasks || [];
-  const hasBacklog = backlogTasks.length > 0;
-  const backlogHtml = hasBacklog
-    ? backlogTasks.map(t => `
-        <li class="ws-task-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-          <span>${t}</span>
-        </li>
-      `).join('')
-    : `<li class="ws-task-item" style="color:#94a3b8;">No backlog tasks</li>`;
-
-  // In-Progress Tasks
-  const inProgressTasks = curWeek.inProgressTasks || [];
-  const inProgressHtml = (inProgressTasks.length > 0)
-    ? inProgressTasks.map(t => `
-        <li class="ws-task-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span>${t}</span>
-        </li>
-      `).join('')
-    : `<li class="ws-task-item" style="color:#94a3b8;">Sprint review ongoing</li>`;
-
-  // Future / Next Week Tasks
-  const futureTasks = curWeek.futureTasks || [];
-  const futureHtml = (futureTasks.length > 0)
-    ? futureTasks.map(t => `
-        <li class="ws-task-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          <span>${t}</span>
-        </li>
-      `).join('')
-    : `<li class="ws-task-item" style="color:#94a3b8;">Next sprint planning scheduled</li>`;
-
-  // Resources Chips
-  const resourcesList = p.resources || [
-    { name: p.leads || 'Project Lead', role: 'Team Lead', allocation: metrics.allocatedText, responsibility: p.description || '' }
-  ];
-  const resourcesHtml = resourcesList.map(r => `
-    <div class="ws-resource-chip" title="${r.responsibility || ''}">
-      <span style="font-size:16px;">👤</span>
-      <div>
-        <strong>${r.name}</strong>
-        <span class="role-tag">${r.role}</span>
-        <span class="days-tag">${r.allocation}</span>
-      </div>
-    </div>
+  const weekOptions = p.weeks.map((w, idx) => `
+    <option value="${idx}" ${idx === (p.selectedWeekIndex || 0) ? 'selected' : ''}>
+      Week ${w.weekNumber || 1} (${w.weekEnding})
+    </option>
   `).join('');
 
-  // Milestones
-  const milestonesList = p.milestones || [];
-  const milestonesHtml = milestonesList.map(m => {
-    const isDone = m.status === 'COMPLETED';
-    return `
-      <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
-        <div style="display:flex; align-items:center; gap:8px;">
-          <span style="font-size:14px; color:${isDone ? '#16a34a' : '#0284c7'};">${isDone ? '✓' : '🔄'}</span>
-          <strong style="font-size:13px; color:#0f172a;">${m.name}</strong>
-        </div>
-        <span style="font-size:11px; font-weight:700; background:${isDone ? '#dcfce7' : '#e0f2fe'}; color:${isDone ? '#15803d' : '#0369a1'}; padding:3px 8px; border-radius:12px;">${m.position || m.status}</span>
-      </div>
-    `;
-  }).join('');
+  // Tasks lists
+  const completedTasks = curWeek.completedTasks || [];
+  const backlogTasks = curWeek.uncompletedTasks || [];
+  const inProgressTasks = curWeek.inProgressTasks || [];
+  const futureTasks = curWeek.futureTasks || [];
+  const hasBacklog = backlogTasks.length > 0;
 
-  body.innerHTML = `
-    <!-- Hero Overview Bar -->
-    <div class="ws-modal-hero">
-      <div class="ws-hero-top">
-        <div class="ws-hero-left">
-          <div class="ws-hero-icon">${p.icon || '📁'}</div>
-          <div class="ws-hero-title">
-            <h2>${p.name}</h2>
-            <div class="ws-hero-meta">
-              <span>${p.company || 'UNICOM TIC'}</span> &bull; 
-              <span>${p.release}</span> &bull; 
-              <span>Week ${curWeek.weekNumber || 1} (${curWeek.weekEnding})</span>
+  // Team members short
+  const teamMembersShort = (p.resources && p.resources.length > 0)
+    ? p.resources.map(r => `${r.name} (${r.allocation})`).join(', ')
+    : `${p.leads || 'Team Lead'} (${metrics.allocatedText})`;
+
+  // Milestones list
+  const milestonesList = p.milestones || [
+    { name: 'Core Architecture', status: 'COMPLETED', position: 'Delivered' },
+    { name: 'Sprint Feature Workstream', status: 'IN PROGRESS', position: 'Active' },
+    { name: 'Validation & Testing', status: 'TARGET', position: 'Pending' }
+  ];
+
+  modalContent.innerHTML = `
+    <!-- Top Bar (Image 2) -->
+    <div class="ws-modal-top-bar">
+      <div class="ws-modal-top-left">
+        <button class="btn-back-pill" onclick="closeWorkstreamsModal()" title="Close popup (Esc)">
+          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>← Back</span>
+        </button>
+        <div class="ws-modal-title-group">
+          <div class="ws-modal-breadcrumb">
+            <strong>${p.name}</strong> / <span>Workstreams &amp; Milestones Breakdown</span>
+          </div>
+          <h2 class="ws-modal-heading">${p.name} — Workstreams &amp; Governance Breakdown</h2>
+        </div>
+      </div>
+      <div class="ws-modal-top-right">
+        <div style="display:flex; align-items:center; gap:6px;">
+          <span style="font-size:11px; font-weight:800; color:#0891b2; text-transform:uppercase;">📅 WEEK:</span>
+          <select id="wsModalWeekSelect" class="week-dropdown-v2" style="font-size:12px; padding:4px 8px;" onchange="changeWorkstreamsWeek(this.value)">
+            ${weekOptions}
+          </select>
+        </div>
+        <button class="btn-export-blue" onclick="exportWorkstreamsJpg()">
+          <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Export JPG</span>
+        </button>
+        <button class="close-btn" onclick="closeWorkstreamsModal()" style="font-size:18px; color:#64748b; background:transparent; border:none; cursor:pointer; padding:4px 8px;">✕</button>
+      </div>
+    </div>
+
+    <!-- Modal Body (Image 2) -->
+    <div id="wsModalBody" style="padding: 20px; overflow-y: auto; background: #f8fafc; flex: 1;">
+      <div class="ws-modal-container">
+        
+        <!-- Summary Card (Image 2) -->
+        <div class="ws-summary-card">
+          <div>
+            <span class="badge-status-pill ${curWeek.statusClass || 'green'}">
+              <span class="dot"></span> ${curWeek.status || 'ON TRACK'}
+            </span>
+          </div>
+          <div>
+            Target Release: <strong>${metrics.releaseDate}</strong>
+            ${p.forecastExtension ? `<span class="extension-pill" style="margin-left:6px;">${p.forecastExtension}</span>` : ''}
+          </div>
+          <div>
+            Effort: <strong>${metrics.burntNum} / ${metrics.forecastTotalNum} Man-Days</strong>
+          </div>
+          <div>
+            Variance: <strong style="color:${metrics.isDelay ? '#dc2626' : '#16a34a'};">${metrics.varianceText}</strong>
+          </div>
+          <div>
+            👥 Team: <strong>${teamMembersShort}</strong>
+          </div>
+        </div>
+
+        <!-- Executive Key Insight (Week X) Box (Image 2) -->
+        ${curWeek.keyInsight ? `
+          <div class="ws-insight-banner">
+            <span style="font-size:16px; flex-shrink:0;">💡</span>
+            <div>
+              <strong style="color:#166534; font-size:13px;">Executive Key Insight (Week ${curWeek.weekNumber || 1}):</strong>
+              <p style="margin:2px 0 0 0; color:#14532d; font-size:12.5px;">${curWeek.keyInsight}</p>
             </div>
           </div>
-        </div>
-        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-          <div style="font-size:13px; font-weight:700; color:#334155; background:#f1f5f9; padding:6px 12px; border-radius:8px;">
-            🎯 Release Date: <strong>${metrics.releaseDate}</strong>
-          </div>
-          <span class="card-status-badge ${curWeek.statusClass || 'green'}" style="font-size:13px; padding:6px 14px;">
-            <span class="status-dot"></span>
-            ${curWeek.status || 'ON TRACK'}
-          </span>
-        </div>
-      </div>
+        ` : ''}
 
-      <!-- Effort Metrics Grid -->
-      <div class="ws-metrics-row">
-        <div class="ws-metric-card">
-          <div class="ws-m-lbl">Allocated (Man-Days)</div>
-          <div class="ws-m-val">${metrics.allocatedText}</div>
-        </div>
-        <div class="ws-metric-card">
-          <div class="ws-m-lbl">Burnt (Man-Days)</div>
-          <div class="ws-m-val">${metrics.burntText}</div>
-        </div>
-        <div class="ws-metric-card ${metrics.isDelay ? 'highlight-delay' : 'highlight-schedule'}">
-          <div class="ws-m-lbl">Remaining / Variance (Man-Days)</div>
-          <div class="ws-m-val" style="color:${metrics.isDelay ? '#dc2626' : '#16a34a'};">
-            ${metrics.varianceText}
+        <!-- Critical CEO Tracking Banner (Image 2) -->
+        ${hasBacklog ? `
+          <div class="ws-ceo-tracking-banner">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:16px;">⚠️</span>
+              <span>Critical CEO Tracking: ${backlogTasks.length} backlog task(s) from past week were NOT completed and have rolled over!</span>
+            </div>
+            <span class="badge-incomplete-solid">${backlogTasks.length} (INCOMPLETE)</span>
+          </div>
+        ` : ''}
+
+        <!-- 4-Columns Grid (Image 2) -->
+        <div class="ws-grid-4cols">
+          <!-- Col 1: Completed -->
+          <div class="ws-col-card col-completed">
+            <div class="ws-col-header">
+              <span>✓ COMPLETED (${completedTasks.length})</span>
+              <span class="ws-count-badge">${completedTasks.length}</span>
+            </div>
+            <ul class="ws-items-list">
+              ${completedTasks.length > 0 ? completedTasks.map(t => `
+                <li class="ws-item-row">
+                  <span class="icon-check">✓</span>
+                  <span>${t}</span>
+                </li>
+              `).join('') : '<li class="ws-item-row" style="color:#94a3b8;">No tasks completed</li>'}
+            </ul>
+          </div>
+
+          <!-- Col 2: Backlog (Red Column matching Image 2) -->
+          <div class="ws-col-card col-backlog">
+            <div class="ws-col-header">
+              <span>🚫 BACKLOG</span>
+              <span class="badge-incomplete-solid">${backlogTasks.length} (INCOMPLETE)</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              ${backlogTasks.length > 0 ? backlogTasks.map(t => `
+                <div class="backlog-inner-item">
+                  <span class="icon-cross">🚫</span>
+                  <span>${t}</span>
+                </div>
+              `).join('') : '<div style="color:#94a3b8; font-size:12px; padding:6px;">No backlog items</div>'}
+            </div>
+          </div>
+
+          <!-- Col 3: In Progress -->
+          <div class="ws-col-card col-inprogress">
+            <div class="ws-col-header">
+              <span>&gt; IN PROGRESS (${inProgressTasks.length})</span>
+              <span class="ws-count-badge">${inProgressTasks.length}</span>
+            </div>
+            <ul class="ws-items-list">
+              ${inProgressTasks.length > 0 ? inProgressTasks.map(t => `
+                <li class="ws-item-row">
+                  <span class="icon-arrow">&gt;</span>
+                  <span>${t}</span>
+                </li>
+              `).join('') : '<li class="ws-item-row" style="color:#94a3b8;">Review ongoing</li>'}
+            </ul>
+          </div>
+
+          <!-- Col 4: Future Next -->
+          <div class="ws-col-card col-future">
+            <div class="ws-col-header">
+              <span>o FUTURE NEXT (${futureTasks.length})</span>
+              <span class="ws-count-badge">${futureTasks.length}</span>
+            </div>
+            <ul class="ws-items-list">
+              ${futureTasks.length > 0 ? futureTasks.map(t => `
+                <li class="ws-item-row">
+                  <span class="icon-circle">o</span>
+                  <span>${t}</span>
+                </li>
+              `).join('') : '<li class="ws-item-row" style="color:#94a3b8;">Next sprint planning</li>'}
+            </ul>
           </div>
         </div>
-        <div class="ws-metric-card ${metrics.isDelay ? 'highlight-delay' : 'highlight-schedule'}">
-          <div class="ws-m-lbl">Timeline Status</div>
-          <div class="ws-m-val" style="color:${metrics.isDelay ? '#dc2626' : '#16a34a'};">
-            ${metrics.statusText}
+
+        <!-- Baseline Milestones & Governance (Image 2) -->
+        <div class="ws-milestones-card">
+          <div class="ws-milestones-title">
+            <span>🏆 BASELINE MILESTONES &amp; GOVERNANCE</span>
+          </div>
+          <div class="ws-milestones-row">
+            <strong style="font-size:12px; color:#475569;">MILESTONES:</strong>
+            ${milestonesList.map(m => `
+              <span class="milestone-badge ${m.status === 'COMPLETED' ? 'done' : 'progress'}">
+                ${m.status === 'COMPLETED' ? '✓' : '⌛'} ${m.name}: <strong>${m.position || m.status}</strong>
+              </span>
+            `).join('')}
           </div>
         </div>
+
+        <!-- Key Attention / Risk (Image 2) -->
+        ${p.risk ? `
+          <div class="ws-risk-banner">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:16px;">⚠️</span>
+              <span><strong>Key Attention:</strong> ${p.risk.issue} &bull; <em>${p.risk.mitigation}</em></span>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="risk-level-tag">${p.risk.severity}</span>
+              <span class="risk-escalation-tag">✓ Escalation: ${p.escalation || 'No critical escalation identified.'}</span>
+            </div>
+          </div>
+        ` : ''}
+
       </div>
     </div>
-
-    <!-- 4-Column Tasks & Workstreams Grid (Requirement 4) -->
-    <div class="ws-tasks-grid">
-      <!-- Column 1: Completed This Week -->
-      <div class="ws-task-col completed">
-        <div class="ws-task-col-header">
-          <span>✅ Completed This Week</span>
-          <span style="font-size:11px; background:#dcfce7; color:#15803d; padding:2px 6px; border-radius:10px;">${completedTasks.length}</span>
-        </div>
-        <ul class="ws-task-list">${completedHtml}</ul>
-      </div>
-
-      <!-- Column 2: Backlog (RED with (incomplete) badge) -->
-      <div class="ws-task-col uncompleted">
-        <div class="ws-task-col-header">
-          <div style="display:flex; align-items:center; gap:6px;">
-            <span>🔴 Backlog</span>
-            <span class="badge-incomplete">${backlogTasks.length} (incomplete)</span>
-          </div>
-        </div>
-        <ul class="ws-task-list">${backlogHtml}</ul>
-      </div>
-
-      <!-- Column 3: In Progress / Current Work -->
-      <div class="ws-task-col in-progress">
-        <div class="ws-task-col-header">
-          <span>🔄 In Progress / Current Work</span>
-          <span style="font-size:11px; background:#e0f2fe; color:#0369a1; padding:2px 6px; border-radius:10px;">${inProgressTasks.length}</span>
-        </div>
-        <ul class="ws-task-list">${inProgressHtml}</ul>
-      </div>
-
-      <!-- Column 4: Next Week Targets -->
-      <div class="ws-task-col future">
-        <div class="ws-task-col-header">
-          <span>🔮 Next Week Targets</span>
-          <span style="font-size:11px; background:#ede9fe; color:#6d28d9; padding:2px 6px; border-radius:10px;">${futureTasks.length}</span>
-        </div>
-        <ul class="ws-task-list">${futureHtml}</ul>
-      </div>
-    </div>
-
-    <!-- Team Resources Allocation -->
-    <div style="margin-bottom:20px;">
-      <div class="ws-section-title">👥 Team Resources &amp; Allocation (Man-Days)</div>
-      <div class="ws-resources-row">${resourcesHtml}</div>
-    </div>
-
-    <!-- High-Level Milestones -->
-    ${milestonesList.length > 0 ? `
-      <div style="margin-bottom:20px;">
-        <div class="ws-section-title">🎯 Governance Milestones &amp; Deliverables</div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px;">
-          ${milestonesHtml}
-        </div>
-      </div>
-    ` : ''}
-
-    <!-- Key Insight Banner -->
-    ${curWeek.keyInsight ? `
-      <div style="background:#eff6ff; border:1.5px solid #bfdbfe; border-radius:10px; padding:14px 18px; margin-bottom:16px; display:flex; align-items:flex-start; gap:10px;">
-        <span style="font-size:18px;">💡</span>
-        <div>
-          <strong style="color:#1e3a8a; font-size:13.5px;">Executive Key Insight:</strong>
-          <p style="margin:3px 0 0 0; font-size:13px; color:#1e293b; line-height:1.5;">${curWeek.keyInsight}</p>
-        </div>
-      </div>
-    ` : ''}
-
-    <!-- Risk & Mitigation Banner (if defined) -->
-    ${p.risk ? `
-      <div style="background:#fffbeb; border:1.5px solid #fde68a; border-radius:10px; padding:14px 18px; display:flex; align-items:flex-start; gap:10px;">
-        <span style="font-size:18px;">⚠️</span>
-        <div style="flex:1;">
-          <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
-            <strong style="color:#92400e; font-size:13.5px;">Key Attention / Risk (${p.risk.severity} Severity):</strong>
-            <span style="font-size:11px; font-weight:700; background:#fef3c7; color:#b45309; padding:2px 8px; border-radius:10px;">Escalation: ${p.escalation || 'None'}</span>
-          </div>
-          <p style="margin:3px 0 0 0; font-size:13px; color:#451a03; line-height:1.4;">
-            <strong>Issue:</strong> ${p.risk.issue} &bull; <em>Mitigation: ${p.risk.mitigation}</em>
-          </p>
-        </div>
-      </div>
-    ` : ''}
   `;
 }
 
