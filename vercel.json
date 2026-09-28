@@ -9,7 +9,9 @@
           "assets/**",
           "Incubator Weekly update/**",
           "scope document/**",
+          "Scope & USP document/**",
           "index.html",
+          "login.html",
           "README.md"
         ]
       }
