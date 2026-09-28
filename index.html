@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Executive Project Tracker & Weekly Visibility Hub</title>
-  <link rel="stylesheet" href="assets/css/portal.css?v=grey_theme_v1">
+  <link rel="stylesheet" href="assets/css/portal.css?v=compact_exec_v8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -217,6 +217,42 @@
     </div>
   </div>
 
+  <!-- Dedicated Full-Screen / Wide Workstreams & Breakdown Modal Popup -->
+  <div class="modal-backdrop" id="workstreamsModal">
+    <div class="modal-content" style="max-width: 1260px; width: 95vw; height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <div class="modal-title-group" style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <button class="btn btn-back-nav" onclick="closeWorkstreamsModal()" title="Close popup (Esc)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <span>← Back</span>
+          </button>
+          <div class="title-with-breadcrumb">
+            <div class="modal-breadcrumbs" style="font-size:12px; color:#64748b;">
+              <span id="wsModalProjectBreadcrumb" style="font-weight:700; color:#0f172a;">Project Name</span>
+              <span class="sep"> / </span>
+              <span class="current" style="color:#0284c7; font-weight:600;">Workstreams &amp; Milestones Breakdown</span>
+            </div>
+            <h2 id="wsModalTitle" style="font-size:17px; font-weight:800; color:#0f172a; margin:2px 0 0 0;">Workstreams Breakdown</h2>
+          </div>
+          <!-- Modal Week Switcher -->
+          <div style="display:flex; align-items:center; gap:6px; margin-left: 8px;">
+            <span style="font-size:11px; font-weight:700; color:#64748b; text-transform:uppercase;">📅 Week:</span>
+            <select id="wsModalWeekSelect" class="modal-week-select" onchange="changeWorkstreamsWeek(this.value)" title="Switch week"></select>
+          </div>
+        </div>
+        <div class="modal-actions" style="display:flex; align-items:center; gap:8px;">
+          <button class="btn btn-primary" onclick="exportWorkstreamsJpg()" title="Export current workstreams view as JPG">
+            <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> Export JPG
+          </button>
+          <button class="close-btn" onclick="closeWorkstreamsModal()" title="Close (Esc)">✕</button>
+        </div>
+      </div>
+      <div class="modal-body" id="wsModalBody" style="padding: 24px; overflow-y: auto; background: #f8fafc; flex: 1;">
+        <!-- Dynamically rendered full-screen workstreams content -->
+      </div>
+    </div>
+  </div>
+
   <!-- Add New Week Modal Dialog -->
   <div class="modal-backdrop" id="addWeekModal">
     <div class="add-week-modal-card">
@@ -311,6 +347,6 @@
 
   <!-- Scripts -->
   <script src="assets/js/html2canvas.min.js"></script>
-  <script src="assets/js/portal.js?v=executive_v14_sep28"></script>
+  <script src="assets/js/portal.js?v=exec_v8_compact"></script>
 </body>
 </html>
