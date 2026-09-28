@@ -6,6 +6,15 @@
   <title>Executive Project Tracker & Weekly Visibility Hub</title>
   <link rel="stylesheet" href="assets/css/portal.css?v=compact_exec_v8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Authentication Gate: Redirects to login.html if not authenticated -->
+  <script>
+    (function() {
+      const user = sessionStorage.getItem('auth_user') || localStorage.getItem('auth_user');
+      if (!user) {
+        window.location.replace('login.html');
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -33,6 +42,14 @@
         <a href="Incubator Weekly update/WEEKLY PROJECT VISIBILITY CARD.html" target="_blank" class="btn btn-secondary" title="Open Clean Weekly Card Template">
           <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Blank Template
         </a>
+        <!-- User Profile & Logout -->
+        <div class="user-profile-badge" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.7); border:1px solid #cbd5e1; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:700; color:#0f172a;">
+          <span style="color:#0284c7;">👤</span>
+          <span id="headerUserName">admin</span>
+        </div>
+        <button class="btn btn-secondary" onclick="logoutUser()" title="Sign out of portal" style="color:#dc2626; border-color:#fca5a5; display:inline-flex; align-items:center; gap:5px;">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+        </button>
       </div>
     </div>
   </header>

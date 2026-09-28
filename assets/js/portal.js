@@ -1999,8 +1999,28 @@ function showPortalToast(message, type = 'info') {
   }
 }
 
+// User Authentication & Logout
+function logoutUser() {
+  if (confirm('Are you sure you want to sign out from the portal?')) {
+    sessionStorage.removeItem('auth_user');
+    localStorage.removeItem('auth_user');
+    window.location.replace('login.html');
+  }
+}
+window.logoutUser = logoutUser;
+
 // Event Listeners & Keyboard Dismiss
 document.addEventListener('DOMContentLoaded', () => {
+  // Display logged in user
+  try {
+    const rawUser = sessionStorage.getItem('auth_user') || localStorage.getItem('auth_user');
+    if (rawUser) {
+      const u = JSON.parse(rawUser);
+      const nameEl = document.getElementById('headerUserName');
+      if (nameEl) nameEl.innerText = u.username || 'admin';
+    }
+  } catch (e) {}
+
   renderProjects();
 
   const filterBtns = document.querySelectorAll('.filter-btn');

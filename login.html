@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login &bull; Executive Project Tracker</title>
+  <link rel="stylesheet" href="assets/css/portal.css?v=compact_exec_v8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background: radial-gradient(circle at 50% 20%, #1e293b 0%, #0f172a 60%, #020617 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      color: #f8fafc;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 38px 34px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6), 0 0 35px rgba(37, 99, 235, 0.15);
+      animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .brand-badge {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      border-radius: 14px;
+      display: inline-grid;
+      place-items: center;
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .login-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+      margin: 0 0 6px 0;
+    }
+
+    .login-subtitle {
+      font-size: 13px;
+      color: #94a3b8;
+      margin: 0;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      color: #64748b;
+      font-size: 14px;
+      pointer-events: none;
+      transition: color 0.2s ease;
+    }
+
+    .login-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1.5px solid #334155;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 12px 42px 12px 38px;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .login-input:focus {
+      border-color: #38bdf8;
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+    }
+
+    .login-input:focus + .input-icon,
+    .input-wrapper:focus-within .input-icon {
+      color: #38bdf8;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 6px;
+      border-radius: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .toggle-password:hover {
+      color: #f8fafc;
+    }
+
+    .form-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      font-size: 12.5px;
+      color: #94a3b8;
+    }
+
+    .remember-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .remember-checkbox {
+      accent-color: #2563eb;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    .btn-login-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border: 1px solid #3b82f6;
+      color: #ffffff;
+      padding: 13px 20px;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-login-submit:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      transform: translateY(-1.5px);
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-login-submit:active {
+      transform: translateY(0);
+    }
+
+    .error-alert {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+      color: #fca5a5;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      animation: shake 0.35s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    .demo-credentials-card {
+      margin-top: 24px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .demo-credentials-card strong {
+      color: #38bdf8;
+    }
+
+    .demo-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    .copy-chip {
+      cursor: pointer;
+      color: #cbd5e1;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pre-check if already logged in -->
+  <script>
+    if (sessionStorage.getItem('auth_user') || localStorage.getItem('auth_user')) {
+      window.location.replace('index.html');
+    }
+  </script>
+
+  <div class="login-container">
+    
+    <div class="login-header">
+      <div class="brand-badge">
+        <i class="fa-solid fa-layer-group"></i>
+      </div>
+      <h1 class="login-title">Executive Project Tracker</h1>
+      <p class="login-subtitle">Portfolio Visibility &amp; Executive Reporting Portal</p>
+    </div>
+
+    <!-- Error Alert Banner -->
+    <div class="error-alert" id="loginError">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span id="errorMessage">Invalid credentials. Please verify your details.</span>
+    </div>
+
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      
+      <!-- Username Field -->
+      <div class="form-group">
+        <label class="form-label" for="username">Username or Corporate Email</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-user input-icon"></i>
+          <input 
+            type="text" 
+            id="username" 
+            class="login-input" 
+            placeholder="e.g., admin" 
+            required 
+            autocomplete="username"
+            autofocus
+          >
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div class="input-wrapper">
+          <i class="fa-solid fa-lock input-icon"></i>
+          <input 
+            type="password" 
+            id="password" 
+            class="login-input" 
+            placeholder="Enter your security password" 
+            required
+            autocomplete="current-password"
+          >
+          <button type="button" class="toggle-password" onclick="togglePasswordVisibility()" title="Toggle password view">
+            <i class="fa-solid fa-eye" id="passwordEyeIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-options">
+        <label class="remember-label">
+          <input type="checkbox" id="rememberMe" class="remember-checkbox" checked>
+          <span>Remember session</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-login-submit" id="submitBtn">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        <span>Sign In to Dashboard</span>
+      </button>
+
+    </form>
+
+    <!-- Pre-Configured Access Information -->
+    <div class="demo-credentials-card">
+      <div style="font-weight: 700; margin-bottom: 4px; color: #e2e8f0;">
+        🔑 Authorized Access Credentials:
+      </div>
+      <div class="demo-item">
+        <span>Username: <strong>admin</strong></span>
+        <span>Password: <strong>admin123</strong></span>
+      </div>
+      <div class="demo-item" style="margin-top: 5px;">
+        <span>Executive: <strong>executive</strong></span>
+        <span>Password: <strong>unicom2026</strong></span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Predefined accounts
+    const VALID_ACCOUNTS = {
+      'admin': 'admin123',
+      'executive': 'unicom2026',
+      'ceo': 'ceo2026'
+    };
+
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('password');
+      const eyeIcon = document.getElementById('passwordEyeIcon');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+      } else {
+        pwdInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const usernameInput = document.getElementById('username').value.trim();
+      const passwordInput = document.getElementById('password').value.trim();
+      const rememberMe = document.getElementById('rememberMe').checked;
+      const errorBox = document.getElementById('loginError');
+      const errorMsg = document.getElementById('errorMessage');
+      const submitBtn = document.getElementById('submitBtn');
+
+      // Verify credentials
+      if (!VALID_ACCOUNTS[usernameInput] || VALID_ACCOUNTS[usernameInput] !== passwordInput) {
+        errorMsg.innerText = 'Incorrect username or password. Please check your credentials.';
+        errorBox.style.display = 'flex';
+        // Re-trigger shake
+        errorBox.style.animation = 'none';
+        void errorBox.offsetWidth;
+        errorBox.style.animation = 'shake 0.35s ease';
+        return;
+      }
+
+      // Hide error
+      errorBox.style.display = 'none';
+
+      // Button loading state
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...';
+      submitBtn.disabled = true;
+
+      const userSession = {
+        username: usernameInput,
+        role: (usernameInput === 'admin') ? 'Administrator' : 'Executive',
+        loginTime: new Date().toISOString()
+      };
+
+      if (rememberMe) {
+        localStorage.setItem('auth_user', JSON.stringify(userSession));
+      } else {
+        sessionStorage.setItem('auth_user', JSON.stringify(userSession));
+      }
+
+      setTimeout(() => {
+        window.location.replace('index.html');
+      }, 500);
+    }
+  </script>
+</body>
+</html>
