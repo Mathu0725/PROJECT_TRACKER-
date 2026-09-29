@@ -174,9 +174,9 @@ const DEFAULT_PROJECTS = [
     resources: [
       {
         name: 'Gobithas Kalaimakan',
-        role: 'Mobile Team Lead',
+        role: 'Developer',
         allocation: '42 Man-Days',
-        responsibility: 'React Native architecture, QR barcode scanning engine, and turnstile API link.'
+        responsibility: 'Customer mobile app — Optimo WebAPI checklist, invite / ticket / attendees flows, Phase 1 delivery.'
       }
     ],
     milestones: [
@@ -219,8 +219,8 @@ const DEFAULT_PROJECTS = [
           'Security penetration review',
           'Production App Store submission'
         ],
-        keyInsight: 'Ticket scanning speed improved; low-light validation and physical turnstile integration remain critical path items.',
-        weeklyUrl: 'Incubator Weekly update/GrayHound 18.09.2026.html',
+        keyInsight: 'Phase 1 end date extended to 25.09.2026 (+15 days). 30 of 42 man-days consumed (71%). WebAPI integration in progress.',
+        weeklyUrl: 'Incubator Weekly update/Grayhound 18.09.2026.html',
         scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
       },
       {
@@ -232,47 +232,50 @@ const DEFAULT_PROJECTS = [
         manDays: '35 Allocated',
         consumed: '30 Consumed (86%)',
         completedTasks: [
-          'Barcode generation service live',
-          'User profile screen completed'
+          'Deep link / App links for entitlement invitations (Android + iOS)',
+          'Backend API written for invitation workflow',
+          'Stabilize invite -> ticket -> checklist journey'
         ],
         uncompletedTasks: [
           'Turnstile scanner latency optimization'
         ],
         inProgressTasks: [
-          'Offline ticket caching',
-          'Payment gateway callback verification'
+          'Complete remaining Phase 1 checklist integrations',
+          'QA / UAT through extended end date 18.09.2026'
         ],
         futureTasks: [
-          'Push notification integration',
-          'Live turnstile test'
+          'Go-Live readiness checks',
+          'Monitor live invite and deep-link behavior'
         ],
-        keyInsight: 'Scanner requires tuning for rapid queue clearance at turnstiles.',
-        weeklyUrl: 'Incubator Weekly update/Greyhound_Weekly_Report_11_Sep_2026.html',
+        keyInsight: 'Project end date extended to 18 Sep 2026 (+8 days). 30 of 35 man-days consumed (86%). Scope change added invitation links and checklist API.',
+        weeklyUrl: 'Incubator Weekly update/Greyhound 11.09.2026.html',
         scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
       },
       {
         weekNumber: 1,
         weekLabel: 'Week 1',
         weekEnding: '4 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '35 Allocated',
-        consumed: '25 Consumed (71%)',
+        status: 'ON TRACK',
+        statusClass: 'green',
+        manDays: '13 Allocated',
+        consumed: '10 Consumed (77%)',
         completedTasks: [
-          'Sprint kickoff and navigation wireframe finalized',
-          'API authentication service configured'
+          'API wiring updates completed',
+          'QR scan to ticket-add flow completed',
+          'Response mapping improvements',
+          'Polling & UX improvements completed'
         ],
         uncompletedTasks: [],
         inProgressTasks: [
-          'Barcode scanning module',
-          'Ticket wallet screen'
+          'End-to-end validation and stabilization',
+          'UI/UX observation for real-world usage'
         ],
         futureTasks: [
-          'Offline caching',
-          'Turnstile hardware test'
+          'Production SSL / HTTPS validation',
+          'Final QA and release readiness checks'
         ],
-        keyInsight: 'Sprint initiated with primary focus on turnstile scanning reliability.',
-        weeklyUrl: 'Incubator Weekly update/greyhound_weekly_project_visibility_card.html',
+        keyInsight: 'Sprint on schedule with 10 of 13 man-days consumed (77%). 0 days delay, target end date 10.9.2026.',
+        weeklyUrl: 'Incubator Weekly update/greyhound 04.09.2026.html',
         scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
       }
     ]
@@ -935,7 +938,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v10_stacked_teams';
+const STORAGE_KEY = 'portal_projects_exec_v11_greyhound_pristine';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -956,7 +959,8 @@ try {
     'portal_projects_exec_v8_all_8',
     'portal_projects_v14_sep28_all_8',
     'portal_projects_exec_v8_compact',
-    'portal_projects_exec_v9_team_positions'
+    'portal_projects_exec_v9_team_positions',
+    'portal_projects_exec_v10_stacked_teams'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 
