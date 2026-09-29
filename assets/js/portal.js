@@ -220,7 +220,7 @@ const DEFAULT_PROJECTS = [
           'Production App Store submission'
         ],
         keyInsight: 'Phase 1 end date extended to 25.09.2026 (+15 days). 30 of 42 man-days consumed (71%). WebAPI integration in progress.',
-        weeklyUrl: 'Incubator Weekly update/Grayhound 18.09.2026.html',
+        weeklyUrl: 'Incubator Weekly update/GrayHound 18.09.2026.html',
         scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
       },
       {
@@ -938,7 +938,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v11_greyhound_pristine';
+const STORAGE_KEY = 'portal_projects_exec_v12_case_fixed';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -960,7 +960,8 @@ try {
     'portal_projects_v14_sep28_all_8',
     'portal_projects_exec_v8_compact',
     'portal_projects_exec_v9_team_positions',
-    'portal_projects_exec_v10_stacked_teams'
+    'portal_projects_exec_v10_stacked_teams',
+    'portal_projects_exec_v11_greyhound_pristine'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 

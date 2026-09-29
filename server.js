@@ -100,6 +100,24 @@ const server = http.createServer((req, res) => {
     filePath = filePath + '.html';
   }
 
+  // Case-insensitive file resolution for Linux/Vercel
+  if (!fs.existsSync(filePath)) {
+    try {
+      const dir = path.dirname(filePath);
+      const base = path.basename(filePath).toLowerCase();
+      if (fs.existsSync(dir)) {
+        const found = fs.readdirSync(dir).find(f => f.toLowerCase() === base);
+        if (found) {
+          filePath = path.join(dir, found);
+        } else {
+          // Check with .html appended case-insensitively
+          const foundHtml = fs.readdirSync(dir).find(f => f.toLowerCase() === (base + '.html'));
+          if (foundHtml) filePath = path.join(dir, foundHtml);
+        }
+      }
+    } catch (_) {}
+  }
+
   // If directory, check for index.html inside
   try {
     if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
