@@ -287,15 +287,33 @@ const DEFAULT_PROJECTS = [
     originalAllocation: 150,
     forecastTotal: 150,
     overBudget: false,
-    leads: 'HRMS Platform Team',
+    leads: 'Thivaharan / Dapiyshanth',
     description: 'Comprehensive human resource management suite with employee directory, multi-tenant security, and leave tracking.',
     highlights: 'Authentication & Security, Leave & Attendance, Multi-tenant management, Shift scheduling.',
     resources: [
       {
-        name: 'HRMS Core Team',
-        role: 'Full Stack Engineering',
-        allocation: '150 Man-Days',
-        responsibility: 'Multi-tenant database, authentication, shift scheduling, and reporting.'
+        name: 'Thivaharan',
+        role: 'Project Manager',
+        allocation: '75 Man-Days',
+        responsibility: 'Planning, coordination, risks, reporting, and client liaison.'
+      },
+      {
+        name: 'Dapiyshanth',
+        role: 'Team Lead',
+        allocation: '75 Man-Days',
+        responsibility: 'Solution configuration, development, and architecture.'
+      },
+      {
+        name: 'Kajaatharan',
+        role: 'Developer',
+        allocation: '75 Man-Days',
+        responsibility: 'Testing, quality assurance, and defect management.'
+      },
+      {
+        name: 'Pirakeerthan',
+        role: 'Developer',
+        allocation: '75 Man-Days',
+        responsibility: 'Technical design, development, integration, and mentoring.'
       }
     ],
     milestones: [
@@ -409,10 +427,28 @@ const DEFAULT_PROJECTS = [
     highlights: 'Order workflow, Payment terminal link, Offline queue sync, Inventory auto-decrement.',
     resources: [
       {
-        name: 'Mathusan / Yapes',
-        role: 'EPOS Core Engineers',
-        allocation: '140 Man-Days',
-        responsibility: 'Till UI, offline sync queue, payment terminal driver, and receipt printing.'
+        name: 'Mathusan',
+        role: 'Coordinator / Developer',
+        allocation: '127 Man-Days',
+        responsibility: 'Development, task management, coordination, risks, reporting, and E-commerce.'
+      },
+      {
+        name: 'Yapes',
+        role: 'Project Leader / Developer',
+        allocation: '113 Man-Days',
+        responsibility: 'Development, Super Admin, and Second Brain.'
+      },
+      {
+        name: 'Tharmithan',
+        role: 'Developer',
+        allocation: '125 Man-Days',
+        responsibility: 'Flutter App development and integration.'
+      },
+      {
+        name: 'Nivethika',
+        role: 'Developer',
+        allocation: '44 Man-Days',
+        responsibility: 'Product setup, tax management, and category configuration.'
       }
     ],
     milestones: [
@@ -636,15 +672,39 @@ const DEFAULT_PROJECTS = [
     originalAllocation: 120,
     forecastTotal: 120,
     overBudget: false,
-    leads: 'Watercraft Platform Team',
+    leads: 'Saif / Abitha',
     description: 'Marina and boatyard dry-stack storage management, customer reservation app, and boat launch scheduling.',
     highlights: 'Dock slip assignment, Launch requests, Customer billing, Maintenance work orders.',
     resources: [
       {
-        name: 'Platform Engineering',
-        role: 'Full Stack Team',
-        allocation: '120 Man-Days',
-        responsibility: 'Dry-stack launch scheduling, customer portal, slip allocation, and invoicing.'
+        name: 'Saif',
+        role: 'Team Lead',
+        allocation: '35 Man-Days',
+        responsibility: 'Leadership, architecture, development, integration, and testing.'
+      },
+      {
+        name: 'Abitha',
+        role: 'Coordinator',
+        allocation: '22 Man-Days',
+        responsibility: 'Coordination, documentation, tracking, development, and testing support.'
+      },
+      {
+        name: 'Kunasika',
+        role: 'Developer',
+        allocation: '22 Man-Days',
+        responsibility: 'Frontend, backend, and testing.'
+      },
+      {
+        name: 'Lavanya',
+        role: 'Developer',
+        allocation: '22 Man-Days',
+        responsibility: 'Frontend, backend, and testing.'
+      },
+      {
+        name: 'Natheesan',
+        role: 'Developer',
+        allocation: '19 Man-Days',
+        responsibility: 'Frontend, backend, and testing.'
       }
     ],
     milestones: [
@@ -698,10 +758,34 @@ const DEFAULT_PROJECTS = [
     highlights: 'School Camp Booking Wizard, Programs & Activities, Voucher Management. Scope & USP: Update Soon.',
     resources: [
       {
-        name: 'Saif / Abitha',
-        role: 'Frontend Engineering',
-        allocation: '40 Man-Days',
-        responsibility: 'Booking wizard UI redesign, voucher redemption integration, and responsive layout.'
+        name: 'Saif',
+        role: 'Team Lead',
+        allocation: '0 Man-Days',
+        responsibility: 'Leadership, architecture, development, integration, and testing.'
+      },
+      {
+        name: 'Abitha',
+        role: 'Coordinator',
+        allocation: '5 Man-Days',
+        responsibility: 'Coordination, documentation, tracking, development, and testing support.'
+      },
+      {
+        name: 'Kunasika',
+        role: 'Developer',
+        allocation: '5 Man-Days',
+        responsibility: 'Frontend, backend, integration, and testing.'
+      },
+      {
+        name: 'Lavanya',
+        role: 'Developer',
+        allocation: '5 Man-Days',
+        responsibility: 'Frontend, backend, integration, and testing.'
+      },
+      {
+        name: 'Natheesan',
+        role: 'Developer',
+        allocation: '5 Man-Days',
+        responsibility: 'Frontend, backend, integration, and testing.'
       }
     ],
     milestones: [
@@ -779,10 +863,10 @@ const DEFAULT_PROJECTS = [
     highlights: 'Promotional videos, Brand identity kits, Social media reels, Investor pitch deck assets.',
     resources: [
       {
-        name: 'Creative Studio',
-        role: 'Multimedia Production',
+        name: 'Marketing Team',
+        role: 'Creative & Digital Media Lead',
         allocation: '30 Man-Days',
-        responsibility: 'Video editing, motion graphics, campaign posters, and social distribution.'
+        responsibility: 'Video editing, motion graphics, campaign posters, social distribution, and AI marketing research.'
       }
     ],
     milestones: [
@@ -851,7 +935,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v8_compact';
+const STORAGE_KEY = 'portal_projects_exec_v9_team_positions';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -870,7 +954,8 @@ try {
     'portal_projects_v12_marketing_team',
     'portal_projects_v13_sep18_updates',
     'portal_projects_exec_v8_all_8',
-    'portal_projects_v14_sep28_all_8'
+    'portal_projects_v14_sep28_all_8',
+    'portal_projects_exec_v8_compact'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 
@@ -880,7 +965,7 @@ if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 8) {
   PROJECTS = JSON.parse(JSON.stringify(DEFAULT_PROJECTS));
   localStorage.setItem(STORAGE_KEY, JSON.stringify(PROJECTS));
 } else {
-  // Sync missing properties from DEFAULT_PROJECTS while keeping user updates
+  // Sync missing and updated properties from DEFAULT_PROJECTS while keeping user updates
   DEFAULT_PROJECTS.forEach(def => {
     const p = PROJECTS.find(item => item.id === def.id || (def.id === 'camera-module' && item.id === 'camera-module-onetix'));
     if (p) {
@@ -893,8 +978,8 @@ if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 8) {
       p.overBudget = (def.overBudget !== undefined) ? def.overBudget : p.overBudget;
       p.highlights = def.highlights;
       if (!p.icon) p.icon = def.icon;
-      if (!p.resources) p.resources = def.resources;
-      if (!p.milestones) p.milestones = def.milestones;
+      p.resources = JSON.parse(JSON.stringify(def.resources));
+      p.milestones = JSON.parse(JSON.stringify(def.milestones));
       if (def.weeks.length > (p.weeks ? p.weeks.length : 0)) {
         p.weeks = JSON.parse(JSON.stringify(def.weeks));
         p.selectedWeekIndex = def.selectedWeekIndex || 0;
@@ -1256,9 +1341,9 @@ function renderWorkstreamsModalContent() {
   const futureTasks = curWeek.futureTasks || [];
   const hasBacklog = backlogTasks.length > 0;
 
-  // Team members short
-  const teamMembersShort = (p.resources && p.resources.length > 0)
-    ? p.resources.map(r => `${r.name} (${r.allocation})`).join(', ')
+  // Team members with position (role) & allocation
+  const teamMembersWithPosition = (p.resources && p.resources.length > 0)
+    ? p.resources.map(r => `${r.name} (${r.role ? r.role + ' • ' : ''}${r.allocation})`).join(', ')
     : `${p.leads || 'Team Lead'} (${metrics.allocatedText})`;
 
   // Milestones list
@@ -1320,7 +1405,7 @@ function renderWorkstreamsModalContent() {
             Variance: <strong style="color:${metrics.isDelay ? '#dc2626' : '#16a34a'};">${metrics.varianceText}</strong>
           </div>
           <div>
-            👥 Team: <strong>${teamMembersShort}</strong>
+            👥 Team: <strong>${teamMembersWithPosition}</strong>
           </div>
         </div>
 
