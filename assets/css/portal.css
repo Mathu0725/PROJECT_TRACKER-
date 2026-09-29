@@ -2098,30 +2098,74 @@ body {
   color: #0f172a;
 }
 
-/* Team Row */
+/* Team Row (Stacked Line by Line) */
 .card-team-box {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 7px 12px;
+  border-radius: 8px;
+  padding: 8px 12px;
   font-size: 12px;
   color: #334155;
   display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.team-header-tag {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  margin-top: 1px;
+  flex-shrink: 0;
 }
 
 .team-label {
   font-weight: 800;
   color: #1e293b;
+  letter-spacing: 0.3px;
 }
 
-.team-members {
+.team-members-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: #475569;
+  flex: 1;
+}
+
+.team-member-row {
+  line-height: 1.45;
+  font-size: 12px;
   color: #475569;
 }
 
-.team-members strong {
+.team-member-row strong {
   color: #0f172a;
+  font-weight: 700;
+}
+
+/* Modal Team Col */
+.ws-team-col {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ws-team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ws-team-row {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #334155;
+}
+
+.ws-team-row strong {
+  color: #0f172a;
+  font-weight: 700;
 }
 
 /* Key Insight Box (Image 1) */

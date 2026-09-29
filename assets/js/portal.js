@@ -935,7 +935,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v9_team_positions';
+const STORAGE_KEY = 'portal_projects_exec_v10_stacked_teams';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -955,7 +955,8 @@ try {
     'portal_projects_v13_sep18_updates',
     'portal_projects_exec_v8_all_8',
     'portal_projects_v14_sep28_all_8',
-    'portal_projects_exec_v8_compact'
+    'portal_projects_exec_v8_compact',
+    'portal_projects_exec_v9_team_positions'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 
@@ -1139,10 +1140,14 @@ function renderProjects(filterText = '', filterStatus = 'all') {
       </option>
     `).join('') + `<option value="upload">+ Upload Next Week...</option>`;
 
-    // Team members formatted (e.g. Nilaxshan (Project Manager · 75 Man-Days), Kirusthiya (Developer · 75 Man-Days))
-    const teamMembersFormatted = (p.resources && p.resources.length > 0)
-      ? p.resources.map(r => `<strong>${r.name}</strong> (${r.role} &bull; ${r.allocation})`).join(', ')
-      : `<strong>${p.leads || 'Team Lead'}</strong> (${metrics.allocatedText})`;
+    // Team members formatted (stacked line by line)
+    const teamMembersListHtml = (p.resources && p.resources.length > 0)
+      ? p.resources.map((r, i) => `
+          <div class="team-member-row">
+            <strong>${r.name}</strong> (${r.role} &bull; ${r.allocation})${i < p.resources.length - 1 ? ',' : ''}
+          </div>
+        `).join('')
+      : `<div class="team-member-row"><strong>${p.leads || 'Team Lead'}</strong> (${metrics.allocatedText})</div>`;
 
     // Backlog tasks summary & indicator
     const backlogTasks = curWeek.uncompletedTasks || [];
@@ -1206,11 +1211,15 @@ function renderProjects(filterText = '', filterStatus = 'all') {
         </div>
       </div>
 
-      <!-- Team Line (Image 1) -->
+      <!-- Team Line (Image 1: Stacked line by line) -->
       <div class="card-team-box">
-        <span class="team-icon">👥</span>
-        <span class="team-label">TEAM:</span>
-        <span class="team-members">${teamMembersFormatted}</span>
+        <div class="team-header-tag">
+          <span class="team-icon">👥</span>
+          <span class="team-label">TEAM:</span>
+        </div>
+        <div class="team-members-list">
+          ${teamMembersListHtml}
+        </div>
       </div>
 
       <!-- Key Insight Box (Image 1) -->
@@ -1404,8 +1413,17 @@ function renderWorkstreamsModalContent() {
           <div>
             Variance: <strong style="color:${metrics.isDelay ? '#dc2626' : '#16a34a'};">${metrics.varianceText}</strong>
           </div>
-          <div>
-            👥 Team: <strong>${teamMembersWithPosition}</strong>
+          <div class="ws-team-col">
+            <span style="font-weight:700; color:#1e293b; display:inline-flex; align-items:center; gap:4px; margin-top:1px;">👥 Team:</span>
+            <div class="ws-team-list">
+              ${(p.resources && p.resources.length > 0)
+                ? p.resources.map((r, i) => `
+                    <div class="ws-team-row">
+                      <strong>${r.name}</strong> (${r.role ? r.role + ' &bull; ' : ''}${r.allocation})${i < p.resources.length - 1 ? ',' : ''}
+                    </div>
+                  `).join('')
+                : `<div class="ws-team-row"><strong>${p.leads || 'Team Lead'}</strong> (${metrics.allocatedText})</div>`}
+            </div>
           </div>
         </div>
 
