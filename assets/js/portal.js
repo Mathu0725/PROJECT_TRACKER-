@@ -296,15 +296,33 @@ const DEFAULT_PROJECTS = [
     "forecastTotal": 42,
     "forecastOverrun": "+7 Man-Days (+20%)",
     "overBudget": true,
-    "leads": "Gobithas Kalaimakan",
+    "leads": "Gobithas / Nirojan / Nilaxshan / Kirusthiya",
     "description": "Customer mobile application for racetrack ticketing, turnstile barcode scanning, and live race day updates.",
     "highlights": "QR Scanner, Ticket Management, Live Polling, Mobile UX and account verification.",
     "resources": [
       {
         "name": "Gobithas Kalaimakan",
         "role": "Developer",
-        "allocation": "42 Man-Days",
-        "responsibility": "Customer mobile app — Optimo WebAPI checklist, invite / ticket / attendees flows, Phase 1 delivery."
+        "allocation": "14 Man-Days",
+        "responsibility": "Invitation handoff via deep links and Play install referrer"
+      },
+      {
+        "name": "Nirojan",
+        "role": "Developer",
+        "allocation": "14 Man-Days",
+        "responsibility": "Invites tab, session-grouped tickets, activation start gate, profile picture, and can't-connect message"
+      },
+      {
+        "name": "Nilaxshan",
+        "role": "Developer",
+        "allocation": "14 Man-Days",
+        "responsibility": "Mobile UI themes, notification sound and vibration, invite deep links, booking and event cards"
+      },
+      {
+        "name": "Kirusthiya",
+        "role": "Developer",
+        "allocation": "14 Man-Days",
+        "responsibility": "Sporting World logo, Home live events, My Tickets background sync, and profile edits"
       }
     ],
     "milestones": [
@@ -1704,7 +1722,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v18_nsw_official_oct';
+const STORAGE_KEY = 'portal_projects_exec_v19_greyhound_team_complete';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -1729,7 +1747,8 @@ try {
     'portal_projects_exec_v10_stacked_teams',
     'portal_projects_exec_v11_greyhound_pristine',
     'portal_projects_exec_v12_case_fixed',
-    'portal_projects_exec_v17_governance_tabs'
+    'portal_projects_exec_v17_governance_tabs',
+    'portal_projects_exec_v18_nsw_official_oct'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 
