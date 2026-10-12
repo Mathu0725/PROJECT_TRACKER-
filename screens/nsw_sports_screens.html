@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSW Sports Booking — Screen HTML Prototype</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar {
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .main-body {
+      max-width: 1100px;
+      margin: 24px auto;
+      width: 90%;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .wizard-steps {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 700;
+    }
+    .step.active { color: #38bdf8; }
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+    .step.active .step-num { background: #0284c7; color: white; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .field label { font-size: 12px; color: #94a3b8; display: block; margin-bottom: 6px; font-weight: 700; }
+    .field input, .field select {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <i class="fa-solid fa-volleyball" style="color:#0ea5e9; font-size:20px;"></i>
+      <div>
+        <h1 style="font-size:15px; font-weight:800;">NSW SPORTS PORTAL — SCHOOL CAMP WIZARD SPECIFICATION</h1>
+        <p style="font-size:11.5px; color:#94a3b8;">Dev Lead: Saif / Abitha &bull; School Camp Wizard, Program Scheduling &amp; Voucher Management</p>
+      </div>
+    </div>
+    <span style="background:rgba(34, 197, 94, 0.2); color:#4ade80; border:1px solid #22c55e; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700;">
+      UI Modernization Delivered
+    </span>
+  </div>
+
+  <div class="main-body">
+    <div class="wizard-steps">
+      <div class="step active"><span class="step-num">1</span> School &amp; Cohort Info</div>
+      <div class="step"><span class="step-num">2</span> Program Selection</div>
+      <div class="step"><span class="step-num">3</span> NSW Voucher Redemption</div>
+      <div class="step"><span class="step-num">4</span> Confirmation</div>
+    </div>
+
+    <div class="form-grid">
+      <div class="field">
+        <label>School Institution Name</label>
+        <input type="text" value="St. Marys High School Sydney" readonly>
+      </div>
+      <div class="field">
+        <label>Expected Student Headcount</label>
+        <input type="number" value="120" readonly>
+      </div>
+      <div class="field">
+        <label>Sports Facility Venue</label>
+        <select disabled><option>Sydney Olympic Park Sports Hall</option></select>
+      </div>
+      <div class="field">
+        <label>Active Kids Voucher Claim Code</label>
+        <input type="text" value="NSW-VOUCHER-2026-X99" readonly>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

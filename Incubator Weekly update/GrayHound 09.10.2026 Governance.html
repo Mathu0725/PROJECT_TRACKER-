@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Greyhound governance — 9 October 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: #F4F6FA;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #1F2937;
+      width: 1560px;
+    }
+    .page { padding: 22px 24px 28px; }
+    .card {
+      background: #fff;
+      border: 1px solid #E6EAF0;
+      border-radius: 16px;
+      box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    }
+    .top {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr 1.35fr;
+      gap: 8px;
+      padding: 16px 22px;
+      align-items: center;
+    }
+    .k { font-size: 13px; color: #6B7280; font-weight: 600; }
+    .v { font-size: 18px; font-weight: 800; color: #111827; margin-top: 2px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #F6C445;
+      color: #6B4E00;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .delay { color: #DC2626; font-weight: 800; }
+    .team { font-size: 12.5px; line-height: 1.45; color: #374151; }
+    .team b { color: #111827; }
+    .team-h { font-size: 13px; font-weight: 800; margin-bottom: 4px; }
+    .panel { margin-top: 14px; padding: 18px 18px 16px; }
+    .ph {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .ph h1 { font-size: 16px; letter-spacing: 0.3px; font-weight: 900; }
+    .ph p { font-size: 12.5px; color: #6B7280; margin-top: 3px; }
+    .metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .metric { border-radius: 12px; padding: 14px 16px; border: 1px solid #E5E7EB; background: #FAFBFC; }
+    .metric.blue { background: #F3F8FF; border-color: #BFDBFE; }
+    .metric.pink { background: #FFF5F5; border-color: #FECACA; }
+    .ml { font-size: 11px; font-weight: 800; letter-spacing: 0.4px; color: #6B7280; }
+    .mv { font-size: 26px; font-weight: 900; margin: 4px 0 2px; color: #111827; }
+    .metric.blue .mv { color: #1D4ED8; }
+    .metric.pink .mv { color: #DC2626; }
+    .ms { font-size: 12px; color: #6B7280; }
+    .why {
+      margin-top: 12px;
+      background: #FFF1F2;
+      border: 1px solid #FECDD3;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .why h2 { font-size: 13px; color: #BE123C; letter-spacing: 0.2px; }
+    .why p { font-size: 13px; margin-top: 4px; line-height: 1.4; }
+    .tag {
+      flex-shrink: 0;
+      background: #fff;
+      border: 1px solid #FECACA;
+      color: #BE123C;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12.5px; }
+    th {
+      text-align: left;
+      font-size: 10.5px;
+      letter-spacing: 0.4px;
+      color: #6B7280;
+      font-weight: 800;
+      padding: 8px 10px;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    td { padding: 10px; border-bottom: 1px solid #F3F4F6; vertical-align: top; line-height: 1.35; }
+    tr.sel td { background: #F3F8FF; }
+    .wk { font-weight: 800; }
+    .sel-badge {
+      display: inline-block;
+      margin-top: 3px;
+      background: #DBEAFE;
+      color: #1D4ED8;
+      font-size: 10px;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 1px 7px;
+    }
+    .ext {
+      display: inline-block;
+      background: #FEF3C7;
+      color: #92400E;
+      font-weight: 800;
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 3px 8px;
+    }
+    .ok {
+      display: inline-block;
+      background: #DCFCE7;
+      color: #166534;
+      font-weight: 800;
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 3px 8px;
+    }
+    .board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+    .col { border-radius: 14px; padding: 12px; background: #fff; border: 1px solid #E5E7EB; }
+    .col.done { border-color: #86EFAC; background: #F7FEF9; }
+    .col.back { border-color: #FCA5A5; background: #FFF8F8; }
+    .col.prog { border-color: #93C5FD; background: #F8FBFF; }
+    .col.next { border-color: #C4B5FD; background: #FBFAFF; }
+    .ch { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 900; letter-spacing: 0.3px; margin-bottom: 8px; }
+    .ch span.count {
+      width: 22px; height: 22px; border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px; color: #fff;
+    }
+    .done .count { background: #16A34A; }
+    .back .count { background: #DC2626; }
+    .prog .count { background: #2563EB; }
+    .next .count { background: #7C3AED; }
+    .done .ch { color: #166534; }
+    .back .ch { color: #B91C1C; }
+    .prog .ch { color: #1D4ED8; }
+    .next .ch { color: #6D28D9; }
+    ul.items { list-style: none; }
+    ul.items li { font-size: 12.5px; line-height: 1.35; margin: 0 0 7px; padding-left: 16px; position: relative; }
+    .done li::before { content: "✓"; position: absolute; left: 0; color: #16A34A; font-weight: 900; }
+    .prog li::before { content: "›"; position: absolute; left: 0; color: #2563EB; font-weight: 900; }
+    .next li::before { content: "○"; position: absolute; left: 0; color: #7C3AED; font-size: 11px; top: 1px; }
+    .back li {
+      background: #FEE2E2;
+      border: 1px solid #FECACA;
+      border-radius: 8px;
+      padding: 7px 8px 7px 22px;
+    }
+    .back li::before { content: "✕"; position: absolute; left: 7px; top: 7px; color: #DC2626; font-size: 11px; font-weight: 900; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="card top">
+      <div>
+        <div class="k">Target Release</div>
+        <div class="v">9 Oct 2026 <span class="pill">+29 Days Extension</span></div>
+      </div>
+      <div>
+        <div class="k">Effort</div>
+        <div class="v">44 / 56 Man-Days</div>
+      </div>
+      <div>
+        <div class="k">Variance</div>
+        <div class="v delay">+21 Man-Days (Delay)</div>
+      </div>
+      <div>
+        <div class="team-h">Team</div>
+        <div class="team">
+          <div><b>Nirojan</b> (Developer)</div>
+          <div><b>Nilaxshan</b> (Developer)</div>
+          <div><b>Kirusthiya</b> (Developer)</div>
+          <div><b>Gobithas Kalaimakan</b> (Developer)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card panel">
+      <div class="ph">
+        <div>
+          <h1>TARGET RELEASE DATE GOVERNANCE &amp; EXTENSION AUDIT</h1>
+          <p>Tracking Kickoff Baseline vs. Weekly Commitments &amp; Root Cause Analysis</p>
+        </div>
+        <span class="pill">+29 Days Extension</span>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="ml">ESTIMATED DATE OF RELEASE</div>
+          <div class="mv">10 Sep 2026</div>
+          <div class="ms">Kickoff Baseline Target</div>
+        </div>
+        <div class="metric blue">
+          <div class="ml">CURRENT RELEASE DATE</div>
+          <div class="mv">9 Oct 2026</div>
+          <div class="ms">Week ending 9 Oct target</div>
+        </div>
+        <div class="metric pink">
+          <div class="ml">EXTENSION VARIANCE</div>
+          <div class="mv">+29 Days Extension</div>
+          <div class="ms">Extended in weeks ending 2 Oct &amp; 9 Oct</div>
+        </div>
+      </div>
+
+      <div class="why">
+        <div>
+          <h2>WHY WAS THE RELEASE DATE EXTENDED?</h2>
+          <p><b>Root Cause / Technical Reason:</b> Invitation share / accept, deep links, the Invites tab, session-grouped tickets, notification alerts, Sporting World branding and My Tickets sync needed a further week. Google / Apple Wallet and live Greyhound E2E remain open.</p>
+        </div>
+        <div class="tag">Extended in: week ending 2 Oct &amp; 9 Oct</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>REPORTING WEEK</th>
+            <th>WEEK ENDING</th>
+            <th>PROMISED TARGET DATE</th>
+            <th>EXTENSION VARIANCE</th>
+            <th>WHICH WEEK EXTENDED</th>
+            <th>REASON FOR EXTENSION / PROGRESS STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="sel">
+            <td><div class="wk">Week 20</div><div class="sel-badge">Selected</div></td>
+            <td>9 Oct 2026</td>
+            <td>9 Oct 2026</td>
+            <td><span class="ext">+29 Days Extension</span></td>
+            <td>Week ending 2 Oct &amp; 9 Oct</td>
+            <td>Invites, deep links, session-grouped tickets, notifications, Sporting World branding and My Tickets sync. Wallet and live E2E still open.</td>
+          </tr>
+          <tr>
+            <td class="wk">Week 19</td>
+            <td>2 Oct 2026</td>
+            <td>2 Oct 2026</td>
+            <td><span class="ext">+22 Days Extension</span></td>
+            <td>Week ending 2 Oct</td>
+            <td>Customer login, registration, PrivateWeb suite activation, and Scanner bookings into My Tickets.</td>
+          </tr>
+          <tr>
+            <td class="wk">Week 18</td>
+            <td>25 Sep 2026</td>
+            <td>25 Sep 2026</td>
+            <td><span class="ext">+15 Days Extension</span></td>
+            <td>Week ending 25 Sep</td>
+            <td>Optimo WebAPI checklist, RSVP / e-ticket and UAT absorbed into that extension.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="board">
+      <div class="col done">
+        <div class="ch">COMPLETED <span class="count">8</span></div>
+        <ul class="items">
+          <li>Invitation deep links and install referrer</li>
+          <li>Invites tab and share / accept</li>
+          <li>Name-only guest invite, kept through sign-in</li>
+          <li>Notification sound and vibration</li>
+          <li>Tickets grouped by session</li>
+          <li>Sporting World logo and Home live events</li>
+          <li>My Tickets sync and can't-connect message</li>
+          <li>Suite status once; activation start gate</li>
+        </ul>
+      </div>
+      <div class="col back">
+        <div class="ch">BACKLOG <span class="count">3</span></div>
+        <ul class="items">
+          <li>Google Wallet (still open)</li>
+          <li>Apple Wallet (still open)</li>
+          <li>Live Greyhound E2E (carried)</li>
+        </ul>
+      </div>
+      <div class="col prog">
+        <div class="ch">IN PROGRESS <span class="count">4</span></div>
+        <ul class="items">
+          <li>Invitation edge cases across sign-in</li>
+          <li>Suite status polish</li>
+          <li>Live API hardening</li>
+          <li>UAT on the invite path</li>
+        </ul>
+      </div>
+      <div class="col next">
+        <div class="ch">FUTURE NEXT <span class="count">4</span></div>
+        <ul class="items">
+          <li>Wallet passes</li>
+          <li>Live E2E validation</li>
+          <li>UAT close-out</li>
+          <li>Go-live readiness</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

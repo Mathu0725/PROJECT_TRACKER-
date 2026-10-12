@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watercraft Management — Screen HTML Prototype</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar {
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .main-content {
+      padding: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .slip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .slip-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .slip-card.occupied { border-left: 4px solid #0284c7; }
+    .slip-card.vacant { border-left: 4px solid #10b981; }
+    .badge { padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; width: fit-content; }
+    .badge-occ { background: rgba(2, 132, 199, 0.2); color: #38bdf8; }
+    .badge-vac { background: rgba(16, 185, 129, 0.2); color: #4ade80; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <i class="fa-solid fa-anchor" style="color:#0284c7; font-size:20px;"></i>
+      <div>
+        <h1 style="font-size:15px; font-weight:800;">WATERCRAFT STORAGE PORTAL — MARINA SCREEN SPECIFICATION</h1>
+        <p style="font-size:11.5px; color:#94a3b8;">Dev Lead: Kirushanth &bull; Berth Slip Allocations, Boat Check-in/Check-out &amp; Billing</p>
+      </div>
+    </div>
+    <span style="background:rgba(34, 197, 94, 0.2); color:#4ade80; border:1px solid #22c55e; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700;">
+      Completed Commercial Build
+    </span>
+  </div>
+
+  <div class="main-content">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h2 style="font-size:16px; font-weight:800;">Dock Pier A &amp; B &bull; Berth Status Map</h2>
+      <div style="font-size:12px; color:#94a3b8;">Total Slips: 48 &bull; Occupied: 39 &bull; Available: 9</div>
+    </div>
+    <div class="slip-grid">
+      <div class="slip-card occupied">
+        <span class="badge badge-occ">Occupied</span>
+        <div style="font-weight:800; font-size:14px; margin-top:4px;">Berth A-01</div>
+        <div style="font-size:12px; color:#94a3b8;">Vessel: Sea Breeze 34ft</div>
+        <div style="font-size:11px; color:#38bdf8;">Owner: David Miller</div>
+      </div>
+      <div class="slip-card occupied">
+        <span class="badge badge-occ">Occupied</span>
+        <div style="font-weight:800; font-size:14px; margin-top:4px;">Berth A-02</div>
+        <div style="font-size:12px; color:#94a3b8;">Vessel: Ocean Nomad 28ft</div>
+        <div style="font-size:11px; color:#38bdf8;">Owner: Robert Vance</div>
+      </div>
+      <div class="slip-card vacant">
+        <span class="badge badge-vac">Vacant</span>
+        <div style="font-weight:800; font-size:14px; margin-top:4px;">Berth A-03</div>
+        <div style="font-size:12px; color:#94a3b8;">Max Beam: 14ft &bull; 40ft Max</div>
+        <div style="font-size:11px; color:#4ade80;">Ready for Allocation</div>
+      </div>
+      <div class="slip-card occupied">
+        <span class="badge badge-occ">Occupied</span>
+        <div style="font-weight:800; font-size:14px; margin-top:4px;">Berth A-04</div>
+        <div style="font-size:12px; color:#94a3b8;">Vessel: Blue Horizon 42ft</div>
+        <div style="font-size:11px; color:#38bdf8;">Owner: Arthur Pendelton</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

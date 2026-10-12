@@ -46,7 +46,12 @@ const server = http.createServer((req, res) => {
           return;
         }
 
-        const targetFolder = (type === 'scope') ? 'scope document' : 'Incubator Weekly update';
+        let targetFolder = 'Incubator Weekly update';
+        if (type === 'scope') {
+          targetFolder = 'scope document';
+        } else if (type === 'screens') {
+          targetFolder = 'screens';
+        }
         const targetDir = path.join(__dirname, targetFolder);
         if (!fs.existsSync(targetDir)) {
           fs.mkdirSync(targetDir, { recursive: true });

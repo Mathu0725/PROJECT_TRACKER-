@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greyhound Customer Mobile App — Screen HTML Prototype</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #090d16;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .topbar {
+      width: 100%;
+      background: #111827;
+      border-bottom: 1px solid #1f2937;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mobile-frame {
+      width: 390px;
+      height: 780px;
+      background: #0f172a;
+      border: 8px solid #334155;
+      border-radius: 40px;
+      margin: 24px auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    .status-bar {
+      padding: 8px 18px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #94a3b8;
+      background: #0f172a;
+    }
+    .app-header {
+      background: #1e293b;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #334155;
+    }
+    .race-banner {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      padding: 14px;
+      color: #0f172a;
+      font-weight: 800;
+    }
+    .runner-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+    }
+    .runner-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .runner-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+    .odds-btn {
+      background: #0284c7;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .bet-slip {
+      background: #111827;
+      border-top: 2px solid #38bdf8;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <i class="fa-solid fa-dog" style="color:#f59e0b; font-size:20px;"></i>
+      <div>
+        <h1 style="font-size:15px; font-weight:800;">GREYHOUND CUSTOMER MOBILE APP — SCREEN PROTOTYPE</h1>
+        <p style="font-size:11.5px; color:#94a3b8;">Dev Lead: Dilaxshan &bull; Real-time Race Card, Live Odds &amp; WebSocket Bet Slip</p>
+      </div>
+    </div>
+    <span style="background:rgba(245, 158, 11, 0.2); color:#fbbf24; border:1px solid #f59e0b; padding:4px 10px; border-radius:20px; font-size:11px; font-weight:700;">
+      Mobile Prototype (Phase 1 MVP)
+    </span>
+  </div>
+
+  <div class="mobile-frame">
+    <div class="status-bar">
+      <span>9:41</span>
+      <span><i class="fa-solid fa-wifi"></i> <i class="fa-solid fa-battery-full"></i></span>
+    </div>
+    <div class="app-header">
+      <span style="font-weight:800; color:#f8fafc; font-size:14px;"><i class="fa-solid fa-trophy" style="color:#f59e0b;"></i> WENTWORTH PARK</span>
+      <span style="font-size:12px; color:#38bdf8; font-weight:700;">Balance: $240.50</span>
+    </div>
+    <div class="race-banner">
+      <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.5px;">Race 4 &bull; 520m Grade 5</div>
+      <div style="font-size:15px; font-weight:900; margin-top:2px;">Starts in 02m:45s &bull; Live Stream Ready</div>
+    </div>
+    <div class="runner-list">
+      <div class="runner-card">
+        <div style="display:flex; align-items:center;">
+          <div class="runner-num" style="background:#ef4444; color:white;">1</div>
+          <div>
+            <div style="font-size:13px; font-weight:700; color:#f8fafc;">Aussie Rocket</div>
+            <div style="font-size:10.5px; color:#94a3b8;">Box 1 &bull; Trainer: J. Smith</div>
+          </div>
+        </div>
+        <button class="odds-btn">$2.40</button>
+      </div>
+
+      <div class="runner-card">
+        <div style="display:flex; align-items:center;">
+          <div class="runner-num" style="background:#0284c7; color:white;">2</div>
+          <div>
+            <div style="font-size:13px; font-weight:700; color:#f8fafc;">Midnight Express</div>
+            <div style="font-size:10.5px; color:#94a3b8;">Box 2 &bull; Trainer: R. Miller</div>
+          </div>
+        </div>
+        <button class="odds-btn">$4.80</button>
+      </div>
+
+      <div class="runner-card">
+        <div style="display:flex; align-items:center;">
+          <div class="runner-num" style="background:#ffffff; color:#0f172a;">3</div>
+          <div>
+            <div style="font-size:13px; font-weight:700; color:#f8fafc;">Lightning Bolt</div>
+            <div style="font-size:10.5px; color:#94a3b8;">Box 3 &bull; Trainer: T. Davis</div>
+          </div>
+        </div>
+        <button class="odds-btn">$6.20</button>
+      </div>
+
+      <div class="runner-card">
+        <div style="display:flex; align-items:center;">
+          <div class="runner-num" style="background:#10b981; color:white;">4</div>
+          <div>
+            <div style="font-size:13px; font-weight:700; color:#f8fafc;">Shadow Runner</div>
+            <div style="font-size:10.5px; color:#94a3b8;">Box 4 &bull; Trainer: K. Clark</div>
+          </div>
+        </div>
+        <button class="odds-btn">$9.00</button>
+      </div>
+    </div>
+    <div class="bet-slip">
+      <div>
+        <div style="font-size:11px; color:#94a3b8;">Selected: <strong>Aussie Rocket (Win)</strong></div>
+        <div style="font-size:13px; font-weight:800; color:#38bdf8;">Stake: $20.00 &bull; Return: $48.00</div>
+      </div>
+      <button class="odds-btn" style="background:#10b981; padding:8px 16px;">Place Bet</button>
+    </div>
+  </div>
+</body>
+</html>

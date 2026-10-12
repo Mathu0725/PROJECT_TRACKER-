@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greyhound Weekly Project Visibility Card - 2 October 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --navy: #002060;
+      --blue: #0070C0;
+      --blue-lt: #DEEAF6;
+      --blue-info: #D6EAF8;
+      --amber: #FFC000;
+      --amber-dk: #ED7D31;
+      --green: #70AD47;
+      --red: #C00000;
+      --red-br: #FF0000;
+      --purple: #7030A0;
+      --border: #BDD7EE;
+      --line: #D0D7E2;
+      --note: #FFF2CC;
+      --text: #1F2A37;
+      --muted: #5B6B7C;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: #EEF3F9;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 16px;
+    }
+
+    .report-wrapper {
+      width: min(100%, 1536px);
+      background: #fff;
+      box-shadow: 0 8px 30px rgba(0, 40, 96, 0.12);
+      border: 1px solid #C5D3E4;
+      overflow: hidden;
+    }
+
+    /* ========== HEADER ========== */
+    .hdr {
+      background: var(--navy);
+      color: #fff;
+      padding: 16px 20px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hdr h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .hdr-sub {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+
+    .hdr-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .status-guide {
+      background: #fff;
+      color: var(--text);
+      border-radius: 4px;
+      padding: 7px 12px;
+      min-width: 128px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.15);
+    }
+
+    .status-guide .sg-title {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+      letter-spacing: 0.4px;
+    }
+
+    .sg-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 3px 0;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot.g { background: var(--green); }
+    .dot.a { background: var(--amber); }
+    .dot.r { background: var(--red-br); }
+
+    .amber-badge {
+      background: var(--amber);
+      color: #fff;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      padding: 10px 34px 10px 16px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    }
+
+    .amber-badge .ring {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: inset 0 0 0 4px var(--amber);
+    }
+
+    /* ========== META ROW ========== */
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border-bottom: 1px solid var(--border);
+      background: #FAFCFF;
+    }
+
+    .meta-cell {
+      padding: 12px 8px 10px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .meta-cell:last-child { border-right: 0; }
+
+    .meta-cell i {
+      color: var(--blue);
+      font-size: 16px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .meta-cell .lbl {
+      color: var(--blue);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .meta-cell .val {
+      margin-top: 3px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    /* ========== RESOURCE ========== */
+    .resource {
+      display: grid;
+      grid-template-columns: 1fr 170px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .res-left { border-right: 1px solid var(--border); }
+
+    .bar {
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+    }
+
+    table.res {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table.res th {
+      background: #F3F7FB;
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.res td {
+      padding: 10px 12px;
+      font-size: 12px;
+      border-bottom: 1px solid #EEF2F6;
+      vertical-align: middle;
+    }
+
+    table.res td:first-child {
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    table.res .fa-user { color: var(--blue); margin-right: 6px; }
+
+    .total {
+      padding: 12px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      background: #fff;
+    }
+
+    .total .t-lbl {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .total .t-num {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      margin: 4px 0 0;
+    }
+
+    .total .t-unit {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .end-chip {
+      width: 100%;
+      background: var(--blue-lt);
+      border: 1px solid var(--blue);
+      border-radius: 3px;
+      padding: 6px 6px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    /* ========== 6 CARD GRID ========== */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      background: #F2F5F9;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+      overflow: hidden;
+    }
+
+    .panel-h {
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+    }
+
+    .panel-b {
+      padding: 10px;
+      flex: 1;
+    }
+
+    .info {
+      background: var(--blue-info);
+      border-top: 1px solid #A9D0EC;
+      padding: 7px 10px;
+      font-size: 10.5px;
+      color: #1F4E79;
+      display: flex;
+      gap: 7px;
+      align-items: flex-start;
+      line-height: 1.35;
+    }
+
+    .info i {
+      color: var(--blue);
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* badges */
+    .bc {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .bc.lg { width: 26px; height: 26px; font-size: 13px; }
+    .bc.g { background: var(--green); }
+    .bc.a { background: var(--amber-dk); }
+    .bc.p { background: var(--purple); }
+    .bc.r { background: var(--red); }
+    .bc.b { background: var(--blue); }
+
+    /* Card 1 scope */
+    .scope {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+
+    .col-h {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: #2C3E50;
+    }
+
+    .col ul { list-style: none; }
+    .col li {
+      position: relative;
+      padding-left: 10px;
+      margin-bottom: 4px;
+      font-size: 10.5px;
+      line-height: 1.3;
+    }
+    .col li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+    }
+    .col.c li::before { color: var(--green); }
+    .col.w li::before { color: var(--amber-dk); }
+    .col.pend {
+      background: #F8D7DA;
+      border: 1px solid var(--red);
+      border-radius: 4px;
+      padding: 6px 6px 4px;
+    }
+    .col.pend .col-h { color: var(--red); }
+    .col.pend li::before { color: var(--red); }
+    .col.p li::before { color: var(--purple); }
+
+    /* Card 2 plan */
+    .tl { margin-bottom: 8px; }
+    .tl-row {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .tl-lbl {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+    .tl-track {
+      height: 18px;
+      background: #E9EEF4;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .tl-fill {
+      height: 100%;
+      border-radius: 3px;
+      color: #fff;
+      font-size: 8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6px;
+    }
+    .tl-fill.orig { background: var(--green); width: 58%; }
+    .tl-fill.cur { background: var(--red); width: 100%; }
+
+    .delay-row {
+      display: flex;
+      gap: 8px;
+      margin: 8px 0 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill-delay {
+      background: var(--red);
+      color: #fff;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-risk {
+      background: var(--amber);
+      color: #fff;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+
+    table.ms {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+    }
+    table.ms th {
+      background: var(--navy);
+      color: #fff;
+      padding: 5px 6px;
+      text-align: left;
+      font-size: 9px;
+      font-weight: 800;
+    }
+    table.ms td {
+      padding: 5px 6px;
+      border-bottom: 1px solid #E8EEF4;
+    }
+    table.ms tr:nth-child(even) td { background: #F7FAFD; }
+
+    .var {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 800;
+    }
+    .var.ok { color: var(--green); }
+    .var.bad { color: var(--red); }
+    .var.warn { color: #C65911; }
+
+    /* Card 3 effort */
+    .effort {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .eff .bc { margin: 0 auto 5px; }
+    .eff .e-lbl {
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      line-height: 1.2;
+      min-height: 22px;
+    }
+    .eff .e-val {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.05;
+    }
+    .eff .e-unit {
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .prog-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .prog-track {
+      height: 16px;
+      background: #E0E0E0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .prog-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 8px;
+      width: 71%;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+    }
+
+    /* Card 4 changes */
+    .chg {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+      align-items: flex-start;
+    }
+    .chg-t {
+      font-size: 10px;
+      font-weight: 900;
+      color: var(--navy);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .chg-x {
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    /* Card 5 risks */
+    .risks {
+      display: grid;
+      grid-template-columns: 1fr 132px;
+      gap: 8px;
+    }
+    .rb { margin-bottom: 9px; }
+    .rb-h {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .rb ul { list-style: none; }
+    .rb li {
+      position: relative;
+      padding-left: 10px;
+      margin-bottom: 3px;
+      font-size: 10.5px;
+      line-height: 1.3;
+    }
+    .rb li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+    }
+    .rb.top li::before { color: var(--red); }
+    .rb.act li::before { color: var(--blue); }
+    .rb.esc li::before { color: var(--green); }
+
+    .note {
+      background: var(--note);
+      border: 1px solid #E6D478;
+      padding: 8px;
+      font-size: 9.5px;
+      line-height: 1.35;
+      box-shadow: 2px 2px 0 rgba(0,0,0,.06);
+      align-self: start;
+    }
+    .note strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 10px;
+    }
+
+    /* Card 6 gauges */
+    .gauges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      text-align: center;
+      padding: 4px 0 8px;
+    }
+    .g-title {
+      font-size: 9px;
+      font-weight: 900;
+      color: var(--navy);
+      text-transform: uppercase;
+      min-height: 26px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin-bottom: 6px;
+      line-height: 1.15;
+    }
+    .donut {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .donut-in {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .g-sub {
+      margin-top: 6px;
+      font-size: 8.5px;
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+
+    /* ========== FOOTER ========== */
+    .ftr {
+      background: var(--navy);
+      color: #fff;
+      padding: 11px 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .ftr-title {
+      color: var(--amber);
+      font-weight: 900;
+      font-size: 12px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-top: 1px;
+    }
+    .ftr-notes {
+      font-size: 10.5px;
+      line-height: 1.45;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px 0;
+    }
+    .ftr-notes .sep {
+      margin: 0 8px;
+      opacity: .55;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .report-wrapper { box-shadow: none; width: 100%; border: none; }
+    }
+
+    @media (max-width: 1100px) {
+      .meta { grid-template-columns: repeat(4, 1fr); }
+      .grid { grid-template-columns: 1fr; }
+      .resource { grid-template-columns: 1fr; }
+      .scope { grid-template-columns: 1fr; }
+      .risks { grid-template-columns: 1fr; }
+      .hdr { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="report-wrapper">
+
+    <!-- HEADER -->
+    <header class="hdr">
+      <div>
+        <h1>Weekly Project Visibility Card</h1>
+        <div class="hdr-sub">Week Ending Friday, 2 October 2026 | Week 19</div>
+      </div>
+      <div class="hdr-right">
+        <div class="status-guide">
+          <div class="sg-title">STATUS GUIDE</div>
+          <div class="sg-row"><span class="dot g"></span> On Track</div>
+          <div class="sg-row"><span class="dot a"></span> At Risk</div>
+          <div class="sg-row"><span class="dot r"></span> Off Track</div>
+        </div>
+        <div class="amber-badge">
+          <span class="ring"></span>
+          AMBER
+        </div>
+      </div>
+    </header>
+
+    <!-- META -->
+    <section class="meta">
+      <div class="meta-cell">
+        <i class="fa-solid fa-building"></i>
+        <div class="lbl">Company</div>
+        <div class="val">TIC INCUBATOR</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-id-card"></i>
+        <div class="lbl">Project ID</div>
+        <div class="val">N/A</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-users"></i>
+        <div class="lbl">Client</div>
+        <div class="val">GREYHOUND DOG RACE</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-folder-open"></i>
+        <div class="lbl">Project Name</div>
+        <div class="val">CUSTOMER MOBILE APP</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-rocket"></i>
+        <div class="lbl">Current Release</div>
+        <div class="val">PHASE 1</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-calendar-days"></i>
+        <div class="lbl">Project Start Date</div>
+        <div class="val">3.8.2026</div>
+      </div>
+      <div class="meta-cell">
+        <i class="fa-solid fa-calendar-check"></i>
+        <div class="lbl">Week Ending (Friday)</div>
+        <div class="val">2 OCTOBER 2026</div>
+      </div>
+    </section>
+
+    <!-- RESOURCE -->
+    <section class="resource">
+      <div class="res-left">
+        <div class="bar"><i class="fa-solid fa-users"></i> Resource Allocation for This Phase</div>
+        <table class="res">
+          <thead>
+            <tr>
+              <th><i class="fa-solid fa-user"></i> Resource Name</th>
+              <th>Role</th>
+              <th>Allocation (Man-Days)</th>
+              <th>Main Responsibility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fa-solid fa-user"></i> Kirusthiya</td>
+              <td>Developer</td>
+              <td>—</td>
+              <td>Customer login and session store, PublicWeb signup, Scanner bookings into My Tickets, suite activation review</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-user"></i> Nilaxshan</td>
+              <td>Developer</td>
+              <td>—</td>
+              <td>Catering, Car Parking and Event Details on PrivateWeb; Invite Guest UI, ticket metadata and booking recovery</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-user"></i> Gobithas Kalaimakan</td>
+              <td>Developer</td>
+              <td>—</td>
+              <td>Suite activation attendee sessions, guest / host role change, and PrivateWeb API client</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-user"></i> Nirojan</td>
+              <td>Developer</td>
+              <td>—</td>
+              <td>Invite save while questions load, post sign-in lock, and suite activation parity notes</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-user"></i> Saif Ahmed</td>
+              <td>Developer</td>
+              <td>—</td>
+              <td>Special Requests and Addons moved to the PrivateWeb BFF</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-user"></i> Abilasha UCA</td>
+              <td>Developer</td>
+              <td>—</td>
+              <td>Private Web mobile login shared-secret call</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="total">
+        <div class="t-lbl">Total Allocation<br/>(This Phase)</div>
+        <div class="t-num">49</div>
+        <div class="t-unit">MAN-DAYS</div>
+        <div class="end-chip">Project End Date: Week Ending 02.10.2026</div>
+      </div>
+    </section>
+
+    <!-- 6 PANELS -->
+    <section class="grid">
+
+      <!-- 1 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-route"></i> 1. Scope &amp; Phase Journey</div>
+        <div class="panel-b">
+          <div class="scope">
+            <div class="col c">
+              <div class="col-h"><span class="bc g">C</span> Completed This Period</div>
+              <ul>
+                <li>Customer login with session store and Private Web mobile login</li>
+                <li>Customer account registration on PublicWeb; base URLs consolidated</li>
+                <li>Catering, Car Parking and Event Details moved to PrivateWeb</li>
+                <li>Special Requests and Addons moved to the PrivateWeb BFF</li>
+                <li>Suite Status and Attendees on PrivateWeb; guest / host role change</li>
+                <li>Invite Guest UI, ticket metadata and booking recovery</li>
+                <li>Signed-in customer bookings loaded from Scanner into My Tickets</li>
+                <li>Unlock on sign-in and lock after background timeout</li>
+              </ul>
+            </div>
+            <div class="col pend">
+              <div class="col-h"><span class="bc r">P</span> Pending</div>
+              <ul>
+                <li>Google Wallet integration</li>
+                <li>Apple Wallet integration</li>
+                <li>Stabilize invite → ticket → checklist → attendees E2E on live Greyhound</li>
+                <li>Monitor live invite and deep-link behaviour</li>
+              </ul>
+            </div>
+            <div class="col p">
+              <div class="col-h"><span class="bc p">U</span> Upcoming</div>
+              <ul>
+                <li>Invitation share / accept, Invites tab and deep-link handoff</li>
+                <li>My Tickets background sync and session timeout</li>
+                <li>Home, logo and theme polish</li>
+                <li>QA / UAT and go-live readiness once Wallet and live E2E close</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>25 Sep–2 Oct closed customer login, registration, and the PrivateWeb move for catering, parking, event details, special requests, addons, and suite activation. Still open: Google / Apple Wallet, live Greyhound E2E, and deep-link monitoring.</span>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-calendar-alt"></i> 2. Current Phase Plan (Phase 1 Only)</div>
+        <div class="panel-b">
+          <div class="tl">
+            <div class="tl-row">
+              <div class="tl-lbl">Original Plan</div>
+              <div class="tl-track"><div class="tl-fill orig"><span>3 AUG</span><span>10 SEP</span></div></div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-lbl">Current Forecast</div>
+              <div class="tl-track"><div class="tl-fill cur"><span>3 AUG</span><span>2 OCT</span></div></div>
+            </div>
+          </div>
+
+          <div class="delay-row">
+            <span class="pill-delay"><i class="fa-solid fa-exclamation"></i> DELAY: +22 DAYS</span>
+            <span class="pill-risk">AT RISK</span>
+          </div>
+
+          <table class="ms">
+            <thead>
+              <tr>
+                <th>Milestone</th>
+                <th>Original Plan</th>
+                <th>Current Forecast</th>
+                <th>Variance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Requirements complete</td>
+                <td>05.08.2026</td>
+                <td>05.08.2026</td>
+                <td><span class="var ok"><span class="dot g"></span> 0 days</span></td>
+              </tr>
+              <tr>
+                <td>Development complete</td>
+                <td>25.08.2026</td>
+                <td>25.08.2026</td>
+                <td><span class="var ok"><span class="dot g"></span> 0 days</span></td>
+              </tr>
+              <tr>
+                <td>System test complete</td>
+                <td>05.09.2026</td>
+                <td>02.10.2026</td>
+                <td><span class="var bad"><span class="dot r"></span> +27 days</span></td>
+              </tr>
+              <tr>
+                <td>UAT complete</td>
+                <td>08.09.2026</td>
+                <td>02.10.2026</td>
+                <td><span class="var warn"><span class="dot a"></span> +24 days</span></td>
+              </tr>
+              <tr>
+                <td>Go-Live</td>
+                <td>10.09.2026</td>
+                <td><strong>Week Ending 02.10.2026</strong></td>
+                <td><span class="var bad"><span class="dot r"></span> +22 days</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-chart-pie"></i> 3. Resource Effort Summary (Phase 1 Only)</div>
+        <div class="panel-b">
+          <div class="effort">
+            <div class="eff">
+              <div class="bc lg g">A</div>
+              <div class="e-lbl">Original<br/>Allocation</div>
+              <div class="e-val">35</div>
+              <div class="e-unit">MAN-DAYS</div>
+            </div>
+            <div class="eff">
+              <div class="bc lg b">C</div>
+              <div class="e-lbl">Consumed<br/>To Date</div>
+              <div class="e-val">37</div>
+              <div class="e-unit">MAN-DAYS</div>
+            </div>
+            <div class="eff">
+              <div class="bc lg a">R</div>
+              <div class="e-lbl">Forecast<br/>Remaining</div>
+              <div class="e-val">12</div>
+              <div class="e-unit">MAN-DAYS</div>
+            </div>
+            <div class="eff">
+              <div class="bc lg p">T</div>
+              <div class="e-lbl">Forecast<br/>Total</div>
+              <div class="e-val">49</div>
+              <div class="e-unit">MAN-DAYS</div>
+            </div>
+          </div>
+          <div class="prog-lbl">Progress: 37 of 49 man-days consumed &nbsp;|&nbsp; 76%</div>
+          <div class="prog-track"><div class="prog-fill" style="width:76%">76%</div></div>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Allocation raised 42 → 49 MD (+7) for the extension through week ending 02.10.2026, using the same +7 MD per extension week as the 25 Sep card. 12 MD remaining for Wallet, live E2E, and go-live readiness. Consumed to date: 37 MD.</span>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-arrows-rotate"></i> 4. What Changed This Period?</div>
+        <div class="panel-b">
+          <div class="chg">
+            <span class="bc lg r">S</span>
+            <div>
+              <div class="chg-t">Schedule Change</div>
+              <div class="chg-x">Phase 1 end date extended from week ending <strong>25.09.2026 → week ending 02.10.2026</strong> (+7 days this week). Go-Live is now <strong>+22 days</strong> versus the original 10.09.2026.</div>
+            </div>
+          </div>
+          <div class="chg">
+            <span class="bc lg a">C</span>
+            <div>
+              <div class="chg-t">Scope Change</div>
+              <div class="chg-x">25.09–02.10: <strong>customer login, PublicWeb registration, PrivateWeb catering / parking / event details / special requests / addons, suite activation, and Scanner bookings in My Tickets</strong>. Still open: Wallet, live Greyhound E2E, and deep-link monitoring.</div>
+            </div>
+          </div>
+          <div class="chg">
+            <span class="bc lg p">E</span>
+            <div>
+              <div class="chg-t">Effort Change</div>
+              <div class="chg-x">Allocation increased <strong>42 → 49 MD</strong> (+7) to cover the week ending 02.10.2026. Same continuation rule as the 25 Sep card. <strong>12 MD remaining</strong> for Wallet, live E2E, and go-live.</div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Prior week ending 25.09 covered Optimo WebAPI checklist, RSVP, and e-ticket wiring. This period adds customer login, registration, and the PrivateWeb suite-activation move. Remaining effort is aligned to week ending 02.10.2026.</span>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-triangle-exclamation"></i> 5. Risks / Issues &amp; Management Attention</div>
+        <div class="panel-b">
+          <div class="risks">
+            <div>
+              <div class="rb top">
+                <div class="rb-h"><span class="bc r">!</span> Top Risks / Issues</div>
+                <ul>
+                  <li>Live Greyhound E2E still open after the PrivateWeb move</li>
+                  <li>Google Wallet and Apple Wallet still not in the build</li>
+                  <li>Deep-link / invite behaviour not yet monitored on device</li>
+                  <li>UAT window still compressed against the new end date</li>
+                </ul>
+              </div>
+              <div class="rb act">
+                <div class="rb-h"><span class="bc b">A</span> Decisions / Actions Required</div>
+                <ul>
+                  <li>Confirm acceptance of <strong>week ending 02.10.2026</strong> end date</li>
+                  <li>Prioritize live invite → checklist → attendees on Greyhound</li>
+                  <li>Keep Wallet in the next week; do not add further Phase 1 scope</li>
+                </ul>
+              </div>
+              <div class="rb esc">
+                <div class="rb-h"><span class="bc g">E</span> Escalation</div>
+                <ul>
+                  <li>None</li>
+                </ul>
+              </div>
+            </div>
+            <aside class="note">
+              <strong>NOTE:</strong>
+              Overall status remains <strong>AMBER — At Risk</strong> due to schedule slip (+22 days on Go-Live to week ending 02.10.2026). Login and the PrivateWeb suite path landed this week. Still pending: Google / Apple Wallet, live E2E, and deep-link monitoring.
+            </aside>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="panel">
+        <div class="panel-h"><i class="fa-solid fa-eye"></i> 6. At a Glance (Phase 1 Only)</div>
+        <div class="panel-b">
+          <div class="gauges">
+            <div>
+              <div class="g-title">Overall Progress<br/>(Phase 1)</div>
+              <div class="donut" style="background: conic-gradient(#0070C0 0% 85%, #DDE3EA 85% 100%);">
+                <div class="donut-in">85%</div>
+              </div>
+              <div class="g-sub">% Scope Complete<br/>(login and PrivateWeb in)</div>
+            </div>
+            <div>
+              <div class="g-title">Time Elapsed</div>
+              <div class="donut" style="background: conic-gradient(#C00000 0% 100%, #DDE3EA 100% 100%);">
+                <div class="donut-in">100%</div>
+              </div>
+              <div class="g-sub">vs Original Plan<br/>(end was 10.09.2026)</div>
+            </div>
+            <div>
+              <div class="g-title">Effort Consumed</div>
+              <div class="donut" style="background: conic-gradient(#70AD47 0% 76%, #DDE3EA 76% 100%);">
+                <div class="donut-in">76%</div>
+              </div>
+              <div class="g-sub">vs Forecast Total<br/>(37 of 49 MD)</div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Overall ~85% scope complete vs original plan; time elapsed 100%+ vs original end 10.09; effort ~76% of 49 MD. Status: <strong>AMBER — At Risk</strong>.</span>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- FOOTER — same structure as Greyhound Week 16 card -->
+    <footer class="ftr">
+      <div class="ftr-title"><i class="fa-solid fa-clipboard-list"></i> REPORTING NOTES:</div>
+      <div class="ftr-notes">
+        <span>This card is a snapshot for the selected release only</span>
+        <span class="sep">•</span>
+        <span>Data to be prepared by PM / Tech Lead before the weekly meeting</span>
+        <span class="sep">•</span>
+        <span>One card per active release; use Phase Scope for multi-phase programmes</span>
+        <span class="sep">•</span>
+        <span>Status reflects delivery confidence for this release, not the whole programme</span>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

@@ -6,939 +6,1701 @@
 
 const DEFAULT_PROJECTS = [
   {
-    id: 'camera-module',
-    icon: '📷',
-    name: 'Camera Module (ONETIX)',
-    company: 'UNICOM TIC INCUBATOR',
-    release: 'Phase 1A MVP',
-    targetReleaseDate: '15 Oct 2026',
-    forecastExtension: '+43 Days Extension',
-    originalPlanDates: '3 Jul 2026 – 2 Sep 2026',
-    originalAllocation: 88,
-    forecastTotal: 150,
-    forecastOverrun: '+62 Man-Days (+70.5%)',
-    overBudget: true,
-    leads: 'Nilaxshan / Kirusthiya',
-    description: 'Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX retail loss prevention, and RTSP/ONVIF reliability.',
-    highlights: 'Connector startup readiness, RTSP/ONVIF reliability, installer launcher lifecycle, camera & zone setup, ONETIX architecture & user journey.',
-    resources: [
+    "id": "camera-module",
+    "icon": "📷",
+    "name": "Camera Module (ONETIX)",
+    "company": "UNICOM TIC INCUBATOR",
+    "release": "Phase 1A MVP",
+    "targetReleaseDate": "15 Oct 2026",
+    "forecastExtension": "+43 Days Extension",
+    "originalPlanDates": "3 Jul 2026 – 2 Sep 2026",
+    "originalAllocation": 88,
+    "forecastTotal": 150,
+    "forecastOverrun": "+62 Man-Days (+70.5%)",
+    "overBudget": true,
+    "leads": "Nilaxshan / Kirusthiya",
+    "description": "Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX retail loss prevention, and RTSP/ONVIF reliability.",
+    "highlights": "Connector startup readiness, RTSP/ONVIF reliability, installer launcher lifecycle, camera & zone setup, ONETIX architecture & user journey.",
+    "resources": [
       {
-        name: 'Nilaxshan',
-        role: 'Project Manager / Developer',
-        allocation: '75 Man-Days',
-        responsibility: 'Backend, connector, installer lifecycle, runtime stability, and validation coordination.'
+        "name": "Nilaxshan",
+        "role": "Project Manager / Developer",
+        "allocation": "75 Man-Days",
+        "responsibility": "Backend, connector, installer lifecycle, runtime stability, and validation coordination."
       },
       {
-        name: 'Kirusthiya',
-        role: 'Developer',
-        allocation: '75 Man-Days',
-        responsibility: 'Dashboard UI, setup workflow, training interface, integration testing, and product improvements.'
+        "name": "Kirusthiya",
+        "role": "Developer",
+        "allocation": "75 Man-Days",
+        "responsibility": "Dashboard UI, setup workflow, training interface, integration testing, and product improvements."
       }
     ],
-    milestones: [
-      { name: 'Connector Issue Handling', status: 'COMPLETED', position: 'Applied' },
-      { name: 'Dashboard UI Update', status: 'COMPLETED', position: 'Updated' },
-      { name: 'Installer Lifecycle', status: 'IN PROGRESS', position: 'Validation' },
-      { name: 'Camera & Zone Setup', status: 'IN PROGRESS', position: 'Improving' },
-      { name: 'Fully Local Validation', status: 'IN PROGRESS', position: 'Benchmark prep' }
+    "milestones": [
+      {
+        "name": "Connector Issue Handling",
+        "status": "COMPLETED",
+        "position": "Applied"
+      },
+      {
+        "name": "Dashboard UI Update",
+        "status": "COMPLETED",
+        "position": "Updated"
+      },
+      {
+        "name": "Installer Lifecycle",
+        "status": "IN PROGRESS",
+        "position": "Validation"
+      },
+      {
+        "name": "Camera & Zone Setup",
+        "status": "IN PROGRESS",
+        "position": "Improving"
+      },
+      {
+        "name": "Fully Local Validation",
+        "status": "IN PROGRESS",
+        "position": "Benchmark prep"
+      }
     ],
-    risk: {
-      issue: 'Clean-Windows lifecycle not fully validated',
-      severity: 'MEDIUM',
-      mitigation: 'Run acceptance test on clean pilot machines'
+    "risk": {
+      "issue": "Clean-Windows lifecycle not fully validated",
+      "severity": "MEDIUM",
+      "mitigation": "Run acceptance test on clean pilot machines"
     },
-    selectedWeekIndex: 0,
-    weeks: [
+    "selectedWeekIndex": 0,
+    "weeks": [
       {
-        weekNumber: 3,
-        weekLabel: 'Week 3',
-        weekEnding: '18 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        consumed: 112,
-        remaining: 38,
-        consumedPercent: '127%',
-        completedTasks: [
-          'Local AI architecture reviewed',
-          'Hardware requirements analysed',
-          '1- and 4-camera configurations prepared',
-          'Docker services checked',
-          'CUDA GPU readiness verified'
+        "weekNumber": 6,
+        "weekLabel": "Week 6",
+        "weekEnding": "09 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "consumed": 142,
+        "remaining": 8,
+        "consumedPercent": "95%",
+        "completedTasks": [
+          "Dashboard UI, filters and pagination updated",
+          "Camera / zone sync and retry implemented",
+          "Central clip settings implemented",
+          "Installer build / payload improvements",
+          "Clean-Windows installer validation",
+          "Final hardware recommendation",
+          "Dashboard, connector / installer updates"
         ],
-        uncompletedTasks: [
-          'Multi-camera benchmark planning (Carried over from Week 2)',
-          'Hardware cost validation (Carried over from Week 2)',
-          'Clean-Windows lifecycle test (Pending validation)'
+        "uncompletedTasks": [
+          "Live 1 / 4-camera benchmark (Backlog)",
+          "Latency and dropped-frame checks (Backlog)",
+          "Live camera-to-alert E2E (Backlog)"
         ],
-        inProgressTasks: [
-          'Multi-camera benchmark planning',
-          'Live RTSP test preparation',
-          'CPU / GPU performance review',
-          'Hardware cost validation',
-          'Local deployment validation'
+        "inProgressTasks": [
+          "Fully local validation — live tests pending"
         ],
-        futureTasks: [
-          '1- and 4-camera live benchmark',
-          'Latency and dropped-frame checks',
-          'Clean-Windows lifecycle test',
-          'Live-camera E2E validation',
-          'Final hardware recommendation'
+        "futureTasks": [
+          "Fully local validation — live tests pending"
         ],
-        keyInsight: 'Local architecture and proposed hardware requirements reviewed. Live multi-camera benchmarking and clean-Windows validation remain priority.',
-        weeklyUrl: 'Incubator Weekly update/Camera module 18.09.2026.html',
-        scopeUrl: 'scope document/ONETIX_Scope_USP.html'
+        "keyInsight": "Team worked on Optimo Greyhound. ONETIX task progress unchanged; additional days required, duration to be confirmed.",
+        "weeklyUrl": "Incubator Weekly update/Camera Module 09.10.2026.html",
+        "scopeUrl": "scope document/ONETIX_Scope_USP.html",
+        "initialReleaseDate": "2 Sep 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "15 Oct 2026",
+        "forecastExtension": "+43 Days Extension",
+        "extendedInWeek": "Week 2 & Week 3",
+        "extensionReason": "Clean-Windows pilot machine hardware lifecycle test and 4-camera RTSP load benchmarking required an additional test cycle.",
+        "screenUrl": "screens/camera_module_screens.html",
+        "governanceUrl": "Incubator Weekly update/Camera Module 09.10.2026 Governance.html"
       },
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2',
-        weekEnding: '11 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        consumed: 102,
-        remaining: 48,
-        consumedPercent: '116%',
-        completedTasks: [
-          'RTSP / ONVIF fallback improvements',
-          'Connector flow bug fixes',
-          'Installer and service stability fixes',
-          'Launcher and dashboard fixes',
-          'Local RTSP stream verified'
+        "weekNumber": 5,
+        "weekLabel": "Week 5",
+        "weekEnding": "02 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "consumed": 132,
+        "remaining": 18,
+        "consumedPercent": "88%",
+        "completedTasks": [
+          "Dashboard UI, filters and pagination updated",
+          "Camera / zone sync and retry implemented",
+          "Central clip settings implemented",
+          "Installer build / payload improvements",
+          "Clean-Windows installer validation",
+          "Final hardware recommendation",
+          "Dashboard, connector / installer updates"
         ],
-        uncompletedTasks: [
-          'Camera & zone setup (Carried over from Week 1)',
-          'Hardware capacity & cost research (Carried over from Week 1)'
+        "uncompletedTasks": [
+          "Live 1 / 4-camera benchmark (Backlog)",
+          "Latency and dropped-frame checks (Backlog)",
+          "Live camera-to-alert E2E (Backlog)"
         ],
-        inProgressTasks: [
-          'Fully local architecture review',
-          'Hardware requirements analysis',
-          'Multi-camera performance analysis',
-          'Cost analysis & regression validation'
+        "inProgressTasks": [
+          "Fully local validation — live tests pending"
         ],
-        futureTasks: [
-          'Final hardware benchmark',
-          'Multi-camera load validation',
-          'Clean-Windows lifecycle test'
+        "futureTasks": [
+          "Fully local validation — live tests pending"
         ],
-        keyInsight: 'Revised forecast remains on track. Fully local operation, hardware cost and live-camera validation are key priorities.',
-        weeklyUrl: 'Incubator Weekly update/Camera Module 11.09.2026.html',
-        scopeUrl: 'scope document/ONETIX_Scope_USP.html'
+        "keyInsight": "Team worked on Optimo Greyhound. ONETIX task progress unchanged; additional days required, duration to be confirmed.",
+        "weeklyUrl": "Incubator Weekly update/Camera Module 02.10.2026.html",
+        "scopeUrl": "scope document/ONETIX_Scope_USP.html",
+        "initialReleaseDate": "2 Sep 2026",
+        "lastWeekTargetDate": "28 Sep 2026",
+        "targetReleaseDate": "15 Oct 2026",
+        "forecastExtension": "+43 Days Extension",
+        "extendedInWeek": "Week 2 & Week 3",
+        "extensionReason": "Clean-Windows pilot machine hardware lifecycle test and 4-camera RTSP load benchmarking required an additional test cycle.",
+        "screenUrl": "screens/camera_module_screens.html",
+        "governanceUrl": "Incubator Weekly update/Camera Module 02.10.2026 Governance.html"
       },
       {
-        weekNumber: 1,
-        weekLabel: 'Week 1',
-        weekEnding: '4 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        consumed: 92,
-        remaining: 58,
-        consumedPercent: '105%',
-        completedTasks: [
-          'Connector issue handling',
-          'Removal cleanup behavior',
-          'Backend workflow updates',
-          'Dashboard UI update',
-          'Store setup improvements'
+        "weekNumber": 3,
+        "weekLabel": "Week 3",
+        "weekEnding": "18 Sep 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "consumed": 112,
+        "remaining": 38,
+        "consumedPercent": "127%",
+        "completedTasks": [
+          "Local AI architecture reviewed",
+          "Hardware requirements analysed",
+          "1- and 4-camera configurations prepared",
+          "Docker services checked",
+          "CUDA GPU readiness verified"
         ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'Connector startup readiness',
-          'RTSP / ONVIF reliability',
-          'Installer launcher lifecycle',
-          'Camera and zone setup'
+        "uncompletedTasks": [
+          "Multi-camera benchmark planning (Carried over from Week 2)",
+          "Hardware cost validation (Carried over from Week 2)",
+          "Clean-Windows lifecycle test (Pending validation)"
         ],
-        futureTasks: [
-          'Fully local system validation',
-          'Clean-Windows lifecycle test',
-          'Live-camera E2E validation'
+        "inProgressTasks": [
+          "Multi-camera benchmark planning",
+          "Live RTSP test preparation",
+          "CPU / GPU performance review",
+          "Hardware cost validation",
+          "Local deployment validation"
         ],
-        keyInsight: 'Sprint kickoff completed on track under revised baseline.',
-        weeklyUrl: 'Incubator Weekly update/Camera Module.html',
-        scopeUrl: 'scope document/ONETIX_Scope_USP.html'
+        "futureTasks": [
+          "1- and 4-camera live benchmark",
+          "Latency and dropped-frame checks",
+          "Clean-Windows lifecycle test",
+          "Live-camera E2E validation",
+          "Final hardware recommendation"
+        ],
+        "keyInsight": "Local architecture and proposed hardware requirements reviewed. Live multi-camera benchmarking and clean-Windows validation remain priority.",
+        "weeklyUrl": "Incubator Weekly update/Camera module 18.09.2026.html",
+        "scopeUrl": "scope document/ONETIX_Scope_USP.html",
+        "initialReleaseDate": "2 Sep 2026",
+        "lastWeekTargetDate": "28 Sep 2026",
+        "targetReleaseDate": "15 Oct 2026",
+        "forecastExtension": "+43 Days Extension",
+        "extendedInWeek": "Week 2 & Week 3",
+        "extensionReason": "Clean-Windows pilot machine hardware lifecycle test and 4-camera RTSP load benchmarking required an additional test cycle.",
+        "screenUrl": "screens/camera_module_screens.html"
+      },
+      {
+        "weekNumber": 2,
+        "weekLabel": "Week 2",
+        "weekEnding": "11 Sep 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "consumed": 102,
+        "remaining": 48,
+        "consumedPercent": "116%",
+        "completedTasks": [
+          "RTSP / ONVIF fallback improvements",
+          "Connector flow bug fixes",
+          "Installer and service stability fixes",
+          "Launcher and dashboard fixes",
+          "Local RTSP stream verified"
+        ],
+        "uncompletedTasks": [
+          "Camera & zone setup (Carried over from Week 1)",
+          "Hardware capacity & cost research (Carried over from Week 1)"
+        ],
+        "inProgressTasks": [
+          "Fully local architecture review",
+          "Hardware requirements analysis",
+          "Multi-camera performance analysis",
+          "Cost analysis & regression validation"
+        ],
+        "futureTasks": [
+          "Final hardware benchmark",
+          "Multi-camera load validation",
+          "Clean-Windows lifecycle test"
+        ],
+        "keyInsight": "Revised forecast remains on track. Fully local operation, hardware cost and live-camera validation are key priorities.",
+        "weeklyUrl": "Incubator Weekly update/Camera Module 11.09.2026.html",
+        "scopeUrl": "scope document/ONETIX_Scope_USP.html",
+        "initialReleaseDate": "2 Sep 2026",
+        "lastWeekTargetDate": "2 Sep 2026",
+        "targetReleaseDate": "28 Sep 2026",
+        "forecastExtension": "+26 Days Extension",
+        "extendedInWeek": "Week 2",
+        "extensionReason": "Multi-camera benchmark planning and hardware cost validation carried over from Week 1; local RTSP stability testing.",
+        "screenUrl": "screens/camera_module_screens.html"
+      },
+      {
+        "weekNumber": 1,
+        "weekLabel": "Week 1",
+        "weekEnding": "4 Sep 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "consumed": 92,
+        "remaining": 58,
+        "consumedPercent": "105%",
+        "completedTasks": [
+          "Connector issue handling",
+          "Removal cleanup behavior",
+          "Backend workflow updates",
+          "Dashboard UI update",
+          "Store setup improvements"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Connector startup readiness",
+          "RTSP / ONVIF reliability",
+          "Installer launcher lifecycle",
+          "Camera and zone setup"
+        ],
+        "futureTasks": [
+          "Fully local system validation",
+          "Clean-Windows lifecycle test",
+          "Live-camera E2E validation"
+        ],
+        "keyInsight": "Sprint kickoff completed on track under revised baseline.",
+        "weeklyUrl": "Incubator Weekly update/Camera Module.html",
+        "scopeUrl": "scope document/ONETIX_Scope_USP.html",
+        "initialReleaseDate": "2 Sep 2026",
+        "lastWeekTargetDate": "2 Sep 2026",
+        "targetReleaseDate": "2 Sep 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Sprint kickoff tracking to baseline schedule.",
+        "screenUrl": "screens/camera_module_screens.html"
       }
-    ]
+    ],
+    "initialReleaseDate": "2 Sep 2026",
+    "lastWeekTargetDate": "28 Sep 2026",
+    "extendedInWeek": "Week 2 & Week 3",
+    "extensionReason": "Multi-camera live RTSP benchmark and clean-Windows hardware lifecycle validation required additional acceptance testing on clean pilot machines.",
+    "screenUrl": "screens/camera_module_screens.html"
   },
   {
-    id: 'greyhound',
-    icon: '📱',
-    name: 'Greyhound Customer Mobile App',
-    company: 'UNICOM TIC INCUBATOR',
-    release: 'Phase 1',
-    targetReleaseDate: '30 Oct 2026',
-    originalAllocation: 35,
-    forecastTotal: 42,
-    forecastOverrun: '+7 Man-Days (+20%)',
-    overBudget: true,
-    leads: 'Gobithas Kalaimakan',
-    description: 'Customer mobile application for racetrack ticketing, turnstile barcode scanning, and live race day updates.',
-    highlights: 'QR Scanner, Ticket Management, Live Polling, Mobile UX and account verification.',
-    resources: [
+    "id": "greyhound",
+    "icon": "📱",
+    "name": "Greyhound Customer Mobile App",
+    "company": "UNICOM TIC INCUBATOR",
+    "release": "Phase 1",
+    "targetReleaseDate": "30 Oct 2026",
+    "originalAllocation": 35,
+    "forecastTotal": 42,
+    "forecastOverrun": "+7 Man-Days (+20%)",
+    "overBudget": true,
+    "leads": "Gobithas Kalaimakan",
+    "description": "Customer mobile application for racetrack ticketing, turnstile barcode scanning, and live race day updates.",
+    "highlights": "QR Scanner, Ticket Management, Live Polling, Mobile UX and account verification.",
+    "resources": [
       {
-        name: 'Gobithas Kalaimakan',
-        role: 'Developer',
-        allocation: '42 Man-Days',
-        responsibility: 'Customer mobile app — Optimo WebAPI checklist, invite / ticket / attendees flows, Phase 1 delivery.'
+        "name": "Gobithas Kalaimakan",
+        "role": "Developer",
+        "allocation": "42 Man-Days",
+        "responsibility": "Customer mobile app — Optimo WebAPI checklist, invite / ticket / attendees flows, Phase 1 delivery."
       }
     ],
-    milestones: [
-      { name: 'Turnstile QR Scanner', status: 'COMPLETED', position: 'Delivered' },
-      { name: 'Ticket Wallet', status: 'IN PROGRESS', position: 'Testing' },
-      { name: 'Live Polling Service', status: 'IN PROGRESS', position: 'Integrating' },
-      { name: 'Push Notification Pipeline', status: 'TARGET', position: 'Next Sprint' }
+    "milestones": [
+      {
+        "name": "Turnstile QR Scanner",
+        "status": "COMPLETED",
+        "position": "Delivered"
+      },
+      {
+        "name": "Ticket Wallet",
+        "status": "IN PROGRESS",
+        "position": "Testing"
+      },
+      {
+        "name": "Live Polling Service",
+        "status": "IN PROGRESS",
+        "position": "Integrating"
+      },
+      {
+        "name": "Push Notification Pipeline",
+        "status": "TARGET",
+        "position": "Next Sprint"
+      }
     ],
-    risk: {
-      issue: 'Turnstile camera focus speed under low ambient light',
-      severity: 'HIGH',
-      mitigation: 'Optimize barcode scanning library frame rate & torch assist'
+    "risk": {
+      "issue": "Turnstile camera focus speed under low ambient light",
+      "severity": "HIGH",
+      "mitigation": "Optimize barcode scanning library frame rate & torch assist"
     },
-    selectedWeekIndex: 0,
-    weeks: [
+    "selectedWeekIndex": 0,
+    "weeks": [
       {
-        weekNumber: 3,
-        weekLabel: 'Week 3',
-        weekEnding: '18 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '42 Allocated',
-        consumed: '30 Consumed (71%)',
-        completedTasks: [
-          'Turnstile barcode scanner v2 benchmarked',
-          'Offline ticket wallet caching implemented',
-          'Ticket purchase flow verified'
+        "weekNumber": 5,
+        "weekLabel": "Week 5",
+        "weekEnding": "09 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "56 Days",
+        "consumed": "44 Consumed (79%)",
+        "completedTasks": [
+          "Turnstile barcode scanner v2 benchmarked",
+          "Offline ticket wallet caching implemented",
+          "Ticket purchase flow verified",
+          "Low ambient light scanner sensitivity improvements"
         ],
-        uncompletedTasks: [
-          'Low-light scanner latency optimization (Carried over from Week 2)',
-          'Turnstile gateway stress testing (Pending hardware)'
+        "uncompletedTasks": [
+          "Final production turnstile integration stress test"
         ],
-        inProgressTasks: [
-          'Race day push notification integration',
-          'Multi-device responsive UI testing',
-          'Account balance sync'
+        "inProgressTasks": [
+          "Live pilot integration with stadium turnstiles",
+          "Real-time race day sync daemon"
         ],
-        futureTasks: [
-          'Live racetrack turnstile pilot',
-          'Security penetration review',
-          'Production App Store submission'
+        "futureTasks": [
+          "Regional race tracks multi-venue rollout"
         ],
-        keyInsight: 'Phase 1 end date extended to 25.09.2026 (+15 days). 30 of 42 man-days consumed (71%). WebAPI integration in progress.',
-        weeklyUrl: 'Incubator Weekly update/GrayHound 18.09.2026.html',
-        scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
+        "keyInsight": "Greyhound progress on track with 44 of 56 man-days consumed. Target release forecast +29 days extension to 30 Oct 2026.",
+        "weeklyUrl": "Incubator Weekly update/GrayHound 09.10.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "22 Oct 2026",
+        "targetReleaseDate": "30 Oct 2026",
+        "forecastExtension": "+29 Days Extension",
+        "extendedInWeek": "Week 2, 3 & 4",
+        "extensionReason": "Turnstile barcode camera scanning calibration under low light.",
+        "screenUrl": "screens/greyhound_screens.html",
+        "governanceUrl": "Incubator Weekly update/GrayHound 09.10.2026 Governance.html"
       },
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2',
-        weekEnding: '11 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '35 Allocated',
-        consumed: '30 Consumed (86%)',
-        completedTasks: [
-          'Deep link / App links for entitlement invitations (Android + iOS)',
-          'Backend API written for invitation workflow',
-          'Stabilize invite -> ticket -> checklist journey'
+        "weekNumber": 4,
+        "weekLabel": "Week 4",
+        "weekEnding": "02 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "49 Days",
+        "consumed": "37 Consumed (76%)",
+        "completedTasks": [
+          "Turnstile barcode scanner v2 benchmarked",
+          "Offline ticket wallet caching implemented",
+          "Ticket purchase flow verified"
         ],
-        uncompletedTasks: [
-          'Turnstile scanner latency optimization'
+        "uncompletedTasks": [
+          "Turnstile camera focus speed under low ambient light"
         ],
-        inProgressTasks: [
-          'Complete remaining Phase 1 checklist integrations',
-          'QA / UAT through extended end date 18.09.2026'
+        "inProgressTasks": [
+          "Optimize barcode scanning library frame rate & torch assist"
         ],
-        futureTasks: [
-          'Go-Live readiness checks',
-          'Monitor live invite and deep-link behavior'
+        "futureTasks": [
+          "Production turnstile integration stress test"
         ],
-        keyInsight: 'Project end date extended to 18 Sep 2026 (+8 days). 30 of 35 man-days consumed (86%). Scope change added invitation links and checklist API.',
-        weeklyUrl: 'Incubator Weekly update/Greyhound 11.09.2026.html',
-        scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
+        "keyInsight": "37 of 49 man-days consumed. Turnstile camera focus and offline wallet under active optimization.",
+        "weeklyUrl": "Incubator Weekly update/GrayHound 02.10.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "22 Oct 2026",
+        "targetReleaseDate": "30 Oct 2026",
+        "forecastExtension": "+22 Days Extension",
+        "extendedInWeek": "Week 2 & 3",
+        "extensionReason": "Low light turnstile camera scanning focus tuning.",
+        "screenUrl": "screens/greyhound_screens.html",
+        "governanceUrl": "Incubator Weekly update/GrayHound 02.10.2026 Governance.html"
       },
       {
-        weekNumber: 1,
-        weekLabel: 'Week 1',
-        weekEnding: '4 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '13 Allocated',
-        consumed: '10 Consumed (77%)',
-        completedTasks: [
-          'API wiring updates completed',
-          'QR scan to ticket-add flow completed',
-          'Response mapping improvements',
-          'Polling & UX improvements completed'
+        "weekNumber": 3,
+        "weekLabel": "Week 3",
+        "weekEnding": "18 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "42 Allocated",
+        "consumed": "30 Consumed (71%)",
+        "completedTasks": [
+          "Turnstile barcode scanner v2 benchmarked",
+          "Offline ticket wallet caching implemented",
+          "Ticket purchase flow verified"
         ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'End-to-end validation and stabilization',
-          'UI/UX observation for real-world usage'
+        "uncompletedTasks": [
+          "Low-light scanner latency optimization (Carried over from Week 2)",
+          "Turnstile gateway stress testing (Pending hardware)"
         ],
-        futureTasks: [
-          'Production SSL / HTTPS validation',
-          'Final QA and release readiness checks'
+        "inProgressTasks": [
+          "Race day push notification integration",
+          "Multi-device responsive UI testing",
+          "Account balance sync"
         ],
-        keyInsight: 'Sprint on schedule with 10 of 13 man-days consumed (77%). 0 days delay, target end date 10.9.2026.',
-        weeklyUrl: 'Incubator Weekly update/greyhound 04.09.2026.html',
-        scopeUrl: 'scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html'
+        "futureTasks": [
+          "Live racetrack turnstile pilot",
+          "Security penetration review",
+          "Production App Store submission"
+        ],
+        "keyInsight": "Phase 1 end date extended to 25.09.2026 (+15 days). 30 of 42 man-days consumed (71%). WebAPI integration in progress.",
+        "weeklyUrl": "Incubator Weekly update/GrayHound 18.09.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "22 Oct 2026",
+        "targetReleaseDate": "30 Oct 2026",
+        "forecastExtension": "+15 Days Extension",
+        "extendedInWeek": "Week 2 & Week 3",
+        "extensionReason": "Bet slip multi-currency settlement edge cases and WebSocket live race re-subscription testing during peak traffic simulations.",
+        "screenUrl": "screens/greyhound_screens.html"
+      },
+      {
+        "weekNumber": 2,
+        "weekLabel": "Week 2",
+        "weekEnding": "11 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "35 Allocated",
+        "consumed": "30 Consumed (86%)",
+        "completedTasks": [
+          "Deep link / App links for entitlement invitations (Android + iOS)",
+          "Backend API written for invitation workflow",
+          "Stabilize invite -> ticket -> checklist journey"
+        ],
+        "uncompletedTasks": [
+          "Turnstile scanner latency optimization"
+        ],
+        "inProgressTasks": [
+          "Complete remaining Phase 1 checklist integrations",
+          "QA / UAT through extended end date 18.09.2026"
+        ],
+        "futureTasks": [
+          "Go-Live readiness checks",
+          "Monitor live invite and deep-link behavior"
+        ],
+        "keyInsight": "Project end date extended to 18 Sep 2026 (+8 days). 30 of 35 man-days consumed (86%). Scope change added invitation links and checklist API.",
+        "weeklyUrl": "Incubator Weekly update/Greyhound 11.09.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "22 Oct 2026",
+        "forecastExtension": "+7 Days Extension",
+        "extendedInWeek": "Week 2",
+        "extensionReason": "Race card API pagination and live bet slip state synchronization edge cases.",
+        "screenUrl": "screens/greyhound_screens.html"
+      },
+      {
+        "weekNumber": 1,
+        "weekLabel": "Week 1",
+        "weekEnding": "4 Sep 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "13 Allocated",
+        "consumed": "10 Consumed (77%)",
+        "completedTasks": [
+          "API wiring updates completed",
+          "QR scan to ticket-add flow completed",
+          "Response mapping improvements",
+          "Polling & UX improvements completed"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "End-to-end validation and stabilization",
+          "UI/UX observation for real-world usage"
+        ],
+        "futureTasks": [
+          "Production SSL / HTTPS validation",
+          "Final QA and release readiness checks"
+        ],
+        "keyInsight": "Sprint on schedule with 10 of 13 man-days consumed (77%). 0 days delay, target end date 10.9.2026.",
+        "weeklyUrl": "Incubator Weekly update/greyhound 04.09.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "15 Oct 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Initial baseline kickoff on schedule.",
+        "screenUrl": "screens/greyhound_screens.html"
       }
-    ]
+    ],
+    "initialReleaseDate": "15 Oct 2026",
+    "lastWeekTargetDate": "22 Oct 2026",
+    "forecastExtension": "+15 Days Extension",
+    "extendedInWeek": "Week 2 & Week 3",
+    "extensionReason": "Bet slip multi-currency settlement edge cases and WebSocket live race re-subscription testing during peak traffic simulations.",
+    "screenUrl": "screens/greyhound_screens.html"
   },
   {
-    id: 'onexso-hrms',
-    icon: '👥',
-    name: 'ONEXSO HRMS',
-    company: 'UNICOM TIC INCUBATOR',
-    release: 'Enterprise Release 1',
-    targetReleaseDate: '20 Nov 2026',
-    originalAllocation: 150,
-    forecastTotal: 150,
-    overBudget: false,
-    leads: 'Thivaharan / Dapiyshanth',
-    description: 'Comprehensive human resource management suite with employee directory, multi-tenant security, and leave tracking.',
-    highlights: 'Authentication & Security, Leave & Attendance, Multi-tenant management, Shift scheduling.',
-    resources: [
+    "id": "onexso-hrms",
+    "icon": "👥",
+    "name": "ONEXSO HRMS",
+    "company": "UNICOM TIC INCUBATOR",
+    "release": "Enterprise Release 1",
+    "targetReleaseDate": "01 Nov 2026",
+    "originalAllocation": 150,
+    "forecastTotal": 150,
+    "overBudget": false,
+    "leads": "Thivaharan / Dapiyshanth",
+    "description": "Comprehensive human resource management suite with employee directory, multi-tenant security, and leave tracking.",
+    "highlights": "Authentication & Security, Leave & Attendance, Multi-tenant management, Shift scheduling.",
+    "resources": [
       {
-        name: 'Thivaharan',
-        role: 'Project Manager',
-        allocation: '75 Man-Days',
-        responsibility: 'Planning, coordination, risks, reporting, and client liaison.'
+        "name": "Thivaharan",
+        "role": "Project Manager",
+        "allocation": "75 Man-Days",
+        "responsibility": "Planning, coordination, risks, reporting, and client liaison."
       },
       {
-        name: 'Dapiyshanth',
-        role: 'Team Lead',
-        allocation: '75 Man-Days',
-        responsibility: 'Solution configuration, development, and architecture.'
+        "name": "Dapiyshanth",
+        "role": "Team Lead",
+        "allocation": "75 Man-Days",
+        "responsibility": "Solution configuration, development, and architecture."
       },
       {
-        name: 'Kajaatharan',
-        role: 'Developer',
-        allocation: '75 Man-Days',
-        responsibility: 'Testing, quality assurance, and defect management.'
+        "name": "Kajaatharan",
+        "role": "Developer",
+        "allocation": "75 Man-Days",
+        "responsibility": "Testing, quality assurance, and defect management."
       },
       {
-        name: 'Pirakeerthan',
-        role: 'Developer',
-        allocation: '75 Man-Days',
-        responsibility: 'Technical design, development, integration, and mentoring.'
+        "name": "Pirakeerthan",
+        "role": "Developer",
+        "allocation": "75 Man-Days",
+        "responsibility": "Technical design, development, integration, and mentoring."
       }
     ],
-    milestones: [
-      { name: 'Multi-tenant Tenant Isolation', status: 'COMPLETED', position: 'Verified' },
-      { name: 'Employee Directory', status: 'COMPLETED', position: 'Live' },
-      { name: 'Leave Approval Workflow', status: 'IN PROGRESS', position: 'Testing' },
-      { name: 'Payroll Export', status: 'TARGET', position: 'Scheduled' }
+    "milestones": [
+      {
+        "name": "Multi-tenant Tenant Isolation",
+        "status": "COMPLETED",
+        "position": "Verified"
+      },
+      {
+        "name": "Employee Directory",
+        "status": "COMPLETED",
+        "position": "Live"
+      },
+      {
+        "name": "Leave Approval Workflow",
+        "status": "IN PROGRESS",
+        "position": "Testing"
+      },
+      {
+        "name": "Payroll Export",
+        "status": "TARGET",
+        "position": "Scheduled"
+      }
     ],
-    risk: {
-      issue: 'Shift scheduling overnight rollover edge cases',
-      severity: 'MEDIUM',
-      mitigation: 'Implement UTC normalized attendance window calculation'
+    "risk": {
+      "issue": "Shift scheduling overnight rollover edge cases",
+      "severity": "MEDIUM",
+      "mitigation": "Implement UTC normalized attendance window calculation"
     },
-    selectedWeekIndex: 0,
-    weeks: [
+    "selectedWeekIndex": 0,
+    "weeks": [
       {
-        weekNumber: 3,
-        weekLabel: 'Week 3',
-        weekEnding: '18 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '150 Days',
-        consumed: '108 Consumed (72%)',
-        completedTasks: [
-          'Multi-tenant database migrations completed',
-          'Role-based access control rules enforced',
-          'Employee profile bulk upload verified'
+        "weekNumber": 5,
+        "weekLabel": "Week 5",
+        "weekEnding": "09 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "260 Days",
+        "consumed": "190 Consumed (73%)",
+        "completedTasks": [
+          "Start My Day & Review Team Status",
+          "Plan & Assign Team Work",
+          "Approve Task Scope & Estimate",
+          "Monitor Project Delivery",
+          "Review Submitted Work",
+          "Handle Change / Overrun Request",
+          "Monitor Employee Work Pattern",
+          "Review Attendance / Identity Anomaly"
         ],
-        uncompletedTasks: [
-          'Shift scheduling overnight rollover calculation (Carried over from Week 2)'
+        "uncompletedTasks": [
+          "Investigate & Resolve an Exception",
+          "Review Team Performance & Report"
         ],
-        inProgressTasks: [
-          'Biometric clock-in integration',
-          'Annual leave balance formula audit',
-          'Departmental hierarchy view'
+        "inProgressTasks": [
+          "Dashboard Designing (My Team dashboard UI/UX)",
+          "Meeting -> Task Conversion"
         ],
-        futureTasks: [
-          'Payroll export adapter',
-          'Executive compensation report',
-          'Pilot client onboarding'
+        "futureTasks": [
+          "Stripe Integration",
+          "Biometrics Integration"
         ],
-        keyInsight: 'Core directory and authentication completed; complex shift schedule overnight calculations need final verification.',
-        weeklyUrl: 'Incubator Weekly update/hrm 18.09.2026.html',
-        scopeUrl: 'scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html'
+        "keyInsight": "Go-Live scheduling adjusted to 2026-11-01 (+17 days). 190 of 260 man-days consumed. Core manager journey and task workflows active.",
+        "weeklyUrl": "Incubator Weekly update/weekly-visibility-card-onexso-09.10.2026.html",
+        "scopeUrl": "scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "01 Nov 2026",
+        "forecastExtension": "+17 Days Extension",
+        "extendedInWeek": "Week 1 & Week 2",
+        "extensionReason": "Go-Live scheduling set by management/client, downstream shift to UAT.",
+        "screenUrl": "screens/onexso_hrms_screens.html",
+        "governanceUrl": "Incubator Weekly update/onexso 09.10.2026 Governance.html"
       },
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2',
-        weekEnding: '11 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '150 Days',
-        consumed: '98 Consumed (65%)',
-        completedTasks: [
-          'Tenant onboarding wizard completed',
-          'Department structure database schema verified'
+        "weekNumber": 4,
+        "weekLabel": "Week 4",
+        "weekEnding": "02 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "260 Days",
+        "consumed": "170 Consumed (65%)",
+        "completedTasks": [
+          "Work Management / Approvals Engine unified",
+          "People / Employee Overview page shipped",
+          "Calendar / Meetings Zoom & Teams integration",
+          "My Team Dashboard Action Center widget"
         ],
-        uncompletedTasks: [
-          'Shift scheduling overnight rollover calculation'
+        "uncompletedTasks": [
+          "Investigate & Resolve an Exception",
+          "Review Team Performance & Report"
         ],
-        inProgressTasks: [
-          'Role based permissions',
-          'Bulk employee upload'
+        "inProgressTasks": [
+          "Work Management Notifications",
+          "Calendar Event Scheduling UI",
+          "Employee Overview Rollout"
         ],
-        futureTasks: [
-          'Biometric attendance sync'
+        "futureTasks": [
+          "Stripe Integration",
+          "Biometrics Integration"
         ],
-        keyInsight: 'Multi-tenant isolation verified; attendance rules in active development.',
-        weeklyUrl: 'Incubator Weekly update/weekly-visibility-card-onexso-11.09.2026.html',
-        scopeUrl: 'scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html'
+        "keyInsight": "Sprint kickoff tracking. 170 of 260 man-days consumed. Unified approvals engine and employee overview released.",
+        "weeklyUrl": "Incubator Weekly update/weekly-visibility-card-onexso-02.10.2026.html",
+        "scopeUrl": "scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "01 Nov 2026",
+        "forecastExtension": "+17 Days Extension",
+        "extendedInWeek": "Week 1",
+        "extensionReason": "Go-Live scheduling set by management/client.",
+        "screenUrl": "screens/onexso_hrms_screens.html",
+        "governanceUrl": "Incubator Weekly update/onexso 09.10.2026 Governance.html"
       },
       {
-        weekNumber: 1,
-        weekLabel: 'Week 1',
-        weekEnding: '4 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '150 Days',
-        consumed: '88 Consumed (59%)',
-        completedTasks: [
-          'Architecture blueprint approved',
-          'Postgres database cluster initialized'
+        "weekNumber": 3,
+        "weekLabel": "Week 3",
+        "weekEnding": "18 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "150 Days",
+        "consumed": "108 Consumed (72%)",
+        "completedTasks": [
+          "Multi-tenant database migrations completed",
+          "Role-based access control rules enforced",
+          "Employee profile bulk upload verified"
         ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'Multi-tenant routing',
-          'User directory backend'
+        "uncompletedTasks": [
+          "Shift scheduling overnight rollover calculation (Carried over from Week 2)"
         ],
-        futureTasks: [
-          'Tenant onboarding wizard'
+        "inProgressTasks": [
+          "Biometric clock-in integration",
+          "Annual leave balance formula audit",
+          "Departmental hierarchy view"
         ],
-        keyInsight: 'Initial framework setup progressing steadily.',
-        weeklyUrl: 'Incubator Weekly update/weekly-project-visibility-card-onexso.pr.html',
-        scopeUrl: 'scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html'
+        "futureTasks": [
+          "Payroll export adapter",
+          "Executive compensation report",
+          "Pilot client onboarding"
+        ],
+        "keyInsight": "Core directory and authentication completed; complex shift schedule overnight calculations need final verification.",
+        "weeklyUrl": "Incubator Weekly update/hrm 18.09.2026.html",
+        "scopeUrl": "scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html",
+        "initialReleaseDate": "10 Nov 2026",
+        "lastWeekTargetDate": "15 Nov 2026",
+        "targetReleaseDate": "20 Nov 2026",
+        "forecastExtension": "+10 Days Extension",
+        "extendedInWeek": "Week 2 & Week 3",
+        "extensionReason": "Multi-branch payroll tax rule validation and offline biometric device synchronization edge cases.",
+        "screenUrl": "screens/onexso_hrms_screens.html"
+      },
+      {
+        "weekNumber": 2,
+        "weekLabel": "Week 2",
+        "weekEnding": "11 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "150 Days",
+        "consumed": "98 Consumed (65%)",
+        "completedTasks": [
+          "Tenant onboarding wizard completed",
+          "Department structure database schema verified"
+        ],
+        "uncompletedTasks": [
+          "Shift scheduling overnight rollover calculation"
+        ],
+        "inProgressTasks": [
+          "Role based permissions",
+          "Bulk employee upload"
+        ],
+        "futureTasks": [
+          "Biometric attendance sync"
+        ],
+        "keyInsight": "Multi-tenant isolation verified; attendance rules in active development.",
+        "weeklyUrl": "Incubator Weekly update/weekly-visibility-card-onexso-11.09.2026.html",
+        "scopeUrl": "scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html",
+        "initialReleaseDate": "10 Nov 2026",
+        "lastWeekTargetDate": "10 Nov 2026",
+        "targetReleaseDate": "15 Nov 2026",
+        "forecastExtension": "+5 Days Extension",
+        "extendedInWeek": "Week 2",
+        "extensionReason": "Biometric attendance sync integration with legacy clocking hardware required custom protocol adapter.",
+        "screenUrl": "screens/onexso_hrms_screens.html"
+      },
+      {
+        "weekNumber": 1,
+        "weekLabel": "Week 1",
+        "weekEnding": "4 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "150 Days",
+        "consumed": "88 Consumed (59%)",
+        "completedTasks": [
+          "Architecture blueprint approved",
+          "Postgres database cluster initialized"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Multi-tenant routing",
+          "User directory backend"
+        ],
+        "futureTasks": [
+          "Tenant onboarding wizard"
+        ],
+        "keyInsight": "Initial framework setup progressing steadily.",
+        "weeklyUrl": "Incubator Weekly update/weekly-project-visibility-card-onexso.pr.html",
+        "scopeUrl": "scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html",
+        "initialReleaseDate": "10 Nov 2026",
+        "lastWeekTargetDate": "10 Nov 2026",
+        "targetReleaseDate": "10 Nov 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Sprint kickoff and database schema setup.",
+        "screenUrl": "screens/onexso_hrms_screens.html"
       }
-    ]
+    ],
+    "initialReleaseDate": "10 Nov 2026",
+    "lastWeekTargetDate": "15 Nov 2026",
+    "forecastExtension": "+10 Days Extension",
+    "extendedInWeek": "Week 2 & Week 3",
+    "extensionReason": "Biometric attendance sync integration with legacy clocking hardware and multi-branch payroll tax rule validation.",
+    "screenUrl": "screens/onexso_hrms_screens.html"
   },
   {
-    id: 'oneverz-epos',
-    icon: '💳',
-    name: 'OneVerz EPOS',
-    company: 'UNICOM TIC INCUBATOR',
-    release: 'Release 1',
-    targetReleaseDate: '10 Nov 2026',
-    originalAllocation: 129,
-    forecastTotal: 140,
-    forecastOverrun: '+11 Man-Days (+8.5%)',
-    overBudget: true,
-    leads: 'Mathusan / Yapes',
-    description: 'Cloud-enabled point-of-sale terminal software with offline mode, kitchen display, and multi-store inventory.',
-    highlights: 'Order workflow, Payment terminal link, Offline queue sync, Inventory auto-decrement.',
-    resources: [
+    "id": "oneverz-epos",
+    "icon": "💳",
+    "name": "OneVerz EPOS",
+    "company": "UNICOM TIC INCUBATOR",
+    "release": "Release 1",
+    "targetReleaseDate": "15 Oct 2026",
+    "originalAllocation": 129,
+    "forecastTotal": 140,
+    "forecastOverrun": "+11 Man-Days (+8.5%)",
+    "overBudget": true,
+    "leads": "Mathusan / Yapes",
+    "description": "Cloud-enabled point-of-sale terminal software with offline mode, kitchen display, and multi-store inventory.",
+    "highlights": "Order workflow, Payment terminal link, Offline queue sync, Inventory auto-decrement.",
+    "resources": [
       {
-        name: 'Mathusan',
-        role: 'Coordinator / Developer',
-        allocation: '127 Man-Days',
-        responsibility: 'Development, task management, coordination, risks, reporting, and E-commerce.'
+        "name": "Mathusan",
+        "role": "Coordinator / Developer",
+        "allocation": "127 Man-Days",
+        "responsibility": "Development, task management, coordination, risks, reporting, and E-commerce."
       },
       {
-        name: 'Yapes',
-        role: 'Project Leader / Developer',
-        allocation: '113 Man-Days',
-        responsibility: 'Development, Super Admin, and Second Brain.'
+        "name": "Yapes",
+        "role": "Project Leader / Developer",
+        "allocation": "113 Man-Days",
+        "responsibility": "Development, Super Admin, and Second Brain."
       },
       {
-        name: 'Tharmithan',
-        role: 'Developer',
-        allocation: '125 Man-Days',
-        responsibility: 'Flutter App development and integration.'
+        "name": "Tharmithan",
+        "role": "Developer",
+        "allocation": "125 Man-Days",
+        "responsibility": "Flutter App development and integration."
       },
       {
-        name: 'Nivethika',
-        role: 'Developer',
-        allocation: '44 Man-Days',
-        responsibility: 'Product setup, tax management, and category configuration.'
+        "name": "Nivethika",
+        "role": "Developer",
+        "allocation": "44 Man-Days",
+        "responsibility": "Product setup, tax management, and category configuration."
       }
     ],
-    milestones: [
-      { name: 'Offline Order Queue', status: 'COMPLETED', position: 'Delivered' },
-      { name: 'Kitchen Display Sync', status: 'IN PROGRESS', position: 'Testing' },
-      { name: 'Payment Terminal Link', status: 'IN PROGRESS', position: 'Optimization' },
-      { name: 'Hardware Certification', status: 'TARGET', position: 'Sprint 5' }
+    "milestones": [
+      {
+        "name": "Offline Order Queue",
+        "status": "COMPLETED",
+        "position": "Delivered"
+      },
+      {
+        "name": "Kitchen Display Sync",
+        "status": "IN PROGRESS",
+        "position": "Testing"
+      },
+      {
+        "name": "Payment Terminal Link",
+        "status": "IN PROGRESS",
+        "position": "Optimization"
+      },
+      {
+        "name": "Hardware Certification",
+        "status": "TARGET",
+        "position": "Sprint 5"
+      }
     ],
-    risk: {
-      issue: 'Payment terminal reconnect timeout on weak WiFi',
-      severity: 'HIGH',
-      mitigation: 'Implement exponential backoff reconnect daemon'
+    "risk": {
+      "issue": "Payment terminal reconnect timeout on weak WiFi",
+      "severity": "HIGH",
+      "mitigation": "Implement exponential backoff reconnect daemon"
     },
-    selectedWeekIndex: 0,
-    weeks: [
+    "selectedWeekIndex": 0,
+    "weeks": [
       {
-        weekNumber: 3,
-        weekLabel: 'Week 3',
-        weekEnding: '18 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '129 Allocated',
-        consumed: '118 Consumed (91%)',
-        completedTasks: [
-          'Offline order sync queue resilience verified',
-          'Split bill payment calculation updated',
-          'Receipt thermal printing layout adjusted'
+        "weekNumber": 5,
+        "weekLabel": "Week 5",
+        "weekEnding": "09 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "146 Days",
+        "consumed": "150 Consumed (103%)",
+        "completedTasks": [
+          "Offline order queue delivered",
+          "Kitchen display sync active",
+          "Payment terminal link certified",
+          "CSV report export implemented"
         ],
-        uncompletedTasks: [
-          'Payment terminal EFT bridge reconnect timeout (Carried over from Week 2)'
+        "uncompletedTasks": [
+          "Product tracking UI optimization"
         ],
-        inProgressTasks: [
-          'Kitchen Display System (KDS) order timer',
-          'Cloud sync conflict resolution',
-          'Store inventory auto-deduction engine'
+        "inProgressTasks": [
+          "Bulk upload & inventory reconciliation",
+          "Voucher implementation"
         ],
-        futureTasks: [
-          'End-to-end POS hardware pilot',
-          'Merchant portal reporting',
-          'Multi-till stress test'
+        "futureTasks": [
+          "Cloud sync multi-branch replication"
         ],
-        keyInsight: 'Core billing and offline sync functional; payment terminal reconnect timeout under flaky WiFi is the primary risk.',
-        weeklyUrl: 'Incubator Weekly update/oneverz 18.09.2026.html',
-        scopeUrl: 'scope document/Oneverz.html'
+        "keyInsight": "Target release 15 Oct 2026 (+18 days extension). 150 of 146 man-days consumed. Core retail POS features verified.",
+        "weeklyUrl": "Incubator Weekly update/oneverz 09.10.2026.html",
+        "scopeUrl": "scope document/Oneverz.html",
+        "initialReleaseDate": "27 Sep 2026",
+        "lastWeekTargetDate": "05 Oct 2026",
+        "targetReleaseDate": "15 Oct 2026",
+        "forecastExtension": "+18 Days Extension",
+        "extendedInWeek": "Week 2 & 3",
+        "extensionReason": "Payment terminal reconnect timeout handling and inventory bulk upload.",
+        "screenUrl": "screens/oneverz_epos_screens.html",
+        "governanceUrl": "Incubator Weekly update/oneverz 09.10.2026 Governance.html"
       },
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2',
-        weekEnding: '11 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '129 Allocated',
-        consumed: '111 Consumed',
-        completedTasks: [
-          'Fast-key product grid completed',
-          'Barcode scanner input handler verified'
+        "weekNumber": 4,
+        "weekLabel": "Week 4",
+        "weekEnding": "02 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "146 Days",
+        "consumed": "142 Consumed (97%)",
+        "completedTasks": [
+          "Offline order queue delivered",
+          "Kitchen display sync active",
+          "Payment terminal link verified"
         ],
-        uncompletedTasks: [
-          'Payment terminal EFT bridge reconnect timeout'
+        "uncompletedTasks": [
+          "Bulk upload & inventory edge cases"
         ],
-        inProgressTasks: [
-          'Split bill calculations',
-          'Offline order sync queue'
+        "inProgressTasks": [
+          "CSV report export",
+          "Product tracking UI"
         ],
-        futureTasks: [
-          'Kitchen display integration'
+        "futureTasks": [
+          "Voucher implementation"
         ],
-        keyInsight: 'Fast-key checkout UI complete; hardware terminal pairing being optimized.',
-        weeklyUrl: 'Incubator Weekly update/One Verz.html',
-        scopeUrl: 'scope document/Oneverz.html'
+        "keyInsight": "Sprint tracking to revised forecast. 142 of 146 man-days consumed.",
+        "weeklyUrl": "Incubator Weekly update/oneverz 02.10.2026.html",
+        "scopeUrl": "scope document/Oneverz.html",
+        "initialReleaseDate": "27 Sep 2026",
+        "lastWeekTargetDate": "27 Sep 2026",
+        "targetReleaseDate": "15 Oct 2026",
+        "forecastExtension": "+18 Days Extension",
+        "extendedInWeek": "Week 2",
+        "extensionReason": "Payment terminal reconnect timeout handling.",
+        "screenUrl": "screens/oneverz_epos_screens.html",
+        "governanceUrl": "Incubator Weekly update/oneverz 02.10.2026 Governance.html"
       },
       {
-        weekNumber: 1,
-        weekLabel: 'Week 1',
-        weekEnding: '4 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '129 Allocated',
-        consumed: '95 Consumed',
-        completedTasks: [
-          'POS UI layout created',
-          'SQLite offline database initialized'
+        "weekNumber": 3,
+        "weekLabel": "Week 3",
+        "weekEnding": "18 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "129 Allocated",
+        "consumed": "118 Consumed (91%)",
+        "completedTasks": [
+          "Offline order sync queue resilience verified",
+          "Split bill payment calculation updated",
+          "Receipt thermal printing layout adjusted"
         ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'Fast-key menu management',
-          'Receipt printer driver'
+        "uncompletedTasks": [
+          "Payment terminal EFT bridge reconnect timeout (Carried over from Week 2)"
         ],
-        futureTasks: [
-          'Payment terminal integration'
+        "inProgressTasks": [
+          "Kitchen Display System (KDS) order timer",
+          "Cloud sync conflict resolution",
+          "Store inventory auto-deduction engine"
         ],
-        keyInsight: 'Sprint kicked off with local terminal architecture setup.',
-        weeklyUrl: 'Incubator Weekly update/One Verz Weekly Project Visibility Card 2 - Static.html',
-        scopeUrl: 'scope document/Oneverz.html'
+        "futureTasks": [
+          "End-to-end POS hardware pilot",
+          "Merchant portal reporting",
+          "Multi-till stress test"
+        ],
+        "keyInsight": "Core billing and offline sync functional; payment terminal reconnect timeout under flaky WiFi is the primary risk.",
+        "weeklyUrl": "Incubator Weekly update/oneverz 18.09.2026.html",
+        "scopeUrl": "scope document/Oneverz.html",
+        "initialReleaseDate": "25 Oct 2026",
+        "lastWeekTargetDate": "3 Nov 2026",
+        "targetReleaseDate": "10 Nov 2026",
+        "forecastExtension": "+16 Days Extension",
+        "extendedInWeek": "Week 2 & Week 3",
+        "extensionReason": "Offline SQLite sync queue conflicts and payment terminal reconnect timeouts under intermittent Wi-Fi conditions.",
+        "screenUrl": "screens/oneverz_epos_screens.html"
+      },
+      {
+        "weekNumber": 2,
+        "weekLabel": "Week 2",
+        "weekEnding": "11 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "129 Allocated",
+        "consumed": "111 Consumed",
+        "completedTasks": [
+          "Fast-key product grid completed",
+          "Barcode scanner input handler verified"
+        ],
+        "uncompletedTasks": [
+          "Payment terminal EFT bridge reconnect timeout"
+        ],
+        "inProgressTasks": [
+          "Split bill calculations",
+          "Offline order sync queue"
+        ],
+        "futureTasks": [
+          "Kitchen display integration"
+        ],
+        "keyInsight": "Fast-key checkout UI complete; hardware terminal pairing being optimized.",
+        "weeklyUrl": "Incubator Weekly update/One Verz.html",
+        "scopeUrl": "scope document/Oneverz.html",
+        "initialReleaseDate": "25 Oct 2026",
+        "lastWeekTargetDate": "25 Oct 2026",
+        "targetReleaseDate": "3 Nov 2026",
+        "forecastExtension": "+9 Days Extension",
+        "extendedInWeek": "Week 2",
+        "extensionReason": "Payment terminal hardware SDK pairing optimization and Bluetooth reconnect stability.",
+        "screenUrl": "screens/oneverz_epos_screens.html"
+      },
+      {
+        "weekNumber": 1,
+        "weekLabel": "Week 1",
+        "weekEnding": "4 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "129 Allocated",
+        "consumed": "95 Consumed",
+        "completedTasks": [
+          "POS UI layout created",
+          "SQLite offline database initialized"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Fast-key menu management",
+          "Receipt printer driver"
+        ],
+        "futureTasks": [
+          "Payment terminal integration"
+        ],
+        "keyInsight": "Sprint kicked off with local terminal architecture setup.",
+        "weeklyUrl": "Incubator Weekly update/One Verz Weekly Project Visibility Card 2 - Static.html",
+        "scopeUrl": "scope document/Oneverz.html",
+        "initialReleaseDate": "25 Oct 2026",
+        "lastWeekTargetDate": "25 Oct 2026",
+        "targetReleaseDate": "25 Oct 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Sprint kicked off with local terminal architecture setup.",
+        "screenUrl": "screens/oneverz_epos_screens.html"
       }
-    ]
+    ],
+    "initialReleaseDate": "25 Oct 2026",
+    "lastWeekTargetDate": "3 Nov 2026",
+    "forecastExtension": "+16 Days Extension",
+    "extendedInWeek": "Week 2 & Week 3",
+    "extensionReason": "Offline SQLite sync queue conflicts and payment terminal reconnect timeouts under intermittent Wi-Fi conditions.",
+    "screenUrl": "screens/oneverz_epos_screens.html"
   },
   {
-    id: 'ticketing-venue',
-    icon: '🎟️',
-    name: 'Ticketing Venue Setup',
-    company: 'UNICOM TIC INCUBATOR',
-    release: 'Phase 1',
-    targetReleaseDate: '15 Nov 2026',
-    originalAllocation: 200,
-    forecastTotal: 200,
-    overBudget: false,
-    leads: 'Venue & Ticketing Team',
-    description: 'Interactive visual seating plan builder, tiered pricing engine, and ticket allocation portal for stadiums and theatres.',
-    highlights: 'Venue designer canvas, Reserved seating algorithm, Tiered pricing, Gate barcode generation.',
-    resources: [
+    "id": "ticketing-venue",
+    "icon": "🎟️",
+    "name": "Ticketing Venue Setup",
+    "company": "UNICOM TIC INCUBATOR",
+    "release": "Phase 1",
+    "targetReleaseDate": "16 Oct 2026",
+    "originalAllocation": 200,
+    "forecastTotal": 200,
+    "overBudget": false,
+    "leads": "Venue & Ticketing Team",
+    "description": "Interactive visual seating plan builder, tiered pricing engine, and ticket allocation portal for stadiums and theatres.",
+    "highlights": "Venue designer canvas, Reserved seating algorithm, Tiered pricing, Gate barcode generation.",
+    "resources": [
       {
-        name: 'Venue Engineering',
-        role: 'Full Stack Developers',
-        allocation: '200 Man-Days',
-        responsibility: 'SVG interactive seating designer, tiered seat pricing, and gate entry validation.'
+        "name": "Venue Engineering",
+        "role": "Full Stack Developers",
+        "allocation": "200 Man-Days",
+        "responsibility": "SVG interactive seating designer, tiered seat pricing, and gate entry validation."
       }
     ],
-    milestones: [
-      { name: 'Interactive SVG Canvas', status: 'COMPLETED', position: 'Live' },
-      { name: 'Tiered Seat Pricing Engine', status: 'COMPLETED', position: 'Verified' },
-      { name: 'Large Venue Virtualization', status: 'IN PROGRESS', position: 'Optimizing' },
-      { name: 'Gate Entry Turnstile Sync', status: 'TARGET', position: 'Phase 2' }
+    "milestones": [
+      {
+        "name": "Interactive SVG Canvas",
+        "status": "COMPLETED",
+        "position": "Live"
+      },
+      {
+        "name": "Tiered Seat Pricing Engine",
+        "status": "COMPLETED",
+        "position": "Verified"
+      },
+      {
+        "name": "Large Venue Virtualization",
+        "status": "IN PROGRESS",
+        "position": "Optimizing"
+      },
+      {
+        "name": "Gate Entry Turnstile Sync",
+        "status": "TARGET",
+        "position": "Phase 2"
+      }
     ],
-    risk: {
-      issue: '10,000+ seat visual plan rendering performance on mobile browsers',
-      severity: 'MEDIUM',
-      mitigation: 'Implement viewport canvas rendering virtualization'
+    "risk": {
+      "issue": "10,000+ seat visual plan rendering performance on mobile browsers",
+      "severity": "MEDIUM",
+      "mitigation": "Implement viewport canvas rendering virtualization"
     },
-    selectedWeekIndex: 0,
-    weeks: [
+    "selectedWeekIndex": 0,
+    "weeks": [
       {
-        weekNumber: 3,
-        weekLabel: 'Week 3',
-        weekEnding: '18 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '200 Forecast',
-        consumed: '95 Consumed (48%)',
-        completedTasks: [
-          'SVG interactive seating chart canvas rendered',
-          'Seat reservation lock timeout implemented',
-          'Pricing tier color codes added'
+        "weekNumber": 5,
+        "weekLabel": "Week 5",
+        "weekEnding": "09 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "200 Days",
+        "consumed": "148 Consumed (74%)",
+        "completedTasks": [
+          "Interactive venue seat editor delivered",
+          "SVG seat map compiler verified",
+          "Tier pricing engine active",
+          "Venue zone partitioning complete"
         ],
-        uncompletedTasks: [
-          'Large venue (10,000+ seat) rendering performance optimization (Carried over from Week 2)'
+        "uncompletedTasks": [
+          "10,000+ seat visual plan rendering performance on mobile browsers"
         ],
-        inProgressTasks: [
-          'Row and aisle numbering auto-generator',
-          'Wheelchair accessible seat designation',
-          'Gate entry routing logic'
+        "inProgressTasks": [
+          "Large venue virtualization optimization",
+          "Gate entry turnstile sync"
         ],
-        futureTasks: [
-          '50,000 seat arena stress test',
-          'Box office cashier terminal view',
-          'Live event turnstile sync'
+        "futureTasks": [
+          "Phase 2 mobile app integration"
         ],
-        keyInsight: 'Visual seating builder in active development; rendering 10k+ SVG nodes requires canvas virtualization.',
-        weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_18.0.2026.html',
-        scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
+        "keyInsight": "148 of 200 man-days consumed. Target release 16 Oct 2026 (+38 days extension).",
+        "weeklyUrl": "Incubator Weekly update/ticketing_venue_setup_09.10.2026.html",
+        "scopeUrl": "scope document/Venue_Layout_Scope_USP.html",
+        "initialReleaseDate": "08 Sep 2026",
+        "lastWeekTargetDate": "02 Oct 2026",
+        "targetReleaseDate": "16 Oct 2026",
+        "forecastExtension": "+38 Days Extension",
+        "extendedInWeek": "Week 2 & 3",
+        "extensionReason": "Seat plan rendering virtualization and gate entry sync.",
+        "screenUrl": "screens/ticketing_venue_screens.html",
+        "governanceUrl": "Incubator Weekly update/ticketing_venue_setup_09.10.2026 Governance.html"
       },
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2',
-        weekEnding: '11 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '200 Forecast',
-        consumed: '75 Consumed (38%)',
-        completedTasks: [
-          'Venue grid snap-to-fit designer implemented',
-          'Tier pricing database schema approved'
+        "weekNumber": 4,
+        "weekLabel": "Week 4",
+        "weekEnding": "02 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "200 Days",
+        "consumed": "138 Consumed (69%)",
+        "completedTasks": [
+          "Interactive venue seat editor delivered",
+          "SVG seat map compiler verified",
+          "Tier pricing engine active"
         ],
-        uncompletedTasks: [
-          'Large venue rendering performance optimization'
+        "uncompletedTasks": [
+          "Large venue virtualization"
         ],
-        inProgressTasks: [
-          'Interactive seat selection canvas',
-          'Seat lock timeout service'
+        "inProgressTasks": [
+          "Venue zone partitioning",
+          "Canvas rendering virtualization"
         ],
-        futureTasks: [
-          'Gate allocation logic'
+        "futureTasks": [
+          "Gate entry turnstile sync"
         ],
-        keyInsight: 'Floorplan designer functional; large stadium plans require viewport virtualization.',
-        weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_11.09.2026.html',
-        scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
+        "keyInsight": "138 of 200 man-days consumed. Venue seat layout tools active in staging.",
+        "weeklyUrl": "Incubator Weekly update/ticketing_venue_setup_02.10.2026.html",
+        "scopeUrl": "scope document/Venue_Layout_Scope_USP.html",
+        "initialReleaseDate": "08 Sep 2026",
+        "lastWeekTargetDate": "08 Sep 2026",
+        "targetReleaseDate": "16 Oct 2026",
+        "forecastExtension": "+38 Days Extension",
+        "extendedInWeek": "Week 2",
+        "extensionReason": "Seat plan rendering virtualization.",
+        "screenUrl": "screens/ticketing_venue_screens.html",
+        "governanceUrl": "Incubator Weekly update/ticketing_venue_setup_02.10.2026 Governance.html"
       },
       {
-        weekNumber: 1,
-        weekLabel: 'Week 1',
-        weekEnding: '4 Sep 2026',
-        status: 'AT RISK',
-        statusClass: 'amber',
-        manDays: '200 Forecast',
-        consumed: '55 Consumed (28%)',
-        completedTasks: [
-          'Canvas technical specification approved',
-          'Geometry rendering library benchmarked'
+        "weekNumber": 3,
+        "weekLabel": "Week 3",
+        "weekEnding": "18 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "200 Forecast",
+        "consumed": "95 Consumed (48%)",
+        "completedTasks": [
+          "SVG interactive seating chart canvas rendered",
+          "Seat reservation lock timeout implemented",
+          "Pricing tier color codes added"
         ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'SVG designer canvas',
-          'Section and block layout model'
+        "uncompletedTasks": [
+          "Large venue (10,000+ seat) rendering performance optimization (Carried over from Week 2)"
         ],
-        futureTasks: [
-          'Interactive seat selection'
+        "inProgressTasks": [
+          "Row and aisle numbering auto-generator",
+          "Wheelchair accessible seat designation",
+          "Gate entry routing logic"
         ],
-        keyInsight: 'Technical foundation established for scalable vector seating maps.',
-        weeklyUrl: 'Incubator Weekly update/ticketing_venue_setup_weekly_visibility_card_updated_v13.html',
-        scopeUrl: 'scope document/Venue_Layout_Scope_USP.html'
+        "futureTasks": [
+          "50,000 seat arena stress test",
+          "Box office cashier terminal view",
+          "Live event turnstile sync"
+        ],
+        "keyInsight": "Visual seating builder in active development; rendering 10k+ SVG nodes requires canvas virtualization.",
+        "weeklyUrl": "Incubator Weekly update/ticketing_venue_setup_18.0.2026.html",
+        "scopeUrl": "scope document/Venue_Layout_Scope_USP.html",
+        "initialReleaseDate": "31 Oct 2026",
+        "lastWeekTargetDate": "07 Nov 2026",
+        "targetReleaseDate": "15 Nov 2026",
+        "forecastExtension": "+15 Days Extension",
+        "extendedInWeek": "Week 2 & Week 3",
+        "extensionReason": "Interactive SVG seating map canvas virtualization required for rendering 10,000+ stadium nodes without frame drops.",
+        "screenUrl": "screens/ticketing_venue_screens.html"
+      },
+      {
+        "weekNumber": 2,
+        "weekLabel": "Week 2",
+        "weekEnding": "11 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "200 Forecast",
+        "consumed": "75 Consumed (38%)",
+        "completedTasks": [
+          "Venue grid snap-to-fit designer implemented",
+          "Tier pricing database schema approved"
+        ],
+        "uncompletedTasks": [
+          "Large venue rendering performance optimization"
+        ],
+        "inProgressTasks": [
+          "Interactive seat selection canvas",
+          "Seat lock timeout service"
+        ],
+        "futureTasks": [
+          "Gate allocation logic"
+        ],
+        "keyInsight": "Floorplan designer functional; large stadium plans require viewport virtualization.",
+        "weeklyUrl": "Incubator Weekly update/ticketing_venue_setup_11.09.2026.html",
+        "scopeUrl": "scope document/Venue_Layout_Scope_USP.html",
+        "initialReleaseDate": "31 Oct 2026",
+        "lastWeekTargetDate": "31 Oct 2026",
+        "targetReleaseDate": "07 Nov 2026",
+        "forecastExtension": "+7 Days Extension",
+        "extendedInWeek": "Week 2",
+        "extensionReason": "Large stadium plan rendering performance review; viewport clipping for 5k+ seats.",
+        "screenUrl": "screens/ticketing_venue_screens.html"
+      },
+      {
+        "weekNumber": 1,
+        "weekLabel": "Week 1",
+        "weekEnding": "4 Sep 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "200 Forecast",
+        "consumed": "55 Consumed (28%)",
+        "completedTasks": [
+          "Canvas technical specification approved",
+          "Geometry rendering library benchmarked"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "SVG designer canvas",
+          "Section and block layout model"
+        ],
+        "futureTasks": [
+          "Interactive seat selection"
+        ],
+        "keyInsight": "Technical foundation established for scalable vector seating maps.",
+        "weeklyUrl": "Incubator Weekly update/ticketing_venue_setup_weekly_visibility_card_updated_v13.html",
+        "scopeUrl": "scope document/Venue_Layout_Scope_USP.html",
+        "initialReleaseDate": "31 Oct 2026",
+        "lastWeekTargetDate": "31 Oct 2026",
+        "targetReleaseDate": "31 Oct 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Technical foundation established for scalable vector seating maps.",
+        "screenUrl": "screens/ticketing_venue_screens.html"
       }
-    ]
+    ],
+    "initialReleaseDate": "31 Oct 2026",
+    "lastWeekTargetDate": "07 Nov 2026",
+    "forecastExtension": "+15 Days Extension",
+    "extendedInWeek": "Week 2 & Week 3",
+    "extensionReason": "Interactive SVG seating map canvas virtualization required for rendering 10,000+ stadium nodes without frame drops.",
+    "screenUrl": "screens/ticketing_venue_screens.html"
   },
   {
-    id: 'watercraft',
-    icon: '🚤',
-    name: 'Watercraft Storage Portal',
-    company: 'UNICOM TIC INCUBATOR',
-    release: 'Full Release',
-    targetReleaseDate: '04 Sep 2026',
-    originalAllocation: 120,
-    forecastTotal: 120,
-    overBudget: false,
-    leads: 'Saif / Abitha',
-    description: 'Marina and boatyard dry-stack storage management, customer reservation app, and boat launch scheduling.',
-    highlights: 'Dock slip assignment, Launch requests, Customer billing, Maintenance work orders.',
-    resources: [
+    "id": "watercraft",
+    "icon": "🚤",
+    "name": "Watercraft Storage Portal",
+    "company": "UNICOM TIC INCUBATOR",
+    "release": "Full Release",
+    "targetReleaseDate": "04 Sep 2026",
+    "originalAllocation": 120,
+    "forecastTotal": 120,
+    "overBudget": false,
+    "leads": "Saif / Abitha",
+    "description": "Marina and boatyard dry-stack storage management, customer reservation app, and boat launch scheduling.",
+    "highlights": "Dock slip assignment, Launch requests, Customer billing, Maintenance work orders.",
+    "resources": [
       {
-        name: 'Saif',
-        role: 'Team Lead',
-        allocation: '35 Man-Days',
-        responsibility: 'Leadership, architecture, development, integration, and testing.'
+        "name": "Saif",
+        "role": "Team Lead",
+        "allocation": "35 Man-Days",
+        "responsibility": "Leadership, architecture, development, integration, and testing."
       },
       {
-        name: 'Abitha',
-        role: 'Coordinator',
-        allocation: '22 Man-Days',
-        responsibility: 'Coordination, documentation, tracking, development, and testing support.'
+        "name": "Abitha",
+        "role": "Coordinator",
+        "allocation": "22 Man-Days",
+        "responsibility": "Coordination, documentation, tracking, development, and testing support."
       },
       {
-        name: 'Kunasika',
-        role: 'Developer',
-        allocation: '22 Man-Days',
-        responsibility: 'Frontend, backend, and testing.'
+        "name": "Kunasika",
+        "role": "Developer",
+        "allocation": "22 Man-Days",
+        "responsibility": "Frontend, backend, and testing."
       },
       {
-        name: 'Lavanya',
-        role: 'Developer',
-        allocation: '22 Man-Days',
-        responsibility: 'Frontend, backend, and testing.'
+        "name": "Lavanya",
+        "role": "Developer",
+        "allocation": "22 Man-Days",
+        "responsibility": "Frontend, backend, and testing."
       },
       {
-        name: 'Natheesan',
-        role: 'Developer',
-        allocation: '19 Man-Days',
-        responsibility: 'Frontend, backend, and testing.'
+        "name": "Natheesan",
+        "role": "Developer",
+        "allocation": "19 Man-Days",
+        "responsibility": "Frontend, backend, and testing."
       }
     ],
-    milestones: [
-      { name: 'Slip Allocation Module', status: 'COMPLETED', position: 'Live' },
-      { name: 'Boat Launch Queue Engine', status: 'COMPLETED', position: 'Live' },
-      { name: 'Customer Invoicing', status: 'COMPLETED', position: 'Live' },
-      { name: 'Commercial Handover', status: 'COMPLETED', position: 'Signoff' }
-    ],
-    selectedWeekIndex: 0,
-    weeks: [
+    "milestones": [
       {
-        weekNumber: 1,
-        weekLabel: 'Week 1',
-        weekEnding: '4 Sep 2026',
-        status: 'COMPLETED',
-        statusClass: 'blue',
-        manDays: '120 Days',
-        consumed: '120 Consumed (100%)',
-        completedTasks: [
-          'Complete slip management modules delivered',
-          'Launch queue engine active in production',
-          'Customer invoicing and billing gateway verified'
-        ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'Maintenance SLA monitoring',
-          'Final client operational handover'
-        ],
-        futureTasks: [
-          'Annual support warranty coverage',
-          'Phase 2 mobile app roadmap'
-        ],
-        keyInsight: 'Product fully completed on schedule and approved for commercial operations.',
-        weeklyUrl: 'Incubator Weekly update/Watercraft_Visibility_Card_Final_Compact_BlackBackground.html',
-        scopeUrl: 'scope document/watercraft.html'
+        "name": "Slip Allocation Module",
+        "status": "COMPLETED",
+        "position": "Live"
+      },
+      {
+        "name": "Boat Launch Queue Engine",
+        "status": "COMPLETED",
+        "position": "Live"
+      },
+      {
+        "name": "Customer Invoicing",
+        "status": "COMPLETED",
+        "position": "Live"
+      },
+      {
+        "name": "Commercial Handover",
+        "status": "COMPLETED",
+        "position": "Signoff"
       }
-    ]
+    ],
+    "selectedWeekIndex": 0,
+    "weeks": [
+      {
+        "weekNumber": 1,
+        "weekLabel": "Week 1",
+        "weekEnding": "4 Sep 2026",
+        "status": "COMPLETED",
+        "statusClass": "blue",
+        "manDays": "120 Days",
+        "consumed": "120 Consumed (100%)",
+        "completedTasks": [
+          "Complete slip management modules delivered",
+          "Launch queue engine active in production",
+          "Customer invoicing and billing gateway verified"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Maintenance SLA monitoring",
+          "Final client operational handover"
+        ],
+        "futureTasks": [
+          "Annual support warranty coverage",
+          "Phase 2 mobile app roadmap"
+        ],
+        "keyInsight": "Product fully completed on schedule and approved for commercial operations.",
+        "weeklyUrl": "Incubator Weekly update/Watercraft_Visibility_Card_Final_Compact_BlackBackground.html",
+        "scopeUrl": "scope document/watercraft.html",
+        "initialReleaseDate": "04 Sep 2026",
+        "lastWeekTargetDate": "04 Sep 2026",
+        "targetReleaseDate": "04 Sep 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Completed on schedule with zero backlog.",
+        "screenUrl": "screens/watercraft_screens.html"
+      }
+    ],
+    "initialReleaseDate": "04 Sep 2026",
+    "lastWeekTargetDate": "04 Sep 2026",
+    "forecastExtension": "No Extension",
+    "extendedInWeek": "N/A",
+    "extensionReason": "Product fully completed on schedule and approved for commercial operations.",
+    "screenUrl": "screens/watercraft_screens.html"
   },
   {
-    id: 'nsw-sports',
-    icon: '🏆',
-    name: 'NSW Sports',
-    company: 'UNICOM TIC INCUBATOR',
-    release: 'UI Migration — Complete',
-    targetReleaseDate: '18 Sep 2026',
-    originalAllocation: 40,
-    forecastTotal: 40,
-    overBudget: false,
-    leads: 'Saif / Abitha',
-    description: 'Sports event and school camp booking management portal, program scheduling, and voucher redemption.',
-    highlights: 'School Camp Booking Wizard, Programs & Activities, Voucher Management. Scope & USP: Update Soon.',
-    resources: [
+    "id": "nsw-sports",
+    "icon": "🏆",
+    "name": "NSW Sports",
+    "company": "UNICOM TIC INCUBATOR",
+    "release": "UI Migration — Complete",
+    "targetReleaseDate": "16 Oct 2026",
+    "originalAllocation": 40,
+    "forecastTotal": 40,
+    "overBudget": false,
+    "leads": "Saif / Abitha",
+    "description": "Sports event and school camp booking management portal, program scheduling, and voucher redemption.",
+    "highlights": "School Camp Booking Wizard, Programs & Activities, Voucher Management. Scope & USP: Update Soon.",
+    "resources": [
       {
-        name: 'Saif',
-        role: 'Team Lead',
-        allocation: '0 Man-Days',
-        responsibility: 'Leadership, architecture, development, integration, and testing.'
+        "name": "Saif",
+        "role": "Team Lead",
+        "allocation": "0 Man-Days",
+        "responsibility": "Leadership, architecture, development, integration, and testing."
       },
       {
-        name: 'Abitha',
-        role: 'Coordinator',
-        allocation: '5 Man-Days',
-        responsibility: 'Coordination, documentation, tracking, development, and testing support.'
+        "name": "Abitha",
+        "role": "Coordinator",
+        "allocation": "5 Man-Days",
+        "responsibility": "Coordination, documentation, tracking, development, and testing support."
       },
       {
-        name: 'Kunasika',
-        role: 'Developer',
-        allocation: '5 Man-Days',
-        responsibility: 'Frontend, backend, integration, and testing.'
+        "name": "Kunasika",
+        "role": "Developer",
+        "allocation": "5 Man-Days",
+        "responsibility": "Frontend, backend, integration, and testing."
       },
       {
-        name: 'Lavanya',
-        role: 'Developer',
-        allocation: '5 Man-Days',
-        responsibility: 'Frontend, backend, integration, and testing.'
+        "name": "Lavanya",
+        "role": "Developer",
+        "allocation": "5 Man-Days",
+        "responsibility": "Frontend, backend, integration, and testing."
       },
       {
-        name: 'Natheesan',
-        role: 'Developer',
-        allocation: '5 Man-Days',
-        responsibility: 'Frontend, backend, integration, and testing.'
+        "name": "Natheesan",
+        "role": "Developer",
+        "allocation": "5 Man-Days",
+        "responsibility": "Frontend, backend, integration, and testing."
       }
     ],
-    milestones: [
-      { name: 'Camp Booking Wizard', status: 'COMPLETED', position: 'Live' },
-      { name: 'Voucher Redemption Flow', status: 'COMPLETED', position: 'Live' },
-      { name: 'Mobile Layout Polish', status: 'COMPLETED', position: 'Verified' },
-      { name: 'Production Cutover', status: 'COMPLETED', position: 'Done' }
-    ],
-    selectedWeekIndex: 0,
-    weeks: [
+    "milestones": [
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2',
-        weekEnding: '18 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '40 Hours',
-        consumed: '40 Consumed (100%)',
-        completedTasks: [
-          'Booking wizard UI overhaul completed',
-          'Active Kids voucher redemption flow tested',
-          'Mobile responsive layout certified'
-        ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'Final user acceptance testing',
-          'Admin reporting dashboard polish'
-        ],
-        futureTasks: [
-          'Production rollout',
-          'Marketing launch alignment'
-        ],
-        keyInsight: 'UI migration phase successfully completed ahead of schedule with 100% test coverage.',
-        weeklyUrl: 'Incubator Weekly update/NSW_18.09.2026.html',
-        scopeUrl: 'scope document/nsw_sports_scope_usp.html'
+        "name": "Camp Booking Wizard",
+        "status": "COMPLETED",
+        "position": "Live"
       },
       {
-        weekNumber: 1,
-        weekLabel: 'Week 1',
-        weekEnding: '11 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '40 Hours',
-        consumed: '28 Consumed (70%)',
-        completedTasks: [
-          'Camp booking wizard redesign drafted',
-          'Design tokens aligned with NSW guidelines'
-        ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'Active Kids voucher validation engine',
-          'Mobile layout responsiveness'
-        ],
-        futureTasks: [
-          'Final UAT signoff'
-        ],
-        keyInsight: 'UI modernization proceeding smoothly with strong stakeholder feedback.',
-        weeklyUrl: 'Incubator Weekly update/nsw-1st-week-update.html',
-        scopeUrl: 'scope document/nsw_sports_scope_usp.html'
+        "name": "Voucher Redemption Flow",
+        "status": "COMPLETED",
+        "position": "Live"
+      },
+      {
+        "name": "Mobile Layout Polish",
+        "status": "COMPLETED",
+        "position": "Verified"
+      },
+      {
+        "name": "Production Cutover",
+        "status": "COMPLETED",
+        "position": "Done"
       }
-    ]
+    ],
+    "selectedWeekIndex": 0,
+    "weeks": [
+      {
+        "weekNumber": 4,
+        "weekLabel": "Week 4",
+        "weekEnding": "09 Oct 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "20 Man-Days",
+        "consumed": "20 Consumed (100%)",
+        "completedTasks": [
+          "2nd planned demo conducted on 06 October 2026 with client stakeholders",
+          "06 October 2nd demo completed successfully with positive feedback",
+          "Completed all UI changes identified during demo",
+          "Completed all dataset and data setup changes",
+          "All Week 41 allocated tasks completed with zero pending items"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Final client acceptance verification",
+          "Production cutover preparation"
+        ],
+        "futureTasks": [
+          "Production launch signoff"
+        ],
+        "keyInsight": "06 October 2nd demo completed successfully. 20 of 20 man-days consumed with 100% completion.",
+        "weeklyUrl": "Incubator Weekly update/NSW_09.10.2026.html",
+        "scopeUrl": "scope document/nsw_sports_scope_usp.html",
+        "initialReleaseDate": "18 Sep 2026",
+        "lastWeekTargetDate": "02 Oct 2026",
+        "targetReleaseDate": "16 Oct 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Demo feedback implemented on schedule.",
+        "screenUrl": "screens/nsw_sports_screens.html"
+      },
+      {
+        "weekNumber": 3,
+        "weekLabel": "Week 3",
+        "weekEnding": "02 Oct 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "10 Man-Days",
+        "consumed": "10 Consumed (100%)",
+        "completedTasks": [
+          "Conducted planned demo covering work up to 28 September 2026",
+          "Completed all UI changes identified during the demo",
+          "Completed all dataset and data setup changes identified during the demo",
+          "Completed remaining backend/API work for the week",
+          "All tasks completed with zero pending items"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "2nd demo preparation for 06 October 2026",
+          "Stakeholder walkthrough"
+        ],
+        "futureTasks": [
+          "2nd demo feedback implementation"
+        ],
+        "keyInsight": "28 September demo completed; all Week 40 follow-up work completed on track.",
+        "weeklyUrl": "Incubator Weekly update/NSW_02.10.2026.html",
+        "scopeUrl": "scope document/nsw_sports_scope_usp.html",
+        "initialReleaseDate": "18 Sep 2026",
+        "lastWeekTargetDate": "18 Sep 2026",
+        "targetReleaseDate": "06 Oct 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Demo completed on schedule.",
+        "screenUrl": "screens/nsw_sports_screens.html"
+      },
+      {
+        "weekNumber": 2,
+        "weekLabel": "Week 2",
+        "weekEnding": "18 Sep 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "40 Hours",
+        "consumed": "40 Consumed (100%)",
+        "completedTasks": [
+          "Booking wizard UI overhaul completed",
+          "Active Kids voucher redemption flow tested",
+          "Mobile responsive layout certified"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Final user acceptance testing",
+          "Admin reporting dashboard polish"
+        ],
+        "futureTasks": [
+          "Production rollout",
+          "Marketing launch alignment"
+        ],
+        "keyInsight": "UI migration phase successfully completed ahead of schedule with 100% test coverage.",
+        "weeklyUrl": "Incubator Weekly update/NSW_18.09.2026.html",
+        "scopeUrl": "scope document/nsw_sports_scope_usp.html",
+        "initialReleaseDate": "18 Sep 2026",
+        "lastWeekTargetDate": "18 Sep 2026",
+        "targetReleaseDate": "18 Sep 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "UI migration completed on schedule.",
+        "screenUrl": "screens/nsw_sports_screens.html"
+      },
+      {
+        "weekNumber": 1,
+        "weekLabel": "Week 1",
+        "weekEnding": "11 Sep 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "40 Hours",
+        "consumed": "28 Consumed (70%)",
+        "completedTasks": [
+          "Camp booking wizard redesign drafted",
+          "Design tokens aligned with NSW guidelines"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Active Kids voucher validation engine",
+          "Mobile layout responsiveness"
+        ],
+        "futureTasks": [
+          "Final UAT signoff"
+        ],
+        "keyInsight": "UI modernization proceeding smoothly with strong stakeholder feedback.",
+        "weeklyUrl": "Incubator Weekly update/nsw-1st-week-update.html",
+        "scopeUrl": "scope document/nsw_sports_scope_usp.html",
+        "initialReleaseDate": "18 Sep 2026",
+        "lastWeekTargetDate": "18 Sep 2026",
+        "targetReleaseDate": "18 Sep 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "UI modernization proceeding smoothly with strong stakeholder feedback.",
+        "screenUrl": "screens/nsw_sports_screens.html"
+      }
+    ],
+    "initialReleaseDate": "18 Sep 2026",
+    "lastWeekTargetDate": "18 Sep 2026",
+    "forecastExtension": "No Extension",
+    "extendedInWeek": "N/A",
+    "extensionReason": "UI migration phase successfully completed ahead of schedule with 100% test coverage.",
+    "screenUrl": "screens/nsw_sports_screens.html"
   },
   {
-    id: 'marketing-team',
-    icon: '📢',
-    name: 'Marketing Team',
-    company: 'UNICOM TIC INCUBATOR',
-    release: 'Creative & Digital Campaigns',
-    targetReleaseDate: '30 Oct 2026',
-    originalAllocation: 30,
-    forecastTotal: 30,
-    overBudget: false,
-    leads: 'Marketing Team',
-    description: 'Multichannel digital marketing, branding, video production, and social media campaigns for incubator ventures.',
-    highlights: 'Promotional videos, Brand identity kits, Social media reels, Investor pitch deck assets.',
-    resources: [
+    "id": "marketing-team",
+    "icon": "📢",
+    "name": "Marketing Team",
+    "company": "UNICOM TIC INCUBATOR",
+    "release": "Creative & Digital Campaigns",
+    "targetReleaseDate": "30 Oct 2026",
+    "originalAllocation": 30,
+    "forecastTotal": 30,
+    "overBudget": false,
+    "leads": "Marketing Team",
+    "description": "Multichannel digital marketing, branding, video production, and social media campaigns for incubator ventures.",
+    "highlights": "Promotional videos, Brand identity kits, Social media reels, Investor pitch deck assets.",
+    "resources": [
       {
-        name: 'Marketing Team',
-        role: 'Creative & Digital Media Lead',
-        allocation: '30 Man-Days',
-        responsibility: 'Video editing, motion graphics, campaign posters, social distribution, and AI marketing research.'
+        "name": "Marketing Team",
+        "role": "Creative & Digital Media Lead",
+        "allocation": "30 Man-Days",
+        "responsibility": "Video editing, motion graphics, campaign posters, social distribution, and AI marketing research."
       }
     ],
-    milestones: [
-      { name: 'Venture Showcase Videos', status: 'IN PROGRESS', position: '18 Delivered' },
-      { name: 'Conference Collateral', status: 'COMPLETED', position: '3 Posters Approved' },
-      { name: 'Social Media Launch', status: 'IN PROGRESS', position: 'Active' },
-      { name: 'Investor Pitch Decks', status: 'TARGET', position: 'October' }
-    ],
-    selectedWeekIndex: 0,
-    weeks: [
+    "milestones": [
       {
-        weekNumber: 2,
-        weekLabel: 'Week 2',
-        weekEnding: '20 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '22 Videos • 3 Posters',
-        consumed: '18 Delivered (82%)',
-        completedTasks: [
-          '18 campaign video shorts produced',
-          '3 conference posters approved',
-          'Social media engagement analytics setup'
-        ],
-        uncompletedTasks: [
-          '4 product demo video voiceovers pending final script signoff'
-        ],
-        inProgressTasks: [
-          'Investor showcase presentation reel',
-          'Venture profile brochures',
-          'LinkedIn campaign optimization'
-        ],
-        futureTasks: [
-          'Q4 Venture demo day promotional kit',
-          'Media outreach package'
-        ],
-        keyInsight: 'Content production on track; 18 video assets delivered with high engagement on social channels.',
-        weeklyUrl: 'Incubator Weekly update/20.09.2026 report.html',
-        scopeUrl: 'scope document/marketing_team_scope_usp.html'
+        "name": "Venture Showcase Videos",
+        "status": "IN PROGRESS",
+        "position": "18 Delivered"
       },
       {
-        weekNumber: 1,
-        weekLabel: 'Week 1',
-        weekEnding: '15 Sep 2026',
-        status: 'ON TRACK',
-        statusClass: 'green',
-        manDays: '15 Videos • 2 Posters',
-        consumed: '10 Delivered (67%)',
-        completedTasks: [
-          'Brand identity guidelines established',
-          '10 social media reels drafted'
-        ],
-        uncompletedTasks: [],
-        inProgressTasks: [
-          'Venture video production',
-          'Conference posters design'
-        ],
-        futureTasks: [
-          'Demo day video reel'
-        ],
-        keyInsight: 'Creative campaigns initialized with positive feedback on initial assets.',
-        weeklyUrl: 'Incubator Weekly update/marketing_team last week 15.09.2026.html',
-        scopeUrl: 'scope document/marketing_team_scope_usp.html'
+        "name": "Conference Collateral",
+        "status": "COMPLETED",
+        "position": "3 Posters Approved"
+      },
+      {
+        "name": "Social Media Launch",
+        "status": "IN PROGRESS",
+        "position": "Active"
+      },
+      {
+        "name": "Investor Pitch Decks",
+        "status": "TARGET",
+        "position": "October"
       }
-    ]
+    ],
+    "selectedWeekIndex": 0,
+    "weeks": [
+      {
+        "weekNumber": 2,
+        "weekLabel": "Week 2",
+        "weekEnding": "20 Sep 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "22 Videos • 3 Posters",
+        "consumed": "18 Delivered (82%)",
+        "completedTasks": [
+          "18 campaign video shorts produced",
+          "3 conference posters approved",
+          "Social media engagement analytics setup"
+        ],
+        "uncompletedTasks": [
+          "4 product demo video voiceovers pending final script signoff"
+        ],
+        "inProgressTasks": [
+          "Investor showcase presentation reel",
+          "Venture profile brochures",
+          "LinkedIn campaign optimization"
+        ],
+        "futureTasks": [
+          "Q4 Venture demo day promotional kit",
+          "Media outreach package"
+        ],
+        "keyInsight": "Content production on track; 18 video assets delivered with high engagement on social channels.",
+        "weeklyUrl": "Incubator Weekly update/20.09.2026 report.html",
+        "scopeUrl": "scope document/marketing_team_scope_usp.html",
+        "initialReleaseDate": "30 Oct 2026",
+        "lastWeekTargetDate": "30 Oct 2026",
+        "targetReleaseDate": "30 Oct 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "18 video assets delivered on schedule.",
+        "screenUrl": "screens/marketing_screens.html"
+      },
+      {
+        "weekNumber": 1,
+        "weekLabel": "Week 1",
+        "weekEnding": "15 Sep 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "15 Videos • 2 Posters",
+        "consumed": "10 Delivered (67%)",
+        "completedTasks": [
+          "Brand identity guidelines established",
+          "10 social media reels drafted"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Venture video production",
+          "Conference posters design"
+        ],
+        "futureTasks": [
+          "Demo day video reel"
+        ],
+        "keyInsight": "Creative campaigns initialized with positive feedback on initial assets.",
+        "weeklyUrl": "Incubator Weekly update/marketing_team last week 15.09.2026.html",
+        "scopeUrl": "scope document/marketing_team_scope_usp.html",
+        "initialReleaseDate": "30 Oct 2026",
+        "lastWeekTargetDate": "30 Oct 2026",
+        "targetReleaseDate": "30 Oct 2026",
+        "forecastExtension": "No Extension",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Creative campaigns initialized with positive feedback on initial assets.",
+        "screenUrl": "screens/marketing_screens.html"
+      }
+    ],
+    "initialReleaseDate": "30 Oct 2026",
+    "lastWeekTargetDate": "30 Oct 2026",
+    "forecastExtension": "No Extension",
+    "extendedInWeek": "N/A",
+    "extensionReason": "Content production on track; 18 video assets delivered with high engagement on social channels.",
+    "screenUrl": "screens/marketing_screens.html"
   }
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v12_case_fixed';
+const STORAGE_KEY = 'portal_projects_exec_v17_governance_tabs';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -961,7 +1723,8 @@ try {
     'portal_projects_exec_v8_compact',
     'portal_projects_exec_v9_team_positions',
     'portal_projects_exec_v10_stacked_teams',
-    'portal_projects_exec_v11_greyhound_pristine'
+    'portal_projects_exec_v11_greyhound_pristine',
+    'portal_projects_exec_v12_case_fixed'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 
@@ -986,8 +1749,15 @@ if (!PROJECTS || !Array.isArray(PROJECTS) || PROJECTS.length < 8) {
       if (!p.icon) p.icon = def.icon;
       p.resources = JSON.parse(JSON.stringify(def.resources));
       p.milestones = JSON.parse(JSON.stringify(def.milestones));
-      if (def.weeks.length > (p.weeks ? p.weeks.length : 0)) {
-        p.weeks = JSON.parse(JSON.stringify(def.weeks));
+      p.initialReleaseDate = def.initialReleaseDate;
+      p.lastWeekTargetDate = def.lastWeekTargetDate;
+      p.targetReleaseDate = def.targetReleaseDate;
+      p.forecastExtension = def.forecastExtension;
+      p.extendedInWeek = def.extendedInWeek;
+      p.extensionReason = def.extensionReason;
+      p.screenUrl = def.screenUrl;
+      p.weeks = JSON.parse(JSON.stringify(def.weeks));
+      if (p.selectedWeekIndex === undefined || p.selectedWeekIndex >= p.weeks.length) {
         p.selectedWeekIndex = def.selectedWeekIndex || 0;
       }
     } else {
@@ -1014,7 +1784,14 @@ function parseManDays(val, fallback = 0) {
 
 // Compute high-level metrics for compact cards & modal (Requirements 2 & 3)
 function getProjectMetrics(p, curWeek) {
-  const releaseDate = p.targetReleaseDate || curWeek.targetReleaseDate || '15 Oct 2026';
+  const releaseDate = curWeek.targetReleaseDate || p.targetReleaseDate || '15 Oct 2026';
+  const initialReleaseDate = curWeek.initialReleaseDate || p.initialReleaseDate || (p.originalPlanDates ? p.originalPlanDates.split('–')[1]?.trim() : '2 Sep 2026') || '2 Sep 2026';
+  const lastWeekReleaseDate = curWeek.lastWeekTargetDate || p.lastWeekTargetDate || (p.weeks[1] ? p.weeks[1].targetReleaseDate : initialReleaseDate);
+  const extensionText = curWeek.forecastExtension || p.forecastExtension || '';
+  const isExtended = !!(extensionText && !extensionText.toLowerCase().includes('no extension') && !extensionText.toLowerCase().includes('0 day') && !extensionText.toLowerCase().includes('on track'));
+  const extendedInWeek = curWeek.extendedInWeek || p.extendedInWeek || (isExtended ? ('Week ' + (curWeek.weekNumber || 1)) : 'N/A');
+  const extensionReason = curWeek.extensionReason || p.extensionReason || (isExtended ? (curWeek.keyInsight || 'Milestone verification required schedule adjustment.') : 'Milestones tracking on schedule.');
+  const screenUrl = curWeek.screenUrl || p.screenUrl || (`screens/${p.id.replace(/-/g, '_')}_screens.html`);
   
   // Allocated (Man-Days)
   const allocatedNum = parseManDays(p.originalAllocation || p.forecastTotal || curWeek.manDays, 88);
@@ -1051,6 +1828,13 @@ function getProjectMetrics(p, curWeek) {
 
   return {
     releaseDate,
+    initialReleaseDate,
+    lastWeekReleaseDate,
+    extensionText,
+    isExtended,
+    extendedInWeek,
+    extensionReason,
+    screenUrl,
     allocatedNum,
     allocatedText,
     burntNum,
@@ -1147,9 +1931,9 @@ function renderProjects(filterText = '', filterStatus = 'all') {
 
     // Team members formatted (stacked line by line)
     const teamMembersListHtml = (p.resources && p.resources.length > 0)
-      ? p.resources.map((r, i) => `
+      ? p.resources.map(r => `
           <div class="team-member-row">
-            <strong>${r.name}</strong> (${r.role} &bull; ${r.allocation})${i < p.resources.length - 1 ? ',' : ''}
+            <strong>${r.name}</strong> (${r.role} &bull; ${r.allocation})
           </div>
         `).join('')
       : `<div class="team-member-row"><strong>${p.leads || 'Team Lead'}</strong> (${metrics.allocatedText})</div>`;
@@ -1187,10 +1971,27 @@ function renderProjects(filterText = '', filterStatus = 'all') {
           </span>
         </div>
 
-        <!-- Release Date & Extension Box (Image 1) -->
+        <!-- Release Date & Extension Box (Image 1 - Enhanced with 3 Target Dates & Extension Reason) -->
         <div class="card-release-box">
-          <span class="release-text">🎯 Release Date: <strong>${metrics.releaseDate}</strong></span>
-          ${p.forecastExtension ? `<span class="extension-pill">${p.forecastExtension}</span>` : ''}
+          <div class="card-release-top">
+            <span class="release-text">🎯 Release Date: <strong>${metrics.releaseDate}</strong></span>
+            ${metrics.isExtended ? `<span class="extension-pill">${metrics.extensionText}</span>` : `<span class="extension-pill ontrack">On Schedule</span>`}
+          </div>
+          <div class="card-release-subdates">
+            <span class="rd-chip">🏁 Start Target: <strong>${metrics.initialReleaseDate}</strong></span>
+            <span class="rd-sep">•</span>
+            <span class="rd-chip">⏪ Last Week: <strong>${metrics.lastWeekReleaseDate}</strong></span>
+            <span class="rd-sep">•</span>
+            <span class="rd-chip highlight">🎯 Current: <strong>${metrics.releaseDate}</strong></span>
+          </div>
+          ${(metrics.isExtended && metrics.extensionReason) ? `
+            <div class="card-release-reason">
+              <span class="reason-icon">⚠️</span>
+              <div class="reason-content">
+                <strong>Extension Reason (${metrics.extendedInWeek}):</strong> ${metrics.extensionReason}
+              </div>
+            </div>
+          ` : ''}
         </div>
       </div>
 
@@ -1270,6 +2071,10 @@ function renderProjects(filterText = '', filterStatus = 'all') {
           <button class="btn-action-secondary" onclick="openViewer('${p.id}', 'scope')">
             <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             <span>Scope &amp; USP</span>
+          </button>
+          <button class="btn-action-secondary btn-screen-trigger" onclick="openViewer('${p.id}', 'screens')" title="View Screen HTML files supplied by dev team">
+            <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>Screen HTML</span>
           </button>
         </div>
         <div class="footer-right-buttons">
@@ -1403,14 +2208,16 @@ function renderWorkstreamsModalContent() {
         
         <!-- Summary Card (Image 2) -->
         <div class="ws-summary-card">
+          ${(curWeek.status && curWeek.status !== 'ON TRACK') ? `
           <div>
-            <span class="badge-status-pill ${curWeek.statusClass || 'green'}">
-              <span class="dot"></span> ${curWeek.status || 'ON TRACK'}
+            <span class="badge-status-pill ${curWeek.statusClass || 'amber'}">
+              <span class="dot"></span> ${curWeek.status}
             </span>
           </div>
+          ` : ''}
           <div>
             Target Release: <strong>${metrics.releaseDate}</strong>
-            ${p.forecastExtension ? `<span class="extension-pill" style="margin-left:6px;">${p.forecastExtension}</span>` : ''}
+            ${metrics.isExtended ? `<span class="extension-pill" style="margin-left:6px;">${metrics.extensionText}</span>` : ''}
           </div>
           <div>
             Effort: <strong>${metrics.burntNum} / ${metrics.forecastTotalNum} Man-Days</strong>
@@ -1418,41 +2225,119 @@ function renderWorkstreamsModalContent() {
           <div>
             Variance: <strong style="color:${metrics.isDelay ? '#dc2626' : '#16a34a'};">${metrics.varianceText}</strong>
           </div>
-          <div class="ws-team-col">
-            <span style="font-weight:700; color:#1e293b; display:inline-flex; align-items:center; gap:4px; margin-top:1px;">👥 Team:</span>
-            <div class="ws-team-list">
+          <div class="ws-team-col" style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
+            <span style="font-weight:700; color:#1e293b; display:inline-flex; align-items:center; gap:4px;">👥 Team:</span>
+            <div class="ws-team-list" style="display:flex; flex-direction:column; gap:4px; padding-left:2px;">
               ${(p.resources && p.resources.length > 0)
-                ? p.resources.map((r, i) => `
-                    <div class="ws-team-row">
-                      <strong>${r.name}</strong> (${r.role ? r.role + ' &bull; ' : ''}${r.allocation})${i < p.resources.length - 1 ? ',' : ''}
+                ? p.resources.map(r => `
+                    <div class="ws-team-row" style="display:block; font-size:12px; line-height:1.45; color:#334155;">
+                      • <strong>${r.name}</strong> (${r.role ? r.role + ' &bull; ' : ''}${r.allocation})
                     </div>
                   `).join('')
-                : `<div class="ws-team-row"><strong>${p.leads || 'Team Lead'}</strong> (${metrics.allocatedText})</div>`}
+                : `<div class="ws-team-row" style="display:block; font-size:12px; line-height:1.45; color:#334155;"><strong>${p.leads || 'Team Lead'}</strong> (${metrics.allocatedText})</div>`}
             </div>
           </div>
         </div>
 
-        <!-- Executive Key Insight (Week X) Box (Image 2) -->
-        ${curWeek.keyInsight ? `
-          <div class="ws-insight-banner">
-            <span style="font-size:16px; flex-shrink:0;">💡</span>
-            <div>
-              <strong style="color:#166534; font-size:13px;">Executive Key Insight (Week ${curWeek.weekNumber || 1}):</strong>
-              <p style="margin:2px 0 0 0; color:#14532d; font-size:12.5px;">${curWeek.keyInsight}</p>
+        <!-- Target Release Date Governance & Extension Audit (Moved to TOP as requested) -->
+        <div class="ws-governance-card" style="margin-bottom: 20px;">
+          <div class="ws-governance-header">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:18px;">📅</span>
+              <div>
+                <h4 style="margin:0; font-size:14px; font-weight:800; color:#0f172a; text-transform:uppercase; letter-spacing:0.3px;">
+                  Target Release Date Governance &amp; Extension Audit
+                </h4>
+                <div style="font-size:11.5px; color:#64748b; margin-top:2px;">
+                  Tracking Kickoff Baseline vs. Weekly Commitments &amp; Root Cause Analysis
+                </div>
+              </div>
             </div>
+            <span class="extension-pill-large ${metrics.isExtended ? 'delay' : 'ontrack'}">
+              ${metrics.isExtended ? `⚠️ ${metrics.extensionText}` : '✓ On Schedule (No Extension)'}
+            </span>
           </div>
-        ` : ''}
 
-        <!-- Critical CEO Tracking Banner (Image 2) -->
-        ${hasBacklog ? `
-          <div class="ws-ceo-tracking-banner">
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-size:16px;">⚠️</span>
-              <span>Critical CEO Tracking: ${backlogTasks.length} backlog task(s) from past week were NOT completed and have rolled over!</span>
+          <!-- 3 Date Metrics Cards -->
+          <div class="gov-metrics-row" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="gov-metric-box">
+              <span class="gmb-lbl">📅 ESTIMATED DATE OF RELEASE</span>
+              <span class="gmb-val">${metrics.initialReleaseDate}</span>
+              <span class="gmb-sub">Kickoff Baseline Target</span>
             </div>
-            <span class="badge-incomplete-solid">${backlogTasks.length} (INCOMPLETE)</span>
+            <div class="gov-metric-box active">
+              <span class="gmb-lbl">🎯 CURRENT RELEASE DATE</span>
+              <span class="gmb-val text-primary" style="color:#0284c7;">${metrics.releaseDate}</span>
+              <span class="gmb-sub">Week ${curWeek.weekNumber || 1} Target Date</span>
+            </div>
+            <div class="gov-metric-box ${metrics.isExtended ? 'danger' : 'success'}">
+              <span class="gmb-lbl">⏱️ EXTENSION VARIANCE</span>
+              <span class="gmb-val" style="color:${metrics.isExtended ? '#dc2626' : '#16a34a'};">
+                ${metrics.isExtended ? metrics.extensionText : '0 Days'}
+              </span>
+              <span class="gmb-sub">${metrics.isExtended ? 'Extended in: ' + metrics.extendedInWeek : 'On Schedule'}</span>
+            </div>
           </div>
-        ` : ''}
+
+          <!-- Highlighted Extension Reason & Week Box -->
+          ${metrics.isExtended ? `
+            <div class="gov-reason-alert">
+              <div class="gov-reason-top">
+                <div style="display:flex; align-items:center; gap:6px;">
+                  <span style="font-size:14px;">⚠️</span>
+                  <strong style="color:#991b1b; font-size:12.5px; text-transform:uppercase;">Why Was The Release Date Extended?</strong>
+                </div>
+                <span class="gov-week-badge">Extended in: <strong>${metrics.extendedInWeek}</strong></span>
+              </div>
+              <div class="gov-reason-content" style="margin-top:6px;">
+                <p style="margin:0; color:#7f1d1d; font-size:12.5px; line-height:1.5;">
+                  <strong>Root Cause / Technical Reason:</strong> ${metrics.extensionReason}
+                </p>
+              </div>
+            </div>
+          ` : `
+            <div class="gov-ontrack-alert">
+              <span style="font-size:14px; color:#16a34a;">✓</span>
+              <span style="font-size:12.5px; color:#14532d;"><strong>On Schedule:</strong> Project milestones are tracking against the baseline target with no extension requested.</span>
+            </div>
+          `}
+
+          <!-- Week-by-Week Target Date Evolution Table -->
+          <div class="gov-table-container">
+            <table class="gov-table">
+              <thead>
+                <tr>
+                  <th>Reporting Week</th>
+                  <th>Week Ending</th>
+                  <th>Promised Target Date</th>
+                  <th>Extension Variance</th>
+                  <th>Which Week Extended</th>
+                  <th>Reason for Extension / Progress Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${p.weeks.map(w => {
+                  const wIsExtended = !!(w.forecastExtension && !w.forecastExtension.toLowerCase().includes('no extension') && !w.forecastExtension.toLowerCase().includes('0 day') && !w.forecastExtension.toLowerCase().includes('on track'));
+                  return `
+                    <tr class="${w.weekNumber === curWeek.weekNumber ? 'current-week-row' : ''}">
+                      <td><strong>Week ${w.weekNumber}</strong> ${w.weekNumber === curWeek.weekNumber ? '<span class="chip-current">Selected</span>' : ''}</td>
+                      <td>${w.weekEnding}</td>
+                      <td><strong>${w.targetReleaseDate || metrics.releaseDate}</strong></td>
+                      <td>
+                        <span class="table-ext-badge ${wIsExtended ? 'ext-delayed' : 'ext-ontrack'}">
+                          ${w.forecastExtension || (wIsExtended ? metrics.extensionText : 'No Extension')}
+                        </span>
+                      </td>
+                      <td>${w.extendedInWeek || (wIsExtended ? ('Week ' + w.weekNumber) : '—')}</td>
+                      <td class="table-reason-cell">${w.extensionReason || (wIsExtended ? metrics.extensionReason : 'Milestones tracking on schedule.')}</td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
 
         <!-- 4-Columns Grid (Image 2) -->
         <div class="ws-grid-4cols">
@@ -1521,65 +2406,74 @@ function renderWorkstreamsModalContent() {
           </div>
         </div>
 
-        <!-- Baseline Milestones & Governance (Image 2) -->
-        <div class="ws-milestones-card">
-          <div class="ws-milestones-title">
-            <span>🏆 BASELINE MILESTONES &amp; GOVERNANCE</span>
-          </div>
-          <div class="ws-milestones-row">
-            <strong style="font-size:12px; color:#475569;">MILESTONES:</strong>
-            ${milestonesList.map(m => `
-              <span class="milestone-badge ${m.status === 'COMPLETED' ? 'done' : 'progress'}">
-                ${m.status === 'COMPLETED' ? '✓' : '⌛'} ${m.name}: <strong>${m.position || m.status}</strong>
-              </span>
-            `).join('')}
-          </div>
-        </div>
-
-        <!-- Key Attention / Risk (Image 2) -->
-        ${p.risk ? `
-          <div class="ws-risk-banner">
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span style="font-size:16px;">⚠️</span>
-              <span><strong>Key Attention:</strong> ${p.risk.issue} &bull; <em>${p.risk.mitigation}</em></span>
-            </div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <span class="risk-level-tag">${p.risk.severity}</span>
-              <span class="risk-escalation-tag">✓ Escalation: ${p.escalation || 'No critical escalation identified.'}</span>
-            </div>
-          </div>
-        ` : ''}
-
       </div>
     </div>
   `;
 }
 
-// Export Workstreams Modal view as JPG
+// Export Workstreams Modal view as JPG (Guaranteed 100% Full-View with Zero Bottom Clipping)
 function exportWorkstreamsJpg() {
   const target = document.getElementById('wsModalBody');
   if (!target || typeof html2canvas !== 'function') {
     showPortalToast('Exporter not ready.', 'warning');
     return;
   }
-  showPortalToast('Rendering Workstreams JPG...', 'loading');
+  showPortalToast('Rendering Workstreams JPG (Full View)...', 'loading');
+
+  const prevScrollTop = target.scrollTop;
+  target.scrollTop = 0;
+
+  const targetWidth = target.scrollWidth || target.offsetWidth || 1200;
+  const targetHeight = target.scrollHeight;
+
   html2canvas(target, {
     scale: 2,
     useCORS: true,
-    backgroundColor: '#f8fafc'
+    backgroundColor: '#f8fafc',
+    width: targetWidth,
+    height: targetHeight,
+    windowWidth: targetWidth,
+    windowHeight: targetHeight + 200,
+    scrollY: 0,
+    scrollX: 0,
+    onclone: (clonedDoc) => {
+      const clonedTarget = clonedDoc.getElementById('wsModalBody');
+      if (clonedTarget) {
+        clonedTarget.style.overflow = 'visible';
+        clonedTarget.style.height = 'auto';
+        clonedTarget.style.maxHeight = 'none';
+        clonedTarget.style.position = 'static';
+        clonedTarget.style.paddingBottom = '32px';
+      }
+      const clonedModalContent = clonedDoc.querySelector('#workstreamsModal .modal-content');
+      if (clonedModalContent) {
+        clonedModalContent.style.height = 'auto';
+        clonedModalContent.style.maxHeight = 'none';
+        clonedModalContent.style.overflow = 'visible';
+      }
+      const clonedModalBackdrop = clonedDoc.getElementById('workstreamsModal');
+      if (clonedModalBackdrop) {
+        clonedModalBackdrop.style.overflow = 'visible';
+        clonedModalBackdrop.style.height = 'auto';
+        clonedModalBackdrop.style.position = 'static';
+      }
+    }
   }).then(canvas => {
+    target.scrollTop = prevScrollTop;
     const link = document.createElement('a');
     const safeName = (activeWsProject?.name || 'Project').replace(/[^a-zA-Z0-9]/g, '_');
     link.download = `${safeName}_Workstreams_Breakdown.jpg`;
     link.href = canvas.toDataURL('image/jpeg', 0.95);
     link.click();
-    showPortalToast('✓ Workstreams JPG exported successfully!', 'success');
+    showPortalToast('✓ Workstreams JPG exported successfully (Full View)!', 'success');
   }).catch(err => {
+    target.scrollTop = prevScrollTop;
     console.error('Workstreams export error:', err);
     showPortalToast('Export failed.', 'error');
   });
 }
 window.exportWorkstreamsJpg = exportWorkstreamsJpg;
+
 
 // ==========================================================================
 // VIEWER MODAL & EMBEDDED IFRAME ENGINE (Scope Docs & Weekly Cards)
@@ -1633,14 +2527,14 @@ function switchTab(tab) {
 
 function updateModalTabs() {
   const weeklyTab = document.getElementById('tabWeekly');
+  const govTab = document.getElementById('tabGovernance');
   const scopeTab = document.getElementById('tabScope');
-  if (currentTab === 'weekly') {
-    if (weeklyTab) weeklyTab.classList.add('active');
-    if (scopeTab) scopeTab.classList.remove('active');
-  } else {
-    if (weeklyTab) weeklyTab.classList.remove('active');
-    if (scopeTab) scopeTab.classList.add('active');
-  }
+  const screensTab = document.getElementById('tabScreens');
+
+  if (weeklyTab) weeklyTab.classList.toggle('active', currentTab === 'weekly');
+  if (govTab) govTab.classList.toggle('active', currentTab === 'governance');
+  if (scopeTab) scopeTab.classList.toggle('active', currentTab === 'scope');
+  if (screensTab) screensTab.classList.toggle('active', currentTab === 'screens');
 }
 
 function ensureExporterInFrame(frame) {
@@ -1666,7 +2560,14 @@ function loadIframe() {
   if (!frame || !activeProject) return;
 
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
-  const targetUrl = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
+  let targetUrl = curWeek.weeklyUrl;
+  if (currentTab === 'governance') {
+    targetUrl = curWeek.governanceUrl || curWeek.weeklyUrl;
+  } else if (currentTab === 'scope') {
+    targetUrl = curWeek.scopeUrl;
+  } else if (currentTab === 'screens') {
+    targetUrl = curWeek.screenUrl || activeProject.screenUrl || `screens/${activeProject.id.replace(/-/g, '_')}_screens.html`;
+  }
 
   frame.src = targetUrl;
   frame.onload = () => {
@@ -1759,7 +2660,10 @@ function triggerViewerPrint() {
 function openInNewTab() {
   if (!activeProject) return;
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
-  const url = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
+  let url = curWeek.weeklyUrl;
+  if (currentTab === 'governance') url = curWeek.governanceUrl || curWeek.weeklyUrl;
+  else if (currentTab === 'scope') url = curWeek.scopeUrl;
+  else if (currentTab === 'screens') url = curWeek.screenUrl || activeProject.screenUrl || `screens/${activeProject.id.replace(/-/g, '_')}_screens.html`;
   window.open(url, '_blank');
 }
 
@@ -1834,21 +2738,28 @@ function switchDetailTab(tab) {
 
 function updateDetailTabs() {
   const weeklyTab = document.getElementById('detailTabWeekly');
+  const govTab = document.getElementById('detailTabGovernance');
   const scopeTab = document.getElementById('detailTabScope');
-  if (currentTab === 'weekly') {
-    if (weeklyTab) weeklyTab.classList.add('active');
-    if (scopeTab) scopeTab.classList.remove('active');
-  } else {
-    if (weeklyTab) weeklyTab.classList.remove('active');
-    if (scopeTab) scopeTab.classList.add('active');
-  }
+  const screensTab = document.getElementById('detailTabScreens');
+
+  if (weeklyTab) weeklyTab.classList.toggle('active', currentTab === 'weekly');
+  if (govTab) govTab.classList.toggle('active', currentTab === 'governance');
+  if (scopeTab) scopeTab.classList.toggle('active', currentTab === 'scope');
+  if (screensTab) screensTab.classList.toggle('active', currentTab === 'screens');
 }
 
 function loadDetailFrame() {
   const frame = document.getElementById('detailFrame');
   if (!frame || !activeProject) return;
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
-  const targetUrl = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
+  let targetUrl = curWeek.weeklyUrl;
+  if (currentTab === 'governance') {
+    targetUrl = curWeek.governanceUrl || curWeek.weeklyUrl;
+  } else if (currentTab === 'scope') {
+    targetUrl = curWeek.scopeUrl;
+  } else if (currentTab === 'screens') {
+    targetUrl = curWeek.screenUrl || activeProject.screenUrl || `screens/${activeProject.id.replace(/-/g, '_')}_screens.html`;
+  }
   frame.src = targetUrl;
 }
 
@@ -1865,7 +2776,10 @@ function triggerDetailExport() {
 function openDetailInNewTab() {
   if (!activeProject) return;
   const curWeek = activeProject.weeks[activeProject.selectedWeekIndex || 0] || activeProject.weeks[0];
-  const url = (currentTab === 'weekly') ? curWeek.weeklyUrl : curWeek.scopeUrl;
+  let url = curWeek.weeklyUrl;
+  if (currentTab === 'governance') url = curWeek.governanceUrl || curWeek.weeklyUrl;
+  else if (currentTab === 'scope') url = curWeek.scopeUrl;
+  else if (currentTab === 'screens') url = curWeek.screenUrl || activeProject.screenUrl || `screens/${activeProject.id.replace(/-/g, '_')}_screens.html`;
   window.open(url, '_blank');
 }
 
@@ -1874,7 +2788,10 @@ function quickExportJpg(projectId, docType) {
   const project = PROJECTS.find(p => p.id === projectId);
   if (!project) return;
   const curWeek = project.weeks[project.selectedWeekIndex || 0] || project.weeks[0];
-  const url = (docType === 'scope') ? curWeek.scopeUrl : curWeek.weeklyUrl;
+  let url = curWeek.weeklyUrl;
+  if (docType === 'governance') url = curWeek.governanceUrl || curWeek.weeklyUrl;
+  else if (docType === 'scope') url = curWeek.scopeUrl;
+  else if (docType === 'screens') url = curWeek.screenUrl || project.screenUrl || `screens/${project.id.replace(/-/g, '_')}_screens.html`;
 
   showPortalToast(`Preparing high-resolution JPG for ${project.name}...`, 'loading');
 
@@ -2030,13 +2947,21 @@ function handleDocumentUpload(e) {
         manDays: project.weeks[0]?.manDays || '150 Forecast',
         consumed: 'In Progress',
         weeklyUrl: (docType === 'weekly') ? savedUrl : project.weeks[0]?.weeklyUrl,
-        scopeUrl: (docType === 'scope') ? savedUrl : project.weeks[0]?.scopeUrl
+        scopeUrl: (docType === 'scope') ? savedUrl : project.weeks[0]?.scopeUrl,
+        screenUrl: (docType === 'screens') ? savedUrl : project.weeks[0]?.screenUrl
       };
+      if (docType === 'screens') project.screenUrl = savedUrl;
       project.weeks.unshift(targetWeek);
       project.selectedWeekIndex = 0;
     } else {
-      if (docType === 'scope') targetWeek.scopeUrl = savedUrl;
-      else targetWeek.weeklyUrl = savedUrl;
+      if (docType === 'scope') {
+        targetWeek.scopeUrl = savedUrl;
+      } else if (docType === 'screens') {
+        targetWeek.screenUrl = savedUrl;
+        project.screenUrl = savedUrl;
+      } else {
+        targetWeek.weeklyUrl = savedUrl;
+      }
       targetWeek.weekEnding = weekDate;
     }
 
@@ -2044,7 +2969,8 @@ function handleDocumentUpload(e) {
     closeUploadModal();
     renderProjects();
 
-    showPortalToast(`✓ Attached ${docType === 'scope' ? 'Scope Document' : 'Weekly Report'} for ${project.name} (Week ${weekNum})!`, 'success');
+    const docLabel = (docType === 'scope') ? 'Scope Document' : (docType === 'screens' ? 'Screen HTML Prototype' : 'Weekly Report');
+    showPortalToast(`✓ Attached ${docLabel} for ${project.name} (Week ${weekNum})!`, 'success');
     openViewer(projectId, docType);
   };
 

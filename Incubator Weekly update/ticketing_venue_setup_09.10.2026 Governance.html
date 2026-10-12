@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ticketing Venue Setup — Week 19 — Professional HD Report</title>
+<style>
+  :root{
+    --bg:#f5f8fc;
+    --card:#ffffff;
+    --ink:#14213d;
+    --muted:#667085;
+    --line:#d9e3ef;
+    --navy:#10213d;
+    --blue:#1397d4;
+    --blue-soft:#edf8fe;
+    --green:#0cad5d;
+    --green-soft:#effbf5;
+    --red:#e52b35;
+    --red-soft:#fff4f4;
+    --amber:#f6a313;
+    --amber-soft:#fff7dd;
+    --purple:#7c3aed;
+    --purple-soft:#f7f2ff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif;color:var(--ink)}
+  body{padding:24px}
+  .report{
+    width:min(1540px,100%);
+    margin:0 auto;
+  }
+  .panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 6px 24px rgba(24,48,84,.06);
+  }
+  .top-strip{
+    min-height:112px;
+    display:grid;
+    grid-template-columns:1.1fr .7fr .8fr 1.35fr;
+    gap:28px;
+    align-items:center;
+    padding:22px 24px;
+  }
+  .metric{font-size:16px;color:#445065;line-height:1.35}
+  .metric strong{color:#17223b;font-size:18px}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    border-radius:12px;padding:8px 14px;
+    font-weight:800;font-size:14px;
+    border:1px solid #f7cf6b;background:var(--amber-soft);color:#a95c00;
+    white-space:nowrap;margin-left:10px
+  }
+  .danger{color:var(--red)!important}
+  .team-title{font-weight:900;margin-bottom:8px;font-size:16px}
+  .team ul{margin:0;padding-left:17px;font-size:14px;line-height:1.55}
+  .main{margin-top:18px;padding:24px}
+  .title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid #e8edf4}
+  .title-wrap{display:flex;gap:15px;align-items:flex-start}
+  .icon-box{width:28px;height:28px;border-radius:8px;background:#e8f3ff;display:grid;place-items:center;font-size:17px;margin-top:1px}
+  h1{margin:0;font-size:22px;letter-spacing:.3px;font-weight:900}
+  .subtitle{margin-top:6px;color:#728096;font-size:14px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  .info-card{
+    min-height:112px;border:1px solid var(--line);border-radius:11px;padding:18px 20px;background:#fafcff
+  }
+  .info-card.blue{border-color:#6dc7ef;background:var(--blue-soft)}
+  .info-card.red{border-color:#ffb8bc;background:var(--red-soft)}
+  .label{font-size:13px;font-weight:900;color:#60718a;letter-spacing:.25px}
+  .big{font-size:21px;font-weight:900;margin-top:8px}
+  .blue .big{color:#0688c7}.red .big{color:var(--red)}
+  .small{font-size:13px;color:#8a95a8;margin-top:6px}
+  .reason{
+    margin-top:18px;
+    border:1px solid #ffb7bb;background:var(--red-soft);
+    border-radius:11px;padding:18px 20px;
+  }
+  .reason-head{display:flex;justify-content:space-between;gap:16px;align-items:center}
+  .reason-title{font-weight:900;color:#a61f29;font-size:16px}
+  .week-badge{border:1px solid #ff9ea6;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:900;color:#b4232e;background:#fff7f7}
+  .reason-line{margin-top:12px;font-size:14px;color:#6f2830;line-height:1.55}
+  .reason-line b{color:#8b1620}
+  table{width:100%;border-collapse:separate;border-spacing:0;margin-top:18px;border:1px solid var(--line);border-radius:11px;overflow:hidden;font-size:13px}
+  th{background:#f6f8fb;color:#4f5e73;text-align:left;padding:14px 14px;font-size:12px;letter-spacing:.15px}
+  td{padding:14px;border-top:1px solid #e8edf4;vertical-align:middle;color:#354158;line-height:1.35}
+  tr.selected td{background:#edf8fe}
+  .selected-tag{display:inline-block;background:#099ada;color:#fff;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:900;margin-top:4px}
+  .ext{display:inline-block;background:var(--amber-soft);border:1px solid #f6d77a;color:#a95c00;border-radius:8px;padding:6px 10px;font-weight:900;white-space:nowrap}
+  .bottom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
+  .work-card{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px 18px;
+    min-height:270px;box-shadow:0 5px 18px rgba(23,50,86,.04)
+  }
+  .work-card.completed{border-top:4px solid var(--green)}
+  .work-card.backlog{border:2px solid var(--red);border-top-width:4px}
+  .work-card.progress{border-top:4px solid #118fc3}
+  .work-card.future{border-top:4px solid var(--purple)}
+  .work-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-weight:900}
+  .completed .work-head{color:var(--green)}
+  .backlog .work-head{color:var(--red)}
+  .progress .work-head{color:#118fc3}
+  .future .work-head{color:var(--purple)}
+  .count{min-width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#eef2f7;color:#455468;font-size:12px}
+  .backlog .count{width:auto;border-radius:16px;padding:0 10px;background:var(--red);color:#fff}
+  .list{list-style:none;margin:0;padding:0}
+  .list li{position:relative;padding-left:26px;margin:12px 0;font-size:14px;line-height:1.35;color:#475467}
+  .completed .list li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:900}
+  .progress .list li:before{content:">";position:absolute;left:1px;color:#118fc3;font-weight:900}
+  .future .list li:before{content:"•";position:absolute;left:2px;color:var(--purple);font-size:22px;line-height:14px}
+  .backlog .list li{
+    padding:12px 12px 12px 42px;background:var(--red-soft);border:1px solid #ff9ea6;border-radius:8px;color:#9b1c24;font-weight:700
+  }
+  .backlog .list li:before{content:"⊘";position:absolute;left:14px;top:11px;color:#ff4d58;font-weight:900;font-size:18px}
+  .change-row{
+    margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px
+  }
+  .change-box{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fbfcfe}
+  .change-box h3{margin:0 0 8px;font-size:13px}
+  .change-box p{margin:0;color:#58677d;font-size:13px;line-height:1.45}
+  .foot{margin-top:14px;text-align:right;font-size:11px;color:#94a0b2}
+  @media(max-width:1100px){
+    .top-strip{grid-template-columns:1fr 1fr}
+    .cards,.bottom-grid,.change-row{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:720px){
+    body{padding:10px}.top-strip,.cards,.bottom-grid,.change-row{grid-template-columns:1fr}
+    .title-row{flex-direction:column}
+  }
+  @media print{
+    body{background:#fff;padding:0}
+    .report{width:100%}
+    .panel,.work-card{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+<div class="report">
+
+  <section class="panel top-strip">
+    <div class="metric">Target Release: <strong>16 Oct 2026</strong><span class="pill">+38 Days Extension</span></div>
+    <div class="metric">Effort: <strong>148 / 200 Man-Days</strong></div>
+    <div class="metric">Variance: <strong class="danger">+38 Days (Delay)</strong></div>
+    <div class="team">
+      <div class="team-title">👥 Team:</div>
+      <ul>
+        <li><b>Poovalingam Thamsan</b> (Project Coordinator · 53 Man-Days)</li>
+        <li><b>Ramanathan Danuharan</b> (Team Lead · 30 Man-Days)</li>
+        <li><b>Thifshana Jeyabalan</b> (Developer · 48 Man-Days)</li>
+        <li><b>Gobithas Kalaimakan</b> (Developer · 12 Man-Days)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel main">
+    <div class="title-row">
+      <div class="title-wrap">
+        <div class="icon-box">🗓</div>
+        <div>
+          <h1>TARGET RELEASE DATE GOVERNANCE &amp; EXTENSION AUDIT</h1>
+          <div class="subtitle">Tracking Baseline vs. Weekly Commitments &amp; Delivery Progress Analysis</div>
+        </div>
+      </div>
+      <span class="pill">⚠ +38 Days Extension</span>
+    </div>
+
+    <div class="cards">
+      <div class="info-card">
+        <div class="label">🗓 ESTIMATED DATE OF RELEASE</div>
+        <div class="big">8 Sep 2026</div>
+        <div class="small">Original Plan Target</div>
+      </div>
+      <div class="info-card blue">
+        <div class="label">🎯 CURRENT RELEASE DATE</div>
+        <div class="big">16 Oct 2026</div>
+        <div class="small">Phase 1 Current Forecast</div>
+      </div>
+      <div class="info-card red">
+        <div class="label">⏱ EXTENSION VARIANCE</div>
+        <div class="big">+38 Days Extension</div>
+        <div class="small">Delay vs. Original Plan</div>
+      </div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-head">
+        <div class="reason-title">⚠ WHY WAS THE RELEASE DATE EXTENDED?</div>
+        <div class="week-badge">Week 19 Update</div>
+      </div>
+      <div class="reason-line"><b>Reason:</b> The release date was extended because additional time was required to understand Optimo’s structure and restructure our system accordingly to ensure compatibility with its architecture and workflow.</div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>REPORTING<br>WEEK</th>
+          <th>WEEK<br>ENDING</th>
+          <th>PROMISED TARGET<br>DATE</th>
+          <th>EXTENSION<br>VARIANCE</th>
+          <th>WHICH WEEK<br>EXTENDED</th>
+          <th>REASON FOR EXTENSION / PROGRESS STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="selected">
+          <td><b>Week 19</b><br><span class="selected-tag">Selected</span></td>
+          <td>9 Oct 2026</td>
+          <td><b>16 Oct 2026</b></td>
+          <td><span class="ext">+38 Days Extension</span></td>
+          <td>Week 19</td>
+          <td>Restructured our system in alignment with Optimo’s Angular MVC architecture, implemented Optimo authentication, and completed the existing venue-loading workflow.</td>
+        </tr>
+        <tr>
+          <td><b>Week 18</b></td>
+          <td>2 Oct 2026</td>
+          <td><b>16 Oct 2026</b></td>
+          <td><span class="ext">+38 Days Extension</span></td>
+          <td>Week 18</td>
+          <td>Studied the Optimo venue endpoint workflow, mapped Optimo API JSON to our system, minimized unnecessary JSON fields, and aligned the Angular MVC structure.</td>
+        </tr>
+        <tr>
+          <td><b>Week 17</b></td>
+          <td>25 Sep 2026</td>
+          <td><b>16 Oct 2026</b></td>
+          <td><span class="ext">+38 Days Extension</span></td>
+          <td>Week 17</td>
+          <td>Revised the system flow, minimized JSON structure, improved data retrieval preparation, and progressed SCSTix integration planning.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="change-row">
+      <div class="change-box">
+        <h3>▣ SCHEDULE CHANGE</h3>
+        <p>Updated the schedule to include the completed authentication and venue-loading processes.</p>
+      </div>
+      <div class="change-box">
+        <h3>⚙ SCOPE CHANGE</h3>
+        <p>Focused on Angular MVC restructuring, authentication, JSON mapping, and venue loading. The remaining scope covers the workflow after venue selection.</p>
+      </div>
+      <div class="change-box">
+        <h3>▦ EFFORT CHANGE</h3>
+        <p>N/A</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="bottom-grid">
+    <section class="work-card completed">
+      <div class="work-head"><span>✓ COMPLETED (5)</span><span class="count">5</span></div>
+      <ul class="list">
+        <li>Angular MVC restructuring completed</li>
+        <li>Authentication process completed</li>
+        <li>Optimo API JSON mapping completed</li>
+        <li>Unnecessary JSON fields minimized</li>
+        <li>Venue-loading workflow completed</li>
+      </ul>
+    </section>
+
+    <section class="work-card backlog">
+      <div class="work-head"><span>⊘ BACKLOG</span><span class="count">3 (INCOMPLETE)</span></div>
+      <ul class="list">
+        <li>Venue selection related flow analysis</li>
+        <li>Remaining workflow implementation</li>
+        <li>End-to-end validation pending</li>
+      </ul>
+    </section>
+
+    <section class="work-card progress">
+      <div class="work-head"><span>&gt; IN PROGRESS (5)</span><span class="count">5</span></div>
+      <ul class="list">
+        <li>Review of workflow after venue selection</li>
+        <li>Remaining workflow design using mapped JSON structure</li>
+        <li>Downstream system-flow refinement</li>
+        <li>Validation/proof of the revised flow</li>
+        <li>Compatibility review with Optimo responses</li>
+      </ul>
+    </section>
+
+    <section class="work-card future">
+      <div class="work-head"><span>○ FUTURE NEXT (5)</span><span class="count">5</span></div>
+      <ul class="list">
+        <li>Implement end-to-end process</li>
+        <li>Validate the end-to-end process</li>
+        <li>Confirm Optimo API compatibility</li>
+        <li>Align remaining flow with SCSTix requirements</li>
+        <li>Finalize and stabilize Phase 1 workflow</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="foot">Ticketing Venue Setup · Week 19 · Week Ending 09 Oct 2026</div>
+</div>
+</body>
+</html>
