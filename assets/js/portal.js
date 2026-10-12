@@ -1446,22 +1446,25 @@ const DEFAULT_PROJECTS = [
         "manDays": "20 Man-Days",
         "consumed": "20 Consumed (100%)",
         "completedTasks": [
-          "2nd planned demo conducted on 06 October 2026 with client stakeholders",
-          "06 October 2nd demo completed successfully with positive feedback",
-          "Completed all UI changes identified during demo",
-          "Completed all dataset and data setup changes",
-          "All Week 41 allocated tasks completed with zero pending items"
+          "Conducted Friday, 09 October 2026 planned demo with client stakeholders",
+          "Demo-related dataset and configuration setup completed",
+          "Supporting development and backend/API work for demo readiness completed",
+          "UI implementation, updates and improvements for demo preparation completed",
+          "Continued UI migration scope: School Camp, Programs (Families & Individuals), and Voucher"
         ],
         "uncompletedTasks": [],
         "inProgressTasks": [
-          "Final client acceptance verification",
-          "Production cutover preparation"
+          "Review and prioritise Friday demo feedback",
+          "Continue remaining UI refinements and fixes",
+          "Verify dataset setup and integration flows",
+          "Complete functional and regression testing"
         ],
         "futureTasks": [
-          "Production launch signoff"
+          "Confirm remaining work and effort consumption post-demo"
         ],
-        "keyInsight": "06 October 2nd demo completed successfully. 20 of 20 man-days consumed with 100% completion.",
+        "keyInsight": "09 October Friday demo completed following data setup, supporting backend development and UI updates. Demo feedback review next.",
         "weeklyUrl": "Incubator Weekly update/NSW_09.10.2026.html",
+        "governanceUrl": "Incubator Weekly update/NSW_Sports_Visibility_Card_09_October_2026_Updated.html",
         "scopeUrl": "scope document/nsw_sports_scope_usp.html",
         "initialReleaseDate": "18 Sep 2026",
         "lastWeekTargetDate": "02 Oct 2026",
@@ -1496,6 +1499,7 @@ const DEFAULT_PROJECTS = [
         ],
         "keyInsight": "28 September demo completed; all Week 40 follow-up work completed on track.",
         "weeklyUrl": "Incubator Weekly update/NSW_02.10.2026.html",
+        "governanceUrl": "Incubator Weekly update/NSW_Sports_Project_Weekly_Dashboard_02.10.2026.html",
         "scopeUrl": "scope document/nsw_sports_scope_usp.html",
         "initialReleaseDate": "18 Sep 2026",
         "lastWeekTargetDate": "18 Sep 2026",
@@ -1700,7 +1704,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v17_governance_tabs';
+const STORAGE_KEY = 'portal_projects_exec_v18_nsw_official_oct';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -1724,7 +1728,8 @@ try {
     'portal_projects_exec_v9_team_positions',
     'portal_projects_exec_v10_stacked_teams',
     'portal_projects_exec_v11_greyhound_pristine',
-    'portal_projects_exec_v12_case_fixed'
+    'portal_projects_exec_v12_case_fixed',
+    'portal_projects_exec_v17_governance_tabs'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 
