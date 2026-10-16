@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Target Release Date Governance &amp; Extension Audit</title>
+<style>
+  :root{
+    --navy:#101b41;
+    --amber:#f2a71b;
+    --amber-bg:#fef3d9;
+    --amber-bd:#fbe0a0;
+    --amber-text:#92600a;
+    --green:#16a34a;
+    --green-bg:#e7f8ee;
+    --green-bd:#bfe8cf;
+    --red:#dc2626;
+    --red-bg:#fdeaea;
+    --red-bd:#f6c6c6;
+    --orange:#f59e0b;
+    --orange-bg:#fef3e0;
+    --orange-bd:#f8dfa8;
+    --blue:#2563eb;
+    --blue-bg:#eaf1fd;
+    --blue-bd:#bcd3f7;
+    --purple:#7c3aed;
+    --purple-bg:#f3ebfe;
+    --purple-bd:#ddc8fb;
+    --grey-text:#6b7280;
+    --border:#e2e5ec;
+    --page-bg:#eef0f4;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--page-bg);
+    color:#1f2937;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    padding:22px 14px 40px;
+  }
+  .scroll-wrapper{ overflow-x:auto; padding-bottom:6px; }
+  .page{ width:1300px; max-width:none; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+
+  /* ---- Top strip ---- */
+  .top-strip{
+    background:#fff; border:1px solid var(--border); border-radius:10px;
+    padding:16px 24px; display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:16px; box-shadow:0 4px 14px rgba(16,27,65,0.06);
+  }
+  .top-strip .ts-item{ font-size:13px; color:#374151; }
+  .top-strip .ts-item b{ color:var(--navy); }
+  .ext-chip{
+    background:var(--amber-bg); color:var(--amber-text); border:1px solid var(--amber-bd);
+    font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:20px; margin-left:8px;
+  }
+  .variance-red{ color:var(--red); font-weight:700; }
+  .team-block{ font-size:13px; color:#374151; }
+  .team-block .tb-title{ font-weight:700; color:var(--navy); display:flex; align-items:center; gap:6px; margin-bottom:4px; }
+  .team-block ul{ margin:0; padding-left:16px; list-style:none; }
+  .team-block li{ margin-bottom:2px; }
+  .team-block li b{ color:var(--navy); }
+
+  /* ---- Main card ---- */
+  .report-card{
+    background:#ffffff; border-radius:10px; overflow:hidden;
+    box-shadow:0 10px 30px rgba(16,27,65,0.14); border:1px solid var(--border);
+  }
+  .card-header{
+    padding:18px 24px 14px; display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+    border-bottom:1px solid var(--border);
+  }
+  .card-header .ch-title{ display:flex; align-items:center; gap:10px; }
+  .card-header .ch-icon{ font-size:22px; }
+  .card-header h1{ margin:0; font-size:18px; font-weight:800; letter-spacing:.2px; color:var(--navy); text-transform:uppercase; }
+  .card-header .ch-sub{ margin-top:3px; font-size:12.5px; color:var(--grey-text); }
+  .ext-badge-top{
+    background:var(--amber-bg); color:var(--amber-text); border:1px solid var(--amber-bd);
+    font-size:12px; font-weight:800; padding:7px 14px; border-radius:20px; white-space:nowrap;
+  }
+
+  .summary-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:16px 20px; }
+  .summary-box{ border-radius:8px; padding:14px 16px; }
+  .summary-box.blue{ background:var(--blue-bg); border:1px solid var(--blue-bd); }
+  .summary-box.navy{ background:#f4f6fb; border:1px solid var(--border); }
+  .summary-box.red{ background:var(--red-bg); border:1px solid var(--red-bd); }
+  .summary-box .s-label{ font-size:11px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; color:#374151; display:flex; align-items:center; gap:5px; margin-bottom:6px; }
+  .summary-box .s-value{ font-size:20px; font-weight:800; color:var(--navy); }
+  .summary-box.red .s-value{ color:var(--red); }
+  .summary-box.blue .s-value{ color:var(--blue); }
+  .summary-box .s-caption{ font-size:11px; color:var(--grey-text); margin-top:4px; }
+
+  .why-box{
+    margin:0 20px 16px; background:var(--red-bg); border:1px solid var(--red-bd); border-radius:8px;
+    padding:14px 16px;
+  }
+  .why-box .wb-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; flex-wrap:wrap; }
+  .why-box .wb-title{ font-weight:800; font-size:13px; color:#991b1b; display:flex; align-items:center; gap:6px; }
+  .why-box .wb-text{ font-size:12.5px; color:#450a0a; }
+  .why-box .wb-text b{ color:#7f1d1d; }
+  .week-chip{
+    background:#fff; color:#991b1b; border:1px solid var(--red-bd);
+    font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; white-space:nowrap;
+  }
+
+  table.history-table{ width:100%; border-collapse:collapse; }
+  .history-table th{
+    text-align:left; background:#f4f6fb; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:.3px; color:#374151; padding:10px 12px; border-bottom:2px solid var(--navy);
+  }
+  .history-table td{ font-size:12.5px; padding:11px 12px; border-bottom:1px solid #eee; vertical-align:top; }
+  .history-table tr.selected-row{ background:#eef4ff; }
+  .week-label{ font-weight:700; color:var(--navy); }
+  .selected-tag{
+    display:inline-block; margin-left:8px; background:var(--blue); color:#fff; font-size:9.5px;
+    font-weight:800; padding:2px 7px; border-radius:10px; letter-spacing:.3px; text-transform:uppercase;
+    vertical-align:middle;
+  }
+  .ext-pill{
+    display:inline-block; font-size:11px; font-weight:800; padding:3px 10px; border-radius:20px;
+    white-space:nowrap;
+  }
+  .ext-pill.amber{ background:var(--amber-bg); color:var(--amber-text); border:1px solid var(--amber-bd); }
+  .ext-pill.none{ background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd); }
+  .history-panel{ padding:4px 20px 20px; }
+
+  /* ---- Kanban footer ---- */
+  .kanban{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; padding:0; }
+  .kcol{ border-radius:10px; border:1px solid; overflow:hidden; background:#fff; }
+  .kcol.completed{ border-color:var(--green-bd); }
+  .kcol.backlog{ border-color:var(--red-bd); }
+  .kcol.inprogress{ border-color:var(--blue-bd); }
+  .kcol.future{ border-color:var(--purple-bd); }
+  .kcol-head{ padding:12px 14px; display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid; }
+  .kcol.completed .kcol-head{ background:var(--green-bg); border-color:var(--green-bd); color:var(--green); }
+  .kcol.backlog .kcol-head{ background:var(--red-bg); border-color:var(--red-bd); color:var(--red); }
+  .kcol.inprogress .kcol-head{ background:var(--blue-bg); border-color:var(--blue-bd); color:var(--blue); }
+  .kcol.future .kcol-head{ background:var(--purple-bg); border-color:var(--purple-bd); color:var(--purple); }
+  .kcol-head .kc-title{ font-size:12px; font-weight:800; letter-spacing:.2px; text-transform:uppercase; }
+  .kcol-head .kc-count{ font-size:11px; font-weight:800; background:rgba(255,255,255,0.65); padding:2px 8px; border-radius:10px; }
+  .kcol-head .kc-badge{ background:var(--red); color:#fff; font-size:9.5px; font-weight:800; padding:3px 8px; border-radius:10px; letter-spacing:.3px; }
+  .kcol-body{ padding:12px 14px; display:flex; flex-direction:column; gap:8px; }
+  .kitem{ font-size:12px; line-height:1.4; display:flex; gap:7px; }
+  .kitem .ki-mark{ flex-shrink:0; margin-top:1px; }
+  .kcol.completed .ki-mark{ color:var(--green); }
+  .kcol.backlog .kitem{ background:var(--red-bg); border:1px solid var(--red-bd); border-radius:6px; padding:7px 9px; }
+  .kcol.backlog .ki-mark{ color:var(--red); }
+  .kcol.inprogress .ki-mark{ color:var(--blue); }
+  .kcol.future .ki-mark{ color:var(--purple); }
+  .kitem .ki-note{ display:block; color:var(--grey-text); font-size:10.5px; margin-top:2px; }
+  .kempty{ font-size:11.5px; color:var(--grey-text); font-style:italic; }
+
+  .footer{ background:var(--navy); color:#cbd3ea; font-size:10.5px; padding:12px 20px; }
+  .footer b{ color:#fff; }
+</style>
+</head>
+<body>
+  <div class="scroll-wrapper">
+  <div class="page">
+
+    <div class="top-strip">
+      <div class="ts-item">Target Release: <b>2026-11-08</b><span class="ext-chip">+24 Days Extension</span></div>
+      <div class="ts-item">Effort: <b>210 / 260 Man-Days</b></div>
+      <div class="ts-item">Variance: <span class="variance-red">+110 Man-Days / +110%</span></div>
+      <div class="team-block">
+        <div class="tb-title">&#128101; Team:</div>
+        <ul>
+          <li><b>Thivaharan</b> (Project Manager &bull; 75 Man-Days)</li>
+          <li><b>Dapiyshanth</b> (Team Lead &bull; 75 Man-Days)</li>
+          <li><b>Kajaatharan</b> (Developer &bull; 75 Man-Days)</li>
+          <li><b>Pirakeerthan</b> (Developer &bull; 75 Man-Days)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="report-card">
+
+      <div class="card-header">
+        <div class="ch-title">
+          <span class="ch-icon">&#128197;</span>
+          <div>
+            <h1>Target Release Date Governance &amp; Extension Audit</h1>
+            <div class="ch-sub">Tracking Kickoff Baseline vs. Weekly Commitments &amp; Root Cause Analysis</div>
+          </div>
+        </div>
+        <div class="ext-badge-top">&#9888; +24 Days Extension</div>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-box navy">
+          <div class="s-label">&#128197; Estimated Date of Release</div>
+          <div class="s-value">2026-10-15</div>
+          <div class="s-caption">Kickoff Baseline Target</div>
+        </div>
+        <div class="summary-box blue">
+          <div class="s-label">&#127919; Current Release Date</div>
+          <div class="s-value">2026-11-08</div>
+          <div class="s-caption">Week 3 Target Date</div>
+        </div>
+        <div class="summary-box red">
+          <div class="s-label">&#9201; Extension Variance</div>
+          <div class="s-value">+24 Days Extension</div>
+          <div class="s-caption">Extended in: Week 1 & Week 3</div>
+        </div>
+      </div>
+
+      <div class="why-box">
+        <div class="wb-head">
+          <div class="wb-title">&#9888; Why Was the Release Date Extended?</div>
+          <span class="week-chip">Extended in: Week 1 & Week 3</span>
+        </div>
+        <div class="wb-text"><b>Root Cause / Technical Reason:</b> <b>Week 3:</b> Approved scope additions this week (Day Planner, My Work / My Team dashboard views, Exception Engine) move Development Complete to 22 Oct; System Test, UAT and Go-Live each shift by 7 days. <b>Week 1:</b> Go-Live scheduling is set by management/client, outside the development team's direct control. The team's committed scope is to complete System Test and hand over for UAT; the forecast reflects the resulting downstream shift to UAT and Go-Live.</div>
+      </div>
+
+      <div class="history-panel">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Reporting Week</th>
+              <th>Week Ending</th>
+              <th>Promised Target Date</th>
+              <th>Extension Variance</th>
+              <th>Which Week Extended</th>
+              <th>Reason for Extension / Progress Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr><td><span class="week-label">Week 1</span></td><td>2026-10-02</td><td><b>2026-11-01</b></td><td><span class="ext-pill amber">+17 Days Extension</span></td><td>Week 1</td><td>Go-Live scheduling is set by management/client, outside the development team's direct control. The team's committed scope is to complete System Test and hand over for UAT; the forecast reflects the resulting downstream shift to UAT and Go-Live.</td></tr>
+          <tr><td><span class="week-label">Week 2</span></td><td>2026-10-09</td><td><b>2026-11-01</b></td><td><span class="ext-pill amber">+17 Days Extension</span></td><td>N/A</td><td>No change to the forecast this week.</td></tr>
+          <tr class="selected-row"><td><span class="week-label">Week 3</span><span class="selected-tag">Selected</span></td><td>2026-10-16</td><td><b>2026-11-08</b></td><td><span class="ext-pill amber">+24 Days Extension</span></td><td>Week 3</td><td>Approved scope additions this week (Day Planner, My Work / My Team dashboard views, Exception Engine) move Development Complete to 22 Oct; System Test, UAT and Go-Live each shift by 7 days.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="kanban">
+      <div class="kcol completed">
+        <div class="kcol-head"><span class="kc-title">&#10003; Completed</span><span class="kc-count">9</span></div>
+        <div class="kcol-body">
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Start My Day & Review Team Status</b><span class="ki-note">Gives managers instant visibility into team health and priorities.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Plan & Assign Team Work</b><span class="ki-note">Turns project needs into clear assigned work.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Approve Task Scope & Estimate</b><span class="ki-note">Ensures work is approved before execution begins.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Monitor Project Delivery</b><span class="ki-note">Keeps delivery on track with early issue visibility (Core Manager Journey).</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Review Submitted Work</b><span class="ki-note">Supports quality control and accountable completion.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Handle Change / Overrun Request</b><span class="ki-note">Controls scope changes and keeps plans realistic.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Monitor Employee Work Pattern</b><span class="ki-note">Helps managers understand work behaviour with context.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Review Attendance / Identity Anomaly</b><span class="ki-note">Connects attendance issues with real supporting evidence.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#10003;</span><span><b>Meeting -> Task Conversion</b><span class="ki-note">Completed this week - a meeting can now be turned into a task and stays interconnected with related work, so meeting outcomes flow directly into task tracking.</span></span></div>
+        </div>
+      </div>
+      <div class="kcol backlog">
+        <div class="kcol-head"><span class="kc-title">&#8856; Backlog</span><span class="kc-badge">2 (INCOMPLETE)</span></div>
+        <div class="kcol-body">
+          <div class="kitem"><span class="ki-mark">&#8856;</span><span><b>Investigate & Resolve an Exception</b><span class="ki-note">Manager journey not yet complete - fast, traceable exception handling still being built.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#8856;</span><span><b>Review Team Performance & Report</b><span class="ki-note">Manager journey not yet complete - turning team data into action-oriented reporting still in progress.</span></span></div>
+        </div>
+      </div>
+      <div class="kcol inprogress">
+        <div class="kcol-head"><span class="kc-title">&gt; In Progress</span><span class="kc-count">1</span></div>
+        <div class="kcol-body">
+          <div class="kitem"><span class="ki-mark">&gt;</span><span><b>Dashboard Designing</b><span class="ki-note">My Team dashboard is live; scope expanded this week to split the dashboard into "My Work" and "My Team" views.</span></span></div>
+        </div>
+      </div>
+      <div class="kcol future">
+        <div class="kcol-head"><span class="kc-title">&#9675; Future Next</span><span class="kc-count">4</span></div>
+        <div class="kcol-body">
+          <div class="kitem"><span class="ki-mark">&#9675;</span><span><b>Stripe Integration</b><span class="ki-note">Connecting Stripe for payment processing.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#9675;</span><span><b>Biometrics Integration</b><span class="ki-note">Connecting biometric (face) verification.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#9675;</span><span><b>Day Planner</b><span class="ki-note">New scope approved this week - helps employees plan their working day.</span></span></div>
+          <div class="kitem"><span class="ki-mark">&#9675;</span><span><b>Exception Engine</b><span class="ki-note">New scope approved this week - detects and routes work and attendance exceptions for review.</span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-card">
+      <div class="footer">
+        <b>Governance Rule:</b>
+        <span>This report accumulates weekly history. Past weekly facts are never overwritten - only appended.</span>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Project Tracker Exporter & High-Resolution JPG Engine -->
+  <script src="../assets/js/html2canvas.min.js"></script>
+  <script src="../assets/js/exporter.js"></script>
+</body>
+</html>
+
