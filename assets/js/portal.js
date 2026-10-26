@@ -15,8 +15,8 @@ const DEFAULT_PROJECTS = [
     "forecastExtension": "+43 Days Extension (Further TBC)",
     "originalPlanDates": "3 Jul 2026 – 2 Sep 2026",
     "originalAllocation": 88,
-    "forecastTotal": 150,
-    "forecastOverrun": "+62 Man-Days (+70.5%)",
+    "forecastTotal": 162,
+    "forecastOverrun": "+74 Man-Days (+84.1%)",
     "overBudget": true,
     "leads": "Nilaxshan / Kirusthiya",
     "description": "Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX retail loss prevention, and RTSP/ONVIF reliability.",
@@ -69,6 +69,53 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 8,
+        "weekLabel": "Week 8",
+        "weekEnding": "23 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "consumed": 162,
+        "remaining": 0,
+        "consumedPercent": "108%",
+        "completedTasks": [
+          "Dashboard UI, filters and pagination updated",
+          "Camera / zone sync and retry implemented",
+          "Central clip settings implemented",
+          "Installer build / payload improvements",
+          "Clean-Windows installer validation",
+          "Final hardware recommendation",
+          "Dashboard, connector / installer updates"
+        ],
+        "uncompletedTasks": [
+          "Live 1 / 4-camera benchmark (Backlog)",
+          "Latency and dropped-frame checks (Backlog)",
+          "Live camera-to-alert E2E (Backlog)"
+        ],
+        "inProgressTasks": [
+          "Fully local validation — live tests pending"
+        ],
+        "futureTasks": [
+          "Validate local runtime / playback fixes",
+          "Enable AI processing recovery after interruptions",
+          "Ensure all uploaded clips are queued for analysis",
+          "Prevent duplicate alerts for the same clip",
+          "Deliver live alerts to all authorised users",
+          "Add automated tests for core workflows",
+          "Validate AI detection using more real-camera clips"
+        ],
+        "keyInsight": "Team worked on Optimo Greyhound. ONETIX task progress unchanged; additional days required, duration to be confirmed. 162 of 150 allocated man-days consumed.",
+        "weeklyUrl": "Incubator Weekly update/Camera Module 23.10.2026.html",
+        "scopeUrl": "scope document/ONETIX_Scope_USP.html",
+        "initialReleaseDate": "2 Sep 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "15 Oct 2026 (Revised TBC)",
+        "forecastExtension": "+43 Days Extension (Further TBC)",
+        "extendedInWeek": "Week 2 & Week 3 (Further extension TBC)",
+        "extensionReason": "Team worked on Optimo Greyhound. ONETIX task progress unchanged; additional days required, duration to be confirmed.",
+        "screenUrl": "screens/camera_module_screens.html",
+        "governanceUrl": "Incubator Weekly update/Camera Module 23.10.2026 Governance.html"
+      },
       {
         "weekNumber": 7,
         "weekLabel": "Week 7",
@@ -405,6 +452,56 @@ const DEFAULT_PROJECTS = [
     "selectedWeekIndex": 0,
     "weeks": [
       {
+        "weekNumber": 7,
+        "weekLabel": "Week 22",
+        "weekEnding": "23 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "56 Days",
+        "consumed": "59 Consumed (105.4%)",
+        "completedTasks": [
+          "Tickets tab, ticket details and PIN lock refresh",
+          "Booking cards show event names and images",
+          "Redesigned add-ons and booking questions",
+          "Return Tickets flow and ticket-first display",
+          "Package-based ticket returns",
+          "Host places counted across package sessions",
+          "Manage Attendees close and refresh controls",
+          "Packages without sessions open as separate activations",
+          "Checklist renamed Activation"
+        ],
+        "uncompletedTasks": [
+          "Shared booking service access issue",
+          "Confirm correct ticket session dates and times",
+          "Host sharing tickets with their guests",
+          "Hide suite details on regular bookings"
+        ],
+        "inProgressTasks": [
+          "Return ticket behavior and package counts review",
+          "Activation flow and naming updates",
+          "Booking and ticket screen updates",
+          "Review updated attendee and host-place handling"
+        ],
+        "futureTasks": [
+          "Confirm release target and effort forecast",
+          "Review outstanding backlog against delivered Return Tickets work",
+          "Verify the updated Activation and ticket flows",
+          "Confirm latest remaining work with the team",
+          "Update report with confirmed schedule and effort"
+        ],
+        "keyInsight": "Tickets tab, Return Tickets, booking card redesign, add-ons and activation flow improvements delivered. Release target and remaining backlog status need confirmation. 59 of 56 man-days consumed.",
+        "weeklyUrl": "Incubator Weekly update/GrayHound 23.10.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "10 Sep 2026",
+        "lastWeekTargetDate": "09 Oct 2026",
+        "targetReleaseDate": "To be confirmed (TBC)",
+        "forecastExtension": "+29 Days Extension (Revised date TBC)",
+        "extendedInWeek": "Week 22",
+        "extensionReason": "Tickets tab, Return Tickets, booking card and add-ons refresh, host place rules, and Activation flow improvements. Release target and remaining backlog status need confirmation.",
+        "screenUrl": "screens/greyhound_screens.html",
+        "governanceUrl": "Incubator Weekly update/GrayHound 23.10.2026 Governance.html"
+      },
+      {
         "weekNumber": 6,
         "weekLabel": "Week 21",
         "weekEnding": "16 Oct 2026",
@@ -648,8 +745,9 @@ const DEFAULT_PROJECTS = [
     "company": "UNICOM TIC INCUBATOR",
     "release": "Enterprise Release 1",
     "targetReleaseDate": "08 Nov 2026",
-    "originalAllocation": 150,
-    "forecastTotal":  260,
+    "originalAllocation": 100,
+    "forecastTotal": 260,
+    "forecastOverrun": "+130 Man-Days (+130%)",
     "overBudget": true,
     "leads": "Thivaharan / Dapiyshanth",
     "description": "Comprehensive human resource management suite with employee directory, multi-tenant security, and leave tracking.",
@@ -709,6 +807,49 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 7,
+        "weekLabel": "Week 7",
+        "weekEnding": "23 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "260 Days",
+        "consumed": "230 Consumed (88%)",
+        "completedTasks": [
+          "People Chats in Inbox - 1-on-1 and group chats, forward messages, favourite chats",
+          "Employee Case History - past leave, attendance, monitoring and calendar cases by month",
+          "Automatic Late/Early Deductions - policy-based deductions with audit trail",
+          "Leave Policy Redesign - versioned policy per leave type with per-employee exceptions",
+          "Customizable My Work & My Team Dashboards - add, remove, move and resize cards",
+          "Project Network View - live map of modules, sprints and task status",
+          "Notification Centre - templates, per-channel delivery, reliable notification path",
+          "Tray Setup with Photo Verification - face photo and privacy consent during setup",
+          "Meetings as Tasks - recurring meetings with invites, RSVP, Teams/Zoom links"
+        ],
+        "uncompletedTasks": [
+          "My Work Dashboard Polish - greeting card and Today's Schedule timeline (in review)",
+          "Tray Notifications - tray side still in review"
+        ],
+        "inProgressTasks": [
+          "My Work Dashboard Polish - greeting card showing shift activity and schedule",
+          "Tray Notifications - server side done; tray side in review",
+          "Platform Admin - customer Support area back end pending"
+        ],
+        "futureTasks": [
+          "Platform Admin - complete customer Support area back end"
+        ],
+        "keyInsight": "No change to the Go-Live forecast this week. 230 of 260 man-days consumed. My Work Dashboard Polish and Tray Notifications are in review; Platform Admin support back end remains pending.",
+        "weeklyUrl": "Incubator Weekly update/ONEXSO 23.10.2026.html",
+        "scopeUrl": "scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "08 Nov 2026",
+        "targetReleaseDate": "08 Nov 2026",
+        "forecastExtension": "+24 Days Extension",
+        "extendedInWeek": "Week 1 & Week 2 & Week 3",
+        "extensionReason": "No new extension this week — the latest promised date from a prior week still stands.",
+        "screenUrl": "screens/onexso_hrms_screens.html",
+        "governanceUrl": "Incubator Weekly update/ONEXSO 23.10.2026 Governance.html"
+      },
       {
         "weekNumber": 6,
         "weekLabel": "Week 6",
@@ -2000,7 +2141,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v21_greyhound_oct16';
+const STORAGE_KEY = 'portal_projects_exec_v22_oct23_all';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -2028,7 +2169,8 @@ try {
     'portal_projects_exec_v17_governance_tabs',
     'portal_projects_exec_v18_nsw_official_oct',
     'portal_projects_exec_v19_greyhound_team_complete',
-    'portal_projects_exec_v20_oct16_reports'
+    'portal_projects_exec_v20_oct16_reports',
+    'portal_projects_exec_v21_greyhound_oct16'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 

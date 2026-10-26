@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Customer App | Weekly Report | 23 Oct 2026</title>
+<style>
+:root{--ink:#202735;--muted:#7a7f87;--bg:#f4f5f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);padding:24px}.report{max-width:2000px;margin:auto}.panel{background:white;border:1px solid #e4e6ec;border-radius:22px;box-shadow:0 2px 4px #17233b05}.top{padding:28px;display:grid;grid-template-columns:1.05fr 1fr 1fr .8fr;gap:28px;align-items:center;min-height:155px}.label{font-size:15px;color:var(--muted);margin-bottom:10px}.value{font-size:25px;font-weight:800}.sub{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.5}.badge{display:inline-block;background:#ffce49;color:#695017;border-radius:24px;padding:9px 14px;font-size:13px;font-weight:800}.date{text-align:right}.date strong{display:block;font-size:22px;margin-top:8px}.governance{margin-top:20px;padding:24px}.heading{display:flex;justify-content:space-between;align-items:center;gap:20px}h1{font-size:23px;margin:2px 0 8px;font-weight:800}p{margin:0;line-height:1.55}.subtitle{color:var(--muted);font-size:16px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}.metric{border:1px solid #e2e4e9;border-radius:16px;background:#fafbfe;padding:22px}.metric.blue{background:#f3f8ff;border-color:#ccddf5}.metric.red{background:#fff6f6;border-color:#f6cbd0}.metric h2{font-size:13px;color:#777f88;margin:0 0 13px}.metric strong{font-size:34px}.metric.blue strong{color:#2451cc}.metric.red strong{color:#c92532}.reason{background:#fff1f2;border:1px solid #facbd0;padding:18px;border-radius:16px;margin-top:16px}.reason h2{color:#c62344;font-size:16px;margin:0 0 8px}.reason p{font-size:15px}.table-wrap{overflow:auto;margin-top:18px}table{border-collapse:collapse;width:100%;font-size:14px}th{color:#747d88;text-align:left;font-size:12px;padding:13px 12px;white-space:nowrap}td{padding:16px 12px;border-top:1px solid #eef0f4;line-height:1.5;vertical-align:top}tbody tr:first-child{background:#f2f7ff}td:first-child{font-weight:bold;white-space:nowrap}.selected{font-size:11px;color:#2451cc;background:#dceaff;display:block;width:fit-content;border-radius:12px;padding:2px 8px;margin-top:5px}.pill{background:#fff2c6;color:#8f5716;border-radius:20px;font-weight:bold;white-space:nowrap;display:inline-block;padding:5px 10px;font-size:12px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}.card{border-radius:19px;padding:18px 16px;min-height:360px;border:1px solid;--accent:#188249}.card h2{font-size:16px;color:var(--accent);display:flex;justify-content:space-between;align-items:center;margin:0 0 18px}.count{background:var(--accent);color:white;border-radius:50%;width:28px;height:28px;display:grid;place-items:center;font-size:13px}.green{background:#f6fcf8;border-color:#96dfb2}.redcard{--accent:#c52332;background:#fff8f8;border-color:#f2afb6}.bluecard{--accent:#245bce;background:#f6faff;border-color:#a0c8ef}.purple{--accent:#7d32d0;background:#fbf9ff;border-color:#cdb5f3}ul{list-style:none;padding:0;margin:0}li{font-size:14px;line-height:1.5;padding-left:20px;position:relative;margin:11px 0}li:before{position:absolute;left:0;color:var(--accent);content:'›';font-weight:bold}.green li:before{content:'✓'}.redcard li{background:#ffe5e7;border:1px solid #fac8cd;border-radius:10px;padding:10px 10px 10px 25px;margin:9px 0}.redcard li:before{content:'×';left:9px}.purple li:before{content:'○'}.note{font-size:12px;color:#7c8290;margin:16px 4px 0;line-height:1.5}@media(max-width:1100px){.top{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}.date{text-align:left}.metric strong{font-size:26px}}@media(max-width:650px){body{padding:12px}.metrics,.cards,.top{grid-template-columns:1fr}.heading{align-items:flex-start;flex-direction:column}.governance{padding:16px}.card{min-height:0}}@media print{@page{size:A3 landscape;margin:10mm}body{padding:0;font-size:12px;print-color-adjust:exact;-webkit-print-color-adjust:exact}.report{max-width:none}.panel{box-shadow:none}.top{min-height:110px;padding:18px}.governance{padding:18px;margin-top:12px}.cards{gap:10px;margin-top:12px}.card{padding:14px;min-height:0}li{font-size:12px;margin:8px 0}.metric{padding:16px}.metric strong{font-size:27px}h1{font-size:20px}td{padding:10px}.note{font-size:10px}.card,.panel{break-inside:avoid}}
+
+/* Compact single-screen weekly card, matching the supplied reference. */
+body{padding:18px}.report{width:1560px;max-width:none;transform-origin:top left}
+.top{min-height:112px;padding:22px;gap:22px}.label{font-size:12px;margin-bottom:8px}.value{font-size:20px}.sub{font-size:11px;margin-top:7px}.sub:empty{display:none}.date strong{font-size:19px}.badge{font-size:11px;padding:7px 11px}
+.governance{margin-top:15px;padding:20px}h1{font-size:19px;margin-bottom:6px}.subtitle{font-size:13px}.metrics{gap:13px;margin-top:16px}.metric{padding:17px;border-radius:13px}.metric h2{font-size:11px;margin-bottom:10px}.metric strong{font-size:28px}.reason{padding:14px;margin-top:13px;border-radius:12px}.reason h2{font-size:13px;margin-bottom:6px}.reason p{font-size:12px;line-height:1.5}.table-wrap{margin-top:13px}table{font-size:12px}th{font-size:10px;padding:10px}td{padding:11px 10px;line-height:1.4}.pill{font-size:10px;padding:4px 8px}.selected{font-size:9px}.cards{grid-template-columns:repeat(4,1fr);gap:13px;margin-top:15px}.card{padding:14px;min-height:280px;border-radius:16px}.card h2{font-size:13px;margin-bottom:13px}.count{width:23px;height:23px;font-size:11px}li{font-size:12px;line-height:1.4;margin:9px 0;padding-left:17px}.redcard li{padding:8px 8px 8px 23px;margin:8px 0;border-radius:8px}
+@media screen{body{overflow:hidden}.top{grid-template-columns:1.05fr 1fr 1fr .8fr}.metrics{grid-template-columns:repeat(3,1fr)}.heading{flex-direction:row;align-items:center}.date{text-align:right}}
+@media print{.report{width:100%;transform:none!important}.cards{grid-template-columns:repeat(4,1fr)}}
+.top>div{min-width:0}.top{align-items:center}.cards{align-items:stretch}.card{display:flex;flex-direction:column;min-width:0}.card h2{min-height:23px;align-items:center;flex-shrink:0}.card>.sub{margin-top:auto;padding-top:12px}.card li{overflow-wrap:break-word}.date .sub{text-align:left}.card ul{margin-bottom:0} </style></head><body><main class="report">
+<section class="panel top">
+<div><div class="label">Target Release</div><div class="value">To be confirmed</div><div class="sub">Last reported target: 9 Oct 2026</div></div>
+<div><div class="label">Effort</div><div class="value">59 / 56 Man-Days</div><div class="sub"></div></div>
+<div><div class="label">Variance</div><div class="value" style="color:#c92532">+3 Man-Days Over Budget</div><div class="sub">Effort 59 of 56 budgeted man-days</div></div>
+<div class="date"><span class="badge">Week 22</span><strong>23 Oct 2026</strong><div class="sub">Weekly Report</div><div class="sub" style="text-align:left"><b>Team</b><br>Nirojan (Developer)<br>Nilaxshan (Developer)<br>Kirusthiya (Developer)</div></div>
+</section>
+<section class="panel governance">
+<div class="heading"><div><h1>TARGET RELEASE DATE GOVERNANCE &amp; EXTENSION AUDIT</h1><p class="subtitle">Tracking Kickoff Baseline vs. Weekly Commitments & Progress</p></div><span class="badge">+29 Days Last Reported Extension</span></div>
+<div class="metrics">
+<div class="metric"><h2>ESTIMATED DATE OF RELEASE</h2><strong>10 Sep 2026</strong><p class="sub">Kickoff Baseline Target</p></div>
+<div class="metric blue"><h2>LATEST REPORTED RELEASE DATE</h2><strong>9 Oct 2026</strong><p class="sub">Updated release commitment to be confirmed</p></div>
+<div class="metric red"><h2>EXTENSION VARIANCE</h2><strong>+29 Days Extension</strong><p class="sub">9 Oct target not met; new release date to be confirmed</p></div>
+</div>
+<div class="reason"><h2>WHY IS FURTHER WORK REQUIRED?</h2><p><b>New requirements:</b> This week delivered the Tickets tab, redesigned ticket details and booking cards, Return Tickets, updated booking questions and add-ons screens, host place allocation improvements, and a clearer Activation flow. These items are based on mobile app commits dated 17–23 October 2026.</p><p>Deferred by agreement with Jon: guest questionnaire, ticket transfer and fan experience features.</p></div>
+<div class="table-wrap"><table><thead><tr><th>REPORTING WEEK</th><th>WEEK ENDING</th><th>PROMISED TARGET DATE</th><th>EXTENSION VARIANCE</th><th>REASON FOR EXTENSION / PROGRESS STATUS</th></tr></thead><tbody>
+<tr><td>Week 22<span class="selected">Selected</span></td><td>23 Oct 2026</td><td>To be confirmed</td><td><span class="pill">Awaiting confirmation</span></td><td>Tickets tab and details, Return Tickets, booking card and add-ons refresh, host place rules, and Activation flow improvements. Release target and remaining backlog status need confirmation.</td></tr>
+<tr><td>Week 21</td><td>16 Oct 2026</td><td>To be confirmed</td><td><span class="pill">Awaiting confirmation</span></td><td>Direct ticket claim links, host / guest booking views, host delegates, Liga Portugal branding and booking screen improvements. Host ticket sharing and final testing remained open.</td></tr>
+<tr><td>Week 20</td><td>9 Oct 2026</td><td>9 Oct 2026</td><td><span class="pill">+29 Days Extension</span></td><td>Invites, deep links, grouped tickets, notification alerts, Sporting World branding and My Tickets sync.</td></tr>
+<tr><td>Week 19</td><td>2 Oct 2026</td><td>2 Oct 2026</td><td><span class="pill">+22 Days Extension</span></td><td>Customer login, registration, PrivateWeb suite activation and Scanner bookings into My Tickets.</td></tr>
+</tbody></table></div></section>
+<section class="cards">
+<div class="card green"><h2>COMPLETED <span class="count">9</span></h2><ul>
+<li>Tickets tab, ticket details and PIN lock refresh</li><li>Booking cards show event names and images</li><li>Redesigned add-ons and booking questions</li><li>Return Tickets flow and ticket-first display</li><li>Package-based ticket returns</li><li>Host places counted across package sessions</li><li>Manage Attendees close and refresh controls</li><li>Packages without sessions open as separate activations</li><li>Checklist renamed Activation</li>
+</ul></div>
+<div class="card redcard"><h2>BACKLOG <span class="count">4</span></h2><ul>
+<li>Shared booking service access issue</li><li>Confirm correct ticket session dates and times</li><li>Host sharing tickets with their guests</li><li>Hide suite details on regular bookings</li>
+</ul><p class="sub">Prior backlog status requires review against current progress.</p></div>
+<div class="card bluecard"><h2>IN PROGRESS <span class="count">4</span></h2><ul>
+<li>Return ticket behavior and package counts review</li><li>Activation flow and naming updates</li><li>Booking and ticket screen updates</li><li>Review updated attendee and host-place handling</li>
+</ul><p class="sub">Carried from Week 20: invitation sign-in edge cases and invite-path UAT continue under claim-link testing; suite status polish moved to &apos;Hide suite details on regular bookings&apos;.</p></div>
+<div class="card purple"><h2>FUTURE NEXT WEEK <span class="count">6</span></h2><ul>
+<li>Confirm release target and effort forecast</li>
+<li>Review outstanding backlog against delivered Return Tickets work</li>
+<li>Verify the updated Activation and ticket flows</li>
+<li>Confirm latest remaining work with the team</li>
+<li>Update report with confirmed schedule and effort</li>
+<li></li></ul><p class="sub">Proposed next-week plan. Review items require agreement before implementation.</p></div>
+</section>
+
+
+</main><script>
+function fitReport(){const r=document.querySelector('.report');document.body.style.overflow='hidden';r.style.transform='none';r.style.maxWidth='none';r.style.margin='0';let scale=1;const w=innerWidth-36,h=innerHeight-36;for(let i=0;i<8;i++){r.style.width=(w/scale)+'px';const next=Math.min(1,h/r.offsetHeight);if(Math.abs(next-scale)<0.001){scale=next;break;}scale=next;}r.style.width=(w/scale)+'px';r.style.transform='scale('+scale+')';}
+addEventListener('load',fitReport);addEventListener('resize',fitReport);
+</script></body></html>
+
+
+
+
+
