@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)file:///E:/Weekly%20update/Weekly%20Project%20Visibility%20Report23.10.2026.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Project Visibility Report</title>
+
+<style>
+:root{
+  --bg:#f4f6f9;
+  --white:#fff;
+  --border:#dde4ec;
+  --text:#182235;
+  --muted:#748094;
+
+  --green:#149c55;
+  --red:#d73838;
+  --blue:#118ec4;
+  --purple:#7647db;
+  --amber:#d88900;
+
+  --greenSoft:#effaf4;
+  --redSoft:#fff2f2;
+  --blueSoft:#eff9fe;
+  --purpleSoft:#f7f3ff;
+  --amberSoft:#fff7df;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  color:var(--text);
+}
+
+.page{
+  width:min(1500px,96%);
+  margin:20px auto 40px;
+}
+
+.panel{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:0 5px 20px rgba(30,50,80,.05);
+}
+
+/* ================= TOOLBAR ================= */
+
+.toolbar{
+  position:sticky;
+  top:8px;
+  z-index:100;
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-bottom:12px;
+}
+
+.toolbar button,
+.small-btn{
+  background:white;
+  border:1px solid #ccd5df;
+  border-radius:8px;
+  padding:8px 12px;
+  cursor:pointer;
+  font-weight:800;
+  color:#27364d;
+}
+
+.toolbar button:hover,
+.small-btn:hover{
+  background:#f7f9fc;
+}
+
+body.editing [contenteditable="true"]{
+  outline:1px dashed #44a1cf;
+  outline-offset:2px;
+}
+
+/* ================= TOP KPIs ================= */
+
+.top{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0;
+  padding:20px;
+  margin-bottom:16px;
+}
+
+.kpi{
+  padding:5px 22px;
+  border-right:1px solid #e5eaf0;
+}
+
+.kpi:last-child{
+  border-right:none;
+}
+
+.kpi-label{
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.7px;
+  color:#7d8899;
+  text-transform:uppercase;
+}
+
+.kpi-value{
+  margin-top:7px;
+  font-size:18px;
+  font-weight:900;
+}
+
+.red-text{
+  color:var(--red);
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+}
+
+.badge.amber{
+  background:var(--amberSoft);
+  border:1px solid #f0d77f;
+  color:#a96100;
+}
+
+.badge.red{
+  background:#ffe8e8;
+  border:1px solid #efbaba;
+  color:#a72b2b;
+}
+
+.badge.green{
+  background:#dff7ea;
+  border:1px solid #b5e9ca;
+  color:#177d47;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+  padding:23px;
+  margin-bottom:18px;
+}
+
+.report-header{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-start;
+  padding-bottom:16px;
+  border-bottom:1px solid #e8edf3;
+}
+
+.title-area{
+  display:flex;
+  gap:13px;
+}
+
+.title-icon{
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eef3f9;
+  border-radius:10px;
+  font-size:20px;
+}
+
+.report-title{
+  margin:0;
+  font-size:19px;
+  font-weight:950;
+}
+
+.report-subtitle{
+  margin-top:5px;
+  font-size:13px;
+  color:#798699;
+}
+
+/* ================= SUMMARY ================= */
+
+.summary-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin:17px 0;
+}
+
+.summary{
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:16px;
+}
+
+.summary.blue{
+  background:var(--blueSoft);
+  border-color:#89cee8;
+}
+
+.summary.red{
+  background:#fff5f4;
+  border-color:#efc2c0;
+}
+
+.summary-label{
+  font-size:11px;
+  font-weight:900;
+  color:#68768b;
+  letter-spacing:.6px;
+}
+
+.summary-value{
+  font-size:20px;
+  font-weight:950;
+  margin-top:8px;
+}
+
+.summary.blue .summary-value{
+  color:#118bb8;
+}
+
+.summary.red .summary-value{
+  color:#ca3734;
+}
+
+.summary-note{
+  margin-top:5px;
+  color:#8995a5;
+  font-size:12px;
+}
+
+/* ================= REASON ================= */
+
+.reason{
+  padding:16px 18px;
+  border-radius:11px;
+  border:1px solid #efbfbd;
+  background:#fff4f3;
+  margin-bottom:17px;
+}
+
+.reason-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+}
+
+.reason-title{
+  font-size:14px;
+  font-weight:950;
+  color:#a12e2c;
+}
+
+.reason-text{
+  margin-top:9px;
+  font-size:13.5px;
+  line-height:1.6;
+  color:#7b3937;
+}
+
+/* ================= TABLE ================= */
+
+.table-wrap{
+  overflow:auto;
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+
+table{
+  width:100%;
+  min-width:1050px;
+  border-collapse:collapse;
+}
+
+th{
+  background:#f7f9fc;
+  padding:13px 14px;
+  text-align:left;
+  font-size:11px;
+  color:#506078;
+  font-weight:900;
+  border-bottom:1px solid var(--border);
+}
+
+td{
+  padding:13px 14px;
+  font-size:13px;
+  border-bottom:1px solid #edf1f5;
+  line-height:1.4;
+}
+
+tr:last-child td{
+  border-bottom:none;
+}
+
+.selected td{
+  background:#eef8fd;
+}
+
+.week{
+  font-weight:900;
+}
+
+/* ================= TEAM ================= */
+
+.team-section{
+  margin-bottom:18px;
+}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:11px;
+}
+
+.section-heading h2{
+  margin:0;
+  font-size:15px;
+  font-weight:950;
+}
+
+.helper{
+  font-size:12px;
+  color:#7c8798;
+  margin-top:3px;
+}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+}
+
+.member{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px;
+}
+
+.member-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.member-main{
+  display:flex;
+  gap:10px;
+}
+
+.avatar{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  background:#edf2f8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:950;
+  color:#40516b;
+}
+
+.member-name{
+  font-size:14px;
+  font-weight:950;
+}
+
+.member-role{
+  font-size:11.5px;
+  color:#798598;
+  margin-top:3px;
+}
+
+.delete-btn{
+  border:0;
+  background:transparent;
+  color:#a1aab6;
+  font-size:17px;
+  cursor:pointer;
+}
+
+.member-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:13px;
+}
+
+.member-detail{
+  padding:8px;
+  background:#f7f9fc;
+  border-radius:7px;
+}
+
+.detail-label{
+  font-size:9px;
+  color:#8b96a7;
+  font-weight:900;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+
+.detail-value{
+  margin-top:3px;
+  font-size:12px;
+  font-weight:900;
+}
+
+/* ================= STATUS ================= */
+
+.status-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.status-card{
+  background:white;
+  border:1px solid var(--border);
+  border-top:4px solid;
+  border-radius:12px;
+  padding:15px;
+  min-height:370px;
+}
+
+.completed{
+  border-top-color:var(--green);
+}
+
+.backlog{
+  border-top-color:var(--red);
+}
+
+.progress{
+  border-top-color:var(--blue);
+}
+
+.future{
+  border-top-color:var(--purple);
+}
+
+.status-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.status-title{
+  font-weight:950;
+  font-size:14px;
+}
+
+.completed .status-title{
+  color:var(--green);
+}
+
+.backlog .status-title{
+  color:var(--red);
+}
+
+.progress .status-title{
+  color:var(--blue);
+}
+
+.future .status-title{
+  color:var(--purple);
+}
+
+.count{
+  padding:5px 9px;
+  border-radius:999px;
+  background:#eef1f5;
+  font-size:11px;
+  font-weight:900;
+}
+
+.task-row{
+  display:grid;
+  grid-template-columns:17px 1fr 18px;
+  gap:7px;
+  padding:9px 0;
+  border-bottom:1px dashed #e8edf2;
+  font-size:12.5px;
+  line-height:1.4;
+}
+
+.task-icon{
+  font-weight:950;
+}
+
+.completed .task-icon{
+  color:var(--green);
+}
+
+.backlog .task-icon{
+  color:var(--red);
+}
+
+.progress .task-icon{
+  color:var(--blue);
+}
+
+.future .task-icon{
+  color:var(--purple);
+}
+
+.task-delete{
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  color:#a3acb7;
+}
+
+.card-footer{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1150px){
+
+  .team-grid,
+  .status-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .top,
+  .summary-grid,
+  .team-grid,
+  .status-grid{
+    grid-template-columns:1fr;
+  }
+
+  .kpi{
+    border-right:none;
+    border-bottom:1px solid #e5eaf0;
+    padding:12px 4px;
+  }
+
+}
+
+@media print{
+
+  body{
+    background:white;
+  }
+
+  .toolbar,
+  .small-btn,
+  .delete-btn,
+  .task-delete{
+    display:none !important;
+  }
+
+  .page{
+    width:100%;
+    margin:0;
+  }
+
+  .panel{
+    box-shadow:none;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<div class="toolbar">
+
+<button onclick="toggleEdit()">✏️ Edit Mode</button>
+
+<button onclick="saveReport()">💾 Save</button>
+
+<button onclick="resetReport()">↺ Reset</button>
+
+<button onclick="window.print()">🖨️ Print / PDF</button>
+
+</div>
+
+
+<!-- TOP -->
+
+<section class="panel top">
+
+<div class="kpi">
+
+<div class="kpi-label">
+Target Release
+</div>
+
+<div class="kpi-value">
+
+<span contenteditable="true">05 Oct 2026
+</span>
+
+&nbsp;
+
+<span class="badge amber" contenteditable="true">&nbsp;-19 Days Extension
+
+</span>
+
+</div>
+
+</div>
+
+
+<div class="kpi">
+
+<div class="kpi-label">
+Total Effort
+</div>
+
+<div class="kpi-value" contenteditable="true">160 / 146 Man-Days
+
+</div>
+
+</div>
+
+
+<div class="kpi">
+
+<div class="kpi-label">
+Schedule Variance
+</div>
+
+<div class="kpi-value red-text" contenteditable="true">19-Man-Days Delay
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- MAIN -->
+
+<section class="panel main">
+
+
+<div class="report-header">
+
+<div class="title-area">
+
+<div class="title-icon">
+📅
+</div>
+
+<div>
+
+<h1 class="report-title" contenteditable="true">
+
+TARGET RELEASE DATE GOVERNANCE &amp; EXTENSION AUDIT
+
+</h1>
+
+<div class="report-subtitle" contenteditable="true">
+
+Weekly Commitments • Delivery Progress • Root Cause Analysis
+
+</div>
+
+</div>
+
+</div>
+
+
+<span class="badge amber" contenteditable="true">-19 Days Extension
+
+</span>
+
+</div>
+
+
+
+<div class="summary-grid">
+
+
+<div class="summary">
+
+<div class="summary-label" contenteditable="true">
+
+ESTIMATED RELEASE DATE
+
+</div>
+
+<div class="summary-value" contenteditable="true"><br></div>
+
+<div class="summary-note" contenteditable="true">
+
+Kickoff Baseline Target
+
+</div>
+
+</div>
+
+
+
+<div class="summary blue">
+
+<div class="summary-label" contenteditable="true">
+
+CURRENT RELEASE DATE
+
+</div>
+
+<div class="summary-value" contenteditable="true">
+
+15 Oct 2026
+
+</div>
+
+<div class="summary-note" contenteditable="true">
+
+Latest Approved Target
+
+</div>
+
+</div>
+
+
+
+<div class="summary red">
+
+<div class="summary-label" contenteditable="true">
+
+EXTENSION VARIANCE
+
+</div>
+
+<div class="summary-value" contenteditable="true">
+
++10 Days
+
+</div>
+
+<div class="summary-note" contenteditable="true">
+
+Extended during Week 2 &amp; Week 3
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="reason">
+
+<div class="reason-top">
+
+<div class="reason-title" contenteditable="true">
+
+⚠ WHY WAS THE RELEASE DATE EXTENDED?
+
+</div>
+
+<span class="badge red" contenteditable="true">
+
+Week 2&nbsp;</span>
+
+</div>
+
+
+<div class="reason-text">
+
+<strong contenteditable="true">
+Root Cause / Technical Reason:
+</strong>
+
+<span contenteditable="true">Migration&nbsp;</span>
+
+</div>
+
+</div>
+
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>REPORTING WEEK</th>
+<th>WEEK ENDING</th>
+<th>PROMISED TARGET</th>
+<th>VARIANCE</th>
+<th>EXTENDED IN</th>
+<th>PROGRESS / EXTENSION REASON</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr class="selected">
+
+<td>
+<div class="week" contenteditable="true">
+Week 3
+</div>
+</td>
+
+<td contenteditable="true">30 Oct 2026
+</td>
+
+<td contenteditable="true">
+15 Oct 2026
+</td>
+
+<td>
+<span class="badge amber" contenteditable="true">-19 Days
+</span>
+</td>
+
+<td contenteditable="true">
+Week 2&nbsp;</td>
+
+<td contenteditable="true">Migration.
+
+</td>
+
+</tr>
+
+
+<tr>
+
+<td class="week" contenteditable="true"><br></td>
+
+<td contenteditable="true"><br></td>
+
+<td contenteditable="true"><br></td>
+
+<td>
+<span class="badge amber" contenteditable="true"></span>
+</td>
+
+<td contenteditable="true"><br></td>
+
+<td contenteditable="true"><br></td>
+
+</tr>
+
+
+<tr>
+
+<td class="week" contenteditable="true"><br></td>
+
+<td contenteditable="true"><br></td>
+
+<td contenteditable="true"><br></td>
+
+<td>
+<span class="badge green" contenteditable="true"></span>
+</td>
+
+<td contenteditable="true"><br></td>
+
+<td contenteditable="true">.
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+
+
+<!-- STATUS CARDS -->
+
+<section class="status-grid">
+
+
+<div class="status-card completed" data-icon="✓">
+
+<div class="status-header">
+
+<div class="status-title" contenteditable="true">
+
+✓ COMPLETED
+
+</div>
+
+<div class="count">4 / 8</div>
+
+</div>
+
+<div class="tasks">
+
+<div class="task-row">
+<div class="task-icon">✓</div>
+<div contenteditable="true">Live data base&nbsp;</div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+<div class="task-row">
+<div class="task-icon">✓</div>
+<div contenteditable="true"><br></div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+<div class="task-row">
+<div class="task-icon">✓</div>
+<div contenteditable="true"><br></div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+<div class="task-row">
+<div class="task-icon">✓</div>
+<div contenteditable="true"><br></div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+</div>
+
+<div class="card-footer">
+
+<button class="small-btn" onclick="addTask(this)">
+
++ Add Detail
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="status-card backlog" data-icon="⊘">
+
+<div class="status-header">
+
+<div class="status-title" contenteditable="true">
+⊘ BACKLOG
+</div>
+
+<div class="count">2 / 8</div>
+
+</div>
+
+<div class="tasks">
+
+
+
+
+
+
+
+
+
+<div class="task-row">
+
+<div class="task-icon">
+⊘
+</div>
+
+<div contenteditable="true">Tab</div>
+
+<button class="task-delete" onclick="removeTask(this)">
+
+×
+
+</button>
+
+</div><div class="task-row">
+
+<div class="task-icon">
+⊘
+</div>
+
+<div contenteditable="true">Card reader</div>
+
+<button class="task-delete" onclick="removeTask(this)">
+
+×
+
+</button>
+
+</div></div>
+
+<div class="card-footer">
+
+<button class="small-btn" onclick="addTask(this)">
+
++ Add Detail
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="status-card progress" data-icon="&gt;">
+
+<div class="status-header">
+
+<div class="status-title" contenteditable="true">
+&gt; IN PROGRESS
+</div>
+
+<div class="count">3 / 8</div>
+
+</div>
+
+<div class="tasks">
+
+<div class="task-row">
+<div class="task-icon">&gt;</div>
+<div contenteditable="true">Live app on going</div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+<div class="task-row">
+<div class="task-icon">&gt;</div>
+<div contenteditable="true">Ui improvements</div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+<div class="task-row">
+<div class="task-icon">&gt;</div>
+<div contenteditable="true">Tenant creation&nbsp;</div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+
+
+</div>
+
+<div class="card-footer">
+
+<button class="small-btn" onclick="addTask(this)">
+
++ Add Detail
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="status-card future" data-icon="•">
+
+<div class="status-header">
+
+<div class="status-title" contenteditable="true">
+○ FUTURE / NEXT
+</div>
+
+<div class="count">3 / 8</div>
+
+</div>
+
+<div class="tasks">
+
+<div class="task-row">
+<div class="task-icon">•</div>
+<div contenteditable="true">Voucher Implementation</div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+<div class="task-row">
+<div class="task-icon">•</div>
+<div contenteditable="true">Stock Management</div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+<div class="task-row">
+<div class="task-icon">•</div>
+<div contenteditable="true">Return &amp; Refund</div>
+<button class="task-delete" onclick="removeTask(this)">×</button>
+</div>
+
+
+
+</div>
+
+<div class="card-footer">
+
+<button class="small-btn" onclick="addTask(this)">
+
++ Add Detail
+
+</button>
+
+</div>
+
+</div>
+
+
+</section>
+
+</div>
+
+
+<script>
+
+const STORAGE_KEY =
+"professional-weekly-report";
+
+
+/* EDIT */
+
+function toggleEdit(){
+
+ document.body.classList.toggle(
+ "editing"
+ );
+
+}
+
+
+/* ADD TEAM MEMBER — MAXIMUM 8 */
+
+function addMember(){
+
+ const grid =
+ document.getElementById(
+ "teamGrid"
+ );
+
+ const current =
+ grid.children.length;
+
+ if(current >= 8){
+
+   alert(
+   "Maximum 8 team members only."
+   );
+
+   return;
+
+ }
+
+ const number =
+ current + 1;
+
+ const member =
+ document.createElement(
+ "div"
+ );
+
+ member.className =
+ "member";
+
+ member.innerHTML = `
+
+<div class="member-top">
+
+<div class="member-main">
+
+<div class="avatar">
+M${number}
+</div>
+
+<div>
+
+<div
+class="member-name"
+contenteditable="true">
+
+Team Member ${number}
+
+</div>
+
+<div
+class="member-role"
+contenteditable="true">
+
+Role / Responsibility
+
+</div>
+
+</div>
+
+</div>
+
+<button
+class="delete-btn"
+onclick="removeMember(this)">
+
+×
+
+</button>
+
+</div>
+
+<div class="member-details">
+
+<div class="member-detail">
+
+<div class="detail-label">
+Planned
+</div>
+
+<div
+class="detail-value"
+contenteditable="true">
+
+0 Man-Days
+
+</div>
+
+</div>
+
+<div class="member-detail">
+
+<div class="detail-label">
+Actual
+</div>
+
+<div
+class="detail-value"
+contenteditable="true">
+
+0 Man-Days
+
+</div>
+
+</div>
+
+<div class="member-detail">
+
+<div class="detail-label">
+Allocation
+</div>
+
+<div
+class="detail-value"
+contenteditable="true">
+
+100%
+
+</div>
+
+</div>
+
+<div class="member-detail">
+
+<div class="detail-label">
+Status
+</div>
+
+<div
+class="detail-value"
+contenteditable="true">
+
+Planned
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+ grid.appendChild(
+ member
+ );
+
+}
+
+
+/* REMOVE MEMBER */
+
+function removeMember(btn){
+
+ btn.closest(
+ ".member"
+ ).remove();
+
+ updateMemberNumbers();
+
+}
+
+
+/* RENUMBER */
+
+function updateMemberNumbers(){
+
+ document
+ .querySelectorAll(
+ ".avatar"
+ )
+ .forEach(
+ (item,index)=>{
+
+   item.textContent =
+   "M" + (index + 1);
+
+ });
+
+}
+
+
+/* ADD DETAIL — MAX 8 */
+
+function addTask(button){
+
+ const card =
+ button.closest(
+ ".status-card"
+ );
+
+ const tasks =
+ card.querySelector(
+ ".tasks"
+ );
+
+ const current =
+ tasks.children.length;
+
+ if(current >= 8){
+
+   alert(
+   "Maximum 8 details can be added."
+   );
+
+   return;
+
+ }
+
+ const icon =
+ card.dataset.icon;
+
+ const row =
+ document.createElement(
+ "div"
+ );
+
+ row.className =
+ "task-row";
+
+ row.innerHTML = `
+
+<div class="task-icon">
+${icon}
+</div>
+
+<div contenteditable="true">
+Enter new detail
+</div>
+
+<button
+class="task-delete"
+onclick="removeTask(this)">
+
+×
+
+</button>
+
+`;
+
+ tasks.appendChild(
+ row
+ );
+
+ updateTaskCount(
+ card
+ );
+
+}
+
+
+/* REMOVE DETAIL */
+
+function removeTask(button){
+
+ const card =
+ button.closest(
+ ".status-card"
+ );
+
+ button.closest(
+ ".task-row"
+ ).remove();
+
+ updateTaskCount(
+ card
+ );
+
+}
+
+
+/* UPDATE 1/8 etc */
+
+function updateTaskCount(card){
+
+ const count =
+ card.querySelectorAll(
+ ".task-row"
+ ).length;
+
+ card.querySelector(
+ ".count"
+ ).textContent =
+ count + " / 8";
+
+}
+
+
+/* SAVE */
+
+function saveReport(){
+
+ const content =
+ document.querySelector(
+ ".page"
+ ).innerHTML;
+
+ localStorage.setItem(
+ STORAGE_KEY,
+ content
+ );
+
+ alert(
+ "Weekly report saved successfully."
+ );
+
+}
+
+
+/* LOAD */
+
+window.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+ const saved =
+ localStorage.getItem(
+ STORAGE_KEY
+ );
+
+ if(saved){
+
+   document.querySelector(
+   ".page"
+   ).innerHTML =
+   saved;
+
+ }
+
+ document
+ .querySelectorAll(
+ ".status-card"
+ )
+ .forEach(
+ card => updateTaskCount(card)
+ );
+
+});
+
+
+/* RESET */
+
+function resetReport(){
+
+ if(
+   confirm(
+   "Reset this report?"
+   )
+ ){
+
+   localStorage.removeItem(
+   STORAGE_KEY
+   );
+
+   location.reload();
+
+ }
+
+}
+
+</script>
+
+
+</body></html>
