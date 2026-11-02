@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Project Tracker Portal Engine
  * EXECUTIVE PROJECT TRACKER - Complete Portfolio Visibility Hub
  * Compact Executive Card Design & Full-Screen Workstreams Breakdown
@@ -440,12 +440,12 @@ const DEFAULT_PROJECTS = [
     "forecastTotal":  59,
     "forecastOverrun": "+3 Man-Days (+5.4%)",
     "overBudget": true,
-    "leads": "Gobithas / Nirojan / Nilaxshan / Kirusthiya",
+    "leads": "Gobithas (Former Employee) / Nirojan / Nilaxshan / Kirusthiya",
     "description": "Customer mobile application for racetrack ticketing, turnstile barcode scanning, and live race day updates.",
     "highlights": "QR Scanner, Ticket Management, Live Polling, Mobile UX and account verification.",
     "resources": [
       {
-        "name": "Gobithas Kalaimakan",
+        "name": "Gobithas Kalaimakan (Former Employee)",
         "role": "Developer",
         "allocation": "14 Man-Days",
         "responsibility": "Invitation handoff via deep links and Play install referrer"
@@ -2341,7 +2341,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v23_oct30_all';
+const STORAGE_KEY = 'portal_projects_exec_v24_nov2_grayhound';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
