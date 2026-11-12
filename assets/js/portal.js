@@ -15,8 +15,8 @@ const DEFAULT_PROJECTS = [
     "forecastExtension": "+43 Days Extension (Further TBC)",
     "originalPlanDates": "3 Jul 2026 – 2 Sep 2026",
     "originalAllocation": 88,
-    "forecastTotal": 172,
-    "forecastOverrun": "+84 Man-Days (+95.5%)",
+    "forecastTotal": 182,
+    "forecastOverrun": "+94 Man-Days (+106.8%)",
     "overBudget": true,
     "leads": "Nilaxshan / Kirusthiya",
     "description": "Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX retail loss prevention, and RTSP/ONVIF reliability.",
@@ -69,6 +69,53 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 10,
+        "weekLabel": "Week 10",
+        "weekEnding": "06 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "consumed": 182,
+        "remaining": 0,
+        "consumedPercent": "121.3%",
+        "completedTasks": [
+          "Dashboard UI, filters and pagination updated",
+          "Camera / zone sync and retry implemented",
+          "Central clip settings implemented",
+          "Installer build / payload improvements",
+          "Clean-Windows installer validation",
+          "Final hardware recommendation",
+          "Dashboard, connector / installer updates"
+        ],
+        "uncompletedTasks": [
+          "Live 1 / 4-camera benchmark (Backlog)",
+          "Latency and dropped-frame checks (Backlog)",
+          "Live camera-to-alert E2E (Backlog)"
+        ],
+        "inProgressTasks": [
+          "Fully local validation — live tests pending"
+        ],
+        "futureTasks": [
+          "Validate local runtime / playback fixes",
+          "Enable AI processing recovery after interruptions",
+          "Ensure all uploaded clips are queued for analysis",
+          "Prevent duplicate alerts for the same clip",
+          "Deliver live alerts to all authorised users",
+          "Add automated tests for core workflows",
+          "Validate AI detection using more real-camera clips"
+        ],
+        "keyInsight": "Team worked on Optimo Greyhound. ONETIX task progress unchanged; additional days required, duration to be confirmed. 182 of 150 allocated man-days consumed (+32 exceeded).",
+        "weeklyUrl": "Incubator Weekly update/Camera Module 06.11.2026.html",
+        "scopeUrl": "scope document/ONETIX_Scope_USP.html",
+        "initialReleaseDate": "2 Sep 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "15 Oct 2026 (Revised TBC)",
+        "forecastExtension": "+43 Days Extension (Further TBC)",
+        "extendedInWeek": "Week 2 & Week 3 (Further extension TBC)",
+        "extensionReason": "Team worked on Optimo Greyhound. ONETIX task progress unchanged; additional days required, duration to be confirmed.",
+        "screenUrl": "screens/camera_module_screens.html",
+        "governanceUrl": "Incubator Weekly update/Camera Module 06.11.2026 Governance.html"
+      },
       {
         "weekNumber": 9,
         "weekLabel": "Week 9",
@@ -794,7 +841,7 @@ const DEFAULT_PROJECTS = [
     "targetReleaseDate": "08 Nov 2026",
     "originalAllocation": 100,
     "forecastTotal": 260,
-    "forecastOverrun": "+150 Man-Days (+150%)",
+    "forecastOverrun": "+170 Man-Days (+170%)",
     "overBudget": true,
     "leads": "Thivaharan / Dapiyshanth",
     "description": "Comprehensive human resource management suite with employee directory, multi-tenant security, and leave tracking.",
@@ -854,6 +901,45 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 9,
+        "weekLabel": "Week 9",
+        "weekEnding": "06 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "260 Days",
+        "consumed": "270 Consumed (104%)",
+        "completedTasks": [
+          "Team Planner - week and month team capacity board with member timelines",
+          "Create from the Planner - quick task creation directly from any day or member cell",
+          "Planner Redesign - timeline layout, month switch, priority borders and time logs",
+          "My Team Cards - direct team visibility with status, capacity and today's attendance",
+          "My Work Updates - focus summary, day capacity pill and refreshed timeline layout",
+          "Monitoring, Calendar & Security Fixes - monitoring stability, calendar sync and permission checks",
+          "Dark Mode - full dark theme across HR views and components",
+          "Attendance & Leave Screens - cleaner daily timeline, activity bars and policy review"
+        ],
+        "uncompletedTasks": [],
+        "inProgressTasks": [
+          "Tray Clock-in Reminder - 24h open clock-in reminder and break/daily-summary time fixes (built, not merged yet)"
+        ],
+        "futureTasks": [
+          "Plan Requests",
+          "Calendar Exceptions in the Inbox",
+          "Wellbeing Desktop Pet"
+        ],
+        "keyInsight": "97% planned scope complete; 270 of 260 allocated man-days consumed (104%, +170% total overrun). Go-live target 08 Nov 2026; Tray Clock-in Reminder built, awaiting merge.",
+        "weeklyUrl": "Incubator Weekly update/ONEXSO 06.11.2026.html",
+        "scopeUrl": "scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "08 Nov 2026",
+        "targetReleaseDate": "08 Nov 2026",
+        "forecastExtension": "+24 Days Extension",
+        "extendedInWeek": "Week 1 & Week 2 & Week 3 (Governance Week 6)",
+        "extensionReason": "No change to the target this week — 08 Nov 2026 Go-Live target stands; 97% scope completed with +10 MD over revised allocation.",
+        "screenUrl": "screens/onexso_hrms_screens.html",
+        "governanceUrl": "Incubator Weekly update/ONEXSO 06.11.2026 Governance.html"
+      },
       {
         "weekNumber": 8,
         "weekLabel": "Week 8",
@@ -1191,25 +1277,25 @@ const DEFAULT_PROJECTS = [
       {
         "name": "Mathusan",
         "role": "Coordinator / Developer",
-        "allocation": "127 Man-Days",
+        "allocation": "161 Man-Days",
         "responsibility": "Development, task management, coordination, risks, reporting, and E-commerce."
       },
       {
         "name": "Yapes",
         "role": "Project Leader / Developer",
-        "allocation": "113 Man-Days",
+        "allocation": "143 Man-Days",
         "responsibility": "Development, Super Admin, and Second Brain."
       },
       {
         "name": "Tharmithan",
         "role": "Developer",
-        "allocation": "125 Man-Days",
+        "allocation": "156 Man-Days",
         "responsibility": "Flutter App development and integration."
       },
       {
         "name": "Nivethika",
         "role": "Developer",
-        "allocation": "44 Man-Days",
+        "allocation": "70 Man-Days",
         "responsibility": "Product setup, tax management, and category configuration."
       }
     ],
@@ -1242,6 +1328,44 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 8,
+        "weekLabel": "Week 28",
+        "weekEnding": "06 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "146 Days",
+        "consumed": "170 Consumed (116%)",
+        "completedTasks": [
+          "Live back end completed",
+          "Live databases created"
+        ],
+        "uncompletedTasks": [
+          "Live App (Core Modules)",
+          "App deployment work"
+        ],
+        "inProgressTasks": [
+          "Bulk Upload",
+          "Payment Option",
+          "Cashier flow UI change"
+        ],
+        "futureTasks": [
+          "User email creation",
+          "Stock Management",
+          "Voucher Implementation"
+        ],
+        "keyInsight": "Live back end and live databases completed; Live App (Core Modules) and App deployment work pending. 170 of 146 allocated man-days consumed (-24 remaining); USB-C hub/card reader dependency noted.",
+        "weeklyUrl": "Incubator Weekly update/Oneverz EPOS 06.11.2026.html",
+        "scopeUrl": "scope document/Oneverz.html",
+        "initialReleaseDate": "27 Sep 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "05 Nov 2026",
+        "forecastExtension": "-24 Days Remaining (+24 Exceeded)",
+        "extendedInWeek": "Week 2 & Week 3",
+        "extensionReason": "Extended during Week 2 & Week 3 (Migration). Live App core modules and app deployment work ongoing.",
+        "screenUrl": "screens/oneverz_epos_screens.html",
+        "governanceUrl": "Incubator Weekly update/Oneverz EPOS 06.11.2026 Governance.html"
+      },
       {
         "weekNumber": 7,
         "weekLabel": "Week 27",
@@ -1514,19 +1638,19 @@ const DEFAULT_PROJECTS = [
       {
         "name": "Poovalingam Thamsan",
         "role": "Project Coordinator",
-        "allocation": "67 Man-Days",
+        "allocation": "72 Man-Days",
         "responsibility": "Managing layout configuration and seat-generation workflows across multiple facilities within a venue."
       },
       {
         "name": "Ramanathan Danuharan",
         "role": "Team Lead",
-        "allocation": "35 Man-Days",
+        "allocation": "40 Man-Days",
         "responsibility": "Implementing high-accuracy AI-based validation to verify the accuracy of blocks generated from blueprint inputs."
       },
       {
         "name": "Thifshana Jeyabalan",
         "role": "Developer",
-        "allocation": "63 Man-Days",
+        "allocation": "68 Man-Days",
         "responsibility": "Refining the CSV upload format and seat-application process to support ordered seating blocks, unordered seating blocks, and unshaped blocks."
       }
     ],
@@ -1559,6 +1683,45 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 8,
+        "weekLabel": "Week 23",
+        "weekEnding": "06 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "200 Days",
+        "consumed": "185 Consumed (92.5%)",
+        "completedTasks": [
+          "Created the project Second Brain and documented completed work",
+          "Implemented an accuracy improvement feature for block creation",
+          "Added AI support to the CSV workflow"
+        ],
+        "uncompletedTasks": [
+          "Validate block-accuracy and AI-assisted CSV features end to end",
+          "Complete support for unordered seating and unshaped blocks",
+          "Resolve overlapping layouts across multiple facilities"
+        ],
+        "inProgressTasks": [
+          "Validate block-accuracy improvements and AI-assisted CSV workflow end to end",
+          "Complete support for unordered seating and unshaped blocks",
+          "Resolve overlapping layouts across multiple facilities"
+        ],
+        "futureTasks": [
+          "Complete UAT and sign-off ahead of 09 Nov 2026 release",
+          "3D venue capabilities remain outside Phase 1 2D setup scope"
+        ],
+        "keyInsight": "Target release date 09 Nov 2026 (+62 Days Delay). 185 of 200 man-days consumed (92.5%, 15 MD remaining). Second Brain documented, block-accuracy improvement implemented, and AI support added to CSV workflow.",
+        "weeklyUrl": "Incubator Weekly update/Ticketing 06.11.2026.html",
+        "scopeUrl": "scope document/Venue_Layout_Scope_USP.html",
+        "initialReleaseDate": "08 Sep 2026",
+        "lastWeekTargetDate": "09 Nov 2026",
+        "targetReleaseDate": "09 Nov 2026",
+        "forecastExtension": "+62 Days Extension",
+        "extendedInWeek": "Week 22",
+        "extensionReason": "No new date change in Week 23 (+62 days vs initial 08 Sep 2026 baseline; 09 Nov 2026 forecast held). Remaining effort focused on E2E validation, unshaped blocks, and overlapping multi-facility layouts.",
+        "screenUrl": "screens/ticketing_screens.html",
+        "governanceUrl": "Incubator Weekly update/Ticketing 06.11.2026 Governance.html"
+      },
       {
         "weekNumber": 7,
         "weekLabel": "Week 22",
@@ -1997,6 +2160,45 @@ const DEFAULT_PROJECTS = [
     "selectedWeekIndex": 0,
     "weeks": [
       {
+        "weekNumber": 7,
+        "weekLabel": "Week 45",
+        "weekEnding": "06 Nov 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "10 Man-Days",
+        "consumed": "10 Planned (Actual TBC)",
+        "completedTasks": [
+          "Database and questionnaire-related setup work",
+          "Staff Portal UI and functional QA",
+          "Bug fixes for issues identified during Staff Portal QA",
+          "Greyhound mobile app UI migration assistance (extra cross-team support)"
+        ],
+        "uncompletedTasks": [
+          "Remaining Staff Portal defects and final QA sign-off pending confirmation"
+        ],
+        "inProgressTasks": [
+          "Re-test issues fixed in Staff Portal QA",
+          "Verify database and questionnaire-related configuration",
+          "Staff Portal bug-fix verification and regression"
+        ],
+        "futureTasks": [
+          "Confirm remaining defects and regression results",
+          "Track Greyhound mobile UI migration separately from NSW Sports deliverables",
+          "Confirm actual effort and final QA sign-off"
+        ],
+        "keyInsight": "Staff Portal QA, bug fixes, and database/questionnaire setup progressed during 02–06 Nov 2026. Team also supported Greyhound mobile UI migration. 10 MD planned allocation (actual TBC); demo not reported.",
+        "weeklyUrl": "Incubator Weekly update/NSW 06.11.2026.html",
+        "governanceUrl": "Incubator Weekly update/NSW 06.11.2026 Governance.html",
+        "scopeUrl": "scope document/nsw_sports_scope_usp.html",
+        "initialReleaseDate": "18 Sep 2026",
+        "lastWeekTargetDate": "30 Oct 2026",
+        "targetReleaseDate": "30 Oct 2026",
+        "forecastExtension": "Active Development / QA",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Staff Portal QA, bug-fix verification, and database/questionnaire setup active alongside cross-team Greyhound UI migration support.",
+        "screenUrl": "screens/nsw_sports_screens.html"
+      },
+      {
         "weekNumber": 6,
         "weekLabel": "Week 44",
         "weekEnding": "30 Oct 2026",
@@ -2341,7 +2543,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v24_nov2_grayhound';
+const STORAGE_KEY = 'portal_projects_exec_v25_nov06_all';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -2371,7 +2573,8 @@ try {
     'portal_projects_exec_v19_greyhound_team_complete',
     'portal_projects_exec_v20_oct16_reports',
     'portal_projects_exec_v21_greyhound_oct16',
-    'portal_projects_exec_v22_oct23_all'
+    'portal_projects_exec_v22_oct23_all',
+    'portal_projects_exec_v24_nov2_grayhound'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 
