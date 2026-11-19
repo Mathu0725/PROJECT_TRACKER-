@@ -11,12 +11,12 @@ const DEFAULT_PROJECTS = [
     "name": "Camera Module (ONETIX)",
     "company": "UNICOM TIC INCUBATOR",
     "release": "Phase 1A MVP",
-    "targetReleaseDate": "15 Oct 2026 (Revised TBC)",
-    "forecastExtension": "+43 Days Extension (Further TBC)",
+    "targetReleaseDate": "30 Nov 2026",
+    "forecastExtension": "+89 Days Extension",
     "originalPlanDates": "3 Jul 2026 – 2 Sep 2026",
     "originalAllocation": 88,
-    "forecastTotal": 182,
-    "forecastOverrun": "+94 Man-Days (+106.8%)",
+    "forecastTotal": 192,
+    "forecastOverrun": "+104 Man-Days (+118.2%)",
     "overBudget": true,
     "leads": "Nilaxshan / Kirusthiya",
     "description": "Edge vision and camera stream gateway with installer launcher lifecycle, ONETIX retail loss prevention, and RTSP/ONVIF reliability.",
@@ -69,6 +69,57 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 11,
+        "weekLabel": "Week 11",
+        "weekEnding": "13 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "consumed": 192,
+        "remaining": 0,
+        "consumedPercent": "128.0%",
+        "completedTasks": [
+          "Team worked on Optimo project",
+          "Meeting action: hosting comparison study (cloud vs hardware host)",
+          "Dashboard UI, filters and pagination updated",
+          "Camera / zone sync and retry implemented",
+          "Central clip settings implemented",
+          "Installer build / payload improvements",
+          "Clean-Windows installer validation",
+          "Final hardware recommendation",
+          "Dashboard, connector / installer updates"
+        ],
+        "uncompletedTasks": [
+          "Cloud vs hardware host comparison (cost / analysis time)",
+          "Live 1 / 4-camera benchmark (Backlog)",
+          "Latency and dropped-frame checks (Backlog)",
+          "Live camera-to-alert E2E (Backlog)"
+        ],
+        "inProgressTasks": [
+          "Cloud vs hardware host comparison study (cost / analysis time)",
+          "Carry forward live 1 / 4-camera benchmark and latency / frame-drop checks"
+        ],
+        "futureTasks": [
+          "Validate local runtime / playback fixes",
+          "Enable AI processing recovery after interruptions",
+          "Ensure all uploaded clips are queued for analysis",
+          "Prevent duplicate alerts for the same clip",
+          "Deliver live alerts to all authorised users",
+          "Add automated tests for core workflows",
+          "Validate AI detection using more real-camera clips"
+        ],
+        "keyInsight": "Team worked on Optimo project. Release date revised to 30 Nov 2026 (+89 Days Extension). Meeting action: hosting comparison study (cloud vs hardware cost and analysis time). 192 of 150 allocated man-days consumed (+42 exceeded; +104 MD / +118.2% vs original baseline).",
+        "weeklyUrl": "Incubator Weekly update/Camera Module 13.11.2026.html",
+        "scopeUrl": "scope document/ONETIX_Scope_USP.html",
+        "initialReleaseDate": "2 Sep 2026",
+        "lastWeekTargetDate": "15 Oct 2026",
+        "targetReleaseDate": "30 Nov 2026",
+        "forecastExtension": "+89 Days Extension",
+        "extendedInWeek": "Week 11",
+        "extensionReason": "Team worked on Optimo project. Release date revised to 30 Nov 2026. Meeting action: check and compare cloud cost, hardware hosting cost and analysis time.",
+        "screenUrl": "screens/camera_module_screens.html",
+        "governanceUrl": "Incubator Weekly update/Camera Module 13.11.2026 Governance.html"
+      },
       {
         "weekNumber": 10,
         "weekLabel": "Week 10",
@@ -482,10 +533,10 @@ const DEFAULT_PROJECTS = [
     "name": "Greyhound Customer Mobile App",
     "company": "UNICOM TIC INCUBATOR",
     "release": "Phase 1",
-    "targetReleaseDate": "To be confirmed (TBC)",
+    "targetReleaseDate": "10 Nov 2026 (Target passed; revised date TBC)",
     "originalAllocation": 35,
-    "forecastTotal":  59,
-    "forecastOverrun": "+3 Man-Days (+5.4%)",
+    "forecastTotal": 87,
+    "forecastOverrun": "+31 Man-Days (+55.4%)",
     "overBudget": true,
     "leads": "Gobithas (Former Employee) / Nirojan / Nilaxshan / Kirusthiya",
     "description": "Customer mobile application for racetrack ticketing, turnstile barcode scanning, and live race day updates.",
@@ -545,6 +596,136 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 10,
+        "weekLabel": "Week 25",
+        "weekEnding": "13 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "56 Days",
+        "consumed": "87 Consumed (155.4%)",
+        "completedTasks": [
+          "Improved fundraiser ticket passes, event artwork and package labels",
+          "Refined shared-ticket display, booking date filters and booking search",
+          "Updated ticket selection / sharing controls and Home next-up ticket navigation",
+          "Scanner: Gate scans show event names and available events with clearer admitted status",
+          "Scanner: Improved operator profile-photo handling and password-reset settings retention",
+          "Scanner: Refined supervisor alerts, gate scan styles and phone layouts"
+        ],
+        "uncompletedTasks": [
+          "Confirm end-to-end QA / UAT for ticket, guest, redemption and gate flows",
+          "Verify operator feedback, open defects and release readiness",
+          "Replace Mobile effort estimate with actual timesheet values; confirm Scanner effort separately"
+        ],
+        "inProgressTasks": [
+          "Booking date filters / search, ticket selection and sharing",
+          "Scanner gate event names, admitted status and upload error handling",
+          "Operator profile-photo updates, settings retention, supervisor alerts and phone layout"
+        ],
+        "futureTasks": [
+          "Confirm QA / UAT and release acceptance",
+          "Check outstanding backlog and operator feedback",
+          "Reconcile effort estimate with actual timesheets"
+        ],
+        "keyInsight": "Target date 10 Nov 2026 passed; revised release date not reported. Estimated 87 of 56 MD consumed (+31 MD over budget). Fundraiser passes, booking filters, Scanner gate events, operator profile and layout updates delivered.",
+        "weeklyUrl": "Incubator Weekly update/GrayHound 13.11.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "10 Sep 2026",
+        "lastWeekTargetDate": "10 Nov 2026",
+        "targetReleaseDate": "10 Nov 2026 (Target passed; revised date TBC)",
+        "forecastExtension": "+61 Days Extension (Target Passed)",
+        "extendedInWeek": "Week 24",
+        "extensionReason": "Target date 10 Nov 2026 passed; revised date not reported. Mobile fundraiser passes and booking filters; Scanner gate event, operator profile and scan UI delivered.",
+        "screenUrl": "screens/greyhound_screens.html",
+        "governanceUrl": "Incubator Weekly update/GrayHound 13.11.2026 Governance.html"
+      },
+      {
+        "weekNumber": 9,
+        "weekLabel": "Week 24",
+        "weekEnding": "06 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "56 Days",
+        "consumed": "80 Consumed (142.9%)",
+        "completedTasks": [
+          "Redesigned My Tickets with Upcoming / Past, search and refreshed booking cards",
+          "Improved ticket pass QR, package-item, admission and redemption details",
+          "Refreshed Home, Explore, Profile and ticket screens with night-green design",
+          "Improved guest booking lookup, OTP and shared-ticket views",
+          "Scanner: Added GRI gate screens, event checks and supervisor assistance requests",
+          "Scanner: Added manual ticket-number search and ticket tracking in Reports",
+          "Scanner: Improved redemption counts, scan results and venue-first ticket rules",
+          "Scanner: Refreshed operator scope, mobile scanner, login, Profile and Reports UI"
+        ],
+        "uncompletedTasks": [
+          "Confirm end-to-end QA / UAT for ticket, guest, redemption and gate flows",
+          "Verify operator feedback, open defects and release readiness",
+          "Replace Mobile effort estimate with actual timesheet values; confirm Scanner effort separately"
+        ],
+        "inProgressTasks": [
+          "Mobile ticket and booking search updates",
+          "Scanner gate admission API, date validation and scan-result UI",
+          "Mobile Visit Details and Scanner dark theme / responsive refinements"
+        ],
+        "futureTasks": [
+          "Confirm QA / UAT and release acceptance",
+          "Check outstanding backlog and operator feedback",
+          "Reconcile effort estimate with actual timesheets"
+        ],
+        "keyInsight": "Mobile ticketing, guest access and night-green refresh delivered; Scanner gate, redemption and operator updates completed. Target release 10 Nov 2026. Estimated 80 of 56 MD consumed (+24 MD over budget).",
+        "weeklyUrl": "Incubator Weekly update/GrayHound 06.11.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "10 Sep 2026",
+        "lastWeekTargetDate": "03 Nov 2026",
+        "targetReleaseDate": "10 Nov 2026",
+        "forecastExtension": "+61 Days Extension",
+        "extendedInWeek": "Week 24",
+        "extensionReason": "Target planned for following week (10 Nov 2026). Mobile ticketing, guest access and visual refresh; Scanner gate, redemption and operator updates.",
+        "screenUrl": "screens/greyhound_screens.html",
+        "governanceUrl": "Incubator Weekly update/GrayHound 06.11.2026 Governance.html"
+      },
+      {
+        "weekNumber": 8,
+        "weekLabel": "Week 23",
+        "weekEnding": "30 Oct 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "56 Days",
+        "consumed": "73 Consumed (130.4%)",
+        "completedTasks": [
+          "Grouped invited tickets by group booking; displayed holders and role line",
+          "Separated same-day invited sessions and showed the correct ticket holder",
+          "Left item tickets without a place; showed place counts beside multi-ticket session headers",
+          "Included Returned in booking counts and aligned Total with Sponsor Portal allocation"
+        ],
+        "uncompletedTasks": [
+          "Confirm outstanding shared booking and ticket date issues",
+          "Confirm host ticket sharing status",
+          "Confirm regular-booking suite detail behavior",
+          "Update prior backlog status before demo"
+        ],
+        "inProgressTasks": [
+          "Verify ticket grouping and holder display",
+          "Validate session and place allocation display",
+          "Confirm returned and total counts"
+        ],
+        "futureTasks": [
+          "Prepare for 03 Nov demo",
+          "Confirm acceptance and record feedback",
+          "Refresh budget and effort actuals after demo"
+        ],
+        "keyInsight": "Target release date 03 Nov 2026 (+54 Days vs Original). Estimated 73 of 56 MD consumed (+17 MD over budget). Grouped invited tickets, session/place handling, and returned/total booking counts updated.",
+        "weeklyUrl": "Incubator Weekly update/GrayHound 30.10.2026.html",
+        "scopeUrl": "scope document/Greyhound_CEO_Scope_USP_WeeklyTheme.html",
+        "initialReleaseDate": "10 Sep 2026",
+        "lastWeekTargetDate": "09 Oct 2026",
+        "targetReleaseDate": "03 Nov 2026",
+        "forecastExtension": "+54 Days Extension",
+        "extendedInWeek": "Week 23",
+        "extensionReason": "Updated release commitment to 03 Nov 2026 (+54 days vs baseline). Grouped invited tickets, session/place handling, and returned / total booking counts updated.",
+        "screenUrl": "screens/greyhound_screens.html",
+        "governanceUrl": "Incubator Weekly update/GrayHound 30.10.2026 Governance.html"
+      },
       {
         "weekNumber": 7,
         "weekLabel": "Week 22",
@@ -838,10 +1019,10 @@ const DEFAULT_PROJECTS = [
     "name": "ONEXSO HRMS",
     "company": "UNICOM TIC INCUBATOR",
     "release": "Enterprise Release 1",
-    "targetReleaseDate": "08 Nov 2026",
+    "targetReleaseDate": "20 Nov 2026",
     "originalAllocation": 100,
-    "forecastTotal": 260,
-    "forecastOverrun": "+170 Man-Days (+170%)",
+    "forecastTotal": 290,
+    "forecastOverrun": "+190 Man-Days (+190%)",
     "overBudget": true,
     "leads": "Thivaharan / Dapiyshanth",
     "description": "Comprehensive human resource management suite with employee directory, multi-tenant security, and leave tracking.",
@@ -901,6 +1082,50 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 10,
+        "weekLabel": "Week 10",
+        "weekEnding": "13 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "260 Days",
+        "consumed": "290 Consumed (112%)",
+        "completedTasks": [
+          "CROWNUS Name Everywhere - web app, admin console, desktop app and emails updated",
+          "Move to Microsoft SQL Server - system runs on MSSQL with database separation preserved",
+          "Overtime Forecast Widgets - module and team overtime forecast with overload warning",
+          "My Team Summary Cards - summary cards with sort by attention or completion rate",
+          "Today's Schedule & Meeting Details - in-place task opening, 1-click meeting join, redesigned details",
+          "Production Readiness - secure platform admin setup, single-URL admin console",
+          "Security & Email Fixes - consent-based screenshots, upgraded libraries, reliable timezone calendar invites",
+          "Website Landing Page - refreshed landing page, task description length warning"
+        ],
+        "uncompletedTasks": [
+          "Azure portal access required to complete deployment handover"
+        ],
+        "inProgressTasks": [
+          "Admin Security Hardening - two-step sign-in, audit logs, strict permission checks (in review)",
+          "Monochrome Dashboard & Role Templates - single-colour theme and role templates (in review)",
+          "Calendar Invite Improvements - add-to-calendar links, readable local times (in review)",
+          "Team-Test Server Deployment and Import/Export Tasks"
+        ],
+        "futureTasks": [
+          "Obtain Azure portal access for production deployment",
+          "Complete team-test server deployment and UAT handover",
+          "Wellbeing Desktop Pet"
+        ],
+        "keyInsight": "Target release date shifted from 08 Nov to 20 Nov 2026 (+24 Days Extension) due to pending Azure portal access. 290 of 260 allocated man-days consumed (112%, +190% total overrun). CROWNUS rebranding, MSSQL migration, overtime forecast and production readiness delivered.",
+        "weeklyUrl": "Incubator Weekly update/ONEXSO 13.11.2026.html",
+        "scopeUrl": "scope document/OneXso_CEO_Scope_USP_WeeklyTheme (3).html",
+        "initialReleaseDate": "15 Oct 2026",
+        "lastWeekTargetDate": "08 Nov 2026",
+        "targetReleaseDate": "20 Nov 2026",
+        "forecastExtension": "+24 Days Extension (Target shifted to 20 Nov)",
+        "extendedInWeek": "Week 1 & Week 2 & Week 3 & Week 7",
+        "extensionReason": "Forecast changed from 2026-11-08 to 2026-11-20: portal access not yet received. CROWNUS rebranding, MSSQL migration and overtime widgets delivered.",
+        "screenUrl": "screens/onexso_hrms_screens.html",
+        "governanceUrl": "Incubator Weekly update/ONEXSO 13.11.2026 Governance.html"
+      },
       {
         "weekNumber": 9,
         "weekLabel": "Week 9",
@@ -1267,8 +1492,8 @@ const DEFAULT_PROJECTS = [
     "release": "Release 1",
     "targetReleaseDate": "05 Oct 2026 (Completed)",
     "originalAllocation": 129,
-    "forecastTotal": 140,
-    "forecastOverrun": "+11 Man-Days (+8.5%)",
+    "forecastTotal": 175,
+    "forecastOverrun": "+29 Man-Days (+19.9%)",
     "overBudget": true,
     "leads": "Mathusan / Yapes",
     "description": "Cloud-enabled point-of-sale terminal software with offline mode, kitchen display, and multi-store inventory.",
@@ -1277,25 +1502,25 @@ const DEFAULT_PROJECTS = [
       {
         "name": "Mathusan",
         "role": "Coordinator / Developer",
-        "allocation": "161 Man-Days",
+        "allocation": "166 Man-Days",
         "responsibility": "Development, task management, coordination, risks, reporting, and E-commerce."
       },
       {
         "name": "Yapes",
         "role": "Project Leader / Developer",
-        "allocation": "143 Man-Days",
+        "allocation": "147 Man-Days",
         "responsibility": "Development, Super Admin, and Second Brain."
       },
       {
         "name": "Tharmithan",
         "role": "Developer",
-        "allocation": "156 Man-Days",
+        "allocation": "161 Man-Days",
         "responsibility": "Flutter App development and integration."
       },
       {
         "name": "Nivethika",
         "role": "Developer",
-        "allocation": "70 Man-Days",
+        "allocation": "71 Man-Days",
         "responsibility": "Product setup, tax management, and category configuration."
       }
     ],
@@ -1328,6 +1553,45 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 9,
+        "weekLabel": "Week 29",
+        "weekEnding": "13 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "146 Days",
+        "consumed": "175 Consumed (120%)",
+        "completedTasks": [
+          "user email creation",
+          "Live databases create"
+        ],
+        "uncompletedTasks": [
+          "Tap hardware/driver support",
+          "Card Reader / USB-C Hub support",
+          "Live App (Core Modules)"
+        ],
+        "inProgressTasks": [
+          "Bulk Upload",
+          "Payment Option",
+          "Cashier flow UI change / Data loading"
+        ],
+        "futureTasks": [
+          "Voucher Implementation",
+          "Stock Management",
+          "Return & Refund"
+        ],
+        "keyInsight": "User email creation and live databases created. 175 of 146 allocated man-days consumed (-29 days remaining; +29 exceeded). Card Reader and Tap hardware/driver dependencies remain in backlog; Bulk Upload and Payment Option in progress.",
+        "weeklyUrl": "Incubator Weekly update/Oneverz EPOS 13.11.2026.html",
+        "scopeUrl": "scope document/Oneverz.html",
+        "initialReleaseDate": "27 Sep 2026",
+        "lastWeekTargetDate": "05 Nov 2026",
+        "targetReleaseDate": "15 Oct 2026 (Revised Target TBC)",
+        "forecastExtension": "-29 Days Remaining (+29 Exceeded)",
+        "extendedInWeek": "Week 2 & Week 3 & Week 27",
+        "extensionReason": "Extended during Week 2 & Week 3 (Migration). Live databases and user email creation delivered; Card Reader and Tap integration ongoing.",
+        "screenUrl": "screens/oneverz_epos_screens.html",
+        "governanceUrl": "Incubator Weekly update/Oneverz EPOS 13.11.2026 Governance.html"
+      },
       {
         "weekNumber": 8,
         "weekLabel": "Week 28",
@@ -1627,9 +1891,9 @@ const DEFAULT_PROJECTS = [
     "name": "Ticketing Venue Setup",
     "company": "UNICOM TIC INCUBATOR",
     "release": "Phase 1",
-    "targetReleaseDate": "09 Nov 2026",
+    "targetReleaseDate": "11 Dec 2026",
     "originalAllocation": 105,
-    "forecastTotal": 200,
+    "forecastTotal": 260,
     "overBudget": true,
     "leads": "Venue & Ticketing Team",
     "description": "Interactive visual seating plan builder, tiered pricing engine, and ticket allocation portal for stadiums and theatres.",
@@ -1638,19 +1902,19 @@ const DEFAULT_PROJECTS = [
       {
         "name": "Poovalingam Thamsan",
         "role": "Project Coordinator",
-        "allocation": "72 Man-Days",
+        "allocation": "77 Man-Days",
         "responsibility": "Managing layout configuration and seat-generation workflows across multiple facilities within a venue."
       },
       {
         "name": "Ramanathan Danuharan",
         "role": "Team Lead",
-        "allocation": "40 Man-Days",
+        "allocation": "45 Man-Days",
         "responsibility": "Implementing high-accuracy AI-based validation to verify the accuracy of blocks generated from blueprint inputs."
       },
       {
         "name": "Thifshana Jeyabalan",
         "role": "Developer",
-        "allocation": "68 Man-Days",
+        "allocation": "73 Man-Days",
         "responsibility": "Refining the CSV upload format and seat-application process to support ordered seating blocks, unordered seating blocks, and unshaped blocks."
       }
     ],
@@ -1683,6 +1947,47 @@ const DEFAULT_PROJECTS = [
     },
     "selectedWeekIndex": 0,
     "weeks": [
+      {
+        "weekNumber": 9,
+        "weekLabel": "Week 24",
+        "weekEnding": "13 Nov 2026",
+        "status": "AT RISK",
+        "statusClass": "amber",
+        "manDays": "200 Days",
+        "consumed": "200 Consumed (100%)",
+        "completedTasks": [
+          "MVC views migrated; new configuration creation for existing facilities works",
+          "Blueprint block detection, accuracy display and manual correction implemented",
+          "Manual and semi-auto seating, save/reload preview and manual facility assignment work"
+        ],
+        "uncompletedTasks": [
+          "Complete automated multi-facility block assignment and new facility creation",
+          "Resume incomplete legacy setups and update already completed venues",
+          "Implement safe deletion of venues, facilities, configurations, blocks, rows and seats"
+        ],
+        "inProgressTasks": [
+          "Thamsan: Venue-specific CSV bulk seating with AI Notes (in progress)",
+          "Danuharan: AI-based blueprint correction & regeneration (in progress)",
+          "Thifshana: Edit and reuse existing Optimo configurations (in progress)",
+          "Optimo API integration and automated multi-facility block assignment"
+        ],
+        "futureTasks": [
+          "Functional + UI completion target: 04 Dec 2026",
+          "Testing, bug fixes & target handover: 11 Dec 2026",
+          "3D venue capabilities remain outside Phase 1 2D setup scope"
+        ],
+        "keyInsight": "Phase 1 release target revised to 11 Dec 2026 (+94 Days Extension vs baseline; Functional/UI target 04 Dec). 200 of 200 man-days consumed (100%, projected conditional forecast 260 MD, 60 MD remaining). Timeline extended due to reduced team allocation and system implementation workflow adaptation.",
+        "weeklyUrl": "Incubator Weekly update/Ticketing 13.11.2026.html",
+        "scopeUrl": "scope document/Venue_Layout_Scope_USP.html",
+        "initialReleaseDate": "08 Sep 2026",
+        "lastWeekTargetDate": "09 Nov 2026",
+        "targetReleaseDate": "11 Dec 2026",
+        "forecastExtension": "+94 Days Extension",
+        "extendedInWeek": "Week 24",
+        "extensionReason": "Phase 1 timeline extended due to (1) reduced team allocation and (2) system implementation workflow adaptation. Revised targets: 04 Dec (Functional + UI) and 11 Dec (Testing & Handover).",
+        "screenUrl": "screens/ticketing_screens.html",
+        "governanceUrl": "Incubator Weekly update/Ticketing 13.11.2026 Governance.html"
+      },
       {
         "weekNumber": 8,
         "weekLabel": "Week 23",
@@ -2160,6 +2465,48 @@ const DEFAULT_PROJECTS = [
     "selectedWeekIndex": 0,
     "weeks": [
       {
+        "weekNumber": 8,
+        "weekLabel": "Week 46",
+        "weekEnding": "13 Nov 2026",
+        "status": "ON TRACK",
+        "statusClass": "green",
+        "manDays": "10 Man-Days",
+        "consumed": "10 Planned (Actual TBC)",
+        "completedTasks": [
+          "Worked on sending emails through StaffHub in the NSW project",
+          "Worked on the Charges and Quote sections",
+          "Implemented UI updates based on QA feedback",
+          "Developed the Home page and Venue page and integrated required details",
+          "Added two required columns to the database and completed related work",
+          "Carried out testing activities"
+        ],
+        "uncompletedTasks": [
+          "Final QA verification and sign-off pending confirmation"
+        ],
+        "inProgressTasks": [
+          "Continue testing StaffHub email and Charges/Quote workflows",
+          "Verify Home and Venue page details and data retrieval",
+          "Validate two newly added database columns and related data flows",
+          "StaffHub email-sending workflow testing and regression"
+        ],
+        "futureTasks": [
+          "Address issues found during QA and complete regression testing",
+          "Confirm remaining defects and final QA sign-off",
+          "Confirm actual effort allocation and consumption with the team"
+        ],
+        "keyInsight": "StaffHub email workflow, Charges & Quote sections, QA UI changes, Home and Venue pages, database column updates and testing activities progressed during 09–13 Nov 2026. 10 MD planned allocation (actual TBC).",
+        "weeklyUrl": "Incubator Weekly update/NSW 13.11.2026.html",
+        "governanceUrl": "Incubator Weekly update/NSW 13.11.2026 Governance.html",
+        "scopeUrl": "scope document/nsw_sports_scope_usp.html",
+        "initialReleaseDate": "18 Sep 2026",
+        "lastWeekTargetDate": "30 Oct 2026",
+        "targetReleaseDate": "30 Oct 2026",
+        "forecastExtension": "Active Development / Testing",
+        "extendedInWeek": "N/A",
+        "extensionReason": "Feature development, UI updates, database column setup and StaffHub email testing active.",
+        "screenUrl": "screens/nsw_sports_screens.html"
+      },
+      {
         "weekNumber": 7,
         "weekLabel": "Week 45",
         "weekEnding": "06 Nov 2026",
@@ -2543,7 +2890,7 @@ const DEFAULT_PROJECTS = [
 ];
 
 // Cache version key - updated to immediately refresh layout on client browsers
-const STORAGE_KEY = 'portal_projects_exec_v25_nov06_all';
+const STORAGE_KEY = 'portal_projects_exec_v26_nov13_all';
 
 // Purge all legacy cache keys to prevent stale/broken data
 try {
@@ -2574,7 +2921,8 @@ try {
     'portal_projects_exec_v20_oct16_reports',
     'portal_projects_exec_v21_greyhound_oct16',
     'portal_projects_exec_v22_oct23_all',
-    'portal_projects_exec_v24_nov2_grayhound'
+    'portal_projects_exec_v24_nov2_grayhound',
+    'portal_projects_exec_v25_nov06_all'
   ].forEach(k => localStorage.removeItem(k));
 } catch (e) {}
 

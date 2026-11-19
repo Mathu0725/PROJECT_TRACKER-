@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ticketing Venue Setup — Week 24 — 13 November 2026 — Professional HD Report</title>
+<style>
+  :root{
+    --bg:#f5f8fc;
+    --card:#ffffff;
+    --ink:#14213d;
+    --muted:#667085;
+    --line:#d9e3ef;
+    --navy:#10213d;
+    --blue:#1397d4;
+    --blue-soft:#edf8fe;
+    --green:#0cad5d;
+    --green-soft:#effbf5;
+    --red:#e52b35;
+    --red-soft:#fff4f4;
+    --amber:#f6a313;
+    --amber-soft:#fff7dd;
+    --purple:#7c3aed;
+    --purple-soft:#f7f2ff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif;color:var(--ink)}
+  body{padding:24px}
+  .report{
+    width:min(1540px,100%);
+    margin:0 auto;
+  }
+  .panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 6px 24px rgba(24,48,84,.06);
+  }
+  .top-strip{
+    min-height:112px;
+    display:grid;
+    grid-template-columns:1.1fr .7fr .8fr 1.35fr;
+    gap:28px;
+    align-items:center;
+    padding:22px 24px;
+  }
+  .metric{font-size:16px;color:#445065;line-height:1.35}
+  .metric strong{color:#17223b;font-size:18px}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    border-radius:12px;padding:8px 14px;
+    font-weight:800;font-size:14px;
+    border:1px solid #f7cf6b;background:var(--amber-soft);color:#a95c00;
+    white-space:nowrap;margin-left:10px
+  }
+  .danger{color:var(--red)!important}
+  .team-title{font-weight:900;margin-bottom:8px;font-size:16px}
+  .team ul{margin:0;padding-left:17px;font-size:14px;line-height:1.55}
+  .main{margin-top:18px;padding:24px}
+  .title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid #e8edf4}
+  .title-wrap{display:flex;gap:15px;align-items:flex-start}
+  .icon-box{width:28px;height:28px;border-radius:8px;background:#e8f3ff;display:grid;place-items:center;font-size:17px;margin-top:1px}
+  h1{margin:0;font-size:22px;letter-spacing:.3px;font-weight:900}
+  .subtitle{margin-top:6px;color:#728096;font-size:14px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  .info-card{
+    min-height:112px;border:1px solid var(--line);border-radius:11px;padding:18px 20px;background:#fafcff
+  }
+  .info-card.blue{border-color:#6dc7ef;background:var(--blue-soft)}
+  .info-card.red{border-color:#ffb8bc;background:var(--red-soft)}
+  .label{font-size:13px;font-weight:900;color:#60718a;letter-spacing:.25px}
+  .big{font-size:21px;font-weight:900;margin-top:8px}
+  .blue .big{color:#0688c7}.red .big{color:var(--red)}
+  .small{font-size:13px;color:#8a95a8;margin-top:6px}
+  .reason{
+    margin-top:18px;
+    border:1px solid #ffb7bb;background:var(--red-soft);
+    border-radius:11px;padding:18px 20px;
+  }
+  .reason-head{display:flex;justify-content:space-between;gap:16px;align-items:center}
+  .reason-title{font-weight:900;color:#a61f29;font-size:16px}
+  .week-badge{border:1px solid #ff9ea6;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:900;color:#b4232e;background:#fff7f7}
+  .reason-line{margin-top:12px;font-size:14px;color:#6f2830;line-height:1.55}
+  .reason-line b{color:#8b1620}
+  table{width:100%;border-collapse:separate;border-spacing:0;margin-top:18px;border:1px solid var(--line);border-radius:11px;overflow:hidden;font-size:13px}
+  th{background:#f6f8fb;color:#4f5e73;text-align:left;padding:14px 14px;font-size:12px;letter-spacing:.15px}
+  td{padding:14px;border-top:1px solid #e8edf4;vertical-align:middle;color:#354158;line-height:1.35}
+  tr.selected td{background:#edf8fe}
+  .selected-tag{display:inline-block;background:#099ada;color:#fff;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:900;margin-top:4px}
+  .ext{display:inline-block;background:var(--amber-soft);border:1px solid #f6d77a;color:#a95c00;border-radius:8px;padding:6px 10px;font-weight:900;white-space:nowrap}
+  .bottom-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
+  .work-card{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px 18px;
+    min-height:270px;box-shadow:0 5px 18px rgba(23,50,86,.04)
+  }
+  .work-card.completed{border-top:4px solid var(--green)}
+  .work-card.backlog{border:2px solid var(--red);border-top-width:4px}
+  .work-card.progress{border-top:4px solid #118fc3}
+  .work-card.future{border-top:4px solid var(--purple)}
+  .work-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-weight:900}
+  .completed .work-head{color:var(--green)}
+  .backlog .work-head{color:var(--red)}
+  .progress .work-head{color:#118fc3}
+  .future .work-head{color:var(--purple)}
+  .count{min-width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#eef2f7;color:#455468;font-size:12px}
+  .backlog .count{width:auto;border-radius:16px;padding:0 10px;background:var(--red);color:#fff}
+  .list{list-style:none;margin:0;padding:0}
+  .list li{position:relative;padding-left:26px;margin:12px 0;font-size:14px;line-height:1.35;color:#475467}
+  .completed .list li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:900}
+  .progress .list li:before{content:">";position:absolute;left:1px;color:#118fc3;font-weight:900}
+  .future .list li:before{content:"•";position:absolute;left:2px;color:var(--purple);font-size:22px;line-height:14px}
+  .backlog .list li{
+    padding:12px 12px 12px 42px;background:var(--red-soft);border:1px solid #ff9ea6;border-radius:8px;color:#9b1c24;font-weight:700
+  }
+  .backlog .list li:before{content:"⊘";position:absolute;left:14px;top:11px;color:#ff4d58;font-weight:900;font-size:18px}
+  .change-row{
+    margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px
+  }
+  .change-box{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fbfcfe}
+  .change-box h3{margin:0 0 8px;font-size:13px}
+  .change-box p{margin:0;color:#58677d;font-size:13px;line-height:1.45}
+  .foot{margin-top:14px;text-align:right;font-size:11px;color:#94a0b2}
+  @media(max-width:1100px){
+    .top-strip{grid-template-columns:1fr 1fr}
+    .cards,.bottom-grid,.change-row{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:720px){
+    body{padding:10px}.top-strip,.cards,.bottom-grid,.change-row{grid-template-columns:1fr}
+    .title-row{flex-direction:column}
+  }
+  @media print{
+    body{background:#fff;padding:0}
+    .report{width:100%}
+    .panel,.work-card{box-shadow:none}
+  }
+
+  /* Week 23 additions keep the original professional report style. */
+  .metric-note{font-size:12px;color:var(--muted);line-height:1.5;margin-top:7px}
+  .top-strip{grid-template-columns:1fr .75fr .75fr 1.4fr;gap:22px}
+  .metric .pill{margin:8px 0 0 0;font-size:12px}
+  .team ul{font-size:13px}.team-title{font-size:14px;line-height:1.4}
+  .section-heading{font-size:13px;font-weight:900;letter-spacing:.25px;color:#445065;margin-top:24px}
+  .table-scroll{width:100%;overflow-x:auto}
+  .table-scroll table{margin-top:12px}
+  .resource-table th:nth-child(1){width:20%}.resource-table th:nth-child(2){width:17%}.resource-table th:nth-child(3){width:15%}.resource-table th:nth-child(4){width:48%}
+  .resource-table td{font-size:13px;line-height:1.5}
+  .added{display:block;font-size:11px;color:var(--green);font-weight:700;margin-top:2px}
+  .allocation-summary{display:flex;gap:12px 26px;flex-wrap:wrap;padding:12px 14px;background:var(--blue-soft);border:1px solid #c9e9fa;border-radius:0 0 10px 10px;font-size:12px;color:#31536b}
+  .history-table th:nth-child(1){width:9%}.history-table th:nth-child(2){width:10%}.history-table th:nth-child(3){width:12%}.history-table th:nth-child(4){width:13%}.history-table th:nth-child(5){width:13%}.history-table th:nth-child(6){width:43%}
+  .history-table td{line-height:1.5;font-size:12.5px}
+  .muted-copy{font-size:11px;color:var(--muted)}
+  .reason-line{font-size:13px}.reason{padding:16px 20px}
+  .work-card{min-width:0}.work-head{font-size:13px;gap:8px;line-height:1.4}.work-head .count{flex-shrink:0}
+  .list li{font-size:13px;line-height:1.5}.work-card{padding:16px}
+  .status-note{font-size:11px;line-height:1.5;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .report-note{margin-top:18px;padding:13px 17px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--muted);font-size:11.5px;line-height:1.6}
+  .foot{line-height:1.6}
+  @media(max-width:1100px){.top-strip{grid-template-columns:1fr 1fr}.resource-table{min-width:760px}.history-table{min-width:1050px}}
+  @media(max-width:720px){.top-strip{grid-template-columns:1fr}.main{padding:16px}.title-wrap{gap:10px}h1{font-size:19px}.subtitle{font-size:13px;line-height:1.5}.reason-head{flex-wrap:wrap}.week-badge{font-size:12px}.allocation-summary{gap:8px}.work-card{min-height:0}}
+  @media print{.table-scroll{overflow:visible}.resource-table,.history-table{min-width:0}.report-note,.work-card,.change-box,.reason{break-inside:avoid}.top-strip{grid-template-columns:1fr 1fr}.bottom-grid{grid-template-columns:1fr 1fr}body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="report">
+
+  <section class="panel top-strip">
+    <div class="metric">Phase 1 Target: <strong>11 Dec 2026</strong><span class="pill">Extended Timeline</span><div class="metric-note">04 Dec: Functional + UI · 11 Dec: Testing &amp; fixes</div></div>
+    <div class="metric">Effort: <strong>200 / 260 Man-Days</strong><div class="metric-note">76.9% of conditional forecast · 60 MD remaining</div></div>
+    <div class="metric">Variance: <strong class="danger">+94 Days (Delay)</strong></div>
+    <div class="team">
+      <div class="team-title">Team · +5 Man-Days per person (Week 24)</div>
+      <ul>
+        <li><b>Poovalingam Thamsan</b> (Project Coordinator · 77 Man-Days)</li>
+        <li><b>Ramanathan Danuharan</b> (Team Lead · 45 Man-Days)</li>
+        <li><b>Thifshana Jeyabalan</b> (Developer · 73 Man-Days)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel main">
+    <div class="title-row">
+      <div class="title-wrap">
+        <div class="icon-box">🗓</div>
+        <div>
+          <h1>TARGET RELEASE DATE GOVERNANCE &amp; EXTENSION AUDIT</h1>
+          <div class="subtitle">Week 24 · 09–13 November 2026 · Week Ending Friday, 13/11/2026</div>
+        </div>
+      </div>
+      <span class="pill">⚠ Extended Timeline</span>
+    </div>
+
+    <div class="cards">
+      <div class="info-card">
+        <div class="label">🗓 ESTIMATED DATE OF RELEASE</div>
+        <div class="big">8 Sep 2026</div>
+        <div class="small">Original Plan Target</div>
+      </div>
+      <div class="info-card blue">
+        <div class="label">🎯 CURRENT RELEASE FORECAST</div>
+        <div class="big">11 Dec 2026</div>
+        <div class="small">Phase 1 testing &amp; bug-fix target; release not confirmed</div>
+      </div>
+      <div class="info-card red">
+        <div class="label">⏱ EXTENSION STATUS</div>
+        <div class="big">Extended Timeline</div>
+        <div class="small">Revised end date: 11 Dec 2026 · +94 calendar days</div>
+      </div>
+    </div>
+
+    <div class="section-heading">TEAM ALLOCATION &amp; MAIN RESPONSIBILITIES · WEEK 24</div>
+    <div class="table-scroll"><table class="resource-table">
+      <thead><tr><th>RESOURCE NAME</th><th>ROLE</th><th>ALLOCATION<br>(MAN-DAYS)</th><th>MAIN RESPONSIBILITY / WORK COMPLETED THIS WEEK</th></tr></thead>
+      <tbody>
+        <tr><td><b>Poovalingam Thamsan</b></td><td>Project Coordinator</td><td><b>77</b><span class="added">+5 this week</span></td><td><b>Venue-specific CSV bulk seating with AI Notes</b> <span class="muted-copy">· In progress; completion not confirmed</span></td></tr>
+        <tr><td><b>Ramanathan Danuharan</b></td><td>Team Lead</td><td><b>45</b><span class="added">+5 this week</span></td><td><b>AI-based blueprint correction &amp; regeneration</b> <span class="muted-copy">· In progress; completion not confirmed</span></td></tr>
+        <tr><td><b>Thifshana Jeyabalan</b></td><td>Developer</td><td><b>73</b><span class="added">+5 this week</span></td><td><b>Edit and reuse existing Optimo configurations</b> <span class="muted-copy">· In progress; completion not confirmed</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="allocation-summary"><span><b>Named resource allocation:</b> 195 Man-Days</span><span><b>This week:</b> +15 Man-Days (3 × 5)</span><span><b>Tracked consumed:</b> 200 Man-Days</span><span><b>Conditional phase forecast:</b> 260 Man-Days</span></div>
+
+    <div class="reason">
+      <div class="reason-head">
+        <div class="reason-title">⚠ WHY WAS THE RELEASE DATE EXTENDED?</div>
+        <div class="week-badge">Week 24 Update · 13/11/2026</div>
+      </div>
+      <div class="reason-line"><b>Reasons for extension:</b> The Phase 1 timeline was extended due to <b>(1) a reduction in the number of team members allocated to the project</b>, which reduced delivery capacity, and <b>(2) a change in the system implementation approach</b>, which required the team to revise and adapt the existing workflows and integration. The updated targets are <b>04 Dec 2026 (Functional + UI)</b> and <b>11 Dec 2026 (Testing + Bug Fixes)</b>. These dates remain planned targets, not confirmed completion dates.</div>
+    </div>
+
+    <div class="section-heading">WEEKLY RELEASE COMMITMENTS &amp; EXTENSION HISTORY</div>
+    <div class="table-scroll"><table class="history-table">
+      <thead>
+        <tr>
+          <th>REPORTING<br>WEEK</th>
+          <th>WEEK<br>ENDING</th>
+          <th>PROMISED TARGET<br>DATE</th>
+          <th>EXTENSION<br>VARIANCE</th>
+          <th>EXTENSION<br>UPDATE</th>
+          <th>REASON FOR EXTENSION / PROGRESS STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="selected">
+          <td><b>Week 24</b><br><span class="selected-tag">Current Week</span></td>
+          <td><b>13 Nov 2026</b></td>
+          <td><b>11 Dec 2026</b></td>
+          <td><span class="ext">+94 Days Extension</span></td>
+          <td>Revised target<br><span class="muted-copy">+32 days vs Week 23 forecast</span></td>
+          <td><b>Extension reasons:</b> Reduced team-member allocation and a change in the system implementation approach, requiring workflow and integration changes. All three current team members worked 5 days (+15 Man-Days). Thamsan: venue-specific CSV bulk seating with AI Notes; Thishana: edit and reuse existing Optimo configurations; Danuharan: AI-based blueprint correction and regeneration. Functional/UI target: 04 Dec; testing and bug fixes: 11 Dec. Completion remains unconfirmed.</td>
+        </tr>
+        <tr>
+          <td><b>Week 23</b></td>
+          <td><b>06 Nov 2026</b></td>
+          <td><b>09 Nov 2026</b></td>
+          <td><span class="ext">+62 Days Extension</span></td>
+          <td>Carried forward<br><span class="muted-copy">No new extension reported</span></td>
+          <td>Created and updated the project Second Brain with completed work. Implemented the block creation accuracy improvement feature and added AI support to the CSV workflow. End-to-end validation, remaining seating cases and overlapping multi-facility layouts remain open.</td>
+        </tr>
+        <tr>
+          <td><b>Week 22</b></td>
+          <td>30 Oct 2026</td>
+          <td><b>09 Nov 2026</b></td>
+          <td><span class="ext">+62 Days Extension</span></td>
+          <td>Week 22</td>
+          <td>Completed auto-fill seating creation for a selected facility, including save, retrieval and rendering. Implemented CSV seat generation for ordered seating blocks; unordered and unshaped support, validation and overlapping multi-facility layouts remain pending.</td>
+        </tr>
+        <tr>
+          <td><b>Week 21</b></td>
+          <td>23 Oct 2026</td>
+          <td><b>09 Nov 2026</b></td>
+          <td><span class="ext">+62 Days Extension</span></td>
+          <td>Week 21</td>
+          <td>Optimized seat-saving performance and completed the seating configuration workflow for a selected facility. Remaining seating-related functionality and Optimo-compatible integration are pending.</td>
+        </tr>
+        <tr>
+          <td><b>Week 20</b></td>
+          <td>16 Oct 2026</td>
+          <td><b>30 Oct 2026</b></td>
+          <td><span class="ext">+52 Days Extension</span></td>
+          <td>Week 20</td>
+          <td>Updated the auto-fill functionality and CSV/document upload workflows to align with Optimo’s data structure. The remaining workflow implementation is ongoing.</td>
+        </tr>
+      </tbody>
+    </table></div>
+
+    <div class="change-row">
+      <div class="change-box">
+        <h3>▣ SCHEDULE CHANGE</h3>
+        <p>Phase 1 end target moved from 09 Nov to 11 Dec 2026 (+32 additional calendar days) due to reduced team allocation and a revised system implementation approach. Functional + UI target: 04 Dec; testing + bug fixes: 11 Dec. Total variance from the original 08 Sep target: +94 days.</p>
+      </div>
+      <div class="change-box">
+        <h3>⚙ DELIVERY / SCOPE UPDATE</h3>
+        <p>Three Week 24 workstreams are in progress: venue-specific CSV bulk seating with AI Notes; edit/reuse existing Optimo configurations; and AI-based blueprint correction &amp; regeneration. Prior seating and multi-facility issues remain to be revalidated.</p>
+      </div>
+      <div class="change-box">
+        <h3>▦ EFFORT CHANGE</h3>
+        <p>Added 5 Man-Days per person (+15 total): 77, 45 and 73 MD (195 named). Tracked consumed effort: 200 MD, including 5 MD to reconcile. Another 20 weekdays × 3 people = 60 MD, making a conditional 260 MD forecast.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="bottom-grid">
+    <section class="work-card completed">
+      <div class="work-head"><span>✓ LAST CONFIRMED DELIVERY (WEEK 23)</span><span class="count">3</span></div>
+      <ul class="list">
+        <li><b>Thamsan:</b> Created the project Second Brain and updated completed work.</li>
+        <li><b>Danuharan:</b> Implemented block creation accuracy improvements.</li>
+        <li><b>Thifshana:</b> Added AI support to the CSV workflow.</li>
+      </ul>
+      <div class="status-note">Week 24 workstream completion has not been confirmed; these are the latest reported completed items.</div>
+    </section>
+
+    <section class="work-card backlog">
+      <div class="work-head"><span>⊘ CARRIED-FORWARD BACKLOG</span><span class="count">3 ITEMS</span></div>
+      <ul class="list">
+        <li>CSV seat allocation for unordered seating and unshaped blocks; completion not confirmed.</li>
+        <li>End-to-end validation of applied seats, generated blocks and the new AI-assisted CSV workflow.</li>
+        <li>Overlapping layout management across multiple facilities.</li>
+      </ul>
+      <div class="status-note">These items were open in Week 23. Updated completion status was not supplied for Week 24.</div>
+    </section>
+
+    <section class="work-card progress">
+      <div class="work-head"><span>&gt; CURRENT FOCUS</span><span class="count">3</span></div>
+      <ul class="list">
+        <li><b>Thamsan:</b> Venue-specific CSV bulk seating with AI Notes.</li>
+        <li><b>Thishana:</b> Edit and reuse existing Optimo configurations.</li>
+        <li><b>Danuharan:</b> AI-based blueprint correction &amp; regeneration.</li>
+      </ul>
+      <div class="status-note">All three are active Week 24 assignments. No completion evidence was supplied.</div>
+    </section>
+
+    <section class="work-card future">
+      <div class="work-head"><span>○ NEXT STEPS</span><span class="count">4</span></div>
+      <ul class="list">
+        <li>Complete the three active Week 24 workstreams and review carried-forward seating issues.</li>
+        <li>Complete and verify Functional + UI scope by 04 Dec 2026 (target).</li>
+        <li>Run end-to-end integration and regression validation against Optimo/Core contracts.</li>
+        <li>Complete testing and bug fixes by 11 Dec 2026 (target).</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="report-note"><b>Effort reconciliation &amp; forecast:</b> Week 23 tracked 185 consumed Man-Days and 180 named. Adding +15 this week gives <b>200 consumed</b> and <b>195 named</b>; the existing <b>5 MD difference</b> remains for reconciliation. The prior revised allocation of 200 MD is now fully consumed. From Monday 16 Nov through Friday 11 Dec are <b>20 working days</b>. At 3 people working every weekday, the remaining requirement is <b>60 MD</b> and the conditional full-phase forecast is <b>260 MD</b> (+60 vs the prior revised 200 MD baseline). This is a staffing assumption, not an approved budget revision.</div>
+  <div class="foot">Ticketing Venue Setup · Phase 1 · Week 24 · Week Ending Friday, 13/11/2026<br>Prepared from supplied Week 24 assignments and updated Phase 1 dashboard. Earlier weeks retained as history; milestones remain forecasts pending confirmation.</div>
+</div>
+</body>
+</html>
